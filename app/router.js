@@ -6,6 +6,10 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('conference');
+  this.route('register');
+  this.route('login');
+  this.route('submission');
 });
 
 export default Router;
