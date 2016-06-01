@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('register');
   this.route('login');
   this.route('submission');
+  this.route('reviews');
 });
 
 export default Router;
