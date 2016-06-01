@@ -1,0 +1,90 @@
+h1
+{
+  font-size: 3.5em;
+  margin: 0 0 10px 0;
+}
+h4
+{
+  font-size: 1em;
+}
+p
+{
+ font-size: 0.8em;
+}
+.osfbar
+{
+  height: 35px;
+
+  font-size: 18px;
+  margin: 0 -15px 0 -15px;
+}
+.conferenceTopContainer
+{
+}
+.conferencePhoto
+{
+  height: 350px;
+}
+.conferencePhoto img
+{
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+}
+.conferenceInfo
+{
+
+}
+.conferenceInfo h1
+{
+
+  color: black;
+}
+.conferenceInfo h4
+{
+  color: black;
+  margin: 0 0 1px 30px;
+}
+.conferenceDescriptionContainer
+{
+
+}
+.conferenceDescription
+{
+  padding: 15px;
+  font-size: 22px;
+}
+.logos
+{
+  width: 100%;
+  height: 15%;
+}
+.keynote
+{
+  font-size: 2.4em;
+  color: black;
+}
+.smallKey
+{
+  color: black;
+  font-size: 1em;
+}
+.inputContainer
+{
+}
+.inputFields
+{
+  width: 100%;
+  height: 100px;
+}
+.fileView
+{
+  border: solid green 1px;
+  height: 500px;
+  margin: 15px;
+}
