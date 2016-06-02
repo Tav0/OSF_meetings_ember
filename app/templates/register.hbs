@@ -1,114 +1,120 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="registerTopContainer col-md-12">
-      <div class="col-md-4 col-md-offset-4 registration-title">
-        <h2>Meeting Title</h2>
-      </div>
-      <div class="col-md-1" style="height: 100%">
-        <button>Rename</button>
+ <div class="row">
+    <div class="col-md-8 col-md-offset-2" style="text-align: center">
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4 registration-title">
+          <h2>Meeting Title</h2>
+        </div>
+        <div class="col-md-1" style="height: 100%">
+          <button>Rename</button>
+        </div>
       </div>
     </div>
   </div>
-  <form class="form-inline">
-    <div class="form-group" style="padding: 3.5%">
-      <div class ="row">
-        <div class="col-md-3">
-          Meeting website (optional):
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2" style="text-align: center">
+      <form class="form-inline">
+        <div class="form-group" style="padding: 3.5%; border-style: double">
+          <div class ="row">
+            <div class="col-md-3">
+              Meeting website (optional):
+            </div>
+            <div class="col-md-2">
+              <input type="text"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              City:
+            </div>
+            <div class="col-md-2">
+              <input type="text">
+            </div>
+            <div class="col-md-offset-1 col-md-2">
+              <select>
+                  <option value="-Select a state-">-Select a state</option>
+                  <option value="Virginia">Virginia</option>
+                  <option value="New York">New York</option>
+                  <option value="Maine">Maine</option>
+              </select>
+            </div>
+            <div class="col-md-offset-1 col-md-2">
+              <select>
+                  <option value="-Select a country-">-Select a country-</option>
+                  <option value="United States">United States</option>
+                  <option value="Japan">Japan</option>
+                  <option value="Sri Lanka">Sri Lanka</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              Meeting start date:
+            </div>
+            <div class="col-md-3">
+              <input type="text"/>
+            </div>
+            <div class="col-md-3">
+              Meeting end date:
+            </div>
+            <div class="col-md-2">
+              <input type="text"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              Submission start date:
+            </div>
+            <div class="col-md-3">
+              <input type="text"/>
+            </div>
+            <div class="col-md-3">
+              Close date:
+            </div>
+            <div class="col-md-2">
+              <input type="text"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5">
+              Logo for meeting landing page(optional):
+            </div>
+            <div class="col-md-1">
+                <b>filename.jpg</b>
+            </div>
+            <div class="col-md-2 col-md-offset-1">
+              <button>Upload</button>
+            </div>
+            <div class="col-md-3">
+              <button>Preview Logo</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              Select a few tags (optional):
+            </div>
+            <div class="col-md-2">
+              <input type="text"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              Meeting Description (optional):
+              <br>
+              <textarea rows="8%" cols="95%"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 col-md-offset-8">
+              <button>Preview</button>
+            </div>
+            <div class="col-md-2">
+              <button>Request</button>
+            </div>
+          </div>
         </div>
-        <div class="col-md-2">
-          <input type="text"/>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          City:
-        </div>
-        <div class="col-md-2">
-          <input type="text">
-        </div>
-        <div class="col-md-offset-1 col-md-2">
-          <select>
-              <option value="-Select a state-">-Select a state</option>
-              <option value="Virginia">Virginia</option>
-              <option value="New York">New York</option>
-              <option value="Maine">Maine</option>
-          </select>
-        </div>
-        <div class="col-md-offset-1 col-md-2">
-          <select>
-              <option value="-Select a country-">-Select a country-</option>
-              <option value="United States">United States</option>
-              <option value="Japan">Japan</option>
-              <option value="Sri Lanka">Sri Lanka</option>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          Meeting start date:
-        </div>
-        <div class="col-md-3">
-          <input type="text"/>
-        </div>
-        <div class="col-md-3">
-          Meeting end date:
-        </div>
-        <div class="col-md-2">
-          <input type="text"/>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          Submission start date:
-        </div>
-        <div class="col-md-3">
-          <input type="text"/>
-        </div>
-        <div class="col-md-3">
-          Close date:
-        </div>
-        <div class="col-md-2">
-          <input type="text"/>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-5">
-          Logo for meeting landing page(optional):
-        </div>
-        <div class="col-md-1">
-            <b>filename.jpg</b>
-        </div>
-        <div class="col-md-2 col-md-offset-1">
-          <button>Upload</button>
-        </div>
-        <div class="col-md-3">
-          <button>Preview Logo</button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          Select a few tags (optional):
-        </div>
-        <div class="col-md-2">
-          <input type="text"/>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          Meeting Description (optional):
-          <br>
-          <textarea rows="8%" cols="95%"/>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 col-md-offset-8">
-          <button>Preview</button>
-        </div>
-        <div class="col-md-2">
-          <button>Request</button>
-        </div>
-      </div>
+      </form>
     </div>
-  </form>
+  </div>
 </div>
 
