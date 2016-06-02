@@ -3,10 +3,18 @@
     <div class="col-md-8 col-md-offset-2" style="text-align: center">
       <div class="row">
         <div class="col-md-4 col-md-offset-4 registration-title">
-          <h2>Meeting Title</h2>
+          {{#if this.isRenaming}}
+            {{input action="saveName" value=meetingTitle}}
+          {{else}}
+            <h2>{{this.meetingTitle}}</h2>
+          {{/if}}
         </div>
         <div class="col-md-1" style="height: 100%">
-          <button>Rename</button>
+          {{#if this.isRenaming}}
+            <button {{action "saveName"}}>Save</button>
+          {{else}}
+            <button {{action "rename"}}>Rename</button>
+          {{/if}}
         </div>
       </div>
     </div>
@@ -83,10 +91,10 @@
                 <b>filename.jpg</b>
             </div>
             <div class="col-md-2 col-md-offset-1">
-              <button>Upload</button>
+              <button {{action "upload"}}>Upload</button>
             </div>
             <div class="col-md-3">
-              <button>Preview Logo</button>
+              <button {{action "previewLogo"}}>Preview Logo</button>
             </div>
           </div>
           <div class="row">
@@ -106,10 +114,10 @@
           </div>
           <div class="row">
             <div class="col-md-2 col-md-offset-8">
-              <button>Preview</button>
+              <button {{action "preview"}}>Preview</button>
             </div>
             <div class="col-md-2">
-              <button>Request</button>
+              <button {{action "request"}}>Request</button>
             </div>
           </div>
         </div>
@@ -117,4 +125,3 @@
     </div>
   </div>
 </div>
-
