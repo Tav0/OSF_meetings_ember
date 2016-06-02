@@ -10,38 +10,13 @@ Submission
 		</div>
 	</div>
 
-	<form>
+	<form method="post">
 		<div class="row">
 			<div class="col-md-2 col-md-offset-1">
 				<label>Upload File(s):</label>
 			</div>
 			<div class="col-md-2 col-md-offset-2">
 				<img src="" alt="upload_file_icon">
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-4 col-md-offset-1">
-				<div class="form-inline">
-					<label>File 1 format:</label>
-					<select class="form-control">
-						<option>Lecture</option>
-						<option>Presentation</option>
-						<option>Poster</option>
-					</select>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 col-md-offset-1">
-				<div class="form-inline">
-					<label>File 2 format:</label>
-					<select class="form-control">
-						<option>Lecture</option>
-						<option>Presentation</option>
-						<option>Poster</option>
-					</select>
-				</div>
 			</div>
 		</div>
 
@@ -52,7 +27,7 @@ Submission
 					<label>Title:</label>
 				</div>
 				<div class="col-md-8">
-					<input type="text" class="form-control">
+					{{input value=model.title class="form-control"}}
 				</div>
 			</div>	
 		</div>	
@@ -63,7 +38,7 @@ Submission
 					<label>Contributors:</label>
 				</div>
 				<div class="col-md-8">
-					<input type="text" class="form-control">
+					{{input value=model.contributors class="form-control"}}
 				</div>
 			</div>	
 		</div>	
@@ -74,18 +49,7 @@ Submission
 					<label>Description:</label>
 				</div>
 				<div class="col-md-8">
-					<textarea class="form-control"></textarea> 
-				</div>
-			</div>	
-		</div>	
-
-		<div class="row">
-			<div class="form-group">
-				<div class="col-md-1 col-md-offset-1">
-					<label>Abstract:</label>
-				</div>
-				<div class="col-md-8">
-					<textarea class="form-control"></textarea>
+					{{textarea value=model.description class="form-control"}}
 				</div>
 			</div>	
 		</div>	
@@ -96,51 +60,17 @@ Submission
 					<label>Keywords:</label>
 				</div>
 				<div class="col-md-8">
-					<input type="text" class="form-control">
+					{{input value=model.keywords class="form-control"}}
 				</div>
 			</div>	
 		</div>
 
 		<div class="row">
-			<div class="form-group">
-				<div class="col-md-1 col-md-offset-1">
-					<label>Badges:</label>
-				</div>
-				<div class="col-md-2">
-					<label>Open Data:</label>
-					<input type="checkbox">
-				</div>
-				<div class="col-md-2 col-md-offset-1">
-					<label>Open Materials:</label>
-					<input type="checkbox">
-				</div>
-				<div class="col-md-2 col-md-offset-1">
-					<label>Pre-Reg:</label>
-					<input type="checkbox">
-				</div>
-			</div>	
+			<div class="col-md-2 col-md-offset-9">
+				<button {{action "saveNodeSubmission" model}} class="btn btn-default">Submit</button>
+			</div>
 		</div>
-
-		<div class="row">
-			<div class="form-group">
-				<div class="col-md-1 col-md-offset-1">
-					<label>Track:</label>
-				</div>
-				<div class="col-md-8">
-					<select>
-						<option>1</option>
-						<option>2</option>
-					</select>
-				</div>
-			</div>	
-		</div>	
 	</form>
-
-	<div class="row">
-		<div class="col-md-2 col-md-offset-9">
-			<button class="btn btn-default">Submit</button>
-		</div>
-	</div>
 </div>
 
 {{outlet}}
