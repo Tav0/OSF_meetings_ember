@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('login');
   this.route('submission');
   this.route('reviews');
+  this.route('evaluation');
 });
 
 export default Router;
