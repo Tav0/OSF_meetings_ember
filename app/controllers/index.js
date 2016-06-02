@@ -8,7 +8,13 @@ export default Ember.Controller.extend({
     }),
 
     vehicles: [
-        {name: 'option1', year: 1953},
-        {name: 'option2', year: 1952}
+        { name: 'option1', year: 1953 },
+        { name: 'option2', year: 1952 }
     ],
+
+    items: Ember.A([
+        { name: 'Conference 1' },
+        { name: 'Conference 2' },
+        { name: 'Conference 3' }
+    ]),
 });

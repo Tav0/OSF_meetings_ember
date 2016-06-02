@@ -43,6 +43,9 @@
 </div>
 
 <div>Masonry</div>
+{{#masonry-grid items=items as |item|}}
+    {{item.name}}
+{{/masonry-grid}}
 
 <footer>footer</footer>
 {{outlet}}
