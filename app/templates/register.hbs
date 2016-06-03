@@ -35,24 +35,22 @@
             <div class="col-md-3">
               City:
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
               <input type="text">
             </div>
-            <div class="col-md-offset-1 col-md-2">
-              <select>
-                  <option value="-Select a state-">-Select a state</option>
-                  <option value="Virginia">Virginia</option>
-                  <option value="New York">New York</option>
-                  <option value="Maine">Maine</option>
-              </select>
+            <div class="col-md-3">
+              State:
             </div>
-            <div class="col-md-offset-1 col-md-2">
-              <select>
-                  <option value="-Select a country-">-Select a country-</option>
-                  <option value="United States">United States</option>
-                  <option value="Japan">Japan</option>
-                  <option value="Sri Lanka">Sri Lanka</option>
-              </select>
+            <div class="col-md-2">
+              <input type="text"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              Country:
+            </div>
+            <div class="col-md-2">
+              <input type="text"/>
             </div>
           </div>
           <div class="row">
@@ -108,10 +106,8 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2 col-md-offset-8">
-              <button {{action "preview"}}>Preview</button>
-            </div>
-            <div class="col-md-2">
+            <!--TODO: Preview button before request-->
+            <div class="col-md-2 col-md-offset-10">
               <button {{action "request"}}>Request</button>
             </div>
           </div>
