@@ -1,5 +1,11 @@
 Index page - meetings
 
-<p>Title: {{model.node11.data.attributes.title}}</p>
+<ul>
+  {{#each model as |n|}}
+    <li>Hello, {{n.title}}!</li>
+  {{/each}}
+</ul>
+
+{{#link-to "submission"}}Submission{{/link-to}}
 
 {{outlet}}
