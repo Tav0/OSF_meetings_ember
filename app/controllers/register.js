@@ -10,18 +10,6 @@ export default Ember.Controller.extend({
     saveName() {
       this.set('name',Ember.get(this,'meetingTitle'));
       this.set('isRenaming',false);
-    },
-    upload() {
-      console.log("upload");
-    },
-    previewLogo() {
-      console.log("preview logo");
-    },
-    preview() {
-      console.log("regular preview");
-    },
-    request() {
-      console.log("request");
     }
   }
 });
