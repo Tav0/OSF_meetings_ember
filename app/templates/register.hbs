@@ -4,9 +4,9 @@
       <div class="row">
         <div class="col-md-4 col-md-offset-4 registration-title">
           {{#if this.isRenaming}}
-            {{input action="saveName" value=meetingTitle}}
+            {{input action="saveName" value=model.title}}
           {{else}}
-            <h2>{{this.meetingTitle}}</h2>
+            <h2>{{model.title}}</h2>
           {{/if}}
         </div>
         <div class="col-md-1" style="height: 100%">
@@ -28,7 +28,7 @@
               Meeting website (optional):
             </div>
             <div class="col-md-2">
-              <input type="text"/>
+              {{input value=model.website class='form-control'}}
             </div>
           </div>
           <div class="row">
@@ -36,7 +36,7 @@
               City:
             </div>
             <div class="col-md-3">
-              <input type="text">
+              {{input value=model.city }}
             </div>
             <div class="col-md-3">
               State:
@@ -108,7 +108,7 @@
           <div class="row">
             {{!--TODO: Preview button before request--}}
             <div class="col-md-2 col-md-offset-10">
-              <button {{action "create"}}>Create</button>
+              <button {{action "create" model}}>Create</button>
             </div>
           </div>
         </div>
