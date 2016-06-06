@@ -10,6 +10,8 @@
     "Faker": "~3.1.0",
     "bootstrap": "~3.3.5",
     "masonry": "^4.1.0",
-    "imagesloaded": "^4.1.0"
+    "imagesloaded": "^4.1.0",
+    "pikaday": "^1.4.0",
+    "moment": "^2.13.0"
   }
 }
