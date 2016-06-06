@@ -58,30 +58,15 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                  <div class="row">
-                      <h3>File Name:</h3> {{input value=gridItemFileName}}
-                  </div>
-
-                  <div class="row">
-                      <h3>File Type: </h3>{{input value=gridItemFileType}}
-                  </div>
-
-                  <div class="row">
-                      <h3>Author: </h3>{{input value=gridItemAuthor}}
-                  </div>
-
-
-
-                <button {{action  "addItem"}}>Add Grid Item </button>
-
                     <div class= "col-lg-1 col-lg-offset-1">
 
                     </div>
                     <div class="col-lg-8 fileView">
-
-                    {{#masonry-grid gutter=10 items=items as |item|}}
-                          {{masonry-tile filename= item.name filetype=item.type author=item.author}}
-                    {{/masonry-grid}}
+                        <h3>Files in this Conference:</h3>
+                      {{tile-row}}
+                      {{tile-row}}
+                      {{tile-row}}
+                      {{tile-row}}
                     </div>
                     <div class="col-lg-1">
 
