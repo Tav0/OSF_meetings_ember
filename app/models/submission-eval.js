@@ -3,12 +3,13 @@ import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 
 export default Model.extend({
-  	premise: attr(0),
-  	research: attr(0),
-  	style: attr(0),
-
+  	premise: attr(),
+  	research: attr(),
+  	style: attr(),
+  	comment: attr(),
 	total: Ember.computed('premise', 'research', 'style', function() {
 		// debugger;
 		return (parseInt(this.get('premise')) || 0) + (parseInt(this.get('research')) || 0) + (parseInt(this.get('style')) || 0);
 	}),
+
 });

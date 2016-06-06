@@ -1,4 +1,11 @@
 export default function() {
+  this.namespace = 'v2';
+  this.get('/submission-evals');
+  this.get('/submission-evals/:id');
+  this.post('/submission-evals', (db, request) => {
+    return db.db.submissionEvals.insert(JSON.parse(request.requestBody));
+  });
+
 
   // These comments are here to help you get started. Feel free to delete them.
 

@@ -1,4 +1,6 @@
-export default function(/* server */) {
+export default function(server) {
+
+	server.createList('submission-eval', 10);
 
   // Seed your development database using your factories. This
   // data will not be loaded in your tests.
