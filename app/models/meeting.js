@@ -13,5 +13,5 @@ export default Model.extend({
   closeDate: attr('date'),
   logo: attr(),
   tags: attr(),
-  description: attr('string')
+  description: attr('string'),
 });

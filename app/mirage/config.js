@@ -1,5 +1,4 @@
 export default function() {
-
   this.namespace = 'v2';
   this.post('/meetings');
   this.get('/meetings');

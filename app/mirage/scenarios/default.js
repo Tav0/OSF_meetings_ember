@@ -1,5 +1,4 @@
 export default function(server) {
-
   server.createList('meeting');
 
   // Seed your development database using your factories. This

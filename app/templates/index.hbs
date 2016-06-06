@@ -1,3 +1,13 @@
 Index page - meetings
 
+{{#each model as |conf|}}
+    <h2>{{conf.title}}</h2>
+    {{conf.website}}
+    {{conf.city}}
+    {{conf.state}}
+    {{conf.country}}
+    {{conf.description}}
+    {{conf.startDate}}
+{{/each}}
+{{#link-to "register"}}<h2>Register</h2>{{/link-to}}
 {{outlet}}
