@@ -2,11 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-<<<<<<< HEAD
     modulePrefix: 'osf-meetings',
-=======
-    modulePrefix: 'ember-osf',
->>>>>>> c5a16b61097c1b367bb4870a6eae195434602ee9
     environment: environment,
     baseURL: '/',
     locationType: 'auto',

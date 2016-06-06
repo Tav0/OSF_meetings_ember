@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <module type="WEB_MODULE" version="4">
-=======
-<module type="PYTHON_MODULE" version="4">
->>>>>>> c5a16b61097c1b367bb4870a6eae195434602ee9
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-<<<<<<< HEAD
     <orderEntry type="library" name="ember_osf node_modules" level="project" />
-=======
-  </component>
-  <component name="TemplatesService">
-    <option name="TEMPLATE_FOLDERS">
-      <list>
-        <option value="$MODULE_DIR$/app/templates" />
-      </list>
-    </option>
-  </component>
-  <component name="TestRunnerService">
-    <option name="PROJECT_TEST_RUNNER" value="Unittests" />
->>>>>>> c5a16b61097c1b367bb4870a6eae195434602ee9
   </component>
 </module>
