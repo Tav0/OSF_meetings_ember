@@ -9,8 +9,8 @@ export default Ember.Route.extend({
 	    saveNodeSubmission(newNode){
 	    	var router = this;
 	    	newNode.save().then(function(){
-	    		router.transitionTo('index');
+	    		router.transitionTo('conference');
 	    	});
 	    }
   	}
-}); 
+});

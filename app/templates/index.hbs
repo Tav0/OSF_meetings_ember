@@ -1,16 +1,1 @@
-<h1>Conference Landing Page</h1>
-<ul>
-  {{#each model as |n|}}
-    <h2>{{n.title}}</h2>
-      <em><h4> Description:</h4></em><h4> {{n.description}}</h4>
-      <em><h4> Contributors:</h4></em><h4> {{n.contributors}}</h4>
-      <em><h4> Keywords:</h4></em><h4> {{n.keywords}}</h4>
-        <hr>
-  {{/each}}
-</ul>
-
-{{#link-to "submission"}}<h2> Submit A File</h2>{{/link-to}}
-
-{{#masonry-grid items=items as |item|}}
-  {{item.name}}
-{{/masonry-grid}}
+<h1>OSF Meetings</h1>

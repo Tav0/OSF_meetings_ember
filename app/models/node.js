@@ -5,5 +5,5 @@ export default Model.extend({
 	title: attr('string'), 
 	contributors: attr('string'), 
 	description: attr('string'), 
-	keywords: attr('array'),
+	keywords: attr('array')
 });

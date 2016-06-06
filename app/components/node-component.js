@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  filename: '',
-  filetype: '',
-  author: ''
+  title: '',
+  contributors: '',
+  keywords: '',
+  description: ''
 });
