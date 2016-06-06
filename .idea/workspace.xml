@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="fafa2ccb-5f10-44cf-acf7-692c610b8ec5" name="Default" comment="">
 <<<<<<< HEAD
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/masonry-grid/component.js" />
@@ -28,6 +29,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/OSF Meeting Mockup/meetingsredesign.bmpr" afterPath="$PROJECT_DIR$/mockups/OSF Meeting Mockup/meetingsredesign.bmpr" />
 >>>>>>> c5a16b61097c1b367bb4870a6eae195434602ee9
     </list>
+=======
+    <list default="true" id="fafa2ccb-5f10-44cf-acf7-692c610b8ec5" name="Default" comment="" />
+>>>>>>> parent of 356cddb... factoring in masonry and new components
 =======
     <list default="true" id="fafa2ccb-5f10-44cf-acf7-692c610b8ec5" name="Default" comment="" />
 >>>>>>> parent of 356cddb... factoring in masonry and new components
@@ -159,9 +163,15 @@
   <component name="ProjectFrameBounds">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="x" value="-2560" />
     <option name="y" value="-169" />
     <option name="width" value="1427" />
+=======
+    <option name="x" value="2867" />
+    <option name="y" value="-186" />
+    <option name="width" value="1133" />
+>>>>>>> parent of 356cddb... factoring in masonry and new components
 =======
     <option name="x" value="2867" />
     <option name="y" value="-186" />

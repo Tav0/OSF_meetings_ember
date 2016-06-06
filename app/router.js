@@ -13,6 +13,7 @@ Router.map(function() {
   this.route('submission');
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   this.route('masonvview');
 =======
 >>>>>>> c5a16b61097c1b367bb4870a6eae195434602ee9
@@ -21,6 +22,8 @@ Router.map(function() {
 =======
   this.route('reviews');
 >>>>>>> 29bb2043c710c1ccd54d44451532a8228829ee79
+=======
+>>>>>>> parent of 356cddb... factoring in masonry and new components
 });
 
 export default Router;
