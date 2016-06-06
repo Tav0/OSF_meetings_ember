@@ -28,7 +28,7 @@
               Meeting website (optional):
             </div>
             <div class="col-md-2">
-              {{input value=model.website class='form-control'}}
+              {{input value=model.website}}
             </div>
           </div>
           <div class="row">
@@ -36,13 +36,13 @@
               City:
             </div>
             <div class="col-md-3">
-              {{input value=model.city }}
+              {{input value=model.city}}
             </div>
             <div class="col-md-3">
               State:
             </div>
             <div class="col-md-2">
-              <input type="text"/>
+              {{input value=model.state}}
             </div>
           </div>
           <div class="row">
@@ -53,6 +53,7 @@
               <input type="text"/>
             </div>
           </div>
+          {{!--TODO: Add functionality to date fields--}}
           <div class="row">
             <div class="col-md-3">
               Meeting start date:
@@ -102,7 +103,7 @@
             <div class="col-md-12">
               Meeting Description (optional):
               <br>
-              <textarea rows="8%" cols="95%"/>
+              <textarea rows="8%" cols="95%" style="resize: none"/>
             </div>
           </div>
           <div class="row">
