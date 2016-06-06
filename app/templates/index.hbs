@@ -1,10 +1,11 @@
 <h1>OSF for Meetings</h1>
 <h3>A free sharing service for academic meetings and conferences</h3>
 <p>Broaden your impact, create an open scholar environment</p>
+
 <input type="submit" value="Begin Sharing" />
 
 <h3>Meetings</h3>
-<input type="submit" value="Create New Meeting" />
+{{#link-to "register" class="btn btn-default"}}Create{{/link-to}}
 
 <input type="text" value="Search" />
 
@@ -42,20 +43,9 @@
 </select>
 </div>
 
-{{#each model as |conf|}}
-    <h2>title {{conf.title}}</h2>
-    <div>website {{conf.website}}</div>
-    <div>city {{conf.city}}</div>
-    <div>state {{conf.state}}</div>
-    <div>country {{conf.country}}</div>
-    <div>description: {{conf.description}}</div>
-{{/each}}
-{{#link-to "register"}}<h2>Register</h2>{{/link-to}}
-
 <div>Masonry</div>
-{{#masonry-grid model as |conf|}}
-    {{conf.title}}
-    {{conf.description}}
+{{#masonry-grid gutter=10 items=model as |conf|}}
+    {{meeting-masonry title=conf.title description=conf.description}}
 {{/masonry-grid}}
 
 <footer>footer</footer>
