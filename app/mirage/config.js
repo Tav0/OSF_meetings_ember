@@ -5,6 +5,11 @@ export default function() {
   this.get('/meetings/:id');
 
 
+  this.namespace = 'v2';
+  this.get('/nodes');
+  this.post('/nodes');
+  this.get('/nodes/:id');
+
   // These comments are here to help you get started. Feel free to delete them.
 
   /*
