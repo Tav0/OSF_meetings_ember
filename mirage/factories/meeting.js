@@ -7,6 +7,7 @@ export default Factory.extend({
   state: 'meetingState',
   country: 'meetingCountry',
   logo: 'Logo?',
+  description: 'meetingDescription'
   //Dates need to be added later on
 
 });
