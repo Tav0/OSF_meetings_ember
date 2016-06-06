@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "osf-meetings",
   "dependencies": {
     "ember": "~2.4.0",
@@ -11,5 +12,13 @@
     "bootstrap": "~3.3.5",
     "masonry": "^4.1.0",
     "imagesloaded": "^4.1.0"
+=======
+  "name": "ember-osf",
+  "dependencies": {
+    "ember": "~2.5.0",
+    "ember-cli-shims": "0.1.1",
+    "ember-cli-test-loader": "0.2.2",
+    "ember-qunit-notifications": "0.1.0"
+>>>>>>> c5a16b61097c1b367bb4870a6eae195434602ee9
   }
 }

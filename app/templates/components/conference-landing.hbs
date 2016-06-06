@@ -1,0 +1,95 @@
+{{outlet}}
+
+<div class="container-fluid" style="margin: 70px">
+    <div class="row">
+        <div class="col-md-12" style="border: solid gray 1px">
+            <div class="row">
+                <div class="conferenceTopContainer col-md-12">
+                    <div class="col-lg-4 col-lg-offset-2" style="height: 100%;">
+                        <div class="conferenceInfo">
+                            <h1> SPSP Presentation (Conference Title)</h1>
+                            <h4> More Relevant Subtext </h4>
+                            <h4> May 22-25, 2015 | Los Angeles, California </h4>
+                            <div class="logos"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 conferencePhoto">
+                        <img src="http://placehold.it/1920x1440">
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="conferenceDescriptionContainer col-lg-12">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <p class = "conferenceDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sodales pretium quam ut mattis.
+                            Nullam sed quam quis urna maximus vestibulum. Sed sed feugiat nunc. Aenean tincidunt velit a ipsum
+                            tempus, a posuere augue tincidunt. Nullam sed mattis mi. Vestibulum ante ipsum primis in faucibus
+                            orci luctus et ultrices posuere cubilia Curae; Aenean a leo nulla. Pellentesque viverra odio at
+                            consectetur gravida. In interdum, sem interdum condimentum cursus, ipsum lorem porttitor nibh, in
+                            gravida erat eros eu justo. Vestibulum porttitor scelerisque lacus a fermentum. Nunc pretium ante
+                            quis ex vulputate, vel bibendum est porttitor. Mauris malesuada accumsan velit eget imperdiet.
+                            Aliquam aliquam auctor convallis.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-lg-8 col-lg-offset-2" style="padding: 30px">
+                        <div class="btn-group" role="group" aria-label="..." >
+                            <button type="button" class="btn btn-default" style="margin-bottom: 5px; width: 200px;">Submit to This Conference</button>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="search" title="search" >
+
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div><!-- /btn-group -->
+
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <h3>File Name:</h3> {{input value=gridItemFileName}}
+                    </div>
+
+                    <div class="row">
+                        <h3>File Type: </h3>{{input value=gridItemFileType}}
+                    </div>
+
+                    <div class="row">
+                        <h3>Author: </h3>{{input value=gridItemAuthor}}
+                    </div>
+
+
+
+                    <button {{action  "addItem"}}>Add Grid Item </button>
+
+                    <div class= "col-lg-1 col-lg-offset-1">
+
+                    </div>
+                    <div class="col-lg-8 fileView">
+
+                      {{#masonry-grid gutter=10 items=masonry-tile as |item|}}
+                        {{masonry-tile filename= item.name filetype=item.type author=item.author}}
+                      {{/masonry-grid}}
+                    </div>
+                    <div class="col-lg-1">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
