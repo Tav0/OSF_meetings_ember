@@ -1,4 +1,46 @@
-Index page - meetings
+<h1>OSF for Meetings</h1>
+<h3>A free sharing service for academic meetings and conferences</h3>
+<p>Broaden your impact, create an open scholar environment</p>
+<input type="submit" value="Begin Sharing" />
+
+<h3>Meetings</h3>
+<input type="submit" value="Create New Meeting" />
+
+<input type="text" value="Search" />
+
+<div>
+<span>Sort</span>
+
+<select onchange={{action (mut vehicleIndex) value="target.value"}}>
+    {{#each vehicles as |vehicleChoice index|}}
+        <option value={{index}} selected={{eq vehicleIndex index}}>
+            {{vehicleChoice.name}}
+        </option>
+        {{/each}}
+</select>
+</div>
+
+<div>
+<span>Subject</span>
+<select onchange={{action (mut vehicleIndex) value="target.value"}}>
+    {{#each vehicles as |vehicleChoice index|}}
+        <option value={{index}} selected={{eq vehicleIndex index}}>
+            {{vehicleChoice.name}}
+        </option>
+        {{/each}}
+</select>
+</div>
+
+<div>
+<span>Date</span>
+<select onchange={{action (mut vehicleIndex) value="target.value"}}>
+    {{#each vehicles as |vehicleChoice index|}}
+        <option value={{index}} selected={{eq vehicleIndex index}}>
+            {{vehicleChoice.name}}
+        </option>
+        {{/each}}
+</select>
+</div>
 
 {{#each model as |conf|}}
     <h2>title {{conf.title}}</h2>
@@ -9,4 +51,12 @@ Index page - meetings
     <div>description: {{conf.description}}</div>
 {{/each}}
 {{#link-to "register"}}<h2>Register</h2>{{/link-to}}
+
+<div>Masonry</div>
+{{#masonry-grid model as |conf|}}
+    {{conf.title}}
+    {{conf.description}}
+{{/masonry-grid}}
+
+<footer>footer</footer>
 {{outlet}}
