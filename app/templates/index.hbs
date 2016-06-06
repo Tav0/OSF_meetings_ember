@@ -11,4 +11,6 @@
 
 {{#link-to "submission"}}<h2> Submit A File</h2>{{/link-to}}
 
-{{outlet}}
+{{#masonry-grid items=items as |item|}}
+  {{item.name}}
+{{/masonry-grid}}
