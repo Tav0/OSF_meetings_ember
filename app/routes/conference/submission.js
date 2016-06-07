@@ -10,7 +10,6 @@ export default Ember.Route.extend({
 		saveNodeSubmission(newNode){
 			let url = this.get('router.url');
 	    	let id = url.split('/')[2];
-	    	let param = {id: id };
 	    	let router = this;
 	    	newNode.save().then(function(){
 	    		router.transitionTo('conference.index', id);
