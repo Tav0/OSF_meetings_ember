@@ -47,6 +47,8 @@
 {{#masonry-grid gutter=10 items=model as |conf|}}
     {{meeting-masonry title=conf.title description=conf.description}}
 {{/masonry-grid}}
-
+{{#each model as |conf|}}
+{{#link-to "conference" conf.id }}Conference{{/link-to}}
+{{/each}}
 <footer>footer</footer>
 {{outlet}}

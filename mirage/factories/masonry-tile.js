@@ -2,18 +2,13 @@ import { Factory } from 'ember-cli-mirage';
 import faker from 'ember-cli-mirage';
 
 export default Factory.extend({
-
-  filename()
-  {
+  filename() {
     return faker.name.words();
   },
-  filetype(i)
-  {
+  filetype(i) {
     return faker.list.random('Poster', 'Dataset', 'Talk', 'Photo', 'Lecture')(i);
   },
-  author()
-  {
+  author() {
     return faker.name.findName();
   }
-
 });

@@ -1,7 +1,7 @@
 import { Factory } from 'ember-cli-mirage';
 
 export default Factory.extend({
-	title(i){ return `Conference ${i}`; },
+	title(i){ return `Project ${i}`; },
 	type: 'nodes',
 	description:'this is a description of a project',
 	category: 'project',

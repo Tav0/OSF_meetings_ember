@@ -4,8 +4,6 @@ export default function() {
   this.get('/meetings');
   this.get('/meetings/:id');
 
-
-  this.namespace = 'v2';
   this.get('/nodes');
   this.post('/nodes');
   this.get('/nodes/:id');

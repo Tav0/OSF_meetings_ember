@@ -6,7 +6,7 @@ export default Factory.extend({
   city: 'meetingCity',
   state: 'meetingState',
   country: 'meetingCountry',
-  logo: 'Logo?',
+  keywords() { return ['key1', 'key2']; },
   description: 'meetingDescription'
   //Dates need to be added later on
 

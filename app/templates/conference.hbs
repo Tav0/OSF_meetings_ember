@@ -7,7 +7,7 @@
                 <div class="conferenceTopContainer col-md-12">
                     <div class="col-lg-4 col-lg-offset-2" style="height: 100%;">
                         <div class="conferenceInfo">
-                            <h1> SPSP Presentation (Conference Title)</h1>
+                            <h1> SPSP Presentation {{meeting.title}}</h1>
                             <h4> More Relevant Subtext </h4>
                             <h4> May 22-25, 2015 | Los Angeles, California </h4>
                             <div class="logos"></div>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-lg-8 fileView">
 
-                      {{#masonry-grid gutter=10 items=model as |item|}}
+                      {{#masonry-grid gutter=10 items=node as |item|}}
                         {{node-component title= item.title contributors=item.contributors description=item.description}}
                       {{/masonry-grid}}
                     </div>
