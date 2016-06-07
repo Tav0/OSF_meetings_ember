@@ -1,2 +1,120 @@
-Register
-{{outlet}}
+<div class="container-fluid">
+ <div class="row">
+    <div class="col-md-8 col-md-offset-2" style="text-align: center">
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4 registration-title">
+          {{#if this.isRenaming}}
+            {{input action="saveName" value=model.title}}
+          {{else}}
+            <h2>{{model.title}}</h2>
+          {{/if}}
+        </div>
+        <div class="col-md-1" style="height: 100%">
+          {{#if this.isRenaming}}
+            <button {{action "saveName"}}>Save</button>
+          {{else}}
+            <button {{action "rename"}}>Rename</button>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2" style="text-align: center">
+      <form class="form-inline">
+        <div class="form-group" style="padding: 3.5%; border-style: double">
+          <div class ="row">
+            <div class="col-md-3">
+              Meeting website (optional):
+            </div>
+            <div class="col-md-2">
+              {{input value=model.website}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              City:
+            </div>
+            <div class="col-md-3">
+              {{input value=model.city}}
+            </div>
+            <div class="col-md-3">
+              State:
+            </div>
+            <div class="col-md-2">
+              {{input value=model.state}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              Country:
+            </div>
+            <div class="col-md-2">
+              {{input value=model.country}}
+            </div>
+          </div>
+          {{!--TODO: Add functionality to date fields--}}
+          <div class="row">
+            <div class="col-md-3">
+              Meeting start date:
+            </div>
+            <div class="col-md-3">
+              {{date-picker date=model.startDate valueFormat='YYYY-MM-DD'}}
+            </div>
+            <div class="col-md-3">
+              Meeting end date:
+            </div>
+            <div class="col-md-2">
+              {{date-picker date=endDate valueFormat='YYYY-MM-DD'}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              Submission start date:
+            </div>
+            <div class="col-md-3">
+              {{date-picker date=submissionDate valueFormat='YYYY-MM-DD'}}
+            </div>
+            <div class="col-md-3">
+              Close date:
+            </div>
+            <div class="col-md-2">
+              {{date-picker date=closeDate valueFormat='YYYY-MM-DD'}}
+            </div>
+          </div>
+          <div class="row">
+          {{!--TODO: Add functionality for logo field--}}
+            <div class="col-md-5">
+              Logo for meeting landing page (optional):
+            </div>
+            <div class="col-md-1 col-md-offset-1">
+                <input type="file" accept="image/*">
+            </div>
+              {{!--TODO: Preview image button --}}
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              Select a few tags (optional):
+            </div>
+            <div class="col-md-2">
+              {{input value=model.tags}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              Meeting Description (optional):
+              <br>
+              {{textarea value=model.description}}
+            </div>
+          </div>
+          <div class="row">
+            {{!--TODO: Preview button before request--}}
+            <div class="col-md-2 col-md-offset-10">
+              <button {{action "create" model}}>Create</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

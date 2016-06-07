@@ -1,5 +1,6 @@
 export default function() {
   this.namespace = 'v2';
+
   this.get('/submission-evals');
   this.get('/submission-evals/:id');
   this.post('/submission-evals', (db, request) => {
@@ -7,6 +8,19 @@ export default function() {
   });
 
 
+  this.post('/meetings');
+  this.get('/meetings');
+  this.get('/meetings/:id');
+
+  this.get('/nodes');
+  this.post('/nodes');
+  this.get('/nodes/:id');
+
+  this.get('/nodes/:id/files/:id');
+  this.post('/nodes/:id/files', (db, request) => {
+    let attrs = request.requestBody;
+    return db.db.files.insert(attrs);
+  });
   // These comments are here to help you get started. Feel free to delete them.
 
   /*

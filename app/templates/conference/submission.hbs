@@ -1,0 +1,77 @@
+Submission
+
+<div class="container-fluid">
+
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="page-header">
+				<h1>Submit to (Name of Conference)</h1>
+			</div>
+		</div>
+	</div>
+
+	<form method="post">
+		<div class="row">
+			<div class="col-md-2 col-md-offset-1">
+				<label>Upload File(s):</label>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="col-md-9 col-md-offset-1">
+				{{drop-zone url=model.uploadURL}}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group">
+				<div class="col-md-1 col-md-offset-1">
+					<label>Title:</label>
+				</div>
+				<div class="col-md-8">
+					{{input value=model.newNode.title class="form-control"}}
+				</div>
+			</div>	
+		</div>	
+
+		<div class="row">
+			<div class="form-group">
+				<div class="col-md-1 col-md-offset-1">
+					<label>Contributors:</label>
+				</div>
+				<div class="col-md-8">
+					{{input value=model.newNode.contributors class="form-control"}}
+				</div>
+			</div>	
+		</div>	
+
+		<div class="row">
+			<div class="form-group">
+				<div class="col-md-1 col-md-offset-1">
+					<label>Description:</label>
+				</div>
+				<div class="col-md-8">
+					{{textarea value=model.newNode.description class="form-control"}}
+				</div>
+			</div>	
+		</div>	
+
+		<div class="row">
+			<div class="form-group">
+				<div class="col-md-1 col-md-offset-1">
+					<label>Keywords:</label>
+				</div>
+				<div class="col-md-8">
+					{{input value=model.newNode.keywords class="form-control"}}
+				</div>
+			</div>	
+		</div>
+
+		<div class="row">
+			<div class="col-md-2 col-md-offset-9">
+				<button {{action "saveNodeSubmission" model.newNode}} class="btn btn-default">Submit</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+{{outlet}}
