@@ -8,7 +8,7 @@ export default function() {
   this.post('/nodes');
   this.get('/nodes/:id');
 
-
+  this.get('/nodes/:id/files/:id');
   this.post('/nodes/:id/files', (db, request) => {
     let attrs = request.requestBody;
     return db.db.files.insert(attrs);
