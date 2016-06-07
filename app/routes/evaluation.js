@@ -14,9 +14,15 @@ export default Ember.Route.extend({
 				router.transitionTo('reviews');
 			});
 		},
+
 	}
 });
 
+	$(document).ready(function(){
+    $('button').click(function(){
+        $('.alert').show()
+    }) 
+});
 
 // {{evaluation submission=model}}\
 
