@@ -1,0 +1,122 @@
+<html>
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="google-site-verification" content="BFNbseofFcxRL75jeKcC5vz5BqorW18gQEDx0vK7DKc" />
+    <title>COS | Center for Open Science News</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="The Center for Open Science's home for news and press updates." name="description" />
+    <meta content="Johanna Cohoon" name="author" />
+    <meta property="og:image" content="http://centerforopenscience.org/static/img/cos_center_logo_small.png"/>
+    <link href="/static/favicon.ico" rel="shortcut icon">
+
+    <!-- BEGIN THEME STYLES -->
+    <link rel="stylesheet" href="assets/vendor.css">
+
+    <!-- END THEME STYLES -->
+
+<!-- END HEAD -->
+</head>
+<body>
+<div class="page-container">
+        <!-- BEGIN CONTAINER -->
+
+        <div class="container min-hight margin-top-50">
+
+            <h1><strong>Peer Reviews Dashboard</strong></h1>
+
+            <p class="lead">What conferences am I involved with? Read about conferences, pore over submissions, and evaluate them below.</p>
+            <!--END DESCRIPTION-->
+            <div id="search">
+              <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+  </form>
+            </div>
+            <div id="filter">
+              <div style="display:inline;">
+                <label for="view">View:</label>
+                <select>
+                  <option value="all">All</option>
+                  <option value="pending">Pending</option>
+                  <option value="complete">Complete</option>
+                </select>
+              </div>
+              <div style="display:inline;">
+                <label for="view">Sort by:</label>
+                <select>
+                  <option value="deadline">Deadline</option>
+                  <option value="name">Name</option>
+                  <option value="notifications">Notifications</option>
+                </select>
+              </div>
+            </div>
+            <p><br></p>
+           <div class="loading-msg text-center">
+            <img alt="spinner" src="/assets/images/spinner.gif">
+                <p>Loading conferences</p>
+            </div>
+
+            <div id="wrapper">
+            	<div id="columns">
+                {{#each model as |meeting|}}
+                  <!-- {{meeting.description}} -->
+                  <div class="pin">
+                    <a href={{meeting.website}}><img src={{meeting.logo}} width="125">
+                      <p>
+                        {{meeting.title}}
+                      <p class="text-left">{{meeting.closeDate}}</p>
+                    </p></a>
+                    </div>
+                {{/each}}
+
+            		<!-- <div class="pin">
+                  <a href=
+                  "http://centerforopenscience.org/aps/"><img src="/assets/images/2014_Convention_banner-with-APS_700px.jpg"
+                  width="125">
+            			<p>
+                    Association for Psychological Science
+                    <p class="text-left">June 12, 2016</p>
+            			</p></a>
+            		</div>
+
+            		<div class="pin">
+                  <a href=
+                  "https://cos.io/news"><img src="/assets/images/cos_logo.png"
+                  width="125">
+                  <p>
+                    COS | Center for Open Science News
+                  <p class="text-left">July 25, 2016</p>
+                </p></a>
+            		</div>
+
+            		<div class="pin">
+                  <a href=
+                  "https://science.nrao.edu/science/meetings/2014/"><img src="/assets/images/filaments2014_660x178.png"
+                  width="125">
+            			<p>
+            				National Radio Astronomy Observatory Filaments
+                    <p class="text-left">June 23, 2016</p>
+                  </p></a>
+            		</div>
+
+            		<div class="pin">
+                  <a href=
+                  "http://www.rockymountainpsych.org/uploads/7/4/2/6/7426961/85th_annual_rmpa_conference_program_hr.pdf"><img src="/assets/images/1397234084.jpg"
+                  width="125">
+            			<p>
+            				Rocky Mountain Psychological Association
+                    <p class="text-left">June 27, 2016</p>
+                  </p></a>
+            		</div> -->
+            	</div>
+            </div>
+
+    </div><!-- BEGIN PAGE CONTAINER -->
+  </div>
+</body>
+</html>
+
+{{outlet}}
