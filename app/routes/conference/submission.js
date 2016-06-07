@@ -8,9 +8,12 @@ export default Ember.Route.extend({
 
 	actions: {
 		saveNodeSubmission(newNode){
-	    	var router = this;
+			let url = this.get('router.url');
+	    	let id = url.split('/')[2];
+	    	let param = {id: id };
+	    	let router = this;
 	    	newNode.save().then(function(){
-	    		router.transitionTo('conference');
+	    		router.transitionTo('conference.index', id);
 	    	});
 	    }
 	}
