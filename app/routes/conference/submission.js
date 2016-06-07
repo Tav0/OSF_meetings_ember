@@ -6,7 +6,7 @@ export default Ember.Route.extend({
     	return this.store.createRecord('node');
     },
 
-	action: {
+	actions: {
 		saveNodeSubmission(newNode){
 	    	var router = this;
 	    	newNode.save().then(function(){

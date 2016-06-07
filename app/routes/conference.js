@@ -5,14 +5,5 @@ export default Ember.Route.extend({
 
     return this.store.find('meeting', params.id);
   },
-  actions: {
-		saveNodeSubmission(newNode){
-			console.log('conference.js')
-	    	var router = this;
-	    	newNode.save().then(function(){
-	    		router.transitionTo('conference');
-	    	});
-	    }
-	}
 
 });
