@@ -1,4 +1,7 @@
 export default function(server) {
+
+	server.createList('submission-eval', 10);
+
   server.createList('meeting', 5);
   server.createList('node', 10);
 

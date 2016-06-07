@@ -13,6 +13,8 @@ Router.map(function() {
   this.route('register');
   this.route('login');
   this.route('reviews');
+  this.route('evaluation');
+  this.route('evalConfirmation');
 });
 
 export default Router;

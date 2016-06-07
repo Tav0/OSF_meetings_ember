@@ -1,5 +1,13 @@
 export default function() {
   this.namespace = 'v2';
+
+  this.get('/submission-evals');
+  this.get('/submission-evals/:id');
+  this.post('/submission-evals', (db, request) => {
+    return db.db.submissionEvals.insert(JSON.parse(request.requestBody));
+  });
+
+
   this.post('/meetings');
   this.get('/meetings');
   this.get('/meetings/:id');
