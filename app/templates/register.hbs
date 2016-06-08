@@ -59,13 +59,13 @@
               Meeting start date:
             </div>
             <div class="col-md-3">
-              {{date-picker date=model.startDate valueFormat='YYYY-MM-DD'}}
+              {{date-picker date=model.startDate valueFormat='date'}}
             </div>
             <div class="col-md-3">
               Meeting end date:
             </div>
             <div class="col-md-2">
-              {{date-picker date=endDate valueFormat='YYYY-MM-DD'}}
+              {{date-picker date=model.endDate valueFormat='date'}}
             </div>
           </div>
           <div class="row">
@@ -73,13 +73,13 @@
               Submission start date:
             </div>
             <div class="col-md-3">
-              {{date-picker date=submissionDate valueFormat='YYYY-MM-DD'}}
+              {{date-picker date=model.submissionDate valueFormat='date'}}
             </div>
             <div class="col-md-3">
               Close date:
             </div>
             <div class="col-md-2">
-              {{date-picker date=closeDate valueFormat='YYYY-MM-DD'}}
+              {{date-picker date=model.closeDate valueFormat='date'}}
             </div>
           </div>
           <div class="row">
@@ -101,10 +101,18 @@
             </div>
           </div>
           <div class="row">
+            <div class="col-md-3">
+              Sponsors (optional):
+            </div>
+            <div class="col-md-2">
+              {{input value=model.sponsors}}
+            </div>
+          </div>
+          <div class="row">
             <div class="col-md-12">
               Meeting Description (optional):
               <br>
-              {{textarea value=model.description}}
+              {{bs-textarea value=model.description}}
             </div>
           </div>
           <div class="row">
