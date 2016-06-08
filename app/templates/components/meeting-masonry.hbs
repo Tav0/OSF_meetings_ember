@@ -1,5 +1,24 @@
-<div style="height: 200px; width: 200px; background-color: grey; margin-bottom:
-     10px;">
+<style>
+    .tile
+    {
+        height: 300px;
+        width: 300px;
+        background-color: grey;
+        margin-bottom: 10px;
+        text-decoration: none;
+        transition: 0.2s ease;
+        overflow: hidden;
+    }
+    .tile:hover
+    {
+        height: 304px;
+        width: 304px;
+        padding: 4px 4px 0 0;
+    }
+</style>
+
+
+<div class="tile">
     <h1>{{title}}</h1>
-    <h4>{{description}}</h4>
+    <h3>{{description}}</h3>
 </div>
