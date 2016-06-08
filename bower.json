@@ -12,6 +12,7 @@
     "masonry": "^4.1.0",
     "imagesloaded": "^4.1.0",
     "pikaday": "^1.4.0",
-    "moment": "^2.13.0"
+    "moment": "^2.13.0",
+    "dropzone": "*"
   }
 }
