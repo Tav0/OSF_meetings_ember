@@ -2,16 +2,15 @@
 	display: none;
 }
 
-registration-title {
+.registration-title {
     text-align: center;
 }
 
 textarea {
-    resize: none;
-    height: 30%;
-    width: 95%;
+  resize: none;
+  height: 30%;
+  width: 95%;
 }
-
 h1 {
     font-size: 3.5em;
     margin: 0 0 10px 0;
