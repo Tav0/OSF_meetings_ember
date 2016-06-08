@@ -4,10 +4,11 @@ export default Ember.Controller.extend({
   meetingTitle: 'Meeting Title',
   isRenaming: false,
 
+  isValidTitle: Ember.computed.match('model.title', /.+/),
   isValidCity: Ember.computed.match('model.city', /.+/),
   isValidState: Ember.computed.match('model.state', /.+/),
   isValidCountry: Ember.computed.match('model.country', /.+/),
-  isValid: Ember.computed.and('isValidCity', 'isValidState', 'isValidCountry'),
+  isValid: Ember.computed.and('isValidCity', 'isValidState', 'isValidCountry', 'isValidTitle'),
   isDisabled: Ember.computed.not('isValid'),
 
   actions: {
