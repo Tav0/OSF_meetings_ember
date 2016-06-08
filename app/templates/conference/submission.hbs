@@ -25,7 +25,7 @@ Submission
 		<div class="row">
 			<div class="form-group">
 				<div class="col-md-1 col-md-offset-1">
-					<label>Title:</label>
+					<label>*Title:</label>
 				</div>
 				<div class="col-md-8">
 					{{input value=model.newNode.title class="form-control"}}
@@ -36,7 +36,7 @@ Submission
 		<div class="row">
 			<div class="form-group">
 				<div class="col-md-1 col-md-offset-1">
-					<label>Contributors:</label>
+					<label>*Contributors:</label>
 				</div>
 				<div class="col-md-8">
 					{{input value=model.newNode.contributors class="form-control"}}
@@ -47,7 +47,7 @@ Submission
 		<div class="row">
 			<div class="form-group">
 				<div class="col-md-1 col-md-offset-1">
-					<label>Description:</label>
+					<label>*Description:</label>
 				</div>
 				<div class="col-md-8">
 					{{textarea value=model.newNode.description class="form-control"}}
@@ -67,8 +67,11 @@ Submission
 		</div>
 
 		<div class="row">
+			<div class="col-md-1 col-md-offset-1">
+				*required field
+				</div>
 			<div class="col-md-2 col-md-offset-9">
-				<button {{action "saveNodeSubmission" model.newNode}} class="btn btn-default">Submit</button>
+				<button disabled={{isDisabled}} {{action "saveNodeSubmission" model.newNode}} class="btn btn-default">Submit</button>
 			</div>
 		</div>
 	</form>
