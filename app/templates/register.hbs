@@ -1,13 +1,4 @@
 <div class="container-fluid">
-  <div class = "row">
-      <div class = "col-md-3 col-md-offset-1">
-          {{#link-to "index"}}
-              <button type="button" class="form-control">
-                 ← View More Meetings
-              </button>
-          {{/link-to}}
-      </div>
-  </div>  
  <div class="row">
     <div class="col-md-8 col-md-offset-2" style="text-align: center">
       <div class="row">
@@ -34,7 +25,7 @@
         <div class="form-group" style="padding: 3.5%; border-style: double">
           <div class ="row">
             <div class="col-md-3">
-              Meeting website (optional):
+              Meeting website:
             </div>
             <div class="col-md-2">
               {{input value=model.website}}
@@ -42,13 +33,13 @@
           </div>
           <div class="row">
             <div class="col-md-3">
-              City:
+              * City:
             </div>
             <div class="col-md-3">
               {{input value=model.city}}
             </div>
             <div class="col-md-3">
-              State:
+              * State:
             </div>
             <div class="col-md-2">
               {{input value=model.state}}
@@ -56,7 +47,7 @@
           </div>
           <div class="row">
             <div class="col-md-3">
-              Country:
+               * Country:
             </div>
             <div class="col-md-2">
               {{input value=model.country}}
@@ -68,13 +59,13 @@
               Meeting start date:
             </div>
             <div class="col-md-3">
-              {{date-picker date=model.startDate valueFormat='date'}}
+              {{date-picker date=model.startDate valueFormat='YYYY-MM-DD'}}
             </div>
             <div class="col-md-3">
               Meeting end date:
             </div>
             <div class="col-md-2">
-              {{date-picker date=model.endDate valueFormat='date'}}
+              {{date-picker date=endDate valueFormat='YYYY-MM-DD'}}
             </div>
           </div>
           <div class="row">
@@ -82,19 +73,19 @@
               Submission start date:
             </div>
             <div class="col-md-3">
-              {{date-picker date=model.submissionDate valueFormat='date'}}
+              {{date-picker date=submissionDate valueFormat='YYYY-MM-DD'}}
             </div>
             <div class="col-md-3">
               Close date:
             </div>
             <div class="col-md-2">
-              {{date-picker date=model.closeDate valueFormat='date'}}
+              {{date-picker date=closeDate valueFormat='YYYY-MM-DD'}}
             </div>
           </div>
           <div class="row">
           {{!--TODO: Add functionality for logo field--}}
             <div class="col-md-5">
-              Logo for meeting landing page (optional):
+              Logo for meeting landing page:
             </div>
             <div class="col-md-1 col-md-offset-1">
                 <input type="file" accept="image/*">
@@ -103,31 +94,28 @@
           </div>
           <div class="row">
             <div class="col-md-3">
-              Select a few tags (optional):
+              Select a few tags:
             </div>
             <div class="col-md-2">
               {{input value=model.tags}}
             </div>
           </div>
           <div class="row">
-            <div class="col-md-3">
-              Sponsors (optional):
-            </div>
-            <div class="col-md-2">
-              {{input value=model.sponsors}}
-            </div>
-          </div>
-          <div class="row">
             <div class="col-md-12">
-              Meeting Description (optional):
+              Meeting Description:
               <br>
-              {{bs-textarea value=model.description}}
+              {{textarea value=model.description}}
             </div>
           </div>
           <div class="row">
             {{!--TODO: Preview button before request--}}
             <div class="col-md-2 col-md-offset-10">
-              <button {{action "create" model}}>Create</button>
+              <button disabled={{isDisabled}} {{action "create" model}}>Create</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+            * denotes required field
             </div>
           </div>
         </div>
