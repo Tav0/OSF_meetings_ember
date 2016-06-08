@@ -5,6 +5,7 @@
         border:solid white 4px;
         margin-left: 5px;
         padding: 3%;
+        position: absolute;
     }
     .create h1
     {
@@ -18,36 +19,44 @@
         border:solid black 4px;
 
     }
+    .spacer
+    {
+        margin-top: 70px;
+    }
+    #bottom
+    {
+        z-index: 1000;
+    }
 
 </style>
 
 
 
-  <div class="container-fluid big">
+  <div id= "top" class="container-fluid big">
       <div class="row titleRow">
-          <h1>OSF for Meetings</h1>
+          <h1 >OSF for Meetings</h1>
           <h3>A free sharing service for academic meetings and conferences</h3>
           <h4>Broaden your impact, create an open scholar environment</h4>
-{{#scroll-to href='#browse'}}<button type="button" value="continue" class="btn btn-success">Begin Sharing</button>{{/scroll-to}}
+      <button {{action 'scrollit'}} type="button" value="continue" class="btn btn-success">Begin Sharing</button>
       </div>
   </div>
 
 
 
-<div id="browse" class="container-fluid big" style="padding-top: 3vh">
-    <div class="row">
+<div id="bottom"class="container-fluid big" style="padding-top: 3vh">
+    <div id="browse" class="row">
         <div class="col-md-2">
             <h2>Meetings:</h2>
         </div>
     </div>
-  <hr>
-  <div class="row">
-      <div class="col-md-3" style="padding:0;">
+    <hr  style="width: 100vw" id ="rule">
+    <div class="row">
+      <div id = "createButton" class="col-md-3" style="padding:0;">
           <div class="create">
             {{#link-to "register"}}<h1 style="margin-bottom: 10px">Create a Meeting</h1>{{/link-to}}
           </div>
       </div>
-      <div class="col-md-9">
+      <div id="meetings" class="col-md-9">
         {{#masonry-grid  gutter=10 items=model as |conf|}}
           {{#link-to "conference.index" conf.id}}
             {{meeting-masonry title=conf.title description=conf.description}}
