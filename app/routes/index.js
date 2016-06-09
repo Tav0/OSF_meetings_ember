@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model() {
-    let meetings = this.store.findAll('meeting');
     return this.store.findAll('meeting');
   },
   actions:

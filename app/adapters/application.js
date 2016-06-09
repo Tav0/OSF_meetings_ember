@@ -1,6 +1,6 @@
-import DS from 'ember-data';
+import JSONAPIAdapter from 'ember-data/adapters/json-api';
 
-export default DS.RESTAdapter.extend({
+export default JSONAPIAdapter.extend({
     namespace: '',
     host: 'http://127.0.0.1:8000',
     ajax: function(url, method, hash) {
