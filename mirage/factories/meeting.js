@@ -1,13 +1,16 @@
 import { Factory } from 'ember-cli-mirage';
+import Mirage, { faker } from 'ember-cli-mirage';
 
 export default Factory.extend({
-  title(i) { return  `Conference ${i}` },
-  website: 'meetingWebsite',
-  city: 'meetingCity',
-  state: 'meetingState',
-  country: 'meetingCountry',
-  keywords() { return ['key1', 'key2']; },
-  description: 'meetingDescription'
-  //Dates need to be added later on
+  title() { return  faker.company.companyName(); },
+  website() {return faker.internet.url();},
+  city() {return faker.address.city();},
+  state(){ return faker.address.state();},
+  country(){return faker.address.country();},
+  keywords() {return [faker.random.word(), faker.random.word(),faker.random.word(),faker.random.word(),faker.random.word()]; },
+  description() {return faker.lorem.paragraphs(2);},
+  startDate() {return faker.date.past();},
+  endDate() {return faker.date.future();},
+  logo() {return faker.random.image();}//Dates need to be added later on
 
 });

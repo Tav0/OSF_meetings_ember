@@ -2,7 +2,7 @@ export default function(server) {
 
 	server.createList('submission-eval', 10);
 
-  server.createList('meeting', 9);
+  server.createList('meeting', 30);
   server.createList('node', 10);
 
   // Seed your development database using your factories. This

@@ -12,18 +12,18 @@
     </div>
     <div class="row" style="padding: 20px">
         <div class="col-md-12" style="border: solid gray 1px">
-            <div class="row">
+            <div class="row" style=>
                 <div class="conferenceTopContainer col-md-12">
                     <div class="col-lg-4 col-lg-offset-2" style="height: 100%;">
                         <div class="conferenceInfo">
-                            <h1> SPSP Presentation {{model.meeting.title}}</h1>
-                            <h4> More Relevant Subtext </h4>
-                            <h4> {{model.meeting.startDate}} - {{model.meeting.endDate}}  |  {{model.meeting.city}}, {{model.meeting.state}} </h4>
+                            <h1> {{model.meeting.title}}</h1>
+                            <h4> {{model.meeting.startDate}} - {{model.meeting.endDate}} </h4>
+                            <h4>{{model.meeting.city}}, {{model.meeting.state}} </h4>
                             <div class="logos"></div>
                         </div>
                     </div>
                     <div class="col-lg-4 conferencePhoto">
-                        <img src="http://placehold.it/1920x1440">
+                        <img src={{model.meeting.logo}}>
                     </div>
                 </div>
             </div>
