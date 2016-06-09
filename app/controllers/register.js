@@ -8,7 +8,8 @@ export default Ember.Controller.extend({
   isValidCity: Ember.computed.match('model.city', /.+/),
   isValidState: Ember.computed.match('model.state', /.+/),
   isValidCountry: Ember.computed.match('model.country', /.+/),
-  isValid: Ember.computed.and('isValidCity', 'isValidState', 'isValidCountry', 'isValidTitle'),
+  isValidDescription: Ember.computed.match('model.description', /.+/),
+  isValid: Ember.computed.and('isValidCity', 'isValidState', 'isValidCountry', 'isValidTitle', 'isValidDescription'),
   isDisabled: Ember.computed.not('isValid'),
 
   actions: {
