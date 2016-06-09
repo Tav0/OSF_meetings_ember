@@ -1,125 +1,101 @@
+<style>
+    label
+    {
+        font-size: 48px;
+    }
+    .col-sm-4
+    {
+        height: 100%;
+    }
+</style>
+
 <div class="container-fluid">
- <div class="row">
-    <div class="col-md-8 col-md-offset-2" style="text-align: center">
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4 registration-title">
-          {{#if this.isRenaming}}
-            {{input action="saveName" value=model.title}}
-          {{else}}
-            <h2>{{model.title}}</h2>
-          {{/if}}
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2" style="padding-top: 50px">
+
+            <form>
+                <div class="form-group row">
+                    <div class="col-sm-3" style="height: 100%">
+                      {{#if this.isRenaming}}
+                          <button class="form-control" {{action "saveName"}}>Save</button>
+                      {{else}}
+                          <button class="form-control" {{action "rename"}}>Rename</button>
+                      {{/if}}
+                    </div>
+                    <div class="col-sm-4 registration-title">
+                      {{#if this.isRenaming}}
+                        {{input class="form-control" action="saveName" value=model.title placeholder="Untitled"}}
+                      {{else}}
+                          <h1>{{model.title}}</h1>
+                      {{/if}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="website" class="col-sm-7 form-control-label">Conference Website</label>
+                    <div class="col-sm-3">
+                      {{input value=model.website class="form-control" placeholder="Conference Website" id="website"}}
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="city" class="col-sm-7 form-control-label">City*</label>
+                    <div class="col-sm-4">
+                      {{input value=model.city class="form-control" id="city" placeholder="City"}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="city" class="col-sm-7 form-control-label">State*</label>
+                    <div class="col-sm-4">
+                      {{input value=model.state class="form-control" id="state" placeholder="State"}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="city" class="col-sm-7 form-control-label">Country*</label>
+                    <div class="col-sm-4">
+                      {{input value=model.country class="form-control" id="country" placeholder="Country"}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="city" class="col-sm-4 form-control-label">Start Date:</label>
+                    <div class="col-sm-2">
+                      {{date-picker date=model.startDate class="form-control" valueFormat='date'}}
+                    </div>
+                    <label for="city" class="col-sm-4 form-control-label">End Date:</label>
+                    <div class="col-sm-2">
+                      {{date-picker date=model.startDate class="form-control" valueFormat='date'}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="city" class="col-sm-4 form-control-label">Submission Start Date:</label>
+                    <div class="col-sm-2">
+                      {{date-picker date=model.startDate class="form-control" valueFormat='date'}}
+                    </div>
+                    <label for="city" class="col-sm-4 form-control-label">Submission End Date:</label>
+                    <div class="col-sm-2">
+                      {{date-picker date=model.startDate class="form-control" valueFormat='date'}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="city" class="col-sm-6 form-control-label">Conference Image</label>
+                    <div class="col-sm-4">
+                      {{input class="form-control" type="file" accept="image/*" id="image" }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="city" class="col-sm-6 form-control-label">Conference Description</label>
+                    <div class="col-sm-4" style="height: 100%">
+                      {{textarea value=model.description class="form-control" style="height: 100%"}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <button style="height: 80px; font-size: 48px;" class="form-control" disabled={{isDisabled}} {{action "create" model}}>Create Conference</button>
+                    </div>
+                </div>
+            </form>
+            </div>
         </div>
-        <div class="col-md-1" style="height: 100%">
-          {{#if this.isRenaming}}
-            <button {{action "saveName"}}>Save</button>
-          {{else}}
-            <button {{action "rename"}}>Rename</button>
-          {{/if}}
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2" style="text-align: center">
-      <form class="form-inline">
-        <div class="form-group" style="padding: 3.5%; border-style: double">
-          <div class ="row">
-            <div class="col-md-3">
-              Meeting website:
-            </div>
-            <div class="col-md-2">
-              {{input value=model.website}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              * City:
-            </div>
-            <div class="col-md-3">
-              {{input value=model.city}}
-            </div>
-            <div class="col-md-3">
-              * State:
-            </div>
-            <div class="col-md-2">
-              {{input value=model.state}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-               * Country:
-            </div>
-            <div class="col-md-2">
-              {{input value=model.country}}
-            </div>
-          </div>
-          {{!--TODO: Add functionality to date fields--}}
-          <div class="row">
-            <div class="col-md-3">
-              Meeting start date:
-            </div>
-            <div class="col-md-3">
-              {{date-picker date=model.startDate valueFormat='date'}}
-            </div>
-            <div class="col-md-3">
-              Meeting end date:
-            </div>
-            <div class="col-md-2">
-              {{date-picker date=model.endDate valueFormat='date'}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              Submission start date:
-            </div>
-            <div class="col-md-3">
-              {{date-picker date=model.submissionDate valueFormat='date'}}
-            </div>
-            <div class="col-md-3">
-              Close date:
-            </div>
-            <div class="col-md-2">
-              {{date-picker date=model.closeDate valueFormat='date'}}
-            </div>
-          </div>
-          <div class="row">
-          {{!--TODO: Add functionality for logo field--}}
-            <div class="col-md-5">
-              Logo for meeting landing page:
-            </div>
-            <div class="col-md-1 col-md-offset-1">
-                <input type="file" accept="image/*">
-            </div>
-              {{!--TODO: Preview image button --}}
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              Select a few tags:
-            </div>
-            <div class="col-md-2">
-              {{input value=model.tags}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              Meeting Description:
-              <br>
-              {{textarea value=model.description}}
-            </div>
-          </div>
-          <div class="row">
-            {{!--TODO: Preview button before request--}}
-            <div class="col-md-2 col-md-offset-10">
-              <button disabled={{isDisabled}} {{action "create" model}}>Create</button>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-            * denotes required field
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
 </div>
+
