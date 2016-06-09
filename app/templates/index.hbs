@@ -21,11 +21,30 @@
     }
     .spacer
     {
-        margin-top: 70px;
+        margin-top: 100px;
     }
-    #bottom
+    #browse
     {
+        width:100%;
         z-index: 1000;
+        border-bottom: solid #d4d4d4 1px;
+        background-color: white;
+        margin-bottom: 15px;
+    }
+    .meetings
+    {
+        z-index: 5;
+    }
+    .inlineCreateButton
+    {
+      color: black;
+        font-size: 48px;
+        transition: 0.2s ease;
+        width: auto;
+    }
+    .inlineCreateButton:hover
+    {
+        border: solid black 4px;
     }
 
 </style>
@@ -43,13 +62,13 @@
 
 
 
-<div id="bottom"class="container-fluid big" style="padding-top: 3vh">
-    <div id="browse" class="row">
+<div id="bottom"class="container-fluid big">
+    <div id="browse" class="row" style="display: inline-block">
         <div class="col-md-2">
             <h2>Meetings:</h2>
         </div>
     </div>
-    <hr  style="width: 100vw" id ="rule">
+
     <div class="row">
       <div id = "createButton" class="col-md-3" style="padding:0;">
           <div class="create">
