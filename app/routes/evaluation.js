@@ -12,8 +12,8 @@ export default Ember.Route.extend({
             var router = this;
             newEval.save().then( function() {
                 document.getElementById('submitAlert').className = 
-                    "ember-view alert-success alert fade in";
-                ssetTimeout(function() {
+                    "alert-success alert fade in";
+                setTimeout(function() {
                     router.transitionTo('reviews');
                 }, 3000);
                 
