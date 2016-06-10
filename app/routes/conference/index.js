@@ -11,7 +11,7 @@ export default Ember.Route.extend({
 	actions: {
 		back(){
 			this.transitionTo('index').then(function(newRoute) {
-				newRoute.set('visited', true);
+				newRoute.controller.set('visited', true);
 			})
 		}
 	}

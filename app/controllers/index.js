@@ -4,6 +4,8 @@ export default Ember.Controller.extend({
     clickedCreate: false,
     vehicleIndex: 0,
 
+    visited: false,
+
     vehicle: Ember.computed('vehicleIndex', function() {
         return this.get('vehicles')[this.get('vehicleIndex')];
     }),
