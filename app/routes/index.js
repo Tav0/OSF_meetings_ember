@@ -18,6 +18,7 @@ export default Ember.Route.extend({
     continue() {
       this.transitionTo('register').then(function(newRoute) {
         newRoute.currentModel.set('title', document.getElementById('title').value);
+        newRoute.controller.set('access', true);
       })
     }
   }
