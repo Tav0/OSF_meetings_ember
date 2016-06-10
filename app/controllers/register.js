@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   isRenaming: false,
+  access: false,
   isValidTitle: Ember.computed.match('model.title', /.+/),
   isValidCity: Ember.computed.match('model.city', /.+/),
   isValidState: Ember.computed.match('model.state', /.+/),
