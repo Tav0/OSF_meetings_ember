@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+    clickedCreate: false,
     vehicleIndex: 0,
 
     vehicle: Ember.computed('vehicleIndex', function() {
@@ -17,4 +18,9 @@ export default Ember.Controller.extend({
         { name: 'Conference 2' },
         { name: 'Conference 3' }
     ]),
+    actions: {
+        create() {
+            this.set('clickedCreate',true);
+        }
+    }
 });
