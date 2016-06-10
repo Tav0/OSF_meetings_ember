@@ -1,7 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+    titleError: false,
+    clickedCreate: false,
     vehicleIndex: 0,
+
+    visited: false,
 
     vehicle: Ember.computed('vehicleIndex', function() {
         return this.get('vehicles')[this.get('vehicleIndex')];
@@ -17,4 +21,20 @@ export default Ember.Controller.extend({
         { name: 'Conference 2' },
         { name: 'Conference 3' }
     ]),
+    actions: {
+        create() {
+            this.set('clickedCreate',true);
+        },
+        continue() {
+          var enteredTitle =  document.getElementById('title').value;
+          if (enteredTitle.length > 0) {
+            this.transitionToRoute('register').then(function(newRoute) {
+              newRoute.currentModel.set('title',enteredTitle);
+              newRoute.controller.set('access', true);
+            })
+          } else {
+            this.set('titleError',true);
+          }
+        }
+    }
 });
