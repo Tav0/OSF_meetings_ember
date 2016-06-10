@@ -13,12 +13,12 @@ Submission
 	<form method="post">
 		<div class="row">
 			<div class="col-md-2 col-md-offset-1">
-				<label>Upload File(s):</label>
+                <label>Upload File(s):{{model.id}}</label>
 			</div>	
 		</div>
 		<div class="row">
 			<div class="col-md-9 col-md-offset-1">
-				{{drop-zone url=model.uploadURL}}
+                {{drop-zone url="/v2/nodes/(model.id)/files" autoProcessQueue=false}}
 			</div>
 		</div>
 
@@ -28,7 +28,7 @@ Submission
 					<label>Title:</label>
 				</div>
 				<div class="col-md-8">
-					{{input value=model.newNode.title class="form-control"}}
+					{{input value=model.title class="form-control"}}
 				</div>
 			</div>	
 		</div>	
@@ -39,7 +39,7 @@ Submission
 					<label>Contributors:</label>
 				</div>
 				<div class="col-md-8">
-					{{input value=model.newNode.contributors class="form-control"}}
+					{{input value=model.contributors class="form-control"}}
 				</div>
 			</div>	
 		</div>	
@@ -50,7 +50,7 @@ Submission
 					<label>Description:</label>
 				</div>
 				<div class="col-md-8">
-					{{textarea value=model.newNode.description class="form-control"}}
+					{{textarea value=model.description class="form-control"}}
 				</div>
 			</div>	
 		</div>	
@@ -61,14 +61,14 @@ Submission
 					<label>Keywords:</label>
 				</div>
 				<div class="col-md-8">
-					{{input value=model.newNode.keywords class="form-control"}}
+					{{input value=model.keywords class="form-control"}}
 				</div>
 			</div>	
 		</div>
 
 		<div class="row">
 			<div class="col-md-2 col-md-offset-9">
-				<button {{action "saveNodeSubmission" model.newNode}} class="btn btn-default">Submit</button>
+				<button {{action "saveNodeSubmission" model}} class="btn btn-default">Submit</button>
 			</div>
 		</div>
 	</form>
