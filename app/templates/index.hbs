@@ -74,13 +74,19 @@
     <div class="row">
       <div id = "createButton" class="col-md-3" style="padding:0;">
           <div class="create">
-            {{#link-to "register"}}<h1 style="margin-bottom: 10px">Create a Meeting</h1>{{/link-to}}
+            <button {{action "create"}}><h1 style="margin-bottom: 10px">Create a Meeting</h1></button>
+              {{#if this.clickedCreate}}
+                <!--Meeting title: {{input id="title"}}{{#link-to "register" title=title}} <button >Create</button>{{/link-to}}-->
+                  Meeting title:
+                  <input type="text" name="title" id="title"/>
+                  <button {{action "continue"}}>Continue</button>
+              {{/if}}
           </div>
       </div>
       <div id="meetings" class="col-md-9">
         {{#masonry-grid  gutter=20 items=model as |conf|}}
           {{#link-to "conference.index" conf.id}}
-            {{meeting-masonry title=conf.title description=conf.description logo = conf.logo}}
+            {{meeting-masonry title=conf.title description=conf.description logo = conf.logo author=conf.author}}
           {{/link-to}}
         {{/masonry-grid}}
       </div>

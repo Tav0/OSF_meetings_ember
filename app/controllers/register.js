@@ -1,9 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  meetingTitle: 'Meeting Title',
   isRenaming: false,
-
+  access: false,
   isValidTitle: Ember.computed.match('model.title', /.+/),
   isValidCity: Ember.computed.match('model.city', /.+/),
   isValidState: Ember.computed.match('model.state', /.+/),
@@ -17,10 +16,8 @@ export default Ember.Controller.extend({
       this.set('isRenaming', true);
     },
     saveName() {
-      this.set('name',Ember.get(this,'meetingTitle'));
       this.set('isRenaming',false);
     }
-  }
+  },
 });
-
 
