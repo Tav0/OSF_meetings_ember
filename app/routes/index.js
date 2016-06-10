@@ -4,8 +4,12 @@ export default Ember.Route.extend({
   model() {
     return this.store.findAll('meeting');
   },
+
+  visited: false,
+
   actions:
   {
+
     scrollit(){
 
       Ember.$('#top').hide(2000, function() {
