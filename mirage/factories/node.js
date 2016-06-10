@@ -1,11 +1,12 @@
 import { Factory } from 'ember-cli-mirage';
+import Mirage, { faker } from 'ember-cli-mirage';
 
 export default Factory.extend({
-	title(i){ return `Project ${i}`; },
+	title(){ return faker.company.catchPhrase(); },
 	type: 'nodes',
-	description:'this is a description of a project',
-	category: 'project',
-	tags() { return [`tag1`,`tag2`]; },
+	description(){return faker.lorem.sentences(3);},
+	category(){return faker.company.bsNoun();},
+  tags() {return [faker.random.word(), faker.random.word(),faker.random.word(),faker.random.word(),faker.random.word()]; },
 	public: false,
-	contributors: 'bill_wilson'
+	contributors(){return faker.name.findName();}
 });

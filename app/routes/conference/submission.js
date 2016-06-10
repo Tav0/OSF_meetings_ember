@@ -9,7 +9,8 @@ export default Ember.Route.extend({
 		console.log(uploadURL);
 		return Ember.RSVP.hash({
 	      newNode: this.store.createRecord('node'),
-	      uploadURL: uploadURL
+	      uploadURL: uploadURL,
+        meeting: this.store.find('meeting', id)
 
 	    });
     },

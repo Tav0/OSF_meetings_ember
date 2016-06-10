@@ -1,32 +1,34 @@
+<link rel="stylesheet" href="../../../dist/assets/conference.css">
+
 <div class="container-fluid" style="margin: 70px">
-    <div class="row">
+    <div class = "row">
+        <div class = "col-md-3 col-md-offset-1">
+            <button type="button" class="form-control" {{action 'back'}}>
+               ← View More Meetings
+            </button>
+        </div>
+    </div>
+    <div class="row" style="padding: 20px">
         <div class="col-md-12" style="border: solid gray 1px">
-            <div class="row">
+            <div class="row" style=>
                 <div class="conferenceTopContainer col-md-12">
                     <div class="col-lg-4 col-lg-offset-2" style="height: 100%;">
                         <div class="conferenceInfo">
-                            <h1> SPSP Presentation {{model.meeting.title}}</h1>
-                            <h4> More Relevant Subtext </h4>
-                            <h4> May 22-25, 2015 | Los Angeles, California </h4>
+                            <h1> {{model.meeting.title}}</h1>
+                            <h4> {{model.meeting.startDate}} - {{model.meeting.endDate}} </h4>
+                            <h4>{{model.meeting.city}}, {{model.meeting.state}} </h4>
                             <div class="logos"></div>
                         </div>
                     </div>
                     <div class="col-lg-4 conferencePhoto">
-                        <img src="http://placehold.it/1920x1440">
+                        <img src={{model.meeting.logo}}>
                     </div>
                 </div>
             </div>
             <div class="row ">
                 <div class="conferenceDescriptionContainer col-lg-12">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <p class = "conferenceDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sodales pretium quam ut mattis.
-                            Nullam sed quam quis urna maximus vestibulum. Sed sed feugiat nunc. Aenean tincidunt velit a ipsum
-                            tempus, a posuere augue tincidunt. Nullam sed mattis mi. Vestibulum ante ipsum primis in faucibus
-                            orci luctus et ultrices posuere cubilia Curae; Aenean a leo nulla. Pellentesque viverra odio at
-                            consectetur gravida. In interdum, sem interdum condimentum cursus, ipsum lorem porttitor nibh, in
-                            gravida erat eros eu justo. Vestibulum porttitor scelerisque lacus a fermentum. Nunc pretium ante
-                            quis ex vulputate, vel bibendum est porttitor. Mauris malesuada accumsan velit eget imperdiet.
-                            Aliquam aliquam auctor convallis.</p>
+                        <p class = "conferenceDescription">{{model.meeting.description}}</p>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,23 @@
-<div style="height: 200px; width: 200px; background-color: grey; margin-bottom: 10px;">
+<style>
+    .tile
+    {
+        height: 350px;
+        width: 350px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        transition: 0.2s ease;
+        overflow: hidden;
+
+    }
+    .tile:hover
+    {
+        height: 354px;
+        width: 354px;
+        padding: 4px 4px 0 0;
+    }
+</style>
+
+<div class="tile" style="background-image: url({{image}})">
     <h1>{{title}}</h1>
     <h4>{{description}}</h4>
     <h4>{{contributors}}</h4>

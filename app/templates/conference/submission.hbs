@@ -1,77 +1,97 @@
-Submission
+<style>
+    .verticalCenter
+    {
+        position:absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .row:before
+    {
+        height: 100%;
+    }
+    label
+    {
+        font-size: 48px;
+    }
+    input
+    {
+        min-height: 72px;
+
+    }
+    .form-control
+    {
+        height: 100%;
+        font-size: 24px;
+    }
+</style>
 
 <div class="container-fluid">
 
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="page-header">
-				<h1>Submit to (Name of Conference)</h1>
+				<h2>Submit to:</h2><h1 style="font-size: 64px"> {{model.meeting.title}}</h1>
 			</div>
 		</div>
 	</div>
+<div class="row">
+    <div class="col-md-12 col-md-offset-1">
+        <form method="post">
+            <div class="form-group row">
+                <div class="col-md-3" style="height: 100%; text-align: right">
+                    <label>Upload File(s):</label>
+                </div>
+                <div class="col-md-6">
+                  {{drop-zone class="form-control" url=model.uploadURL}}
+                </div>
+            </div>
 
-	<form method="post">
-		<div class="row">
-			<div class="col-md-2 col-md-offset-1">
-				<label>Upload File(s):</label>
-			</div>	
-		</div>
-		<div class="row">
-			<div class="col-md-9 col-md-offset-1">
-				{{drop-zone url=model.uploadURL}}
-			</div>
-		</div>
+            <div class="form-group row">
+                <div class="col-md-3" style="text-align: right">
+                    <label>*Title:</label>
+                </div>
+                <div class="col-md-6">
+                  {{input value=model.newNode.title class="form-control"}}
+                </div>
+            </div>
 
-		<div class="row">
-			<div class="form-group">
-				<div class="col-md-1 col-md-offset-1">
-					<label>Title:</label>
-				</div>
-				<div class="col-md-8">
-					{{input value=model.newNode.title class="form-control"}}
-				</div>
-			</div>	
-		</div>	
+            <div class="form-group row">
+                <div class="col-md-3" style="text-align: right">
+                    <label>*Contributors:</label>
+                </div>
+                <div class="col-md-6">
+                  {{input value=model.newNode.contributors class="form-control"}}
+                </div>
+            </div>
 
-		<div class="row">
-			<div class="form-group">
-				<div class="col-md-1 col-md-offset-1">
-					<label>Contributors:</label>
-				</div>
-				<div class="col-md-8">
-					{{input value=model.newNode.contributors class="form-control"}}
-				</div>
-			</div>	
-		</div>	
 
-		<div class="row">
-			<div class="form-group">
-				<div class="col-md-1 col-md-offset-1">
-					<label>Description:</label>
-				</div>
-				<div class="col-md-8">
-					{{textarea value=model.newNode.description class="form-control"}}
-				</div>
-			</div>	
-		</div>	
+            <div class="form-group row ">
+                <div class="col-md-3" style="text-align: right" >
+                    <label>*Description:</label>
+                </div>
+                <div class="col-md-6 ">
+                  {{textarea value=model.newNode.description class="form-control"}}
+                </div>
+            </div>
 
-		<div class="row">
-			<div class="form-group">
-				<div class="col-md-1 col-md-offset-1">
-					<label>Keywords:</label>
-				</div>
-				<div class="col-md-8">
-					{{input value=model.newNode.keywords class="form-control"}}
-				</div>
-			</div>	
-		</div>
 
-		<div class="row">
-			<div class="col-md-2 col-md-offset-9">
-				<button {{action "saveNodeSubmission" model.newNode}} class="btn btn-default">Submit</button>
-			</div>
-		</div>
-	</form>
+            <div class="form-group row">
+                <div class="col-md-3" style="text-align: right">
+                    <label>Keywords:</label>
+                </div>
+                <div class="col-md-6">
+                  {{input value=model.newNode.keywords class="form-control"}}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2 col-md-offset-7">
+                    <button style="height: 80px; font-size: 48px;" class="form-control" disabled={{isDisabled}} {{action "saveNodeSubmission" model.newNode}}>Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>
 </div>
 
 {{outlet}}
