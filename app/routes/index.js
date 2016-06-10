@@ -4,8 +4,6 @@ export default Ember.Route.extend({
   model() {
     return this.store.findAll('meeting');
   },
-
-
   actions: {
     scrollit(){
 
@@ -15,12 +13,6 @@ export default Ember.Route.extend({
         Ember.$('#createButton').css({position: "fixed", top: "100px"});
         Ember.$('#browse').css({position: "fixed"});
         Ember.$('#meetings').addClass("col-md-offset-3");
-      })
-    },
-    continue() {
-      this.transitionTo('register').then(function(newRoute) {
-        newRoute.currentModel.set('title', document.getElementById('title').value);
-        newRoute.controller.set('access', true);
       })
     }
   }
