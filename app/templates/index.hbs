@@ -78,7 +78,7 @@
       <div id="meetings" class="col-md-9">
         {{#masonry-grid  gutter=20 items=model as |conf|}}
           {{#link-to "conference.index" conf.id}}
-            {{meeting-masonry title=conf.title description=conf.description logo = conf.logo}}
+            {{meeting-masonry title=conf.title description=conf.description logo = conf.logo author=conf.author}}
           {{/link-to}}
         {{/masonry-grid}}
       </div>

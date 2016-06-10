@@ -29,5 +29,6 @@ export default Ember.Component.extend({
         }, function() {
           amount = '';
         });
-      }
+      },
+
 });

@@ -25,13 +25,18 @@
 
     .tile:hover #description
     {
-        transition: 2.5s linear ;
+        transition: 0.3s ease ;
         bottom: 5%;
     }
     .tile:hover h1
     {
         transition: 0.2s ease;
-        opacity: 0.2;
+        opacity: 0.7;
+    }
+        .tile:hover h4
+    {
+        transition: 0.2s ease;
+        opacity: 0.7;
     }
 
 </style>
@@ -40,6 +45,7 @@
 <div class="tile" style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url({{logo}});">
     <div class="container">
         <h1 style="position: relative; ">{{title}}</h1>
-        <h3 id = "description">{{description}}</h3>
+        <h4> {{author}}</h4>
+        <h3 id = "description">{{truncate description limit=140}}</h3>
     </div>
 </div>

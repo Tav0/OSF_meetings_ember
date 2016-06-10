@@ -11,6 +11,7 @@ export default Factory.extend({
   description() {return faker.lorem.paragraphs(2);},
   startDate() {return faker.date.past();},
   endDate() {return faker.date.future();},
-  logo() {return faker.random.image();}//Dates need to be added later on
+  logo() {return faker.random.image();},
+  author() {return faker.name.findName();}
 
 });
