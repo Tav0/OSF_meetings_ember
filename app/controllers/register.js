@@ -10,6 +10,7 @@ export default Ember.Controller.extend({
   isValidDescription: Ember.computed.match('model.description', /.+/),
   isValid: Ember.computed.and('isValidCity', 'isValidState', 'isValidCountry', 'isValidTitle', 'isValidDescription'),
   isDisabled: Ember.computed.not('isValid'),
+  visited: false,
 
   actions: {
     rename() {
@@ -18,6 +19,7 @@ export default Ember.Controller.extend({
     saveName() {
       this.set('isRenaming',false);
     }
+
   },
 });
 

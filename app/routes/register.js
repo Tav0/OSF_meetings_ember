@@ -10,6 +10,11 @@ export default Ember.Route.extend({
 	    	newMeeting.save().then(function(){
 	    		router.transitionTo('index');
 	    	});
-	    }
+	    },
+	    back() {
+      		this.transitionTo('index').then(function(newRoute) {
+        	newRoute.controller.set('visited', true);
+      })
+    }
   	}
 });
