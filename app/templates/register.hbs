@@ -1,3 +1,4 @@
+{{#if this.access}}
 <style>
     label
     {
@@ -124,4 +125,7 @@
         </div>
     </div>
 </div>
+{{else}}
+  <meta http-equiv="refresh" content="0; URL='./'" />
+{{/if}}
 
