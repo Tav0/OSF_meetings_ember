@@ -8,7 +8,10 @@
             Assigned Reviews
         </h2>
 
+        <div class="input-group"> <span class="input-group-addon">Filter</span>
 
+            <input id="filter" type="text" class="form-control" placeholder="Type here..." {{action 'filterdata'}}>
+        </div>
 
         <table class="table table-hover table-striped">
             <thead>
@@ -34,8 +37,8 @@
                 </th>
             </tr>
             </thead>
-            <tbody>
-            {{#each model as |d|}}
+            <tbody class="searchable">
+            {{#each model.reviewsall as |d|}}
                 <tr>
                     <td>
                       {{d.id}}
