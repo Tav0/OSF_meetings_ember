@@ -8,13 +8,16 @@ export default Ember.Route.extend({
 	    create(newMeeting){
 	    	var router = this;
 	    	newMeeting.save().then(function(){
-	    		router.transitionTo('index');
+	    		router.transitionTo('conference', newMeeting.id);
 	    	});
 	    },
-	    back() {
-      		this.transitionTo('index').then(function(newRoute) {
-        	newRoute.controller.set('visited', true);
-      })
-    }
+	    back(newMeeting) {
+        var router = this;
+	    	newMeeting.destroyRecord().then(function(){
+          router.transitionTo('index').then(function(newRoute) {
+        newRoute.controller.set('visited', true);
+        });
+      });
+      }
   	}
 });
