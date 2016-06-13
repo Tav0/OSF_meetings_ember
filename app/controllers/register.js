@@ -12,6 +12,8 @@ export default Ember.Controller.extend({
   isInvalidCity: false,
   isInvalidState: false,
   isInvalidCountry: false,
+  isInvalidDates: false,
+  isInvalidSubmissionDates: false,
   isInvalidDescription: false,
   isValid: true,
 
@@ -40,6 +42,15 @@ export default Ember.Controller.extend({
         this.set('isInvalidCountry',true);
         this.set('isValid',false);
       }
+      if (document.getElementById('startDate').value > document.getElementById('endDate').value) {
+        this.set('isInvalidDates',true);
+        this.set('isValid',false);
+      }
+      if (document.getElementById('submissionDate').value > document.getElementById('closeDate').value) {
+        console.log(document.getElementById('submissionDate').value)
+        this.set('isInvalidSubmissionDates',true);
+        this.set('isValid',false);
+      }
       if (document.getElementById('description').value.length === 0) {
         this.set('isInvalidDescription',true);
         this.set('isValid',false);
@@ -48,8 +59,6 @@ export default Ember.Controller.extend({
         var router = this;
           newMeeting.save().then(function(params){
             router.transitionToRoute('conference.index', params.id).then(function(newRoute) {
-              newRoute.controller.set('clickedCreate', false);
-              newRoute.controller.set('titleError', false);
               newRoute.controller.set('visited', true);
           });
         });
