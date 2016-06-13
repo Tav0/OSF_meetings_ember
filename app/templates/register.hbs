@@ -74,21 +74,27 @@
                 <div class="form-group row">
                     <label for="city" class="col-sm-4 form-control-label">Start Date:</label>
                     <div class="col-sm-2">
-                      {{date-picker date=model.startDate class="form-control" valueFormat='date'}}
+                      {{date-picker date=model.startDate class="form-control" valueFormat='date' id='startDate'}}
+                       {{#if this.isInvalidDates}}
+                        <br> <font style="color: #ff0000">Start date must be before end date</font>
+                      {{/if}}
                     </div>
                     <label for="city" class="col-sm-4 form-control-label">End Date:</label>
                     <div class="col-sm-2">
-                      {{date-picker date=model.endDate class="form-control" valueFormat='date'}}
+                      {{date-picker date=model.endDate class="form-control" valueFormat='date' id='endDate'}}
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="city" class="col-sm-4 form-control-label">Submission Start Date:</label>
                     <div class="col-sm-2">
-                      {{date-picker date=model.submissionDate class="form-control" valueFormat='date'}}
+                      {{date-picker date=model.submissionDate class="form-control" valueFormat='date' id='submissionDate'}}
+                      {{#if this.isInvalidSubmissionDates}}
+                        <br> <font style="color: #ff0000">Submission start date must be before end date</font>
+                      {{/if}}
                     </div>
                     <label for="city" class="col-sm-4 form-control-label">Submission End Date:</label>
                     <div class="col-sm-2">
-                      {{date-picker date=model.closeDate class="form-control" valueFormat='date'}}
+                      {{date-picker date=model.closeDate class="form-control" valueFormat='date' id='closeDate'}}
                     </div>
                 </div>
                 <div class="form-group row">
