@@ -13,7 +13,7 @@ export default Ember.Route.extend({
         Ember.$('#createButton').css({position: "fixed", top: "100px"});
         Ember.$('#browse').css({position: "fixed"});
         Ember.$('#meetings').addClass("col-md-offset-3");
-      })
+      });
     }
   }
 });

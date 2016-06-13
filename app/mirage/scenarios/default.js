@@ -5,6 +5,9 @@ export default function(server) {
   server.createList('meeting', 30);
   server.createList('node', 10);
 
+  server.createList('reviewer',4);
+  server.createList('reviewslist',3);
+
   // Seed your development database using your factories. This
   // data will not be loaded in your tests.
 

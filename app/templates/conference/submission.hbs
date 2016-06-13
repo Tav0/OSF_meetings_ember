@@ -46,36 +46,45 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row {{if isValidTitle "has-success" "has-error"}}">
                 <div class="col-md-3" style="text-align: right">
-                    <label>*Title:</label>
+                    <label><font style='color: #ff0000'>*</font> Title:</label>
+                </div>
+                <span class="glyphicon glyphicon-ok form-control-feedback" ></span>
+                <div class="col-md-6">
+                  {{input id="title" value=model.newNode.title class="form-control"}}
+                    <div style="color:#FF0000">
+                        {{if this.titleError "Please enter a valid title" ""}}
+                    </div>
+                </div>
+                    
+            </div>
+            <div class="form-group row {{if isValidContributors "has-success" "has-error"}}">
+                <div class="col-md-3" style="text-align: right">
+                    <label><font style='color: #ff0000'>*</font> Contributors:</label>
                 </div>
                 <div class="col-md-6">
-                  {{input value=model.newNode.title class="form-control"}}
+                  {{input id="contributors" value=model.newNode.contributors class="form-control"}}
+                    <div style="color:#FF0000">
+                        {{if this.contributorsError "Please enter valid contributors" ""}}
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row {{if isValidDescription "has-success" "has-error"}}">
                 <div class="col-md-3" style="text-align: right">
-                    <label>*Contributors:</label>
-                </div>
-                <div class="col-md-6">
-                  {{input value=model.newNode.contributors class="form-control"}}
-                </div>
-            </div>
-
-
-            <div class="form-group row ">
-                <div class="col-md-3" style="text-align: right" >
-                    <label>*Description:</label>
+                    <label><font style='color: #ff0000'>*</font> Description:</label>
                 </div>
                 <div class="col-md-6 ">
-                  {{textarea value=model.newNode.description class="form-control"}}
+                  {{textarea id="description" value=model.newNode.description class="form-control"}}
+                    <div style="color:#FF0000">
+                        {{if this.descriptionError "Please enter a valid description" ""}}
+                    </div>
                 </div>
             </div>
 
 
-            <div class="form-group row">
+            <div class="form-group row has-success">
                 <div class="col-md-3" style="text-align: right">
                     <label>Keywords:</label>
                 </div>
@@ -83,10 +92,14 @@
                   {{input value=model.newNode.keywords class="form-control"}}
                 </div>
             </div>
-
+            <div class="form-group row">
+                <div class="col-md-4 col-md-offset-4">
+                    <h2><font style="color: #ff0000">*</font> denotes required field</h2>
+                </div>
+            </div>
             <div class="form-group row">
                 <div class="col-md-2 col-md-offset-7">
-                    <button style="height: 80px; font-size: 48px;" class="form-control" disabled={{isDisabled}} {{action "saveNodeSubmission" model.newNode}}>Submit</button>
+                    <button style="height: 80px; font-size: 48px;" class="form-control" {{action "saveNodeSubmission" model.newNode}}>Submit</button>
                 </div>
             </div>
         </form>

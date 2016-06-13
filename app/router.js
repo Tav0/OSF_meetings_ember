@@ -15,6 +15,8 @@ Router.map(function() {
   this.route('reviews');
   this.route('evaluation');
   this.route('evalConfirmation');
+  this.route('assignreview');
+  this.route('reviewslist');
 });
 
 export default Router;
