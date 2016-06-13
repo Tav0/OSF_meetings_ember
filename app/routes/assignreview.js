@@ -1,9 +1,21 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-
+  
   model(){
-    return this.store.findAll('reviewer');
+
+
+    return Ember.RSVP.hash({
+      reviewerall: this.store.findAll('reviewer'),
+      reviewername: this.store.findAll('reviewer', {reload: true}).then(function (reviewer) {
+        return reviewer.sortBy('name');
+      }),
+      revieweremail: this.store.findAll('reviewer', {reload: true}).then(function (reviewer) {
+        return reviewer.sortBy('email');
+      })
+    });
+
+
 
   },
   actions: {
@@ -19,6 +31,8 @@ export default Ember.Route.extend({
 
       });
     }
+
+    
   }
 
 });
