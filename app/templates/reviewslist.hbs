@@ -38,8 +38,9 @@
             </tr>
             </thead>
             <tbody class="searchable">
-            {{#each model.reviewsall as |d|}}
-                <tr>
+            {{#each model.reviewsdate as |d|}}
+
+                <tr {{action 'dateColor' d.reviewdeadline}}>
                     <td>
                       {{d.id}}
                     </td>
