@@ -4,11 +4,9 @@ export default Ember.Controller.extend({
 
 
     actions: {
-      showdata()
+      openreview()
       {
-       console.log('jooo');
-
-
+        this.transitionToRoute('evaluation');
       }
     }
 
