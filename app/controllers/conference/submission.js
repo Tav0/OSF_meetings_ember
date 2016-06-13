@@ -16,14 +16,17 @@ export default Ember.Controller.extend({
  			this.set("contributorsError", false);
  			this.set("descriptionError", false);
 
- 			if (!this.get("isValidTitle"))
+ 			if (!this.get("isValidTitle")) {
  				this.set("titleError", true);
+ 			}
 
- 			if (!this.get("isValidContributors"))
+ 			if (!this.get("isValidContributors")) {
  				this.set("contributorsError", true);
+ 			}
 
- 			if (!this.get("isValidDescription"))
+ 			if (!this.get("isValidDescription")) {
  				this.set("descriptionError", true);
+ 			}
  		},
 
  		reset() {

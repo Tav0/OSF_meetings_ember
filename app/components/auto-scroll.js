@@ -4,6 +4,6 @@ export default Ember.Component.extend({
 
 	didInsertElement: function() {
 		//$(document).( $("#bottom").offset().top );
-		$("#top").hide();	
+		("#top").hide();	
 	}
 });

@@ -10,7 +10,7 @@ export default Ember.Route.extend({
 				newRoute.controller.set('clickedCreate', false);
 				newRoute.controller.set('titleError', false);
 				newRoute.controller.set('visited', true);
-			})
+			});
 		}
 	}
 });
