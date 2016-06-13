@@ -23,25 +23,20 @@
             <div class="col-md-8 col-md-offset-2" style="padding-top: 50px">
 
             <form>
-                <div class="form-group row">
-                    <div class="col-sm-3" style="height: 100%">
-                      {{#if this.isRenaming}}
-                          <button class="form-control" {{action "saveName"}}>Save</button>
-                      {{else}}
-                          <button class="form-control" {{action "rename"}}>Rename</button>
-                      {{/if}}
+                <div class="form-group row" style='text-align: center'>
+                    <div style='text-align: center' class="col-sm-4 col-sm-offest-8 registration-title form-group">
+                        <h1>Register New Meeting</h1>  
                     </div>
-                    <div class="col-sm-4 registration-title form-group {{if isValidTitle "has-success" "has-error"}}">
-                      {{#if this.isRenaming}}
-                        {{input class="form-control" action="saveName" value=model.title placeholder="Untitled" id="title"}}
-                      {{else}}
-                          <h1>{{model.title}}</h1>
+                </div>
+                 <div class="form-group row {{if isValidTitle "has-success" "has-error"}}">
+                    <label for="title" class="col-sm-7 form-control-label"><font style="color: #ff0000">*</font> Conference Title:</label>
+                    <div class="col-sm-4">
+                      {{input value=model.title class="form-control" placeholder="title" id="title"}}
+                      {{#if this.isInvalidTitle}}
+                        <br> <font style="color: #ff0000">Please enter a valid title</font>
                       {{/if}}
                     </div>
                 </div>
-                {{#if this.isInvalidTitle}}
-                  <br> <font style="color: #ff0000">Please enter a valid title</font>
-                {{/if}}
                 <div class="form-group row">
                     <label for="website" class="col-sm-7 form-control-label">Conference Website:</label>
                     <div class="col-sm-4">
