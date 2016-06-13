@@ -23,19 +23,17 @@
             <div class="col-md-8 col-md-offset-2" style="padding-top: 50px">
 
             <form>
-                <div class="form-group row">
-                    <div class="col-sm-3" style="height: 100%">
-                      {{#if this.isRenaming}}
-                          <button class="form-control" {{action "saveName"}}>Save</button>
-                      {{else}}
-                          <button class="form-control" {{action "rename"}}>Rename</button>
-                      {{/if}}
+                <div class="form-group row" style='text-align: center'>
+                    <div style='text-align: center' class="col-sm-4 col-sm-offest-8 registration-title form-group">
+                        <h1>Register New Meeting</h1>  
                     </div>
-                    <div class="col-sm-4 registration-title">
-                      {{#if this.isRenaming}}
-                        {{input class="form-control" action="saveName" value=model.title placeholder="Untitled"}}
-                      {{else}}
-                          <h1>{{model.title}}</h1>
+                </div>
+                 <div class="form-group row {{if isValidTitle "has-success" "has-error"}}">
+                    <label for="title" class="col-sm-7 form-control-label"><font style="color: #ff0000">*</font> Conference Title:</label>
+                    <div class="col-sm-4">
+                      {{input value=model.title class="form-control" placeholder="title" id="title"}}
+                      {{#if this.isInvalidTitle}}
+                        <br> <font style="color: #ff0000">Please enter a valid title</font>
                       {{/if}}
                     </div>
                 </div>
@@ -46,22 +44,31 @@
 
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row {{if isValidCity "has-success" "has-error"}}">
                     <label for="city" class="col-sm-7 form-control-label"><font style="color: #ff0000">*</font> City:</label>
                     <div class="col-sm-4">
                       {{input value=model.city class="form-control" id="city" placeholder="City"}}
+                      {{#if this.isInvalidCity}}
+                        <br> <font style="color: #ff0000">Please enter a valid city</font>
+                      {{/if}}
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row {{if isValidState "has-success" "has-error"}}">
                     <label for="city" class="col-sm-7 form-control-label"><font style="color: #ff0000">*</font> State:</label>
                     <div class="col-sm-4">
                       {{input value=model.state class="form-control" id="state" placeholder="State"}}
+                      {{#if this.isInvalidState}}
+                        <br> <font style="color: #ff0000">Please enter a valid state</font>
+                      {{/if}}
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row {{if isValidCountry "has-success" "has-error"}}">
                     <label for="city" class="col-sm-7 form-control-label"><font style="color: #ff0000">*</font> Country:</label>
                     <div class="col-sm-4">
                       {{input value=model.country class="form-control" id="country" placeholder="Country"}}
+                      {{#if this.isInvalidCountry}}
+                        <br> <font style="color: #ff0000">Please enter a valid country</font>
+                      {{/if}}
                     </div>
                 </div>
                 <div class="form-group row">
@@ -102,10 +109,13 @@
                       {{input value=model.sponsors class="form-control" id="sponsors" placeholder="sponsor 1, sponsor 2, sponsor 3, ..."}}
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row {{if isValidDescription "has-success" "has-error"}}">
                     <label for="city" class="col-sm-7 form-control-label"><font style="color: #ff0000">*</font> Conference Description:</label>
                     <div class="col-sm-4" style="height: 100%">
-                      {{textarea value=model.description class="form-control" style="height: 100%"}}
+                      {{textarea value=model.description class="form-control" id="description"style="height: 100%"}}
+                      {{#if this.isInvalidDescription}}
+                        <br> <font style="color: #ff0000">Please enter a valid description</font>
+                      {{/if}}
                     </div>
                 </div>
                 <div class="row" class="text-align: center" >
@@ -115,7 +125,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-md-6 col-md-offset-3">
-                        <button style="height: 80px; font-size: 48px;" class="form-control" disabled={{isDisabled}} {{action "create" model}}>Create Conference</button>
+                        <button style="height: 80px; font-size: 48px;" class="form-control" {{action "create" model}}>Create Conference</button>
                     </div>
                 </div>
             </form>
