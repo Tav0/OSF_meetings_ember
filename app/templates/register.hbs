@@ -1,137 +1,139 @@
 {{#if this.access}}
-    <style>
-        label {
-            font-size: 48px;
-        }
+<style>
+    label
+    {
+        font-size: 48px;
+    }
+    .col-sm-4
+    {
+        height: 100%;
+    }
+</style>
 
-        .col-sm-4 {
-            height: 100%;
-        }
-        .faded{
-            color: #d4d4d4;
-        }
-    </style>
+<div class="container-fluid">
+   <div class = "row">
+        <div class = "col-md-3 col-md-offset-1">
+              <button type="button" class="form-control" {{action 'back'}}>
+                ← View More Meetings
+              </button>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2" style="padding-top: 50px">
 
-    <div class="container-fluid">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-1" style="padding-top: 50px">
-                    <form>
-                        <div class="form-group row">
-                            <div class="col-sm-8">
-                                <label for="website" class="form-control-label">Conference Title:</label>
-                              {{input value=model.title class="form-control" placeholder="Conference Title" id="title"}}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-8">
-                                <label for="website" class="form-control-label">Conference Website:</label>
-                              {{input value=model.website class="form-control" placeholder="Conference Website" id="website"}}
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-8">
-                                <label for="city" class=" form-control-label"><font style="color: #ff0000">*</font>
-                                    City:</label>
-                              {{input value=model.city class="form-control" id="city" placeholder="City"}}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-8">
-                                <label for="city" class="form-control-label"><font style="color: #ff0000">*</font>
-                                    State:</label>
-                              {{input value=model.state class="form-control" id="state" placeholder="State"}}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-
-                            <div class="col-sm-8">
-                                <label for="city" class="form-control-label"><font style="color: #ff0000">*</font>
-                                    Country:</label>
-                              {{input value=model.country class="form-control" id="country" placeholder="Country"}}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label for="city" class="form-control-label">Start Date:</label>
-                              {{date-picker date=model.startDate class="form-control" valueFormat='date'}}
-                            </div>
-                            <div class="col-sm-4">
-                                <label for="city" class="form-control-label">End Date:</label>
-                              {{date-picker date=model.endDate class="form-control" valueFormat='date'}}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label for="city" class="form-control-label">Submission Start Date:</label>
-                              {{date-picker date=model.submissionDate class="form-control" valueFormat='date'}}
-                            </div>
-                            <div class="col-sm-4">
-                                <label for="city" class="form-control-label">Submission End Date:</label>
-                              {{date-picker date=model.closeDate class="form-control" valueFormat='date'}}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-8">
-                                <label for="city" class="form-control-label">Conference Logo:</label>
-                              {{input class="form-control" type="file" accept="image/*" id="image" }}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-8">
-                                <label for="city" class="form-control-label">Tags:</label>
-                              {{input value=model.tags class="form-control" id="tags" placeholder="tag 1, tag 2, tag 3, ..."}}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-8">
-                                <label for="city" class="form-control-label">Sponsors:</label>
-                              {{input value=model.sponsors class="form-control" id="sponsors" placeholder="sponsor 1, sponsor 2, sponsor 3, ..."}}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-8" style="height: 100%">
-                                <label for="city" class="form-control-label"><font style="color: #ff0000">*</font>
-                                    Conference Description:</label>
-                              {{textarea value=model.description class="form-control" style="height: 100%"}}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-4">
-                                <button class="btn btn-lg btn-success" style="width: 100%"
-                                        disabled={{isDisabled}} {{action "create" model}}>Create Conference
-                                </button>
-                            </div>
-                            <div class="col-md-4 ">
-                                <button class="btn btn-lg btn-danger" style="width: 100%" {{action "back" model}}>Cancel
-                                    Submission
-                                </button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12" style="text-align: center">
-                                <h2><font style="color: #ff0000">*</font> denotes required field</h2>
-                            </div>
-                        </div>
-
-                    </form>
+            <form>
+                <div class="form-group row" style='text-align: center'>
+                    <div style='text-align: center' class="col-sm-4 col-sm-offest-8 registration-title form-group">
+                        <h1>Register New Meeting</h1>  
+                    </div>
                 </div>
-                <div class="col-md-3 faded">
-                    <h1>{{model.title}}</h1>
-                    <h3>{{model.website}}</h3>
-                    <h3>{{model.city}}</h3>
-                    <h3>{{model.state}}</h3>
-                    <h3>{{model.country}}</h3>
-                    <h6>{{model.startDate}} - {{model.endDate }}</h6>
-                    <h6>{{model.submissionDate }} - {{model.closeDate }}</h6>
-                    <h3>{{model.submissionDate}}</h3>
+                 <div class="form-group row {{if isValidTitle "has-success" "has-error"}}">
+                    <label for="title" class="col-sm-7 form-control-label"><font style="color: #ff0000">*</font> Conference Title:</label>
+                    <div class="col-sm-4">
+                      {{input value=model.title class="form-control" placeholder="title" id="title"}}
+                      {{#if this.isInvalidTitle}}
+                        <br> <font style="color: #ff0000">Please enter a valid title</font>
+                      {{/if}}
+                    </div>
                 </div>
+                <div class="form-group row">
+                    <label for="website" class="col-sm-7 form-control-label">Conference Website:</label>
+                    <div class="col-sm-4">
+                      {{input value=model.website class="form-control" placeholder="Conference Website" id="website"}}
 
+                    </div>
+                </div>
+                <div class="form-group row {{if isValidCity "has-success" "has-error"}}">
+                    <label for="city" class="col-sm-7 form-control-label"><font style="color: #ff0000">*</font> City:</label>
+                    <div class="col-sm-4">
+                      {{input value=model.city class="form-control" id="city" placeholder="City"}}
+                      {{#if this.isInvalidCity}}
+                        <br> <font style="color: #ff0000">Please enter a valid city</font>
+                      {{/if}}
+                    </div>
+                </div>
+                <div class="form-group row {{if isValidState "has-success" "has-error"}}">
+                    <label for="city" class="col-sm-7 form-control-label"><font style="color: #ff0000">*</font> State:</label>
+                    <div class="col-sm-4">
+                      {{input value=model.state class="form-control" id="state" placeholder="State"}}
+                      {{#if this.isInvalidState}}
+                        <br> <font style="color: #ff0000">Please enter a valid state</font>
+                      {{/if}}
+                    </div>
+                </div>
+                <div class="form-group row {{if isValidCountry "has-success" "has-error"}}">
+                    <label for="city" class="col-sm-7 form-control-label"><font style="color: #ff0000">*</font> Country:</label>
+                    <div class="col-sm-4">
+                      {{input value=model.country class="form-control" id="country" placeholder="Country"}}
+                      {{#if this.isInvalidCountry}}
+                        <br> <font style="color: #ff0000">Please enter a valid country</font>
+                      {{/if}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="city" class="col-sm-4 form-control-label">Start Date:</label>
+                    <div class="col-sm-2">
+                      {{date-picker date=model.startDate class="form-control" valueFormat='date'}}
+                    </div>
+                    <label for="city" class="col-sm-4 form-control-label">End Date:</label>
+                    <div class="col-sm-2">
+                      {{date-picker date=model.endDate class="form-control" valueFormat='date'}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="city" class="col-sm-4 form-control-label">Submission Start Date:</label>
+                    <div class="col-sm-2">
+                      {{date-picker date=model.submissionDate class="form-control" valueFormat='date'}}
+                    </div>
+                    <label for="city" class="col-sm-4 form-control-label">Submission End Date:</label>
+                    <div class="col-sm-2">
+                      {{date-picker date=model.closeDate class="form-control" valueFormat='date'}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="city" class="col-sm-7 form-control-label">Conference Logo:</label>
+                    <div class="col-sm-4">
+                      {{input class="form-control" type="file" accept="image/*" id="image" }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="city" class="col-sm-7 form-control-label">Tags:</label>
+                    <div class="col-sm-4">
+                      {{input value=model.tags class="form-control" id="tags" placeholder="tag 1, tag 2, tag 3, ..."}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="city" class="col-sm-7 form-control-label">Sponsors:</label>
+                    <div class="col-sm-4">
+                      {{input value=model.sponsors class="form-control" id="sponsors" placeholder="sponsor 1, sponsor 2, sponsor 3, ..."}}
+                    </div>
+                </div>
+                <div class="form-group row {{if isValidDescription "has-success" "has-error"}}">
+                    <label for="city" class="col-sm-7 form-control-label"><font style="color: #ff0000">*</font> Conference Description:</label>
+                    <div class="col-sm-4" style="height: 100%">
+                      {{textarea value=model.description class="form-control" id="description"style="height: 100%"}}
+                      {{#if this.isInvalidDescription}}
+                        <br> <font style="color: #ff0000">Please enter a valid description</font>
+                      {{/if}}
+                    </div>
+                </div>
+                <div class="row" class="text-align: center" >
+                  <div class="col-md-4 col-md-offset-4" style="text-align: center">
+                    <h2><font style="color: #ff0000">*</font> denotes required field</h2>
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <button style="height: 80px; font-size: 48px;" class="form-control" {{action "create" model}}>Create Conference</button>
+                    </div>
+                </div>
+            </form>
             </div>
         </div>
     </div>
+</div>
 {{else}}
-    <meta http-equiv="refresh" content="0; URL='./'"/>
+  <meta http-equiv="refresh" content="0; URL='./'" />
 {{/if}}
 
