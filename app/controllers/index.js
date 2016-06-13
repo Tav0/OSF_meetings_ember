@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
         create() {
             this.transitionToRoute('register').then(function(newRoute) {
               newRoute.controller.set('access', true);
-            })
+            });
         }
     }
 });
