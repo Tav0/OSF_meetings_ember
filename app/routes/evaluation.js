@@ -11,18 +11,18 @@ export default Ember.Route.extend({
         saveEvaluation(newEval) {
             var router = this;
             newEval.save().then( function() {
-                router.transitionTo('reviews');
+                document.getElementById('submitAlert').className = 
+                    "alert-success alert fade in";
+                setTimeout(function() {
+                    router.transitionTo('reviews');
+                }, 3000);
+                
             });
         },
 
     }
 });
 
-$(document).ready(function(){
-    $('button').click(function(){
-        $('.alert').show();
-    });
-});
 
 // {{evaluation submission=model}}\
 
