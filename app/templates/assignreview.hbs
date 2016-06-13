@@ -20,8 +20,8 @@
                 <thead>
 
                 <tr>
-                    <th>
-                        #
+
+                    <th> Id
                     </th>
                     <th>
                         Name
@@ -35,7 +35,10 @@
                 </tr>
                 </thead>
                 <tbody class="searchable">
-                {{#each model as |d|}}
+
+
+
+                {{#each model.reviewerall as |d|}}
                 <tr onclick={{action 'storereviewerInfo' d.id}}>
                     <td>
                       {{d.id}}
@@ -49,8 +52,13 @@
                     <td>
                       {{d.email}}
                     </td>
+
                 </tr>
                 {{/each}}
+
+
+
+
                 </tbody>
             </table>
 
@@ -147,6 +155,7 @@
       </form>
   {{/modal-dialog}}
 {{/if}}
+
 
 
 {{outlet}}

@@ -2,6 +2,7 @@
   import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  
   isshowingInvite: false,
   isshowingBio: false,
   reviewerInfo: '',
