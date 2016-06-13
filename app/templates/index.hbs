@@ -75,14 +75,6 @@
       <div id = "createButton" class="col-md-3" style="padding:0;">
           <div class="create">
             <button {{action "create"}}><h1 style="margin-bottom: 10px">Create a Meeting</h1></button>
-              {{#if this.clickedCreate}}
-                  Meeting title:
-                  {{input id="title" action="continue"}}
-                  <button {{action "continue"}}>Continue</button>
-                  {{#if this.titleError}}
-                    <br><font style="color: #ff0000">Please enter a title before continuing.</font>
-                  {{/if}}
-              {{/if}}
           </div>
       </div>
       <div id="meetings" class="col-md-9">

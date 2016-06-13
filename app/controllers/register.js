@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  isRenaming: false,
   access: false,
   isValidTitle: (Ember.computed.match('model.title', /.+/)),
   isValidCity: Ember.computed.match('model.city', /.+/),
@@ -19,20 +18,15 @@ export default Ember.Controller.extend({
   visited: false,
 
   actions: {
-    rename() {
-      this.set('isRenaming', true);
-    },
-    saveName() {
-      this.set('isRenaming',false);
-    },
     create(newMeeting){
-      //if (document.getElementById('title').value.length == 0)
-      //  this.set('isInvalidTitle',true);
       this.set('isValid',true);
       this.set('isInvalidCity',false);
       this.set('isInvalidState',false);
       this.set('isInvalidCountry',false);
       this.set('isInvalidDescription',false);
+      if (document.getElementById('title').value.length == 0)
+        this.set('isInvalidTitle',true);
+        this.set('isInvalid',false);
       if (document.getElementById('city').value.length == 0) {  
         this.set('isInvalidCity',true);
         this.set('isValid',false);
