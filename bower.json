@@ -14,8 +14,12 @@
     "pikaday": "^1.4.0",
     "moment": "^2.13.0",
     "dropzone": "*",
+<<<<<<< HEAD
+    "ember-cli-moment-shim": "0.0.3"
+=======
     "antiscroll": "git://github.com/Addepar/antiscroll#e0d1538cf4f3fd61c5bedd6168df86d651f125da",
     "jquery-mousewheel": "~3.1.4",
     "jquery-ui": "~1.11.4"
+>>>>>>> 750b74384319628afcb5ff1f8d1bf39060101229
   }
 }
