@@ -8,32 +8,50 @@
 	</div>
 </div>
 
-<form>
+<form method="post">
 	<div class="row step2">
 		<div class="col-md-8 col-md-offset-1">
 			<h3><label>Step 1: Select Grade Based on Rubric</label></h3>
-			<h4><b>Submission Evaluation</b></h4>
-				<div class="row premise">
-					<div class="col-md-1 col-md-offset-1">
-						<label>Premise</label>
-						{{input class="premise" type="integer" value=model.premise min=0 max=15 autofocus="autofocus"}}
+			<h3><b>Submission Evaluation</b></h3>
+				<div class="form-group row {{if isValidPremise "has-success" "has-error"}}">
+					<div class="col-md-2 col-md-offset-1">
+						<label><font style='color: #ff0000'>*</font>Premise</label>
+					</div>
+					<span class="glyphicon glyphicon-ok form-control-feedback" ></span>
+					<div class="col-md-6">
+						{{input id="premise" type="integer" value=model.premise class="form-control"}}
 						/15
+						<div style="color:#FF0000">
+                        {{if this.premiseError "Please assign a valid value" ""}}
+                    	</div>
 					</div>
 				</div>
 
-				<div class="row research">
-					<div class="col-md-1 col-md-offset-1">
-						<label>Research</label>
-						{{input class="research" type="integer" value=model.research min=0 max=15 autofocus="autofocus"}}
+				<div class="form-group row {{if isValidResearch "has-success" "has-error"}}">
+					<div class="col-md-2 col-md-offset-1">
+						<label><font style='color: #ff0000'>*</font>Research</label>
+					</div>
+					<span class="glyphicon glyphicon-ok form-control-feedback" ></span>
+					<div class="col-md-6">
+						{{input id="research" type="integer" value=model.research class="form-control"}}
 						/15
+						<div style="color:#FF0000">
+                        {{if this.researchError "Please assign a valid value" ""}}
+                    	</div>
 					</div>
 				</div>
 
-				<div class="row style">
-					<div class="col-md-1 col-md-offset-1">
-						<label>Style</label>
-						{{input class="style" type="integer" value=model.style min=0 max=15 autofocus="autofocus"}}
+				<div class="form-group row {{if isValidStyle "has-success" "has-error"}}">
+					<div class="col-md-2 col-md-offset-1">
+						<label><font style='color: #ff0000'>*</font>Style</label>
+					</div>
+					<span class="glyphicon glyphicon-ok form-control-feedback" ></span>
+					<div class="col-md-6">
+						{{input id="style" type="integer" value=model.style class="form-control"}}
 						/15
+						<div style="color:#FF0000">
+                        {{if this.StyleError "Please assign a valid value" ""}}
+                    	</div>
 					</div>
 				</div>
 
@@ -42,22 +60,32 @@
 					<h4>TOTAL: {{model.total}}/45 </h4>
 				</div>
 			</div>
+
+
+			<div class="form-group row">
+                <div class="col-md-4 col-md-offset-1">
+                    <h6><font style="color: #ff0000">*</font> denotes required field</h6>
+                </div>
+            </div>
 		</div>
 	</div>
 
-	<div class="row step3">
+	<div class="form-group row step3">
 		<div class="col-md-8 col-md-offset-1">
 			<h3><b>Step 2: Comment Below</b></h3>
 			{{textarea value=model.comment cols="80" rows="10"}}
 		</div>
 	</div>
 
-<div class="row">
+<div class="form-group row">
 	<div class="col-md-4 col-md-offset-1">
 		<h3><b>Step 3: Submit</b></h3>
-		<button {{action "saveEvaluation" model}} type="submit" class="submit btn btn-default" disabled={{isDisabled}}>Submit</button>
 		<div id="submitAlert" class="alert alert-success hide fade in">
 		Success! Feedback submitted.
+		</div>
+		<button style = "height: 40px; width: 100px" class="form-control" {{action "saveEvaluation" model}} type="submit">Submit</button>
+		<div id="errorAlert" class="alert alert-danger hide fade in">
+		Please recheck your values.
 		</div>
 	</div>
 </div>

@@ -13,15 +13,9 @@
     {
         font-size: 48px;
     }
-    input
-    {
-        min-height: 72px;
-
-    }
     .form-control
     {
         height: 100%;
-        font-size: 24px;
     }
 </style>
 
@@ -35,58 +29,67 @@
 		</div>
 	</div>
 <div class="row">
-    <div class="col-md-12 col-md-offset-1">
-        <form method="post">
+    <div class="col-md-10 col-md-offset-1">
+        <form id = "fileSubmission" method="post">
             <div class="form-group row">
-                <div class="col-md-3" style="height: 100%; text-align: right">
-                    <label>Upload File(s):</label>
+                <div class="col-md-6" style="height: 100%;">
+                    <label>Upload File(s):{{model.id}}</label>
+                    {{conference.dropzone-submission filesUpload="saveNodeSubmission"}}
                 </div>
+            </div>
+
+            <div class="form-group row {{if isValidTitle "has-success" "has-error"}}">
                 <div class="col-md-6">
-                  {{drop-zone class="form-control" url=model.uploadURL}}
+                    <label><font style='color: #ff0000'>*</font> Title:</label>
+                  {{input id="title" value=title class="form-control"}}
+                    <div style="color:#FF0000">
+                        {{if this.titleError "Please enter a valid title" ""}}
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group row">
-                <div class="col-md-3" style="text-align: right">
-                    <label>*Title:</label>
-                </div>
+            </div>
+            <div class="form-group row {{if isValidContributors "has-success" "has-error"}}">
                 <div class="col-md-6">
-                  {{input value=model.newNode.title class="form-control"}}
+                    <label><font style='color: #ff0000'>*</font> Contributors:</label>
+                  {{input id="contributors" value=contributors class="form-control"}}
+                    <div style="color:#FF0000">
+                        {{if this.contributorsError "Please enter valid contributors" ""}}
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group row">
-                <div class="col-md-3" style="text-align: right">
-                    <label>*Contributors:</label>
-                </div>
+            <div class="form-group row has-success">
                 <div class="col-md-6">
-                  {{input value=model.newNode.contributors class="form-control"}}
-                </div>
-            </div>
-
-
-            <div class="form-group row ">
-                <div class="col-md-3" style="text-align: right" >
-                    <label>*Description:</label>
-                </div>
-                <div class="col-md-6 ">
-                  {{textarea value=model.newNode.description class="form-control"}}
-                </div>
-            </div>
-
-
-            <div class="form-group row">
-                <div class="col-md-3" style="text-align: right">
                     <label>Keywords:</label>
+
+                  {{input value=keywords class="form-control"}}
                 </div>
+            </div>
+
+            <div class="form-group row {{if isValidDescription "has-success" "has-error"}}">
                 <div class="col-md-6">
-                  {{input value=model.newNode.keywords class="form-control"}}
+                    <label><font style='color: #ff0000'>*</font> Description:</label>
+                  {{textarea id="description" value=description class="form-control"}}
+                    <div style="color:#FF0000">
+                        {{if this.descriptionError "Please enter a valid description" ""}}
+                    </div>
                 </div>
             </div>
 
             <div class="form-group row">
-                <div class="col-md-2 col-md-offset-7">
-                    <button style="height: 80px; font-size: 48px;" class="form-control" disabled={{isDisabled}} {{action "saveNodeSubmission" model.newNode}}>Submit</button>
+                <div class="col-md-4">
+                    <h2><font style="color: #ff0000">*</font> denotes required field</h2>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-3">
+                    <button
+                        class="form-control btn btn-success" {{action "saveNodeSubmission" title
+                        contributors description keywords}}>Submit</button>
+                </div>
+                <div class="col-md-3">
+                    <button
+                            class="form-control btn btn-danger" {{action "cancel"}}>Cancel</button>
                 </div>
             </div>
         </form>

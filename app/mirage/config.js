@@ -29,6 +29,10 @@ export default function() {
   this.get('/reviewslists');
   this.get('/reviewslists/:id');
 
+  this.passthrough('https://staging-api.osf.io/v2/users/me/');
+
+
+
 
   // These comments are here to help you get started. Feel free to delete them.
 
