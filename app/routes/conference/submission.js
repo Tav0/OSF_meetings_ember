@@ -23,13 +23,19 @@ export default Ember.Route.extend({
                 description : description,
                 keywords : keywords
             });
+          document.getElementById("fileSubmission").reset();
             let models = this.modelFor('conference.index');
             newNode.save();
-            //this.transitionTo('conference.index', models.meeting.id);
+            this.transitionTo('conference.index', models.meeting.id);
         },
 
         filesUpload(dropzone) {
             console.log(dropzone);
+        },
+        cancel()
+        {
+          let models = this.modelFor('conference.index');
+          this.transitionTo('conference.index', models.meeting.id);
         }
     }
 
@@ -48,7 +54,7 @@ export default Ember.Route.extend({
 
 //	actions: {
 //	    saveNodeSubmission(title, description, [M EO[M#EOnewNode){
-// 			if ((document.getElementById('title').value.length >= 3) && 
+// 			if ((document.getElementById('title').value.length >= 3) &&
 // 				(document.getElementById('contributors').value.length >= 3) &&
 // 				(document.getElementById('description').value.length >= 6)) {
 //				let url = this.get('router.url');
