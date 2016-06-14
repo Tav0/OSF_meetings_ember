@@ -1,35 +1,7 @@
 <style>
-    .create {
-        transition: 0.2s ease;
-        width: auto;
-        border:solid white 4px;
-        margin-left: 5px;
-        padding: 3%;
-        position: absolute;
-    }
-    .create h1
-    {
-        color: black;
-        font-size: 6vw;
-        line-height: 5vw;
-    }
-
-    .create:hover
-    {
-        border:solid black 4px;
-
-    }
     .spacer
     {
         margin-top: 100px;
-    }
-    #browse
-    {
-        width:100%;
-        z-index: 1000;
-        border-bottom: solid #d4d4d4 1px;
-        background-color: white;
-        margin-bottom: 15px;
     }
     .meetings
     {
@@ -46,7 +18,6 @@
     {
         border: solid black 4px;
     }
-
 </style>
 
 {{#if this.visited}}
@@ -63,38 +34,34 @@
   </div>
 
 
-
-<div id="bottom"class="container-fluid big">
-    <div id="browse" class="row" style="display: inline-block">
-        <div class="col-md-2">
-            <h2>Meetings:</h2>
-        </div>
-    </div>
-
-    <div class="row">
-      <div id = "createButton" class="col-md-3" style="padding:0;">
-          <div class="create">
-            <button {{action "create"}}><h1 style="margin-bottom: 10px">Create a Meeting</h1></button>
-              {{#if this.clickedCreate}}
-                  Meeting title:
-                  {{input id="title" action="continue"}}
-                  <button {{action "continue"}}>Continue</button>
-                  {{#if this.titleError}}
-                    <br><font style="color: #ff0000">Please enter a title before continuing.</font>
-                  {{/if}}
-              {{/if}}
-          </div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid" id="browse">
+    <a class="navbar-brand">Meetings</a>
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
       </div>
+      <button type="submit" disabled class="btn btn-default">Submit</button>
+    </form>
+    <div id="createButton">
+      <button class="btn btn-success navbar-btn" {{action "create"}}>
+        <span class="glyphicon glyphicon-plus"></span>
+        Create a Meeting
+      </button>
+    </div> 
+  </div>
+</nav>
+<div id="bottom" class="container-fluid">
+    <div class="row">
       <div id="meetings" class="col-md-9">
         {{#masonry-grid  gutter=20 items=model as |conf|}}
           {{#link-to "conference.index" conf.id}}
-            {{meeting-masonry title=conf.title description=conf.description logo = conf.logo author=conf.author}}
+            {{meeting-masonry title=conf.title description=conf.description logo=conf.logo author=conf.author city=conf.city state=conf.state
+            date=conf.startDate}}
           {{/link-to}}
         {{/masonry-grid}}
       </div>
-  </div>
-
-
-  {{outlet}}
     </div>
+  {{outlet}}
+</div>
 

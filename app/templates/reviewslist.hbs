@@ -1,0 +1,79 @@
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-12">
+
+        <h3 class="text-center text-primary">
+        </h3>
+        <h2>
+            Assigned Reviews
+        </h2>
+
+        <div class="input-group"> <span class="input-group-addon">Filter</span>
+
+            <input id="filter" type="text" class="form-control" placeholder="Type here..." {{action 'filterdata'}}>
+        </div>
+
+        <table class="table table-hover table-striped">
+            <thead>
+
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Conference
+                </th>
+                <th>
+                    Review Deadline
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+
+                </th>
+            </tr>
+            </thead>
+            <tbody class="searchable">
+            {{#each model.reviewsdate as |d|}}
+
+                <tr {{action 'dateColor' d.reviewdeadline}}>
+                    <td>
+                      {{d.id}}
+                    </td>
+                    <td>
+                      {{d.title}}
+                    </td>
+                    <td>
+                      {{d.conference}}
+                    </td>
+                    <td>
+                      {{d.reviewdeadline}}
+                    </td>
+                    <td>
+                      {{d.status}}
+                    </td>
+
+                    <td>
+                        <form><input type=submit value="View" style="width:100%" {{action 'openreview'}}></form>
+                    </td>
+
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+
+
+    </div>
+</div>
+
+
+</div>
+
+
+
+{{outlet}}
