@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
     vehicleIndex: 0,
 
-    visited: false,
 
     vehicle: Ember.computed('vehicleIndex', function() {
         return this.get('vehicles')[this.get('vehicleIndex')];
@@ -19,6 +18,7 @@ export default Ember.Controller.extend({
         { name: 'Conference 2' },
         { name: 'Conference 3' }
     ]),
+
     actions: {
         create() {
             this.transitionToRoute('register').then(function(newRoute) {
