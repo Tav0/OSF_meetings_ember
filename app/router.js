@@ -17,6 +17,7 @@ Router.map(function() {
   this.route('evalConfirmation');
   this.route('assignreview');
   this.route('reviewslist');
+  this.route('peerdashboard');
 });
 
 export default Router;
