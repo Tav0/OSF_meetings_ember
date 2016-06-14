@@ -14,11 +14,11 @@ Submission
 		<div class="row">
 			<div class="col-md-2 col-md-offset-1">
                 <label>Upload File(s):{{model.id}}</label>
-			</div>	
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-9 col-md-offset-1">
-                {{drop-zone url="/v2/nodes/(model.id)/files" autoProcessQueue=false}}
+                {{conference.dropzone-submission filesUpload="saveNodeSubmission"}}
 			</div>
 		</div>
 
@@ -69,7 +69,7 @@ Submission
 		<div class="row">
 			<div class="col-md-2 col-md-offset-9">
 				<button {{action "saveNodeSubmission" title contributors
-                    description keywords}} class="btn btn-default">Submit</button>
+                    description keywords filesUpload}} class="btn btn-default">Submit</button>
 			</div>
 		</div>
 	</form>

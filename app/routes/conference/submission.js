@@ -16,8 +16,7 @@ export default Ember.Route.extend({
 
     actions: {
         //saveNodeSubmission(newNode){
-        saveNodeSubmission(){
-            Ember.$("#dropzone").dropzone({ /*options*/ });
+        saveNodeSubmission(title, contributors, description, keywords){
             let newNode = this.store.createRecord('node', {
                 title : title,
                 contributors : contributors,
@@ -27,6 +26,10 @@ export default Ember.Route.extend({
             let models = this.modelFor('conference.index');
             newNode.save();
             this.transitionTo('conference.index', models.meeting.id);
+        },
+
+        filesUpload(dropzone) {
+            console.log(dropzone);
         }
     }
 });
