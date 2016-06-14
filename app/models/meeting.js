@@ -13,5 +13,7 @@ export default Model.extend({
   closeDate: attr('date'),
   logo: attr(),
   tags: attr('array'),
-  description: attr('string')
+  sponsors: attr('array'),
+  description: attr('string'),
+  author: attr('string')
 });

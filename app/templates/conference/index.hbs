@@ -1,35 +1,67 @@
+<link rel="stylesheet" href="../../../dist/assets/conference.css">
+
 <div class="container-fluid" style="margin: 70px">
-    <div class="row">
+    <div class = "row">
+        <div class = "col-md-3 col-md-offset-1">
+            <button type="button" class="form-control" {{action 'back'}}>
+               ← View More Meetings
+            </button>
+        </div>
+    </div>
+    <div class="row" style="padding: 20px">
         <div class="col-md-12" style="border: solid gray 1px">
-            <div class="row">
+            <div class="row" style=>
                 <div class="conferenceTopContainer col-md-12">
                     <div class="col-lg-4 col-lg-offset-2" style="height: 100%;">
                         <div class="conferenceInfo">
-                            <h1> SPSP Presentation {{model.meeting.title}}</h1>
-                            <h4> More Relevant Subtext </h4>
-                            <h4> May 22-25, 2015 | Los Angeles, California </h4>
-                            <div class="logos"></div>
+                            {{#if this.editing}}
+                                Title: {{input value=model.meeting.title class="form-control"}}
+                                Start date: {{date-picker date=model.meeting.startDate class="form-control" valueFormat='date'}} 
+                                End Date: {{date-picker date=model.meeting.endDate class="form-control" valueFormat='date'}}
+                                Submission start date: {{date-picker date=model.meeting.submissionStartDate class="form-control" valueFormat='date'}} 
+                                Submission end date: {{date-picker date=model.meeting.closeDate class="form-control" valueFormat='date'}} 
+                                City: {{input value=model.meeting.city class="form-control"}} 
+                                State: {{input value=model.meeting.state class="form-control"}}
+                                Country: {{input value=model.meeting.country class="form-control"}}
+                            {{else}}
+                                <h1> {{model.meeting.title}}</h1>
+                                <h4> {{model.meeting.startDate}} - {{model.meeting.endDate}} </h4>
+                                <h4>{{model.meeting.city}}, {{model.meeting.state}} </h4>
+                                <div class="logos"></div>
+                            {{/if}}
                         </div>
                     </div>
-                    <div class="col-lg-4 conferencePhoto">
-                        <img src="http://placehold.it/1920x1440">
+                    {{#if this.editing}}
+                    <div class="col-lg-4">
+                        Change conference logo: {{input class="form-control" type="file" accept="image/*" id="image"}}
+                        Current logo: <img src={{model.meeting.logo}}>
                     </div>
+                    <div class="col-lg-1">
+                        <button {{action "save"}}>Save</button>
+                    </div>
+                    {{else}}
+                    <div class="col-lg-4 conferencePhoto">
+                        <img src={{model.meeting.logo}}>
+                    </div>
+                    <div class="col-lg-1">
+                        <button {{action "edit"}}>Edit</button>
+                    </div>
+                    {{/if}}
                 </div>
             </div>
             <div class="row ">
                 <div class="conferenceDescriptionContainer col-lg-12">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <p class = "conferenceDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sodales pretium quam ut mattis.
-                            Nullam sed quam quis urna maximus vestibulum. Sed sed feugiat nunc. Aenean tincidunt velit a ipsum
-                            tempus, a posuere augue tincidunt. Nullam sed mattis mi. Vestibulum ante ipsum primis in faucibus
-                            orci luctus et ultrices posuere cubilia Curae; Aenean a leo nulla. Pellentesque viverra odio at
-                            consectetur gravida. In interdum, sem interdum condimentum cursus, ipsum lorem porttitor nibh, in
-                            gravida erat eros eu justo. Vestibulum porttitor scelerisque lacus a fermentum. Nunc pretium ante
-                            quis ex vulputate, vel bibendum est porttitor. Mauris malesuada accumsan velit eget imperdiet.
-                            Aliquam aliquam auctor convallis.</p>
+                        {{#if this.editing}}
+                            {{textarea value=model.meeting.description class="form-control" id="description"style="height: 100%"}}
+                        {{else}}
+                            <p class = "conferenceDescription">{{model.meeting.description}}</p>
+                        {{/if}}
                     </div>
                 </div>
             </div>
+            {{#if this.editing}}
+            {{else}}
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-lg-8 col-lg-offset-2" style="padding: 30px">
@@ -72,6 +104,7 @@
                     </div>
                 </div>
             </div>
+            {{/if}}
 
         </div>
     </div>

@@ -21,6 +21,15 @@ export default function() {
     let attrs = request.requestBody;
     return db.db.files.insert(attrs);
   });
+
+
+  this.get('/reviewers');
+  this.get('/reviewers/:id');
+
+  this.get('/reviewslists');
+  this.get('/reviewslists/:id');
+
+
   // These comments are here to help you get started. Feel free to delete them.
 
   /*

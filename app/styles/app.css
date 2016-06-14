@@ -1,17 +1,81 @@
+.testClass
+{
+  background-color: purple;
+}
+a{
+  color: white;
+}
+a:hover
+{
+  text-decoration: none;
+  color: white;
+}
+
+html, body .fullscreen
+{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.masonry-grid
+{
+  margin: 0 auto;
+}
+.big
+{
+  height: 100vh;
+}
+.titleRow
+{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+}
+
+.titleRow h1
+{
+  font-size: 14vw;
+  min-height:  14vw;
+  line-height: 13vw;
+}
+
+.titleRow h3
+{
+  margin-top: 1.2vw;
+  padding-left: .5vw;
+  font-size: 2vw;
+  min-height:  2vw;
+}
+.titleRow h4
+{
+  padding-left: .2vw;
+  font-size: 3.5vw;
+  min-height:  3.5vw;
+}
+
+.titleRow button
+{
+    margin-left: .4vw;
+    font-size: 2vw;
+}
+
 .alert{
 	display: none;
 }
 
-registration-title {
+.registration-title {
     text-align: center;
 }
 
 textarea {
-    resize: none;
-    height: 30%;
-    width: 95%;
+  resize: none;
+  height: 30%;
+  width: 95%;
 }
-
 h1 {
     font-size: 3.5em;
     margin: 0 0 10px 0;
@@ -91,3 +155,8 @@ p {
 	width: 95%;
 }
 
+.splash-page
+{
+  height: 100%;
+  width: 100%;
+}
