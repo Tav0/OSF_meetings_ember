@@ -1,5 +1,5 @@
 export default function() {
-  this.namespace = 'v2';
+  this.namespace = 'https://staging-api.osf.io/v2';
 
   this.get('/submission-evals');
   this.get('/submission-evals/:id');
