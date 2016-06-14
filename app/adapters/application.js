@@ -1,10 +1,6 @@
-import JSONAPIAdapter from 'ember-data/adapters/json-api';
+import OsfAdapter from './osf-adapter';
 
-export default JSONAPIAdapter.extend({
+export default OsfAdapter.extend({
     namespace: 'v2',
     host: 'https://staging-api.osf.io',
-    buildURL: function(type, id, record) {
-    	//call the default buildURL and then append a slash
-    	return this._super(type, id, record) + '/';
-  	}
 });
