@@ -1,9 +1,11 @@
 import Ember from 'ember';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend({
+
+export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	model(params) {
         return Ember.RSVP.hash({
-            nodes: this.store.findAll('node'),
+            nodes: this.store.find('node', '2vj5f'),
             meeting: this.store.find('meeting', params.id),
         });
 	},
