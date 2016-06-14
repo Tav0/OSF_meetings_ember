@@ -23,7 +23,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
                 title : title,
                 contributors : contributors,
                 description : description,
-                keywords : keywords
+                keywords : keywords,
+                category: 'project',
             });
           document.getElementById("fileSubmission").reset();
             let models = this.modelFor('conference.index');
