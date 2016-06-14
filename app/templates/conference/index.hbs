@@ -20,7 +20,12 @@
                                 Submission end date: {{date-picker date=model.meeting.closeDate class="form-control" valueFormat='date'}} 
                                 City: {{input value=model.meeting.city class="form-control"}} 
                                 State: {{input value=model.meeting.state class="form-control"}}
-                                Country: {{input value=model.meeting.country class="form-control"}}
+                                Country:
+                                <select class=form-control onchange={{action (mut model.country) value="target.value"}}>
+                                    {{#each countries as |countryChoice|}}
+                                    <option value={{countryChoice}} selected={{eq model.country countryChoice}}><{{countryChoice}}</option>
+                                    {{/each}}
+                                </select>
                             {{else}}
                                 <h1> {{model.meeting.title}}</h1>
                                 <h4> {{model.meeting.startDate}} - {{model.meeting.endDate}} </h4>
