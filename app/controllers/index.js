@@ -70,7 +70,6 @@ export default Ember.Controller.extend({
         Ember.$('#tileButton').removeClass('disabled');
         let shift = this;
         shift.set('tileview', false );
-        }
       }
     }
   }
