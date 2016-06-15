@@ -16,4 +16,5 @@ export default Collection.extend({
   tags: attr('array'),
   sponsors: attr('array'),
   description: attr('string'),
+  author: attr('string'),
 });

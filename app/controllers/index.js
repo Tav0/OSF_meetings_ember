@@ -1,29 +1,67 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    vehicleIndex: 0,
+  tileview: true,
 
-
-    vehicle: Ember.computed('vehicleIndex', function() {
-        return this.get('vehicles')[this.get('vehicleIndex')];
-    }),
-
-    vehicles: [
-        { name: 'option1', year: 1953 },
-        { name: 'option2', year: 1952 }
-    ],
-
-    items: Ember.A([
-        { name: 'Conference 1' },
-        { name: 'Conference 2' },
-        { name: 'Conference 3' }
-    ]),
+  columns: [
+  {
+    "propertyName": "title",
+    "title": "Title"
+  },
+  {
+    "propertyName": "city",
+    "title": "City"
+  },
+  {
+    "propertyName": "state",
+    "title": "State"
+  },
+  {
+    "propertyName": "country",
+    "title": "Country"
+  },
+  {
+    "propertyName": "author",
+    "title": "Author"
+  },
+    {
+      "propertyName": "startDate",
+      "title": "Start Date"
+    },
+    {
+      "propertyName": "endDate",
+      "title": "End Date"
+    },
+    {
+      "propertyName": "description",
+      "title": "Description"
+    }],
 
     actions: {
-        create() {
+        create()
+        {
             this.transitionToRoute('register').then(function(newRoute) {
               newRoute.controller.set('access', true);
             });
+        },
+      scrollit()
+      {
+        Ember.$('#top').hide(2000, function() {
+          Ember.$('#bottom').css({"margin-top": "80px"});
+          Ember.$('#create').addClass("navbar-fixed-top");
+        });
+      },
+      tileView(){
+        Ember.$('#tileButton').addClass('disabled');
+        Ember.$('#listButton').removeClass('disabled');
+        let shift = this;
+        shift.set('tileview', true );
+      },
+      listView(){
+        Ember.$('#listButton').addClass('disabled');
+        Ember.$('#tileButton').removeClass('disabled');
+        let shift = this;
+        shift.set('tileview', false );
         }
-    }
+      }
 });
