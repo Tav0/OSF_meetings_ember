@@ -48,11 +48,11 @@
           Create a Meeting
       </button>
     </form>
-    <form id="tileButton" class=" navbar-form navbar-left">
-        <button class="btn navbar-btn">
+    <form  class=" navbar-form navbar-left " disabled>
+        <button id="tileButton" class="btn navbar-btn disabled" {{action "tileView"}}>
             <span class="glyphicon glyphicon-th-large"></span>
         </button>
-          <button class="btn navbar-btn">
+          <button id="listButton" class="btn navbar-btn" {{action "listView"}}>
               <span class="glyphicon glyphicon-th-list"></span>
           </button>
       </form>
@@ -69,6 +69,11 @@
         {{/masonry-grid}}
       </div>
     </div>
+  <div id="table" class="row hidden">
+      <div class="col-md-12">
+          {{models-table data=model columns=columns}}
+      </div>
+  </div>
   {{outlet}}
 </div>
 
