@@ -46,7 +46,7 @@
                             {{/if}}
                         </div>
                     </div>
-                    {{#if model.meeting.editing}}
+                    {{#if this.editing}}
                     <div class="col-lg-4">
                         <div class="form-group row">
                         Change conference logo: {{input class="form-control" type="file" accept="image/*" id="image"}}
@@ -75,7 +75,7 @@
             <div class="row ">
                 <div class="conferenceDescriptionContainer col-lg-12">
                     <div class="col-lg-8 col-lg-offset-2">
-                        {{#if model.meeting.editing}}
+                        {{#if this.editing}}
                             {{textarea value=model.meeting.description class="form-control" id="description"style="height: 100%"}}
                         {{else}}
                             <p class = "conferenceDescription">{{model.meeting.description}}</p>
@@ -83,7 +83,7 @@
                     </div>
                 </div>
             </div>
-            {{#if model.meeting.editing}}
+            {{#if this.editing}}
             {{else}}
             <div class="row">
                 <div class="col-md-12">

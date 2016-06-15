@@ -51,10 +51,10 @@ export default Ember.Controller.extend({
     	},
 
 		edit() {
-			this.set('model.meeting.editing',true);
+			this.set('editing',true);
 		},	
 		cancel() {
-			this.set('model.meeting.editing',false);
+			this.set('editing',false);
 			this.store.findRecord('meeting',this.get('model.meeting.id')).then(function(meeting) {
 				meeting.rollbackAttributes();
 			});
@@ -104,7 +104,7 @@ export default Ember.Controller.extend({
 	        	this.set('isValid',false);
 	      	}
 	      	if (this.get('isValid')) {
-				this.set('model.meeting.editing',false);
+				this.set('editing',false);
 				this.store.findRecord('meeting',this.get('model.meeting.id')).then(function(meeting) {
 					meeting.save ();
 				});
