@@ -19,13 +19,15 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     actions: {
         //saveNodeSubmission(newNode){
         saveNodeSubmission(title, contributors, description, keywords){
+            let models = this.modelFor('conference.index');
             let newNode = this.store.createRecord('node', {
                 title : title,
                 description : description,
                 category: 'project',
+                meeting: models.meeting,
             });
           document.getElementById("fileSubmission").reset();
-            let models = this.modelFor('conference.index');
+            
             newNode.save();
             this.transitionTo('conference.index', models.meeting.id);
         },

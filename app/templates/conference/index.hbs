@@ -93,7 +93,7 @@
                     </div>
                     <div class="col-lg-8 fileView">
 
-                      {{#masonry-grid gutter=10 items=model.nodes as |item|}}
+                      {{#masonry-grid gutter=10 items=model.meeting.nodes as |item|}}
                         {{node-component title= item.title contributors=item.contributors description=item.description}}
                       {{/masonry-grid}}
                     </div>
