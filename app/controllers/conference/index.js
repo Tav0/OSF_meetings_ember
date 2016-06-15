@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+
 	editing: false,
 
 	isInvalidTitle: false,
@@ -45,7 +46,7 @@ export default Ember.Controller.extend({
 
 	actions: {
 		selectCountry(country) {
-      		this.set('model.country', country);
+      		this.set('model.meeting.country', country);
     	},
 
 		edit() {
@@ -58,49 +59,39 @@ export default Ember.Controller.extend({
 	     	this.set('isInvalidState',false);
 	      	this.set('isInvalidCountry',false);
 	      	this.set('isInvalidDescription',false);
-	      	if (this.get('model.title') === "") {
+	      	this.set('isInvalidDates',false);
+	      	this.set('isInvalidSubmissionDates',false);
+	      	if (this.get('model.meeting.title') === "") {
 	        	this.set('isInvalidTitle',true);
 	        	this.set('isValid',false);
-	        	console.log("test1");
 	      	}
-	      	if (this.get('model.city') === "") {  
+	      	if (this.get('model.meeting.city') === "") {  
 	        	this.set('isInvalidCity',true);
 	        	this.set('isValid',false);
-	        	console.log("test2");
 	      	}
-	      	if (this.get('model.state') === "" && this.get('model.country') === "United States of America (USA)") {
+	      	if (this.get('model.meeting.state') === "" && this.get('model.meeting.country') == "United States of America (USA)") {
 	        	this.set('isInvalidState',true);
 	        	this.set('isValid',false);
-	        	console.log("test3");
 	      	}
-	      	if ((this.get('model.country') === "") || (this.get('model.country') === undefined)) {
+	      	if ((this.get('model.meeting.country') === "") || (this.get('model.meeting.country') === undefined)) {
 	        	this.set('isInvalidCountry',true);
 	        	this.set('isValid',false);
-	        	console.log("test4");
-	        	console.log(this.get('model.country'));
 	      	}
-	      	if (this.get('model.startDate') > this.get('model.endDate')) {
+	      	if (this.get('model.meeting.startDate') > this.get('model.meeting.endDate')) {
 	        	this.set('isInvalidDates',true);
 	        	this.set('isValid',false);
-	        	console.log("test5");
 	      	}
-	      	if (this.get('model.submissionDate') > this.get('model.closeDate')) {
-	        	console.log(document.getElementById('submissionDate').value);
+	      	if (this.get('model.meeting.submissionDate') > this.get('model.meeting.closeDate')) {
 	        	this.set('isInvalidSubmissionDates',true);
 	        	this.set('isValid',false);
-	        	console.log("test6")
 	      	}
-	      	if (this.get('model.description') === "") {
+	      	if (this.get('model.meeting.description') === "") {
 	        	this.set('isInvalidDescription',true);
 	        	this.set('isValid',false);
-	        	console.log("test7");
 	      	}
 	      	if (this.get('isValid')) {
 				this.set('editing',false);
-				console.log("test8")
 			}
-
-			console.log(this.get('isValid'));
 		}
 	}
 });
