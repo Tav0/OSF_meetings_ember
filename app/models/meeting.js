@@ -15,5 +15,6 @@ export default Model.extend({
   tags: attr('array'),
   sponsors: attr('array'),
   description: attr('string'),
-  author: attr('string')
+  author: attr('string'),
+  editing: attr()
 });

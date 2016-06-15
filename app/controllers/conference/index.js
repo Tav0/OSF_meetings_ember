@@ -1,13 +1,28 @@
 import Ember from 'ember';
+import ConfirmationMixin from 'ember-onbeforeunload/mixins/confirmation';
 
 export default Ember.Controller.extend({
-	editing: false,
+
 	actions: {
 		edit() {
-			this.set('editing',true);
+			this.set('model.meeting.editing',true);
 		},
 		save() {
-			this.set('editing',false);
+			this.set('model.meeting.editing',false);
+			this.store.findRecord('meeting',this.get('model.meeting.id')).then(function(meeting) {
+				meeting.save ();
+			});
+		},
+		cancel() {
+			console.log(this.get('model.meeting.editing'));
+			this.set('model.meeting.editing',false);
+			this.store.findRecord('meeting',this.get('model.meeting.id')).then(function(meeting) {
+				meeting.rollbackAttributes ();
+			});
+		},
+		isDirty() {
+			console.log('we got here');
+			return true;
 		}
 	}
 });
