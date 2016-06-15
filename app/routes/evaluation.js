@@ -9,15 +9,28 @@ export default Ember.Route.extend({
 
     actions: {
         saveEvaluation(newEval) {
-            var router = this;
-            newEval.save().then( function() {
-                document.getElementById('submitAlert').className = 
-                    "alert-success alert fade in";
-                setTimeout(function() {
-                    router.transitionTo('reviews');
-                }, 3000);
+            let router = this;
+
+            if ((document.getElementById('premise').value >= 0) &&
+                (document.getElementById('premise').value <= 15) && 
+                (document.getElementById('research').value >= 0) &&
+                (document.getElementById('research').value <= 15) &&
+                (document.getElementById('style').value >= 0) &&
+                (document.getElementById('style').value <= 15)) {
                 
-            });
+                newEval.save().then(function() {                
+                    document.getElementById('submitAlert').className = 
+                    "alert-success alert fade in";
+
+                    setTimeout(function() {
+                        router.transitionTo('reviews');
+                    }, 2000);
+                }, function() {
+                    //error logic
+                    document.getElementById('errorAlert').className = 
+                    "alert-danger alert fade in";
+                });
+            }
         },
 
     }

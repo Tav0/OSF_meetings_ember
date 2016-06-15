@@ -1,5 +1,5 @@
 export default function() {
-  this.namespace = 'v2';
+  this.namespace = 'https://staging-api.osf.io/v2';
 
   this.get('/submission-evals');
   this.get('/submission-evals/:id');
@@ -13,9 +13,9 @@ export default function() {
   this.get('/meetings/:id');
   this.patch('/meetings/:id');
 
-  this.get('/nodes');
+  // this.get('/nodes');
   this.post('/nodes');
-  this.get('/nodes/:id');
+  // this.get('/nodes/:id');
 
   this.get('/nodes/:id/files/:id');
   this.post('/nodes/:id/files', (db, request) => {
@@ -29,6 +29,13 @@ export default function() {
 
   this.get('/reviewslists');
   this.get('/reviewslists/:id');
+
+  this.passthrough('https://staging-api.osf.io/v2/users/me/');
+  this.passthrough('https://staging-api.osf.io/v2/nodes');
+  this.passthrough('https://staging-api.osf.io/v2/nodes/**');
+
+
+
 
 
   // These comments are here to help you get started. Feel free to delete them.
