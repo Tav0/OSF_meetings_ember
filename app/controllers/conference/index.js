@@ -83,7 +83,7 @@ export default Ember.Controller.extend({
 	        	this.set('isInvalidCity',true);
 	        	this.set('isValid',false);
 	      	}
-	      	if (this.get('model.meeting.state') === "" && this.get('model.meeting.country') == "United States of America (USA)") {
+	      	if (this.get('model.meeting.state') === "" && this.get('model.meeting.country') === "United States of America (USA)") {
 	        	this.set('isInvalidState',true);
 	        	this.set('isValid',false);
 	      	}
