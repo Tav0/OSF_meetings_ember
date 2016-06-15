@@ -6,11 +6,9 @@ export default Ember.Controller.extend({
 	actions: {
 		edit() {
 			this.set('model.meeting.editing',true);
-			this.set('editing',true);
 		},
 		save() {
 			this.set('model.meeting.editing',false);
-			this.set('editing',false);
 			this.store.findRecord('meeting',this.get('model.meeting.id')).then(function(meeting) {
 				meeting.save ();
 			});
@@ -21,9 +19,12 @@ export default Ember.Controller.extend({
 				meeting.rollbackAttributes();
 			});
 		},
-		isDirty() {
-			console.log('we got here');
-			return true;
+		unload() {
+  		console.log('nice unload');
+		this.store.findRecord('meeting',document.getElementById('meetingId').value).then(function(meeting) {
+			meeting.rollbackAttributes();
+			meeting.set('editing',false); 
+		});
 		}
 	}
 });

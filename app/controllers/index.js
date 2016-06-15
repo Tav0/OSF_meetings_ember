@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  vehicleIndex: 0,
-
   visited: false,
   actions: {
     create() {

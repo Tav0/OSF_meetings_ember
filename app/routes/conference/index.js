@@ -4,21 +4,12 @@ import ConfirmationMixin from 'ember-onbeforeunload/mixins/confirmation';
 
 export default Ember.Route.extend(ConfirmationMixin, {
 	confirmationMessage: 'Your conference may have unsaved changes. Leaving will cancel unsaved changes.',
-	editing: false,
-  	isPageDirty() { 
-		// let meeting = this.store.findRecord('meeting',document.getElementById('meetingId').value).then(function(meeting){
-		// 	console.log('wtf');
-		// });
-		return this.get('editing');
-		
-	},
-  	onUnload() {
-  		this.set('model.meeting.editing',false);
-		this.store.findRecord('meeting',document.getElementById('meetingId').value).then(function(meeting) {
-			meeting.rollbackAttributes();
-			meeting.set('title','Nice unload'); 
-		});
-	},
+	//isPageDirty uses ember-onbeforeunload. onbefore unload overrides willTransition and uses onUnload() instead. Since onUnload() doesn't work, we will implement that later.
+ //  	isPageDirty() { 
+	// 	var controller = this.get('controller');
+	// 	var meeting = controller.get('model.meeting'); 
+	// 	return controller.get('model.meeting.editing');
+	// },
 	model(params) {
         return Ember.RSVP.hash({
             nodes: this.store.findAll('node'),
@@ -30,8 +21,12 @@ export default Ember.Route.extend(ConfirmationMixin, {
 		back(){
 			this.transitionTo('index').then(function(newRoute) {
         		newRoute.controller.set('visited', true);
-			});
-		}, 
+			});			
+		},
+		willTransition: function(transition) {
+			var controller = this.get('controller');
+			controller.send('cancel');
+		} 
 	}
 });
  
