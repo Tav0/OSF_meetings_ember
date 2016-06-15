@@ -6,7 +6,7 @@
     "ember-cli-test-loader": "0.2.2",
     "ember-qunit-notifications": "0.1.0",
     "pretender": "*",
-    "lodash": "~3.7.0",
+    "lodash": "^4.10.0",
     "Faker": "*",
     "bootstrap": "~3.3.5",
     "masonry": "^4.1.0",
@@ -16,6 +16,7 @@
     "dropzone": "*",
     "antiscroll": "git://github.com/Addepar/antiscroll#e0d1538cf4f3fd61c5bedd6168df86d651f125da",
     "jquery-mousewheel": "~3.1.4",
-    "jquery-ui": "~1.11.4"
+    "jquery-ui": "~1.11.4",
+    "perfect-scrollbar": ">=0.6.7 <2.0.0"
   }
 }
