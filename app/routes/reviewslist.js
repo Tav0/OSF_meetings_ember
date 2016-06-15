@@ -13,7 +13,8 @@ export default Ember.Route.extend({
 
   },
    actions: {
-    filterdata(){
+
+     filterdata(){
 
       Ember.$('#filter').keyup(function () {
 

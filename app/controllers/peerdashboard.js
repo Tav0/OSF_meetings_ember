@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
   isshowingcontact: false,
   isshowingapprove: false,
   selectvalue: 0,
+  rid: 0,
   msgtemplate: '' +
   ' Dear Prof. Tom,\n\n' +
   'I am writing to inquiry about your submission for ASONAM 2016 entitled Analyzing patients health records (AS-213).\n'+
@@ -24,7 +25,7 @@ export default Ember.Controller.extend({
     svalue(v){
 
       this.set('selectvalue',v);
-      console.log('hii');
+
 
     },
     showdata() {
@@ -34,8 +35,9 @@ export default Ember.Controller.extend({
     hidedata()  {
       this.set('isshowingcontact', false);
     },
-    showapprove() {
+    showapprove(d) {
       this.set('isshowingapprove', true);
+      this.set('rid',d);
     },
 
     hideapprove(inp)  {
@@ -53,9 +55,17 @@ export default Ember.Controller.extend({
       }else{
 
 
-        this.set('isshowingapprove', false);
+        this.store.findRecord('reviewslist', this.get('rid')).then(function(tyrion) {
+          // ...after the record has loaded
+          tyrion.set('status', "Approved for Review");
 
-      }
+        });
+
+
+
+
+        this.set('isshowingapprove', false);
+              }
       }else{
 
         this.set('isshowingapprove', false);

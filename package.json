@@ -60,7 +60,6 @@
     "ember-scroll-to": "0.5.1",
     "ember-truth-helpers": "1.2.0",
     "ember-validations": "2.0.0-alpha.4",
-    "ember-wormhole": "0.3.5",
     "loader.js": "^4.0.1",
     "svg4everybody": "2.0.3"
   }
