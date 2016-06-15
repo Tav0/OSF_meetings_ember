@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../../../dist/assets/conference.css">
 <div class="container-fluid" style="margin: 70px">
     <div class = "row">
         <div class = "col-md-3 col-md-offset-1">
@@ -45,7 +46,7 @@
                             {{/if}}
                         </div>
                     </div>
-                    {{#if this.editing}}
+                    {{#if model.meeting.editing}}
                     <div class="col-lg-4">
                         <div class="form-group row">
                         Change conference logo: {{input class="form-control" type="file" accept="image/*" id="image"}}
@@ -56,7 +57,10 @@
                         <img class="row" src={{model.meeting.logo}}>
                     </div>
                     <div class="col-lg-1">
-                        <button {{action "save"}}>Save</button>
+
+                        <button class="btn-success"{{action "save"}}>Save</button>
+                        <button class="btn-danger"{{action "cancel"}}>Cancel</button>
+
                     </div>
                     {{else}}
                     <div class="col-lg-4 conferencePhoto">
@@ -71,7 +75,7 @@
             <div class="row ">
                 <div class="conferenceDescriptionContainer col-lg-12">
                     <div class="col-lg-8 col-lg-offset-2">
-                        {{#if this.editing}}
+                        {{#if model.meeting.editing}}
                             {{textarea value=model.meeting.description class="form-control" id="description"style="height: 100%"}}
                         {{else}}
                             <p class = "conferenceDescription">{{model.meeting.description}}</p>
@@ -79,7 +83,7 @@
                     </div>
                 </div>
             </div>
-            {{#if this.editing}}
+            {{#if model.meeting.editing}}
             {{else}}
             <div class="row">
                 <div class="col-md-12">
