@@ -48,8 +48,8 @@
           Create a Meeting
       </button>
     </form>
-    <form  class=" navbar-form navbar-left " disabled>
-        <button id="tileButton" class="btn navbar-btn disabled" {{action "tileView"}}>
+    <form  class=" navbar-form navbar-left ">
+        <button id="tileButton" class="btn navbar-btn" {{action "tileView"}}>
             <span class="glyphicon glyphicon-th-large"></span>
         </button>
           <button id="listButton" class="btn navbar-btn" {{action "listView"}}>
@@ -59,21 +59,25 @@
   </div>
 </nav>
 <div id="bottom" class="container-fluid">
+{{#if tileview}}
     <div class="row">
-      <div id="meetings" class="col-md-12">
-        {{#masonry-grid  isFitWidth=true gutter=20 items=model as |conf|}}
-          {{#link-to "conference.index" conf.id}}
-            {{meeting-masonry title=conf.title description=conf.description logo=conf.logo author=conf.author city=conf.city state=conf.state
-            date=conf.startDate}}
-          {{/link-to}}
-        {{/masonry-grid}}
-      </div>
+            <div id="meetings" class="col-md-12">
+              {{#masonry-grid  isFitWidth=true gutter=20 items=model as |conf|}}
+                {{#link-to "conference.index" conf.id}}
+                  {{meeting-masonry title=conf.title description=conf.description logo=conf.logo author=conf.author city=conf.city state=conf.state
+                  date=conf.startDate}}
+                {{/link-to}}
+              {{/masonry-grid}}
+            </div>
     </div>
-  <div id="table" class="row hidden">
-      <div class="col-md-12">
-          {{models-table data=model columns=columns}}
+  {{else}}
+      <div id="table" class="row">
+          <div class="col-md-12">
+            {{models-table data=model columns=columns useFilteringByColumns=false}}
+          </div>
       </div>
-  </div>
+  {{/if}}
+
   {{outlet}}
 </div>
 

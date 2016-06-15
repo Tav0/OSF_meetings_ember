@@ -16,8 +16,5 @@ export default Collection.extend({
   tags: attr('array'),
   sponsors: attr('array'),
   description: attr('string'),
-<<<<<<< Updated upstream
-=======
   author: attr('string'),
->>>>>>> Stashed changes
 });

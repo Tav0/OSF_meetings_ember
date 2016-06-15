@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  tileview: true,
+
   columns: [
   {
     "propertyName": "title",
@@ -34,6 +36,7 @@ export default Ember.Controller.extend({
       "propertyName": "description",
       "title": "Description"
     }],
+
     actions: {
         create()
         {
@@ -48,14 +51,17 @@ export default Ember.Controller.extend({
           Ember.$('#create').addClass("navbar-fixed-top");
         });
       },
-      tileView()
-      {
+      tileView(){
         Ember.$('#tileButton').addClass('disabled');
-        Ember.$('')
+        Ember.$('#listButton').removeClass('disabled');
+        let shift = this;
+        shift.set('tileview', true );
       },
-      listView()
-      {
-
+      listView(){
+        Ember.$('#listButton').addClass('disabled');
+        Ember.$('#tileButton').removeClass('disabled');
+        let shift = this;
+        shift.set('tileview', false );
+        }
       }
-    }
 });
