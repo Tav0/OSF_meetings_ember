@@ -21,9 +21,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
         saveNodeSubmission(title, contributors, description, keywords){
             let newNode = this.store.createRecord('node', {
                 title : title,
-                contributors : contributors,
                 description : description,
-                keywords : keywords,
                 category: 'project',
             });
           document.getElementById("fileSubmission").reset();
