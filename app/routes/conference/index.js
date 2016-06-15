@@ -1,6 +1,7 @@
 import Ember from 'ember';
-import ConfirmationMixin from 'ember-onbeforeunload/mixins/confirmation';
 
+import ConfirmationMixin from 'ember-onbeforeunload/mixins/confirmation';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 export default Ember.Route.extend(ConfirmationMixin, {
 	confirmationMessage: 'Your conference may have unsaved changes. Leaving will cancel unsaved changes.',
@@ -12,11 +13,9 @@ export default Ember.Route.extend(ConfirmationMixin, {
 	// },
 	model(params) {
         return Ember.RSVP.hash({
-            nodes: this.store.findAll('node'),
             meeting: this.store.find('meeting', params.id) 
         });
 	},
-
 	actions: {
 		back(){
 			this.transitionTo('index').then(function(newRoute) {

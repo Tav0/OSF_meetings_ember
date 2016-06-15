@@ -15,17 +15,28 @@
                         <div class="conferenceInfo">
                             {{#if model.meeting.editing}}
                                 Title: {{input value=model.meeting.title class="form-control"}}
+                                <div class="row" style="color: #ff0000">{{if this.isInvalidTitle "Please enter a valid title"}} </div>
                                 Start date: {{date-picker date=model.meeting.startDate class="form-control" valueFormat='date'}} 
+                                <div class="row" style="color: #ff0000">{{if this.isInvalidDates "Start date must be before end date"}} </div>
                                 End Date: {{date-picker date=model.meeting.endDate class="form-control" valueFormat='date'}}
-                                Submission start date: {{date-picker date=model.meeting.submissionStartDate class="form-control" valueFormat='date'}} 
+                                Submission start date: {{date-picker date=model.meeting.submissionDate class="form-control" valueFormat='date'}} 
+                                <div class="row" style="color: #ff0000">{{if this.isInvalidSubmissionDates "Submission start date must be before end date"}} </div>
                                 Submission end date: {{date-picker date=model.meeting.closeDate class="form-control" valueFormat='date'}} 
-                                City: {{input value=model.meeting.city class="form-control"}} 
+                                City: {{input value=model.meeting.city class="form-control"}}
+                                <div class="row" style="color: #ff0000">{{if this.isInvalidCity "Please enter a valid city"}} </div> 
                                 State: {{input value=model.meeting.state class="form-control"}}
-                                Country: {{input value=model.meeting.country class="form-control"}}
+                                <div class="row" style="color: #ff0000">{{if this.isInvalidState "Please enter a valid state"}} </div> 
+                                Country:
+                                <select class=form-control selected="model.meeting.country" onchange={{action (mut model.meeting.country) value="target.value"}}>
+                                    {{#each countries as |countryChoice|}}
+                                    <option value={{countryChoice}} selected={{eq model.meeting.country countryChoice}}><{{countryChoice}}</option>
+                                    {{/each}}
+                                </select>
+                                <div class="row" style="color: #ff0000">{{if this.isInvalidCountry "Please select a country"}} </div> 
                             {{else}}
                                 <h1> {{model.meeting.title}}</h1>
                                 <h4> {{model.meeting.startDate}} - {{model.meeting.endDate}} </h4>
-                                <h4>{{model.meeting.city}}, {{model.meeting.state}} </h4>
+                                <h4>{{model.meeting.city}}, {{model.meeting.state}}, {{model.meeting.country}} </h4>
                                 <div class="logos"></div>
                             {{/if}}
                         </div>
@@ -44,7 +55,7 @@
                         <img src={{model.meeting.logo}}>
                     </div>
                     <div class="col-lg-1">
-                        <button {{action "edit"}}>Edit</button>
+                        <button {{action "edit" model.meeting.country}}>Edit</button>
                     </div>
                     {{/if}}
                 </div>
@@ -95,8 +106,8 @@
                     </div>
                     <div class="col-lg-8 fileView">
 
-                      {{#masonry-grid gutter=10 items=model.nodes as |item|}}
-                        {{node-component title= item.title contributors=item.contributors description=item.description}}
+                      {{#masonry-grid gutter=10 items=model.meeting.linkedNodes as |item|}}
+                        {{node-component title=item.title contributors=item.contributors description=item.description}}
                       {{/masonry-grid}}
                     </div>
                     <div class="col-lg-1">

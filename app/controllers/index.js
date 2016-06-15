@@ -7,6 +7,13 @@ export default Ember.Controller.extend({
       this.transitionToRoute('register').then(function(newRoute) {
         newRoute.controller.set('access', true);
       });
+    },
+    actions: {
+        create() {
+            this.transitionToRoute('register').then(function(newRoute) {
+              newRoute.controller.set('access', true);
+            });
+        }
     }
   }
 });
