@@ -40,18 +40,12 @@ export default Ember.Controller.extend({
   visited: false,
   
   actions: {
-    create() {
-      this.transitionToRoute('register').then(function(newRoute) {
-        newRoute.controller.set('access', true);
-      });
-    },
-    actions: {
-        create()
-        {
-            this.transitionToRoute('register').then(function(newRoute) {
-              newRoute.controller.set('access', true);
-            });
-        },
+      create()
+      {
+          this.transitionToRoute('register').then(function(newRoute) {
+            newRoute.controller.set('access', true);
+          });
+      },
       scrollit()
       {
         Ember.$('#top').hide(2000, function() {
@@ -72,5 +66,4 @@ export default Ember.Controller.extend({
         shift.set('tileview', false );
       }
     }
-  }
 });
