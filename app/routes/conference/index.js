@@ -4,23 +4,17 @@ import ConfirmationMixin from 'ember-onbeforeunload/mixins/confirmation';
 
 export default Ember.Route.extend(ConfirmationMixin, {
 	confirmationMessage: 'Your conference may have unsaved changes. Leaving will cancel unsaved changes.',
+	editing: false,
   	isPageDirty() { 
-  // 		var isDirty = false;
-		// this.store.findRecord('meeting',this.get('model.meeting.id')).then(function(meeting) {
-		//  	if (meeting.get('editing'))
-		//  		sDirty = true; 
-		//  	});
-		// return isDirty;
-
-		//return this.get('model.meeting.editing');
-
-		console.log(this.get('model.meeting'));
-		return true;
+		// let meeting = this.store.findRecord('meeting',document.getElementById('meetingId').value).then(function(meeting){
+		// 	console.log('wtf');
+		// });
+		return this.get('editing');
 		
 	},
-  	onUnload() { //THIS METHOD IS FUCKED BECAUSE IT NEVER GETS CALLED
+  	onUnload() {
   		this.set('model.meeting.editing',false);
-		this.store.findRecord('meeting',this.get('model.meeting.id')).then(function(meeting) {
+		this.store.findRecord('meeting',document.getElementById('meetingId').value).then(function(meeting) {
 			meeting.rollbackAttributes();
 			meeting.set('title','Nice unload'); 
 		});
