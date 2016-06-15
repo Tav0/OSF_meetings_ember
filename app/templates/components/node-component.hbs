@@ -20,5 +20,9 @@
 <div class="tile" style="background-image: url({{image}})">
     <h1>{{title}}</h1>
     <h4>{{description}}</h4>
-    <h4>{{contributors}}</h4>
+    <h4>
+    {{#each contributors as |contributor|}}
+        {{contributor.users.fullName}}
+    {{/each}}
+    </h4>
 </div>
