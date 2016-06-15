@@ -1,6 +1,8 @@
 import Ember from 'ember';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend({
+
+export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
     model() {
 //        return this.store.createRecord('node');
@@ -17,14 +19,15 @@ export default Ember.Route.extend({
     actions: {
         //saveNodeSubmission(newNode){
         saveNodeSubmission(title, contributors, description, keywords){
+            let models = this.modelFor('conference.index');
             let newNode = this.store.createRecord('node', {
                 title : title,
-                contributors : contributors,
                 description : description,
-                keywords : keywords
+                category: 'project',
+                meeting: models.meeting,
             });
           document.getElementById("fileSubmission").reset();
-            let models = this.modelFor('conference.index');
+            
             newNode.save();
             this.transitionTo('conference.index', models.meeting.id);
         },

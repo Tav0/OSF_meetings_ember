@@ -1,5 +1,6 @@
-import JSONAPIAdapter from 'ember-data/adapters/json-api';
+import OsfAdapter from './osf-adapter';
 
-export default JSONAPIAdapter.extend({
-    namespace: 'bug-tracker'
+export default OsfAdapter.extend({
+    namespace: 'v2',
+    host: 'https://staging-api.osf.io',
 });
