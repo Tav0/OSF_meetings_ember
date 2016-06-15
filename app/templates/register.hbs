@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-md-6 {{if isAmerica (if isValidState "has-success" "has-error")}}">
                         <label for="city" class="col-sm-7 form-control-label">
-                        {{#if this.isAmerica}}<font style="color: #ff0000">*</font>{{/if}} State:</label>
+                        {{#if this.isAmerica}}<font style="color: #ff0000">*</font>{{/if}} State/Province:</label>
                       {{input value=model.state class="form-control" id="state" placeholder="State"}}
                       {{#if this.isInvalidState}}
                           <br> <font style="color: #ff0000">Please enter a valid state</font>
