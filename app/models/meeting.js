@@ -1,9 +1,9 @@
 import Model from 'ember-data/model';
 import DS from 'ember-data';
 import attr from 'ember-data/attr';
+import Collection from './collection'
 
-export default Model.extend({
-  title: attr('string'),
+export default Collection.extend({
   website: attr('string'),
   city: attr('string'),
   state: attr('string'),
@@ -16,6 +16,4 @@ export default Model.extend({
   tags: attr('array'),
   sponsors: attr('array'),
   description: attr('string'),
-  author: attr('string'),
-  nodes: DS.hasMany('node'),
 });
