@@ -6,7 +6,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
     model() {
 //        return this.store.createRecord('node');
-        //let meeting = this.store.find('meeting', params.id);
+          //let meeting = this.store.find('meeting', params.id);
 //        let meeting = this.modelFor('conference.index');
 //        console.log(meeting.meeting);
 //        return meeting;

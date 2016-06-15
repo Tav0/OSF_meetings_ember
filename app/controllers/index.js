@@ -37,6 +37,14 @@ export default Ember.Controller.extend({
       "title": "Description"
     }],
 
+  visited: false,
+  
+  actions: {
+    create() {
+      this.transitionToRoute('register').then(function(newRoute) {
+        newRoute.controller.set('access', true);
+      });
+    },
     actions: {
         create()
         {
@@ -64,4 +72,6 @@ export default Ember.Controller.extend({
         shift.set('tileview', false );
         }
       }
+    }
+  }
 });

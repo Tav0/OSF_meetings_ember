@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../../../dist/assets/conference.css">
 <div class="container-fluid" style="margin: 70px">
     <div class = "row">
         <div class = "col-md-3 col-md-offset-1">
@@ -12,42 +13,49 @@
                 <div class="conferenceTopContainer col-md-12">
                     <div class="col-lg-4 col-lg-offset-2" style="height: 100%;">
                         <div class="conferenceInfo">
-                            {{#if this.editing}}
+                            {{#if model.meeting.editing}}
                                 Title: {{input value=model.meeting.title class="form-control"}}
+                                <div class="row" style="color: #ff0000">{{if this.isInvalidTitle "Please enter a valid title"}} </div>
                                 Start date: {{date-picker date=model.meeting.startDate class="form-control" valueFormat='date'}} 
+                                <div class="row" style="color: #ff0000">{{if this.isInvalidDates "Start date must be before end date"}} </div>
                                 End Date: {{date-picker date=model.meeting.endDate class="form-control" valueFormat='date'}}
-                                Submission start date: {{date-picker date=model.meeting.submissionStartDate class="form-control" valueFormat='date'}} 
+                                Submission start date: {{date-picker date=model.meeting.submissionDate class="form-control" valueFormat='date'}} 
+                                <div class="row" style="color: #ff0000">{{if this.isInvalidSubmissionDates "Submission start date must be before end date"}} </div>
                                 Submission end date: {{date-picker date=model.meeting.closeDate class="form-control" valueFormat='date'}} 
-                                City: {{input value=model.meeting.city class="form-control"}} 
+                                City: {{input value=model.meeting.city class="form-control"}}
+                                <div class="row" style="color: #ff0000">{{if this.isInvalidCity "Please enter a valid city"}} </div> 
                                 State: {{input value=model.meeting.state class="form-control"}}
+                                <div class="row" style="color: #ff0000">{{if this.isInvalidState "Please enter a valid state"}} </div> 
                                 Country:
-                                <select class=form-control onchange={{action (mut model.country) value="target.value"}}>
+                                <select class=form-control selected="model.meeting.country" onchange={{action (mut model.meeting.country) value="target.value"}}>
                                     {{#each countries as |countryChoice|}}
-                                    <option value={{countryChoice}} selected={{eq model.country countryChoice}}><{{countryChoice}}</option>
+                                    <option value={{countryChoice}} selected={{eq model.meeting.country countryChoice}}><{{countryChoice}}</option>
                                     {{/each}}
                                 </select>
+                                <div class="row" style="color: #ff0000">{{if this.isInvalidCountry "Please select a country"}} </div> 
                             {{else}}
                                 <h1> {{model.meeting.title}}</h1>
                                 <h4> {{model.meeting.startDate}} - {{model.meeting.endDate}} </h4>
-                                <h4>{{model.meeting.city}}, {{model.meeting.state}} </h4>
+                                <h4>{{model.meeting.city}}, {{model.meeting.state}}, {{model.meeting.country}} </h4>
                                 <div class="logos"></div>
                             {{/if}}
                         </div>
                     </div>
-                    {{#if this.editing}}
+                    {{#if model.meeting.editing}}
                     <div class="col-lg-4">
                         Change conference logo: {{input class="form-control" type="file" accept="image/*" id="image"}}
                         Current logo: <img src={{model.meeting.logo}}>
                     </div>
                     <div class="col-lg-1">
-                        <button {{action "save"}}>Save</button>
+                        <button class="btn-success"{{action "save"}}>Save</button>
+                        <button class="btn-danger"{{action "cancel"}}>Cancel</button>
                     </div>
                     {{else}}
                     <div class="col-lg-4 conferencePhoto">
                         <img src={{model.meeting.logo}}>
                     </div>
                     <div class="col-lg-1">
-                        <button {{action "edit"}}>Edit</button>
+                        <button {{action "edit" model.meeting.country}}>Edit</button>
                     </div>
                     {{/if}}
                 </div>
@@ -55,7 +63,7 @@
             <div class="row ">
                 <div class="conferenceDescriptionContainer col-lg-12">
                     <div class="col-lg-8 col-lg-offset-2">
-                        {{#if this.editing}}
+                        {{#if model.meeting.editing}}
                             {{textarea value=model.meeting.description class="form-control" id="description"style="height: 100%"}}
                         {{else}}
                             <p class = "conferenceDescription">{{model.meeting.description}}</p>
@@ -63,7 +71,7 @@
                     </div>
                 </div>
             </div>
-            {{#if this.editing}}
+            {{#if model.meeting.editing}}
             {{else}}
             <div class="row">
                 <div class="col-md-12">
