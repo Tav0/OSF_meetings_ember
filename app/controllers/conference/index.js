@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ConfirmationMixin from 'ember-onbeforeunload/mixins/confirmation';
 
 export default Ember.Controller.extend({
 
@@ -50,7 +51,20 @@ export default Ember.Controller.extend({
     	},
 
 		edit() {
-			this.set('editing',true);
+			this.set('model.meeting.editing',true);
+		},	
+		cancel() {
+			this.set('model.meeting.editing',false);
+			this.store.findRecord('meeting',this.get('model.meeting.id')).then(function(meeting) {
+				meeting.rollbackAttributes();
+			});
+		},
+		unload() {
+	  		console.log('nice unload');
+			this.store.findRecord('meeting',document.getElementById('meetingId').value).then(function(meeting) {
+				meeting.rollbackAttributes();
+				meeting.set('editing',false); 
+			});
 		},
 		save() {
 			this.set('isValid',true);
@@ -90,7 +104,10 @@ export default Ember.Controller.extend({
 	        	this.set('isValid',false);
 	      	}
 	      	if (this.get('isValid')) {
-				this.set('editing',false);
+				this.set('model.meeting.editing',false);
+				this.store.findRecord('meeting',this.get('model.meeting.id')).then(function(meeting) {
+					meeting.save ();
+				});
 			}
 		}
 	}
