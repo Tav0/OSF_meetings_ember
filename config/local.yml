@@ -1,8 +1,8 @@
 ####### ember-osf settings ########
-# local:
-#   CLIENT_ID: 5294f4e8c2ef43baa4da6c265981467f
-#   PERSONAL_ACCESS_TOKEN: XWssdzPcebaJHTYQpr6iQtAAcYa3CHhtomod9hcm5SUKwUJicEO9IytjVUwu1grfwJjqqy
-#   OAUTH_SCOPES: osf.full_read osf.full_write
+local:
+  CLIENT_ID: 38207900f07141688b796e0b2b2f6af2
+  PERSONAL_ACCESS_TOKEN: DqmtBNkLGfwFKmH5EgOM6kDG4RaxYAQ84fYoNp7Fj2Nnn2s0FENWagFBN2Kdb6a9qvAJMF
+  OAUTH_SCOPES: osf.full_read osf.full_write
 
 stage:
    CLIENT_ID: 8bce2d2ed769427dbfbf3d3ca29f78b6
