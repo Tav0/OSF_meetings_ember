@@ -119,7 +119,7 @@
                     <div class="col-lg-8 fileView">
 
                       {{#masonry-grid gutter=10 items=model.meeting.linkedNodes as |item|}}
-                          <a style="color: black;" href= {{link-to-osf item.id}}>
+                          <a target="_blank" style="color: black;" href= {{link-to-osf item.id}}>
                           {{node-component title=item.title contributors=item.contributors description=item.description}}
                           </a>
                       {{/masonry-grid}}
