@@ -37,13 +37,15 @@ export default Ember.Controller.extend({
       "title": "Description"
     }],
 
-    actions: {
-        create()
-        {
-            this.transitionToRoute('register').then(function(newRoute) {
-              newRoute.controller.set('access', true);
-            });
-        },
+  visited: false,
+  
+  actions: {
+      create()
+      {
+          this.transitionToRoute('register').then(function(newRoute) {
+            newRoute.controller.set('access', true);
+          });
+      },
       scrollit()
       {
         Ember.$('#top').hide(2000, function() {
@@ -62,6 +64,6 @@ export default Ember.Controller.extend({
         Ember.$('#tileButton').removeClass('disabled');
         let shift = this;
         shift.set('tileview', false );
-        }
       }
+    }
 });

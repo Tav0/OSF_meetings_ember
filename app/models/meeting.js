@@ -1,7 +1,7 @@
 import Model from 'ember-data/model';
 import DS from 'ember-data';
 import attr from 'ember-data/attr';
-import Collection from './collection'
+import Collection from './collection';
 
 export default Collection.extend({
   website: attr('string'),
@@ -13,8 +13,9 @@ export default Collection.extend({
   submissionDate: attr('date'),
   closeDate: attr('date'),
   logo: attr(),
-  tags: attr('array'),
+  tags: attr(),
   sponsors: attr('array'),
   description: attr('string'),
   author: attr('string'),
+  editing: attr()
 });

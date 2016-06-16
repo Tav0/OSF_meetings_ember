@@ -1,10 +1,12 @@
 import Ember from 'ember';
+import TaggableMixin from 'ember-osf/mixins/taggable-mixin';
 
-export default Ember.Controller.extend({
+
+export default Ember.Controller.extend(TaggableMixin, {
   access: false,
-	isValidTitle: Ember.computed.match('model.newNode.title', /...+/),
- 	isValidContributors: Ember.computed.match('model.newNode.contributors', /...+/),
- 	isValidDescription: Ember.computed.match('model.newNode.description', /......+/),
+	isValidTitle: Ember.computed.match('title', /...+/),
+ 	isValidContributors: Ember.computed.match('contributors', /...+/),
+ 	isValidDescription: Ember.computed.match('description', /......+/),
  	isValid: Ember.computed.and('isValidTitle', 'isValidContributors', 'isValidDescription'),
     titleError: false,
  	contributorsError: false,
@@ -33,6 +35,6 @@ export default Ember.Controller.extend({
  			this.set("titleError", false);
  			this.set("contributorsError", false);
  			this.set("descriptionError", false);
- 		}
+ 		},
  	}
 });
