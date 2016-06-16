@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
     model() {
@@ -11,7 +10,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     },
 
     actions: {
-        //saveNodeSubmission(newNode){
         saveNodeSubmission(newNode, title, contributors, description, tags){
             if ((document.getElementById('title').value.length >= 3) &&
              (document.getElementById('contributors').value.length >= 3) &&

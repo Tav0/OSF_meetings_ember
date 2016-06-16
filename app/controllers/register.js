@@ -52,7 +52,6 @@ export default Ember.Controller.extend({
               ],
 
   actions: {
-
     selectCountry(country) {
       this.set('model.country', country);
     },
@@ -85,7 +84,6 @@ export default Ember.Controller.extend({
         this.set('isValid',false);
       }
       if (document.getElementById('submissionDate').value > document.getElementById('closeDate').value) {
-        console.log(document.getElementById('submissionDate').value);
         this.set('isInvalidSubmissionDates',true);
         this.set('isValid',false);
       }

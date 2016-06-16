@@ -13,7 +13,6 @@ export default Ember.Route.extend({
 
   },
    actions: {
-
      filterdata(){
 
       Ember.$('#filter').keyup(function () {
@@ -59,9 +58,6 @@ export default Ember.Route.extend({
        console.log(this.get('statusc'));
 
      }
-
-
-
   }
 });
 
