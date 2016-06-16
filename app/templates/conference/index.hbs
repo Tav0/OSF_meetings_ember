@@ -113,6 +113,7 @@
                                     <button class="btn-danger"{{action "cancel"}}>Cancel</button>
                                 </div>
 
+
                             {{else}}
                                 <h1> {{model.meeting.title}}</h1>
                                 <h4> {{model.meeting.startDate}} - {{model.meeting.endDate}} </h4>
@@ -122,6 +123,7 @@
                         </div>
                     </div>
                     {{#if this.editing}}
+
 
                     {{else}}
                     <div class="col-md-8 col-offset-2 conferencePhoto">
@@ -179,7 +181,9 @@
                     <div class="col-lg-8 fileView">
 
                       {{#masonry-grid gutter=10 items=model.meeting.linkedNodes as |item|}}
-                        {{node-component title=item.title contributors=item.contributors description=item.description}}
+                          <a target="_blank" style="color: black;" href= {{link-to-osf item.id}}>
+                          {{node-component title=item.title contributors=item.contributors description=item.description}}
+                          </a>
                       {{/masonry-grid}}
                     </div>
                     <div class="col-lg-1">

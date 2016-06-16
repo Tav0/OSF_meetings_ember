@@ -1,5 +1,8 @@
 export default function() {
   this.namespace = 'https://staging-api.osf.io/v2';
+  // if using localhost rather than staging, uncomment the following line
+  // this.namespace = 'https://localhost:8000/v2';
+
 
   this.get('/submission-evals');
   this.get('/submission-evals/:id');
@@ -31,8 +34,14 @@ export default function() {
   this.get('/reviewslists/:id');
 
   this.passthrough('https://staging-api.osf.io/v2/users/me/');
+  this.passthrough('http://localhost:8000/v2/users/me/');
+
   this.passthrough('https://staging-api.osf.io/v2/nodes');
+  this.passthrough('http://localhost:8000/v2/nodes');
+
   this.passthrough('https://staging-api.osf.io/v2/nodes/**');
+  this.passthrough('https://localhost:8000/v2/nodes/**');
+
 
 
 
