@@ -1,9 +1,10 @@
-import Model from 'ember-data/model';
+
+import OsfModel from 'ember-osf/models/node';
+import DS from 'ember-data';
 import attr from 'ember-data/attr';
 
-export default Model.extend({
-	title: attr('string'), 
-	contributors: attr('string'), 
-	description: attr('string'), 
-	keywords: attr('array')
+
+export default OsfModel.extend({
+	meeting: DS.belongsTo('meeting'),
+	tags: attr('array'),
 });
