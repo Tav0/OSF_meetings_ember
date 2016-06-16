@@ -10,30 +10,41 @@ export default Ember.Route.extend({
     actions: {
         saveEvaluation(newEval) {
             let router = this;
+            if ((parseInt(document.getElementById('premise').value) >= 0) &&
+                (parseInt(document.getElementById('premise').value) <= 15) &&
+                (parseInt(document.getElementById('research').value) >= 0) &&
+                (parseInt(document.getElementById('research').value) <= 15) &&
+                (parseInt(document.getElementById('style').value) >= 0) &&
+                (parseInt(document.getElementById('style').value) <= 15)) {
 
-            if ((document.getElementById('premise').value >= 0) &&
-                (document.getElementById('premise').value <= 15) && 
-                (document.getElementById('research').value >= 0) &&
-                (document.getElementById('research').value <= 15) &&
-                (document.getElementById('style').value >= 0) &&
-                (document.getElementById('style').value <= 15)) {
-                
-                newEval.save().then(function() {                
-                    document.getElementById('submitAlert').className = 
+                newEval.save().then(function() {
+                    document.getElementById('submitAlert').className =
                     "alert-success alert fade in";
 
                     setTimeout(function() {
-                        router.transitionTo('reviews');
+                        router.transitionTo('reviewslist');
                     }, 2000);
-                }, function() {
+                });  //, function() {
                     //error logic
-                    document.getElementById('errorAlert').className = 
-                    "alert-danger alert fade in";
-                });
-            }
-        },
 
-    }
+                }else{
+              document.getElementById('errorAlert').className =
+                "alert-danger alert fade in";
+              setTimeout(function() {
+                document.location.reload();
+
+              }, 2000);
+
+
+
+            }
+            },
+        cancel(){
+    let router = this;
+    router.transitionTo('reviewslist');
+  }
+    },
+
 });
 
 

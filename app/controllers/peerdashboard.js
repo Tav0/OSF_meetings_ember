@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   isshowingcontact: false,
   isshowingapprove: false,
+  isshowingform: false,
   selectvalue: 0,
   rid: 0,
   msgtemplate: '' +
@@ -31,7 +32,12 @@ export default Ember.Controller.extend({
     showdata() {
       this.set('isshowingcontact', true);
     },
-
+    showform() {
+      this.set('isshowingform', true);
+    },
+    hideform() {
+      this.set('isshowingform', false);
+    },
     hidedata()  {
       this.set('isshowingcontact', false);
     },
