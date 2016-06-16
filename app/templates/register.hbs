@@ -51,6 +51,10 @@
                           <br> <font style="color: #ff0000">Please select a country</font>
                       {{/if}}
                     </div>
+                     <div class="col-md-6">
+                         <label for="website" class="form-control-label">Conference Website:</label>
+                       {{input value=model.website class="form-control" placeholder="Conference Website" id="website"}}
+                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-6 {{if isValidCity "has-success" "has-error"}}">
