@@ -5,27 +5,24 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
     model() {
-//        return this.store.createRecord('node');
-        //let meeting = this.store.find('meeting', params.id);
-//        let meeting = this.modelFor('conference.index');
-//        console.log(meeting.meeting);
-//        return meeting;
-//        return Ember.RSVP.hash({
-//            meeting: meeting,
-//            newNode: this.store.createRecord('node'),
-//        });
+        return this.store.createRecord('node', {
+            tags: [],
+        });
     },
 
     actions: {
         //saveNodeSubmission(newNode){
-        saveNodeSubmission(title, contributors, description, keywords){
+        saveNodeSubmission(newNode, title, contributors, description, tags){
             let models = this.modelFor('conference.index');
-            let newNode = this.store.createRecord('node', {
-                title : title,
-                description : description,
+            console.log(tags);
+            newNode.setProperties({
+                title: title,
+                description: description,
                 category: 'project',
                 meeting: models.meeting,
+                tags: tags.toString(),
             });
+            console.log(newNode);
           document.getElementById("fileSubmission").reset();
             
             newNode.save();
@@ -39,7 +36,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
         {
           let models = this.modelFor('conference.index');
           this.transitionTo('conference.index', models.meeting.id);
-        }
+        },
     }
 
 //	model() {

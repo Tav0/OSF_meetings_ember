@@ -13,7 +13,7 @@ export default Collection.extend({
   submissionDate: attr('date'),
   closeDate: attr('date'),
   logo: attr(),
-  tags: attr('array'),
+  tags: attr(),
   sponsors: attr('array'),
   description: attr('string'),
 });
