@@ -13,14 +13,15 @@ export default Ember.Route.extend({
 
   },
    actions: {
-    filterdata(){
+
+     filterdata(){
 
       Ember.$('#filter').keyup(function () {
 
-        var rex = new RegExp($(this).val(), 'i');
-        $('.searchable tr').hide();
-        $('.searchable tr').filter(function () {
-          return rex.test($(this).text());
+        var rex = new RegExp(Ember.$(this).val(), 'i');
+        Ember.$('.searchable tr').hide();
+        Ember.$('.searchable tr').filter(function () {
+          return rex.test(Ember.$(this).text());
         }).show();
 
       });
