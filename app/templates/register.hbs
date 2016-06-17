@@ -53,10 +53,6 @@
                           <br> <font style="color: #ff0000">Please select a country</font>
                       {{/if}}
                     </div>
-                     <div class="col-md-6">
-                         <label for="website" class="form-control-label">Conference Website:</label>
-                       {{input value=model.website class="form-control" placeholder="Conference Website" id="website"}}
-                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-6 {{if isValidCity "has-success" "has-error"}}">
@@ -137,12 +133,37 @@
                     </div>
                     <div class="col-md-2 ">
                         <button class="form-control btn btn-danger" {{action "back" model}}>Cancel</button>
-                        {{#if previewOn}}
-                          {{#modal-dialog close="hideform"
-                          targetAttachment="center"
-                          translucentOverlay=true
-                          }}
-                            Hello world.
+                        {{#if this.previewOn}}
+                          {{#modal-dialog close="hideform" targetAttachment="center" translucentOverlay=true}}
+                            <div class="row" style="padding: 20px">
+                                <div class="col-md-12">
+                                    <div class="row" style=>
+                                        <div class="conferenceTopContainer col-md-12">
+                                            <div class="col-md-8 col-md-offset-2" style="height: 100%;">
+                                                <div class="conferenceInfo">
+                                                    <h1> {{model.title}}</h1>
+                                                    <h4> {{model.startDate}} - {{model.endDate}} </h4>
+                                                    <h4>{{model.city}}, {{model.state}}, {{model.country}} </h4>
+                                                <div class="logos"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-offset-2 conferencePhoto">
+                                          {{!--TODO: THIS WILL PROBABLY REQUIRE EDITING ONCE FILE UPLOAD IS WORKING CORREFTLY--}}
+                                            <img src={{model.logo}}>  
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="conferenceDescriptionContainer col-lg-12">
+                                        <div class="col-lg-8 col-lg-offset-2">
+                                            <p class = "conferenceDescription">{{model.meeting.description}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                              <button class="form-control btn btn-danger" {{action "previewOff"}}>Close</button>
+                              <button class="form-control btn btn-success" {{action "create" model}}>Submit</button>
+                            </div> 
                          {{/modal-dialog}}
                         {{/if}}
                     </div>
