@@ -1,15 +1,23 @@
+a, a:link, a:visited , a:hover, a:active
+{
+  color: white;
+  text-decoration: none;
+}
 .testClass
 {
   background-color: purple;
 }
-a{
-  color: white;
-}
-a:hover
+
+td
 {
-  text-decoration: none;
-  color: white;
+  max-width: 475px;
 }
+td img
+{
+  max-height: 80%;
+  max-width: 100%;
+}
+
 
 html, body .fullscreen
 {
@@ -34,6 +42,10 @@ html, body .fullscreen
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
+}
+.redirectToConference:hover
+{
+  cursor: pointer;
 }
 
 .titleRow h1
