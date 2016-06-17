@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 import ConfirmationMixin from 'ember-onbeforeunload/mixins/confirmation';
-import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 export default Ember.Route.extend(ConfirmationMixin, {
 	confirmationMessage: 'Your conference may have unsaved changes. Leaving will cancel unsaved changes.',
@@ -22,7 +21,7 @@ export default Ember.Route.extend(ConfirmationMixin, {
         		newRoute.controller.set('visited', true);
 			});			
 		},
-		willTransition: function(transition) {
+		willTransition: function() {
 			var controller = this.get('controller');
 			controller.send('cancel');
 		} 
