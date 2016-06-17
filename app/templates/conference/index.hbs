@@ -192,7 +192,14 @@
                 </div>
             </div>
             {{/if}}
-
+            {{#if this.navModal}}
+                {{#modal-dialog close="hideform" targetAttachment="center" translucentOverlay=true}}
+                    You are currently in edit mode. Changes to your meeting will not be saved.
+                    <br> Are you sure you want to leave?
+                    <br> <button class="btn btn-success"{{action "leave"}}>Yes</button> 
+                    <button class="btn btn-danger" {{action "stay"}}>No</button>
+                {{/modal-dialog}}
+            {{/if}}
         </div>
     </div>
 </div>

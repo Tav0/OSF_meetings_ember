@@ -2,7 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+
 	editing: false,
+	navModal: false,
 
 	isInvalidTitle: false,
   	isInvalidCity: false,
@@ -58,13 +60,6 @@ export default Ember.Controller.extend({
 				meeting.rollbackAttributes();
 			});
 		},
-		unload() {
-	  		console.log('nice unload');
-			this.store.findRecord('meeting',document.getElementById('meetingId').value).then(function(meeting) {
-				meeting.rollbackAttributes();
-				meeting.set('editing',false); 
-			});
-		},
 		save() {
 			this.set('isValid',true);
 	      	this.set('isInvalidTitle', false);
@@ -108,6 +103,6 @@ export default Ember.Controller.extend({
 					meeting.save ();
 				});
 			}
-		}
+		},
 	}
 });
