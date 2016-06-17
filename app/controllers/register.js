@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   access: false,
+  previewOn: false,
+
   isValidTitle: (Ember.computed.match('model.title', /.+/)),
   isValidCity: Ember.computed.match('model.city', /.+/),
   isValidState: Ember.computed.match('model.state', /.+/),
@@ -24,7 +26,7 @@ export default Ember.Controller.extend({
               "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria",
               "Azerbaijan", "Bahamas, The", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
               "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil",
-              "Brunei", "Bulgaria", "Burkina Faso", "Burma", "Burundi", "Cambodia", "Cameroon", "Canada",
+              "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada",
               "Cape Verde", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros",
               "Congo", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Curacao", "Cyprus", 
               "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt",
@@ -36,7 +38,7 @@ export default Ember.Controller.extend({
               "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", 
               "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", 
               "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", 
-              "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", 
+              "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", 
               "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Zealand", 
               "Nicaragua", "Niger", "Nigeria", "North Korea", "Norway", "Oman", "Pakistan", "Palau",
               "Palestinian Territories", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines",
@@ -99,6 +101,9 @@ export default Ember.Controller.extend({
           });
         });
       }
+    },
+    preview() {
+        this.set('previewOn',true)
     }
   },
 
