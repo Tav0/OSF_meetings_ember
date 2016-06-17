@@ -16,9 +16,7 @@ export default function() {
   this.get('/meetings/:id');
   this.patch('/meetings/:id');
 
-  // this.get('/nodes');
-  this.post('/nodes');
-  // this.get('/nodes/:id');
+
 
   this.get('/nodes/:id/files/:id');
   this.post('/nodes/:id/files', (db, request) => {
