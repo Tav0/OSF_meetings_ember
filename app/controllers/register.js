@@ -61,20 +61,27 @@ export default Ember.Controller.extend({
     create(newMeeting){
       this.setProperties({isValid: true, isInvalidTitle: false, isInvalidCountry: false, isInvalidState: false, isInvalidCity: false,
         isInvalidDescription: false, isInvalidDates: false, isINvalidSubmissionDates: false});
-      if (document.getElementById('title').value.length === 0)
+      if (document.getElementById('title').value.length === 0) {
         this.setProperties({isInvalidTitle: true, isValid: false});
-      if (document.getElementById('city').value.length === 0)
+      }
+      if (document.getElementById('city').value.length === 0) {
         this.setProperties({isInvalidCity: true, isValid: false});
-      if (document.getElementById('state').value.length === 0 && this.get('model.country') === "United States of America (USA)")
+      }
+      if (document.getElementById('state').value.length === 0 && this.get('model.country') === "United States of America (USA)") {
         this.setProperties({isInvalidState: true, isValid: false});
-      if ((this.get('model.country') === "") || (this.get('model.country') === undefined))
+      }
+      if ((this.get('model.country') === "") || (this.get('model.country') === undefined)) {
         this.setProperties({isInvalidCountry: true, isValid: false});
-      if (document.getElementById('startDate').value > document.getElementById('endDate').value)
+      }
+      if (document.getElementById('startDate').value > document.getElementById('endDate').value) {
         this.setProperties({isInvalidDates: true, isValid: false});
-      if (document.getElementById('submissionDate').value > document.getElementById('closeDate').value)
+      }
+      if (document.getElementById('submissionDate').value > document.getElementById('closeDate').value) {
         this.setProperties({isInvalidSubmissionDates: true, isValid: false});
-      if (document.getElementById('description').value.length === 0)
+      }
+      if (document.getElementById('description').value.length === 0) {
         this.setProperties({isInvalidDescription: true, isValid: false});
+      }
       if (this.get('isValid')) {
         var router = this;
           newMeeting.save().then(function(params){
@@ -87,20 +94,27 @@ export default Ember.Controller.extend({
     preview() {
       this.setProperties({isValid: true, isInvalidTitle: false, isInvalidCountry: false, isInvalidState: false, isInvalidCity: false,
         isInvalidDescription: false, isInvalidDates: false, isINvalidSubmissionDates: false});
-      if (document.getElementById('title').value.length === 0)
+      if (document.getElementById('title').value.length === 0) {
         this.setProperties({isInvalidTitle: true, isValid: false});
-      if (document.getElementById('city').value.length === 0)
+      }
+      if (document.getElementById('city').value.length === 0) {
         this.setProperties({isInvalidCity: true, isValid: false});
-      if (document.getElementById('state').value.length === 0 && this.get('model.country') === "United States of America (USA)")
+      }
+      if (document.getElementById('state').value.length === 0 && this.get('model.country') === "United States of America (USA)") {
         this.setProperties({isInvalidState: true, isValid: false});
-      if ((this.get('model.country') === "") || (this.get('model.country') === undefined))
+      }
+      if ((this.get('model.country') === "") || (this.get('model.country') === undefined)) {
         this.setProperties({isInvalidCountry: true, isValid: false});
-      if (document.getElementById('startDate').value > document.getElementById('endDate').value)
+      }
+      if (document.getElementById('startDate').value > document.getElementById('endDate').value) {
         this.setProperties({isInvalidDates: true, isValid: false});
-      if (document.getElementById('submissionDate').value > document.getElementById('closeDate').value)
+      }
+      if (document.getElementById('submissionDate').value > document.getElementById('closeDate').value) {
         this.setProperties({isInvalidSubmissionDates: true, isValid: false});
-      if (document.getElementById('description').value.length === 0)
+      }
+      if (document.getElementById('description').value.length === 0) {
         this.setProperties({isInvalidDescription: true, isValid: false});
+      }
       if (this.get('isValid')) {
         this.set('previewOn',true);
       }
