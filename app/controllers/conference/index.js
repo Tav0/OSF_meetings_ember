@@ -16,7 +16,8 @@ export default Ember.Controller.extend({
  	isValid: true,
  	conferenceDates: '',
 
- 	countries: ["", "United States of America (USA)", "Afghanistan", "Albania", "Algeria", "Andorra",
+
+ 	countries: ["-Select a country-", "United States of America (USA)", "Afghanistan", "Albania", "Algeria", "Andorra",
               "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria",
               "Azerbaijan", "Bahamas, The", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
               "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil",
@@ -62,48 +63,28 @@ export default Ember.Controller.extend({
 			});
 		},
 		save() {
-			this.set('isValid',true);
-	      	this.set('isInvalidTitle', false);
-	     	this.set('isInvalidCity',false);
-	     	this.set('isInvalidState',false);
-	      	this.set('isInvalidCountry',false);
-	      	this.set('isInvalidDescription',false);
-	      	this.set('isInvalidDates',false);
-	      	this.set('isInvalidSubmissionDates',false);
-	      	if (this.get('model.meeting.title') === "") {
-	        	this.set('isInvalidTitle',true);
-	        	this.set('isValid',false);
-	      	}
-	      	if (this.get('model.meeting.city') === "") {  
-	        	this.set('isInvalidCity',true);
-	        	this.set('isValid',false);
-	      	}
-	      	if (this.get('model.meeting.state') === "" && this.get('model.meeting.country') === "United States of America (USA)") {
-	        	this.set('isInvalidState',true);
-	        	this.set('isValid',false);
-	      	}
-	      	if ((this.get('model.meeting.country') === "") || (this.get('model.meeting.country') === undefined)) {
-	        	this.set('isInvalidCountry',true);
-	        	this.set('isValid',false);
-	      	}
-	      	if (this.get('model.meeting.startDate') > this.get('model.meeting.endDate')) {
-	        	this.set('isInvalidDates',true);
-	        	this.set('isValid',false);
-	      	}
-	      	if (this.get('model.meeting.submissionDate') > this.get('model.meeting.closeDate')) {
-	        	this.set('isInvalidSubmissionDates',true);
-	        	this.set('isValid',false);
-	      	}
-	      	if (this.get('model.meeting.description') === "") {
-	        	this.set('isInvalidDescription',true);
-	        	this.set('isValid',false);
-	      	}
+	      	this.setProperties({isValid: true, isInvalidTitle: false, isInvalidCountry: false, isInvalidState: false, isInvalidCity: false,
+	      		isInvalidDescription: false, isInvalidDates: false, isINvalidSubmissionDates: false});
+	      	if (this.get('model.meeting.title') === "")
+	        	this.setProperties({isInvalidTitle: true, isValid: false});
+	      	if (this.get('model.meeting.city') === "")
+	        	this.setProperties({isInvalidCity: true, isValid: false});
+	      	if (this.get('model.meeting.state') === "" && this.get('model.meeting.country') === "United States of America (USA)")
+	        	this.setProperties({isInvalidState: true, isValid: false});
+	      	if ((this.get('model.meeting.country') === "-Select a country-") || (this.get('model.meeting.country') === undefined))
+	        	this.setProperties({isInvalidCountry: true, isValid: false});
+	      	if (this.get('model.meeting.startDate') > this.get('model.meeting.endDate'))
+	        	this.setProperties({isInvalidDates: true, isValid: false});
+	      	if (this.get('model.meeting.submissionDate') > this.get('model.meeting.closeDate'))
+	        	this.setProperties({isInvalidSubmissionDates: true, isValid: false});
+	      	if (this.get('model.meeting.description') === "")
+	        	this.setProperties({isInvalidDescription: true, isValid: false});
 	      	if (this.get('isValid')) {
 				this.set('editing',false);
 				this.store.findRecord('meeting',this.get('model.meeting.id')).then(function(meeting) {
 					meeting.save ();
 				});
 			}
-		},
+		}
 	}
 });
