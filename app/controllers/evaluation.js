@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
 	isValidStyleMax: Ember.computed.lte('model.style', 15),
 	isValidStyleMin: Ember.computed.gte('model.style', 0),
 
-	isValid: Ember.computed.and('isValidPremise', 'isValidResearch', 'isValidStyle'),
+	isValid: Ember.computed.and('isValidPremiseMax', 'isValidPremiseMin', 'isValidResearchMax', 'isValidResearchMin', 'isValidStyleMax', 'isValidStyleMin'),
 	//If isValid is false, disable the Submit button
 	isDisabled: Ember.computed.not('isValid')
 
