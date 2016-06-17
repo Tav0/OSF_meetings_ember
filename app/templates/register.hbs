@@ -1,3 +1,5 @@
+
+
 {{#if this.access}}
 <style>
     label
@@ -130,11 +132,22 @@
                     <div class="col-md-2 ">
                         <button class="form-control btn btn-success" {{action "create" model}}>Submit</button>
                     </div>
+                    <div class="col-md-2">
+                        <button class="form-control" {{action "preview"}}>Preview</button>
+                    </div>
                     <div class="col-md-2 ">
                         <button class="form-control btn btn-danger" {{action "back" model}}>Cancel</button>
+                        {{#if previewOn}}
+                          {{#modal-dialog close="hideform"
+                          targetAttachment="center"
+                          translucentOverlay=true
+                          }}
+                            Hello world.
+                         {{/modal-dialog}}
+                        {{/if}}
                     </div>
-            </div>
-            </form>
+                  </div>
+              </form>
             </div>
         </div>
     </div>
