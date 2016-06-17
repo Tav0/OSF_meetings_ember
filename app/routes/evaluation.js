@@ -25,10 +25,6 @@ export default Ember.Route.extend({
                     setTimeout(function() {
                         router.transitionTo('reviews');
                     }, 2000);
-                }, function() {
-                    //error logic
-                    document.getElementById('errorAlert').className = 
-                    "alert-danger alert fade in";
                 });
             }
         },

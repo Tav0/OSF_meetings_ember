@@ -1,9 +1,10 @@
 import Ember from 'ember';
-import ConfirmationMixin from 'ember-onbeforeunload/mixins/confirmation';
 
 export default Ember.Controller.extend({
 
+
 	editing: false,
+	navModal: false,
 
 	isInvalidTitle: false,
   	isInvalidCity: false,
@@ -18,7 +19,7 @@ export default Ember.Controller.extend({
               "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria",
               "Azerbaijan", "Bahamas, The", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
               "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil",
-              "Brunei", "Bulgaria", "Burkina Faso", "Burma", "Burundi", "Cambodia", "Cameroon", "Canada",
+              "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada",
               "Cape Verde", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros",
               "Congo", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Curacao", "Cyprus", 
               "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt",
@@ -30,7 +31,7 @@ export default Ember.Controller.extend({
               "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", 
               "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", 
               "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", 
-              "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", 
+              "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar",
               "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Zealand", 
               "Nicaragua", "Niger", "Nigeria", "North Korea", "Norway", "Oman", "Pakistan", "Palau",
               "Palestinian Territories", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines",
@@ -57,13 +58,6 @@ export default Ember.Controller.extend({
 			this.set('editing',false);
 			this.store.findRecord('meeting',this.get('model.meeting.id')).then(function(meeting) {
 				meeting.rollbackAttributes();
-			});
-		},
-		unload() {
-	  		console.log('nice unload');
-			this.store.findRecord('meeting',document.getElementById('meetingId').value).then(function(meeting) {
-				meeting.rollbackAttributes();
-				meeting.set('editing',false); 
 			});
 		},
 		save() {
@@ -109,6 +103,6 @@ export default Ember.Controller.extend({
 					meeting.save ();
 				});
 			}
-		}
+		},
 	}
 });

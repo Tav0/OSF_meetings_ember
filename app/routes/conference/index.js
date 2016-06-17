@@ -1,16 +1,11 @@
 import Ember from 'ember';
 
-import ConfirmationMixin from 'ember-onbeforeunload/mixins/confirmation';
-import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
-
-export default Ember.Route.extend(ConfirmationMixin, {
-	confirmationMessage: 'Your conference may have unsaved changes. Leaving will cancel unsaved changes.',
-	//isPageDirty uses ember-onbeforeunload. onbefore unload overrides willTransition and uses onUnload() instead. Since onUnload() doesn't work, we will implement that later.
- //  	isPageDirty() { 
-	// 	var controller = this.get('controller');
-	// 	var meeting = controller.get('model.meeting'); 
-	// 	return controller.get('model.meeting.editing');
-	// },
+export default Ember.Route.extend({
+	previousTransition: null,
+	deactivate: function() {
+			var controller = this.get('controller');
+			controller.send('cancel');
+		},
 	model(params) {
         return Ember.RSVP.hash({
             meeting: this.store.find('meeting', params.id) 
@@ -24,8 +19,22 @@ export default Ember.Route.extend(ConfirmationMixin, {
 		},
 		willTransition: function(transition) {
 			var controller = this.get('controller');
+			if (controller.get('editing')) {
+				transition.abort();
+				controller.set('navModal',true);
+				this.set('previousTransition',transition);
+			}
+		},
+		leave() {
+			var controller = this.get('controller');
 			controller.send('cancel');
-		} 
+			controller.set('navModal',false);
+			this.get('previousTransition').retry();
+		},
+		stay() {
+			var controller = this.get('controller');
+			controller.set('navModal',false);
+		}
 	}
 });
  

@@ -13,45 +13,36 @@
 		<div class="col-md-8 col-md-offset-1">
 			<h3><label>Step 1: Select Grade Based on Rubric</label></h3>
 			<h3><b>Submission Evaluation</b></h3>
-				<div class="form-group row {{if isValidPremise "has-success" "has-error"}}">
+				<div class="form-group row">
 					<div class="col-md-2 col-md-offset-1">
 						<label><font style='color: #ff0000'>*</font>Premise</label>
 					</div>
 					<span class="glyphicon glyphicon-ok form-control-feedback" ></span>
 					<div class="col-md-6">
-						{{input id="premise" type="integer" value=model.premise class="form-control"}}
+						{{input class="premise" type="integer" value=model.premise min=0 max=15 autofocus="autofocus"}}
 						/15
-						<div style="color:#FF0000">
-                        {{if this.premiseError "Please assign a valid value" ""}}
-                    	</div>
 					</div>
 				</div>
 
-				<div class="form-group row {{if isValidResearch "has-success" "has-error"}}">
+				<div class="form-group row">
 					<div class="col-md-2 col-md-offset-1">
 						<label><font style='color: #ff0000'>*</font>Research</label>
 					</div>
 					<span class="glyphicon glyphicon-ok form-control-feedback" ></span>
 					<div class="col-md-6">
-						{{input id="research" type="integer" value=model.research class="form-control"}}
+						{{input class="research" type="integer" value=model.research min=0 max=15 autofocus="autofocus"}}
 						/15
-						<div style="color:#FF0000">
-                        {{if this.researchError "Please assign a valid value" ""}}
-                    	</div>
 					</div>
 				</div>
 
-				<div class="form-group row {{if isValidStyle "has-success" "has-error"}}">
+				<div class="form-group row"> 
 					<div class="col-md-2 col-md-offset-1">
 						<label><font style='color: #ff0000'>*</font>Style</label>
 					</div>
 					<span class="glyphicon glyphicon-ok form-control-feedback" ></span>
 					<div class="col-md-6">
-						{{input id="style" type="integer" value=model.style class="form-control"}}
+						{{input class="style" type="integer" value=model.style min=0 max=15 autofocus="autofocus"}}
 						/15
-						<div style="color:#FF0000">
-                        {{if this.StyleError "Please assign a valid value" ""}}
-                    	</div>
 					</div>
 				</div>
 
@@ -83,10 +74,7 @@
 		<div id="submitAlert" class="alert alert-success hide fade in">
 		Success! Feedback submitted.
 		</div>
-		<button style = "height: 40px; width: 100px" class="form-control" {{action "saveEvaluation" model}} type="submit">Submit</button>
-		<div id="errorAlert" class="alert alert-danger hide fade in">
-		Please recheck your values.
-		</div>
+		<button style = "height: 40px; width: 100px" class="form-control" {{action "saveEvaluation" model}} type="submit" disabled={{isDisabled}}>Submit</button>
 	</div>
 </div>
 

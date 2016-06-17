@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import TaggableMixin from 'ember-osf/mixins/taggable-mixin';
 
-
 export default Ember.Controller.extend(TaggableMixin, {
   access: false,
 	isValidTitle: Ember.computed.match('title', /...+/),
@@ -11,7 +10,6 @@ export default Ember.Controller.extend(TaggableMixin, {
     titleError: false,
  	contributorsError: false,
  	descriptionError: false,
-
  	actions: {
  		displayErrors(){
  			this.set("titleError", false);
