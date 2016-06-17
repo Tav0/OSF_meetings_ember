@@ -65,20 +65,27 @@ export default Ember.Controller.extend({
 		save() {
 	      	this.setProperties({isValid: true, isInvalidTitle: false, isInvalidCountry: false, isInvalidState: false, isInvalidCity: false,
 	      		isInvalidDescription: false, isInvalidDates: false, isINvalidSubmissionDates: false});
-	      	if (this.get('model.meeting.title') === "")
+	      	if (this.get('model.meeting.title') === "") {
 	        	this.setProperties({isInvalidTitle: true, isValid: false});
-	      	if (this.get('model.meeting.city') === "")
+	      	}
+	      	if (this.get('model.meeting.city') === "") {
 	        	this.setProperties({isInvalidCity: true, isValid: false});
-	      	if (this.get('model.meeting.state') === "" && this.get('model.meeting.country') === "United States of America (USA)")
+	      	}
+	      	if (this.get('model.meeting.state') === "" && this.get('model.meeting.country') === "United States of America (USA)") {
 	        	this.setProperties({isInvalidState: true, isValid: false});
-	      	if ((this.get('model.meeting.country') === "-Select a country-") || (this.get('model.meeting.country') === undefined))
+	      	}
+	      	if ((this.get('model.meeting.country') === "-Select a country-") || (this.get('model.meeting.country') === undefined)) {
 	        	this.setProperties({isInvalidCountry: true, isValid: false});
-	      	if (this.get('model.meeting.startDate') > this.get('model.meeting.endDate'))
+	      	}
+	      	if (this.get('model.meeting.startDate') > this.get('model.meeting.endDate')) {
 	        	this.setProperties({isInvalidDates: true, isValid: false});
-	      	if (this.get('model.meeting.submissionDate') > this.get('model.meeting.closeDate'))
+	      	}
+	      	if (this.get('model.meeting.submissionDate') > this.get('model.meeting.closeDate')) {
 	        	this.setProperties({isInvalidSubmissionDates: true, isValid: false});
-	      	if (this.get('model.meeting.description') === "")
+	      	}
+	      	if (this.get('model.meeting.description') === "") {
 	        	this.setProperties({isInvalidDescription: true, isValid: false});
+	      	}
 	      	if (this.get('isValid')) {
 				this.set('editing',false);
 				this.store.findRecord('meeting',this.get('model.meeting.id')).then(function(meeting) {
