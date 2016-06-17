@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import ConfirmationMixin from 'ember-onbeforeunload/mixins/confirmation';
 
 export default Ember.Controller.extend({
 
