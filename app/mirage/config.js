@@ -1,7 +1,7 @@
 export default function() {
-  //this.namespace = 'https://staging-api.osf.io/v2';
+  this.namespace = 'https://staging-api.osf.io/v2';
   // if using localhost rather than staging, uncomment the following line
-  this.namespace = 'https://localhost:8000/v2';
+  // this.namespace = 'https://localhost:8000/v2';
 
 
   this.get('/submission-evals');
