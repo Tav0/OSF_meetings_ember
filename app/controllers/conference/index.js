@@ -14,6 +14,8 @@ export default Ember.Controller.extend({
  	isInvalidSubmissionDates: false,
  	isInvalidDescription: false,
  	isValid: true,
+ 	conferenceDates: '',
+
 
  	countries: ["", "United States of America (USA)", "Afghanistan", "Albania", "Algeria", "Andorra",
               "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria",
