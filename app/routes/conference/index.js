@@ -7,8 +7,10 @@ export default Ember.Route.extend({
 			controller.send('cancel');
 		},
 	model(params) {
+		// let mod = this.modelFor('conference.index');
+		console.log(params);
         return Ember.RSVP.hash({
-            meeting: this.store.find('meeting', params.id) 
+            meeting: this.store.findRecord('meeting', params.meeting_id)
         });
 	},
 	actions: {
