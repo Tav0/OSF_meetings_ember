@@ -63,7 +63,6 @@ export default Ember.Controller.extend({
 			});
 		},
 		save() {
-			console.log("Yes we got here");
 	      	this.setProperties({isValid: true, isInvalidTitle: false, isInvalidCountry: false, isInvalidState: false, isInvalidCity: false,
 	      		isInvalidDescription: false, isInvalidDates: false, isINvalidSubmissionDates: false});
 	      	if (this.get('model.meeting.title') === "") {
@@ -88,11 +87,10 @@ export default Ember.Controller.extend({
 	        	this.setProperties({isInvalidDescription: true, isValid: false});
 	      	}
 	      	if (this.get('isValid')) {
-				this.set('editing',false);
-				console.log("We also got here");
-				this.store.findRecord('meeting',this.get('model.meeting.id')).then(function(meeting) {
-					meeting.save();
+				this.store.findRecord('meeting', this.get('model.meeting.id')).then(function(){
+					this.save();
 				});
+				this.set('editing',false);
 			}
 		}
 	}
