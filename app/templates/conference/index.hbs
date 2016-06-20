@@ -161,7 +161,7 @@ img
                                 </div>
                               {{#if this.editing}}
                               {{else}}
-                                  <div class="row">
+<!--                                   <div class="row">
                                       <div class="col-md-12">
                                           <div class="col-lg-8 fileView">
                                             {{#masonry-grid gutter=10 items=model.meeting.linkedNodes as |item|}}
@@ -173,7 +173,23 @@ img
                                           <div class="col-lg-1">
                                           </div>
                                       </div>
+                                  </div> -->
+                                  <br>
+                                  <div id="table" class="row">
+                                      <div class="col-md-12">
+                                        {{!-- models-table data=model columns=columns useFilteringByColumns=false rowTemplate="row" --}}
+                                          <table class="table  table-hover table-condensed table-bordered">
+                                              <tbody>
+                                              {{#each model.meeting.linkedNodes as |item|}}
+                                                <a target="_blank" style="color: black;" href= {{link-to-osf item.id}}>
+                                                  {{node-component title=item.title contributors=item.contributors description=item.description}}
+                                                </a>
+                                              {{/each}}
+                                              </tbody>
+                                          </table>
+                                      </div>
                                   </div>
+
                               {{/if}}
 
                               {{#if this.navModal}}
