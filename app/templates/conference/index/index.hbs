@@ -32,7 +32,6 @@ a:hover
 </style>
 <nav id= "create" class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid" id="browse">
-
     <form class="navbar-form navbar-left" role="search">
       <button class="btn btn-success navbar-btn" {{action "back"}}>
           ← View More Meetings
@@ -53,13 +52,12 @@ a:hover
   </div>
 </nav>
 
-<link rel="stylesheet" href="../../../dist/assets/conference.css">
-<div class="container-fluid" style="margin: 100px 0 0 0; padding: 0px">
+<div class="container-fluid osfSuperLightBackground">
     <div class="row" style="padding: 0px">
         <div class="col-md-12">
             <div class="row" style=>
                 <div class="conferenceTopContainer col-md-12">
-                    <div class="col-md-8 col-md-offset-2" style="height: 100%;">
+                    <div class="col-md-8 col-md-offset-2" style="height: 100%; padding-top: 100px">
                         <div class="conferenceInfo">
 
                             {{#if this.editing}}
@@ -154,12 +152,6 @@ a:hover
                                         <img class="col-md-6" src={{model.meeting.logo}}>
                                     </div>
                                 </form>
-
-                                <div class="col-lg-1">
-                                    <button class="btn-success"{{action "save"}}>Save</button>
-                                    <button class="btn-danger"{{action "cancel"}}>Cancel</button>
-                                </div>
-
                             {{else}}
                                 <div class="form-group row">
                                     <div class="col-md-6">
@@ -176,9 +168,8 @@ a:hover
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="btn-group" role="group" aria-label="...">
-                                            {{#link-to "conference.index.submission" model.meeting.id}}
-                                                <button type="button" class="btn btn-default" style="margin: 0 0 5px 0; width: 200px;">  Submit to This Conference</button>
-                                            {{/link-to}}
+
+                                            <button type="button" class="btn btn-default" style="margin: 0 0 5px 0; width: 200px;" {{action "submitTo"}}>  Submit to This Conference</button>
                                             <input type="text" class="form-control" style="width: 200px;" placeholder="Search" title="search" >
                                         </div>
                                     </div>

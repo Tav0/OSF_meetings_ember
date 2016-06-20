@@ -1,13 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-
     model() {
         return this.store.createRecord('node', {
             tags: [],
         });
     },
-
     actions: {
         saveNodeSubmission(newNode, title, contributors, description, tags){
             if ((document.getElementById('title').value.length >= 3) &&
@@ -15,8 +13,7 @@ export default Ember.Route.extend({
                     (document.getElementById('description').value.length >= 6))  {
 
                 let models = this.modelFor('conference.index');
-                console.log(tags);
-                newNode.setProperties({
+                    newNode.setProperties({
                     title: title,
                     description: description,
                     category: 'project',
@@ -30,7 +27,7 @@ export default Ember.Route.extend({
             }
 
             else {
-                var controlErrors = this.controllerFor('conference.submission');
+                var controlErrors = this.controllerFor('conference.index.submission');
                 controlErrors.send('displayErrors');
             }
         },
@@ -39,6 +36,6 @@ export default Ember.Route.extend({
         {
             let models = this.modelFor('conference.index');
             this.transitionTo('conference.index', models.meeting.id);
-        },
+        }
     }
 });

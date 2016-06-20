@@ -39,7 +39,6 @@ export default Ember.Controller.extend({
     }],
 
   visited: false,
-
   actions: {
       create()
       {
@@ -51,6 +50,7 @@ export default Ember.Controller.extend({
       {
         Ember.$('#top').hide(2000, function() {
           Ember.$('#bottom').css({"margin-top": "80px"});
+          Ember.$('#tableContainer').css({"margin-top": "80px"});
           Ember.$('#create').addClass("navbar-fixed-top");
         });
       },

@@ -12,7 +12,7 @@
     }
 </style>
 
-<div class="container-fluid">
+<div class="container-fluid osfLightBackground">
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-10 col-md-offset-1" style="padding-top: 50px">
@@ -40,7 +40,7 @@
                     <div class="col-md-6">
                         <label for="city" class="form-control-label">Conference Logo:</label>
                       {{input class="form-control" type="file" accept="image/*" id="image" }}
-                    </div>               
+                    </div>
                     <div class="col-md-6 {{if isValidCountry "has-success" "has-error"}}">
                         <label for="country" class="col-sm-7 form-control-label"><font style="color: #ff0000">*</font> Country:</label>
 
@@ -149,7 +149,7 @@
                                         </div>
                                         <div class="col-md-8 col-offset-2 conferencePhoto">
                                           {{!--TODO: THIS WILL PROBABLY REQUIRE EDITING ONCE FILE UPLOAD IS WORKING CORREFTLY--}}
-                                            <img src={{model.logo}}>  
+                                            <img src={{model.logo}}>
                                         </div>
                                     </div>
                                 </div>
@@ -163,7 +163,7 @@
                             </div>
                               <button class="form-control btn btn-danger" {{action "previewOff"}}>Close</button>
                               <button class="form-control btn btn-success" {{action "create" model}}>Submit</button>
-                            </div> 
+                            </div>
                          {{/modal-dialog}}
                         {{/if}}
                     </div>
