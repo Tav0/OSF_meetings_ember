@@ -27,7 +27,7 @@ export default Ember.Route.extend({
             }
 
             else {
-                var controlErrors = this.controllerFor('conference.submission');
+                var controlErrors = this.controllerFor('conference.index.submission');
                 controlErrors.send('displayErrors');
             }
         },
