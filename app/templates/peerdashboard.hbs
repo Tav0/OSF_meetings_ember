@@ -16,8 +16,8 @@
             </div>
 
             <div class="btn-group">
-                <a href="#" id="list" class="btn btn-default btn-sm" {{action 'showlist'}}><span class="glyphicon glyphicon-th-list">
-            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"{{action 'showgrid'}} ><span
+                <a id="list" class="btn btn-default btn-sm" {{action 'showlist'}}><span class="glyphicon glyphicon-th-list">
+            </span>List</a> <a id="grid" class="btn btn-default btn-sm"{{action 'showgrid'}} ><span
                     class="glyphicon glyphicon-th"></span>Grid</a>
             </div>
 
@@ -107,7 +107,7 @@
                                         <p class="lead">
                                           {{d.reviewdeadline}}</p>
                                     </div>
-                                    <div class="col-xs-12 col-md-6">
+                                    <div class="col-xs-12 col-md-10">
                                         <a class="btn btn-primary" {{action 'showform'}} >View</a>
                                         <a class="btn btn-primary" {{action 'showapprove' d.id}} >Approve</a>
                                         <a class="btn btn-primary" {{action 'showassign' d.id}} >Assign</a>
