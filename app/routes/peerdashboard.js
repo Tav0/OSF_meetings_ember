@@ -24,7 +24,11 @@ export default Ember.Route.extend({
 
         var rex = new RegExp(Ember.$(this).val(), 'i');
         Ember.$('.searchable tr').hide();
+        Ember.$('.searchable2').hide();
         Ember.$('.searchable tr').filter(function () {
+          return rex.test(Ember.$(this).text());
+        }).show();
+        Ember.$('.searchable2').filter(function () {
           return rex.test(Ember.$(this).text());
         }).show();
 
