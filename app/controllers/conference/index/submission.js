@@ -2,7 +2,8 @@ import Ember from 'ember';
 import TaggableMixin from 'ember-osf/mixins/taggable-mixin';
 
 export default Ember.Controller.extend(TaggableMixin, {
-  access: false,
+	access: false,
+
 	isValidTitle: Ember.computed.match('title', /...+/),
  	isValidContributors: Ember.computed.match('contributors', /...+/),
  	isValidDescription: Ember.computed.match('description', /......+/),
@@ -10,9 +11,12 @@ export default Ember.Controller.extend(TaggableMixin, {
     titleError: false,
  	contributorsError: false,
  	descriptionError: false,
- 	activate: function() {
- 		console.log('activate');
+
+ 	init: function() {
+ 		if (this.get('access') === false)
+ 			this.transitionToRoute('conference.index');
  	},
+
  	actions: {
  		displayErrors(){
  			this.set("titleError", false);
@@ -36,6 +40,6 @@ export default Ember.Controller.extend(TaggableMixin, {
  			this.set("titleError", false);
  			this.set("contributorsError", false);
  			this.set("descriptionError", false);
- 		},
+ 		}
  	}
 });
