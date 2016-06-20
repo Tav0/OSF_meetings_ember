@@ -6,5 +6,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	session: Ember.inject.service(),
   model() {
      return this.store.findAll('meeting');
+  },
+  activate: function() {
+    Ember.$('body').addClass('hideScroll');
+  },
+  deactivate: function(){
+    Ember.$('body').removeClass('hideScroll');
   }
 });
