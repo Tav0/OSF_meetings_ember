@@ -10,6 +10,9 @@ export default Ember.Controller.extend(TaggableMixin, {
     titleError: false,
  	contributorsError: false,
  	descriptionError: false,
+ 	activate: function() {
+ 		console.log('activate');
+ 	},
  	actions: {
  		displayErrors(){
  			this.set("titleError", false);
