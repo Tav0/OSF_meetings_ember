@@ -100,10 +100,13 @@
                 </div>
             </div>
 
-               <button id="button3id" name="button3id" class="btn btn-success" {{action 'showdata'}}>Invite</button>
+               <button id="button3id" name="button3id" class="btn btn-primary" {{action 'showdata'}}>Invite</button>
 
 
            {{/if}}
+
+            <button id="button1id" name="button1id" class="btn btn-success" {{action 'gotodashboard'}}>Back</button>
+
 
         </div>
     </div>
@@ -155,7 +158,6 @@
       </form>
   {{/modal-dialog}}
 {{/if}}
-
 
 
 {{outlet}}

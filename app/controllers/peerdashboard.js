@@ -2,7 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   isshowingcontact: false,
-  isshowingapprove: false,
+  isshowingassign: false,
+  isshowingform: false,
+  islistview : true,
+  isgridview: false,
   selectvalue: 0,
   rid: 0,
   msgtemplate: '' +
@@ -31,16 +34,34 @@ export default Ember.Controller.extend({
     showdata() {
       this.set('isshowingcontact', true);
     },
-
+    showform() {
+      this.set('isshowingform', true);
+    },
+    hideform() {
+      this.set('isshowingform', false);
+    },
     hidedata()  {
       this.set('isshowingcontact', false);
     },
     showapprove(d) {
-      this.set('isshowingapprove', true);
-      this.set('rid',d);
+
+
+      this.store.findRecord('reviewslist', d).then(function(tyrion) {
+        // ...after the record has loaded
+        tyrion.set('status', "Approved for Review");
+
+      });
+
+
+
+
+    },
+    showassign(d) {
+      this.set('isshowingassign', true);
+
     },
 
-    hideapprove(inp)  {
+    hideassign(inp)  {
       if (inp === 'ok'){
 
       var target = document.getElementById('selectbasic');
@@ -48,27 +69,18 @@ export default Ember.Controller.extend({
       if (target.value === '2'){
 
 
-        this.set('isshowingapprove', false);
+        this.set('isshowingassign', false);
 
         this.transitionToRoute('assignreview');
 
       }else{
 
 
-        this.store.findRecord('reviewslist', this.get('rid')).then(function(tyrion) {
-          // ...after the record has loaded
-          tyrion.set('status', "Approved for Review");
-
-        });
-
-
-
-
-        this.set('isshowingapprove', false);
+        this.set('isshowingassign', false);
               }
       }else{
 
-        this.set('isshowingapprove', false);
+        this.set('isshowingassign', false);
 
 
       }
@@ -77,6 +89,18 @@ export default Ember.Controller.extend({
     openreview()
     {
       this.transitionToRoute('evaluation');
+    },
+    showlist(){
+
+      this.set('islistview',true);
+      this.set('isgridview',false);
+
+    },
+
+    showgrid(){
+      this.set('islistview',false);
+      this.set('isgridview',true);
+
     }
   }
 

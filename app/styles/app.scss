@@ -35,6 +35,24 @@ html, body .fullscreen
 .big
 {
   height: 100vh;
+  background-image: linear-gradient(to bottom left, #000305, #0E4364, #4A8DB0);
+  background-size: contain;
+  color: white;
+}
+.big .background
+{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.3;
+  max-width: 100%;
+  z-index: 2;
+}
+.big .logo
+{
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 .titleRow
 {
@@ -44,6 +62,7 @@ html, body .fullscreen
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
+  z-index: 1000;
 }
 
 .titleRow h1
@@ -51,6 +70,7 @@ html, body .fullscreen
   font-size: 14vw;
   min-height:  14vw;
   line-height: 13vw;
+  z-index: 1000;
 }
 
 .titleRow h3
@@ -59,18 +79,22 @@ html, body .fullscreen
   padding-left: .5vw;
   font-size: 2vw;
   min-height:  2vw;
+  z-index: 1000;
+
 }
 .titleRow h4
 {
   padding-left: .2vw;
   font-size: 3.5vw;
   min-height:  3.5vw;
-}
+  z-index: 1000;
 
+}
 .titleRow button
 {
-    margin-left: .4vw;
-    font-size: 2vw;
+  margin-left: .4vw;
+  font-size: 2vw;
+  z-index: 1000;
 }
 
 /*.alert{
@@ -170,7 +194,3 @@ background-color: rgba(12, 12, 12, 0.1);
   height: 100%;
   width: 100%;
 }
-
-
-
-
