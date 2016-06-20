@@ -6,19 +6,40 @@ a, a:link, a:visited , a:hover, a:active
     color: white;
     text-decoration: none;
 }
+
 tr:hover
 {
     cursor: pointer;
 }
 td
 {
-    max-width: 475px;
+  max-width: 475px;
+  border: none;
 }
 td img
 {
     max-height: 80%;
     max-width: 100%;
 }
+.hideScroll{
+  overflow-y: hidden;
+}
+.table tr:first-child td
+{
+  border-top: none;
+}
+.table tr>td
+{
+  padding: 15px;
+}
+.tableScroller
+{
+  width: 100%;
+  max-height: 100vh;
+  overflow-y: scroll;
+  padding-right: 17px;
+}
+
 
 html, body .fullscreen
 {
@@ -27,25 +48,48 @@ html, body .fullscreen
     margin: 0;
     padding: 0;
 }
+.navbar
+{
+  background-color: transparent;
+  background: transparent;
+  border-color: transparent;
+  position: absolute;
+  left: 0;
+}
 .masonry-grid
 {
     margin: 0 auto;
 }
+.osfSuperLightBackground
+{
+  background-image: linear-gradient(to bottom left, #4A8DB0, rgba(74, 141, 176, 0.26));
+  background-size: contain;
+  color: white;
+}
+.osfLightBackground
+{
+  background-image: linear-gradient(to bottom left, #0E4364,#4A8DB0);
+  background-size: contain;
+  color: white;
+}
+.osfBackground
+{
+  background-image: linear-gradient(to bottom left, #000305, #0E4364, #4A8DB0);
+  background-size: contain;
+  color: white;
+}
 .big
 {
-    height: 100vh;
-    background-image: linear-gradient(to bottom left, #000305, #0E4364, #4A8DB0);
-    background-size: contain;
-    color: white;
+  height: 100vh;
 }
 .big .background
 {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0.3;
-    max-width: 100%;
-    z-index: 2;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.3;
+  max-width: 95%;
+  z-index: 2;
 }
 .big .logo
 {
@@ -55,14 +99,14 @@ html, body .fullscreen
 }
 .titleRow
 {
-    position: absolute;
-    margin: 0 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    z-index: 1000;
+  position: absolute;
+  top: 50%;
+  max-width: 100%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  z-index: 1000;
 }
 
 .titleRow h1
@@ -190,15 +234,7 @@ p {
     height: 100%;
     width: 100%;
 }
-
-.navbar-default {
-    background-color: #114768 !important;
-    border-color: #0e4263 !important;
-    .navbar-brand {
-        color: #fff !important;
-    }
-}
-
 .glyphicon {
     color: white;
 }
+

@@ -1,79 +1,80 @@
 {{#if this.visited}}
   {{auto-scroll}}
 {{/if}}
-
-<div id="top" class="container-fluid big">
-    <a href="https://osf.io"><img class="logo" src="https://osf.io/static/img/cos-white2.png"> </a>
-    <div class="row titleRow">
-        <h1 >OSF for Meetings</h1>
-        <h3>A free sharing service for academic meetings and conferences</h3>
-        <h4>Broaden your impact, create an open scholar environment</h4>
-        <button {{action 'scrollit'}} type="button" value="continue" class="btn btn-success">Begin Sharing</button>
-    </div>
-    <img class="background" src="https://osf.io/static/img/front-page/bg-web.png">
-</div>
-
-<nav id="create" class="navbar navbar-default">
-    <div class="container-fluid" id="browse">
-        <form class="navbar-form navbar-left" role="search">
-            <a href="https://osf.io"><img class="logo" src="https://osf.io/static/img/cos-white2.png"> </a>
-            <a class="navbar-brand">Meetings</a>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+  <div id="top" class="container-fluid big osfBackground">
+      <a href="https://osf.io"><img class="logo" src="https://osf.io/static/img/cos-white2.png"> </a>
+      <div class="row titleRow">
+          <h1 >OSF for Meetings</h1>
+          <h3>A free sharing service for academic meetings and conferences</h3>
+          <h4>Broaden your impact, create an open scholar environment</h4>
+          <button {{action 'scrollit'}} type="button" value="continue" class="btn btn-success">Begin Sharing</button>
+      </div>
+      <img class="background" src="https://osf.io/static/img/front-page/bg-web.png">
+  </div>
+  <div class="container-fluid osfSuperLightBackground">
+      <nav id="create" class="navbar navbar-default" >
+          <div class="container-fluid" id="browse">
+              <form class="navbar-form navbar-left" role="search">
+                  <img class="navbar-brand" src="https://osf.io/static/img/cos-white2.png">
+                  <a class="navbar-brand" style="color: white">Meetings</a>
+                  <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                  </div>
+                  <button type="submit" disabled class="btn btn-default">Submit</button>
+                  <button class="btn btn-success navbar-btn" {{action "create"}}>
+                      <span class="glyphicon glyphicon-plus"></span>
+                      Create a Meeting
+                  </button>
+                  <button id="tileButton" class="btn navbar-btn" {{action "tileView"}}>
+                      <span class="glyphicon glyphicon-th-large"></span>
+                  </button>
+                  <button id="listButton" class="btn navbar-btn" {{action "listView"}}>
+                      <span class="glyphicon glyphicon-th-list"></span>
+                  </button>
+              </form>
+          </div>
+      </nav>
+    {{#if tileview}}
+        <div class="row" id="bottom" style="overflow: hidden; margin-top: 80px">
+            <div id="meetings" class="col-md-12" style="width: 100%; max-height: 100vh; overflow-y: scroll; padding-right: 17px; padding-bottom: 80px">
+              {{#masonry-grid  isFitWidth=true gutter=20 items=model as |conf|}}
+                {{#link-to "conference.index" conf.id}}
+                  {{meeting-masonry title=conf.title description=conf.description logo=conf.logo author=conf.author city=conf.city state=conf.state
+                  date=(date-display conf.startDate)}}
+                {{/link-to}}
+              {{/masonry-grid}}
             </div>
-            <button type="submit" disabled class="btn btn-default">Submit</button>
-            <button class="btn btn-success navbar-btn" {{action "create"}}>
-                <span class="glyphicon glyphicon-plus"></span>
-                Create a Meeting
-            </button>
-            <button id="tileButton" class="btn navbar-btn" {{action "tileView"}}>
-                <span class="glyphicon glyphicon-th-large"></span>
-            </button>
-            <button id="listButton" class="btn navbar-btn" {{action "listView"}}>
-                <span class="glyphicon glyphicon-th-list"></span>
-            </button>
-        </form>
-    </div>
-</nav>
-<div id="bottom" class="container-fluid">
-  {{#if tileview}}
-      <div class="row">
-          <div id="meetings" class="col-md-12">
-            {{#masonry-grid  isFitWidth=true gutter=20 items=model as |conf|}}
-              {{#link-to "conference.index" conf.id}}
-                {{meeting-masonry title=conf.title description=conf.description logo=conf.logo author=conf.author city=conf.city state=conf.state
-                date=(date-display conf.startDate)}}
-              {{/link-to}}
-            {{/masonry-grid}}
-          </div>
-      </div>
-  {{else}}
-      <div id="table" class="row">
-          <div class="col-md-8 col-md-offset-2">
-            {{!-- models-table data=model columns=columns useFilteringByColumns=false rowTemplate="row" --}}
-              <table class="table  table-hover table-condensed">
-                  <tbody>
-                  {{#each model as |meeting|}}
-                    {{#link-to "conference.index" meeting.id tagName="tr" classNames="redirectToConference"}}
-                        <td class="hidden-xs">
-                            <img src={{meeting.logo}}>
-                        </td>
-                        <td>
-                            <h1>{{meeting.title}}</h1>
-                            <h5>{{meeting.website}}</h5>
-                            <h2>{{meeting.city}}, {{meeting.state}}</h2>
-                          {{meeting.description}}
-                        </td>
-                        <td></td>
-                    {{/link-to}}
-                  {{/each}}
-                  </tbody>
+        </div>
+    {{else}}
+        <div id="tableContainer" class="row" style="overflow: hidden; margin-top: 80px">
+            <div class="col-md-12 tableScroller">
+                <div class="col-md-10 col-md-offset-1" style="padding-bottom: 80px">
+                  {{!-- models-table data=model columns=columns useFilteringByColumns=false rowTemplate="row" --}}
+                    <table class="table">
+                        <tbody>
+                        {{#each model as |meeting|}}
+                          {{#link-to "conference.index" meeting.id tagName="tr" classNames="redirectToConference"}}
+                              <td class="hidden-xs">
+                                  <img src={{meeting.logo}}>
+                              </td>
+                              <td>
+                                  <h1>{{meeting.title}}</h1>
+                                  <h5>{{meeting.website}}</h5>
+                                  <h2>{{meeting.city}}, {{meeting.state}}</h2>
+                                {{meeting.description}}
+                              </td>
+                          {{/link-to}}
+                        {{/each}}
+                        </tbody>
 
-              </table>
+                    </table>
 
-          </div>
-      </div>
-  {{/if}}
-  {{outlet}}
-</div>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+    {{outlet}}
+  </div>
+
+
 
