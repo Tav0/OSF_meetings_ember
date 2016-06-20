@@ -39,7 +39,9 @@ export default Ember.Controller.extend({
     }],
 
   visited: false,
-
+  init: function() {
+    console.log(this.get('visited'));
+  },
   actions: {
       create()
       {

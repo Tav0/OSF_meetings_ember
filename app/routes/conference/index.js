@@ -36,6 +36,11 @@ export default Ember.Route.extend({
 		stay() {
 			var controller = this.get('controller');
 			controller.set('navModal',false);
+		},
+		submitTo() {
+			this.transitionTo('conference.index.submission').then(function(newRoute) {
+				newRoute.controller.set('access',true);
+			});
 		}
 	}
 });

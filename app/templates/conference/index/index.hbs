@@ -152,9 +152,7 @@ img
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="btn-group" role="group" aria-label="...">
-                                            {{#link-to "conference.index.submission"}}
-                                                <button type="button" class="btn btn-default" style="margin: 0 0 5px 0; width: 200px;">  Submit to This Conference</button>
-                                            {{/link-to}}
+                                            <button type="button" class="btn btn-default" style="margin: 0 0 5px 0; width: 200px;" {{action "submitTo"}}>  Submit to This Conference</button>
                                             <input type="text" class="form-control" style="width: 200px;" placeholder="Search" title="search" >
                                         </div>
                                     </div>
