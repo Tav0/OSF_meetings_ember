@@ -15,6 +15,13 @@
                 <input id="filter" type="text" class="form-control" placeholder="Type here..." {{action 'filterdata'}}>
             </div>
 
+            <div class="btn-group">
+                <a href="#" id="list" class="btn btn-default btn-sm" {{action 'showlist'}}><span class="glyphicon glyphicon-th-list">
+            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"{{action 'showgrid'}} ><span
+                    class="glyphicon glyphicon-th"></span>Grid</a>
+            </div>
+
+            {{#if islistview}}
             <table class="table table-hover table-striped">
                 <thead>
 
@@ -60,13 +67,17 @@
                         </td>
 
                         <td>
-                            <form><input type=submit value="View" style="width:100%" {{action 'showform'}} class="btn btn-primary"></form>
+                            <a class="btn btn-primary" {{action 'showform'}} >View</a>
+
                         </td>
                         <td>
-                            <form><input type=submit id="abutton" value="Approve" style="width:100%" {{action 'showapprove' d.id}} class="btn btn-primary"></form>
+                            <a class="btn btn-primary" {{action 'showapprove' d.id}} >Approve</a>
                         </td>
                         <td>
-                            <form><input type=submit value="Contact Author" style="width:100%" {{action 'showdata'}} class="btn btn-primary"></form>
+                            <a class="btn btn-primary" {{action 'showassign' d.id}} >Assign</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" {{action 'showdata'}} >Contact Author</a>
                         </td>
 
 
@@ -77,8 +88,40 @@
                 {{/each}}
                 </tbody>
             </table>
+            {{/if}}
+
+          {{#if isgridview}}
+
+              <div id="reviews" class="row list-group">
+                {{#each model.reviewsdate as |d|}}
+                    <div class="searchable2  col-xs-4 col-lg-4">
+                        <div class="thumbnail">
+                            <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
+                            <div class="caption">
+                                <h4 class="group inner list-group-item-heading">
+                                  {{d.title}}</h4>
+                                <p class="group inner list-group-item-text">
+                                  {{d.conference}}</p>
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <p class="lead">
+                                          {{d.reviewdeadline}}</p>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <a class="btn btn-primary" {{action 'showform'}} >View</a>
+                                        <a class="btn btn-primary" {{action 'showapprove' d.id}} >Approve</a>
+                                        <a class="btn btn-primary" {{action 'showassign' d.id}} >Assign</a>
+                                        <a class="btn btn-primary" {{action 'showdata'}} >Contact Author</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
 
 
+              </div>
+          {{/if}}
 
         </div>
     </div>
@@ -123,8 +166,8 @@
 
 
 
-{{#if isshowingapprove}}
-  {{#modal-dialog close="hideapprove"
+{{#if isshowingassign}}
+  {{#modal-dialog close="hideassign"
   targetAttachment="center"
   translucentOverlay=true}}
       <form class="form-horizontal">
@@ -149,8 +192,8 @@
               <div class="form-group">
                   <label class="col-md-4 control-label" for="button1id"></label>
                   <div class="col-md-8">
-                      <button id="button1id" name="button1id" class="btn btn-success" {{action 'hideapprove' 'ok'}}>Ok</button>
-                      <button id="button2id" name="button2id" class="btn btn-danger" {{action 'hideapprove' 'cancel'}}>Cancel</button>
+                      <button id="button1id" name="button1id" class="btn btn-success" {{action 'hideassign' 'ok'}}>Ok</button>
+                      <button id="button2id" name="button2id" class="btn btn-danger" {{action 'hideassign' 'cancel'}}>Cancel</button>
                   </div>
               </div>
 
