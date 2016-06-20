@@ -19,8 +19,11 @@
 					</div>
 					<span class="glyphicon glyphicon-ok form-control-feedback" ></span>
 					<div class="col-md-6">
-						{{input class="premise" type="integer" value=model.premise min=0 max=15 autofocus="autofocus"}}
+						{{input id="premise" type="integer" value=model.premise class="form-control"}}
 						/15
+						<div style="color:#FF0000">
+                        {{if this.premiseError "Please assign a valid value" ""}}
+                    	</div>
 					</div>
 				</div>
 
@@ -30,8 +33,11 @@
 					</div>
 					<span class="glyphicon glyphicon-ok form-control-feedback" ></span>
 					<div class="col-md-6">
-						{{input class="research" type="integer" value=model.research min=0 max=15 autofocus="autofocus"}}
+						{{input id="research" type="integer" value=model.research class="form-control"}}
 						/15
+						<div style="color:#FF0000">
+                        {{if this.researchError "Please assign a valid value" ""}}
+                    	</div>
 					</div>
 				</div>
 
@@ -41,8 +47,11 @@
 					</div>
 					<span class="glyphicon glyphicon-ok form-control-feedback" ></span>
 					<div class="col-md-6">
-						{{input class="style" type="integer" value=model.style min=0 max=15 autofocus="autofocus"}}
+						{{input id="style" type="integer" value=model.style class="form-control"}}
 						/15
+						<div style="color:#FF0000">
+                        {{if this.StyleError "Please assign a valid value" ""}}
+                    	</div>
 					</div>
 				</div>
 
@@ -71,12 +80,20 @@
 <div class="form-group row">
 	<div class="col-md-4 col-md-offset-1">
 		<h3><b>Step 3: Submit</b></h3>
-		<div id="submitAlert" class="alert alert-success hide fade in">
-		Success! Feedback submitted.
-		</div>
-		<button style = "height: 40px; width: 100px" class="form-control" {{action "saveEvaluation" model}} type="submit" disabled={{isDisabled}}>Submit</button>
+
+      <div class="col-md-8">
+		      <button style = "height: 40px; width: 100px" {{action "saveEvaluation" model}} class="btn btn-success" type="submit">Submit</button>
+          <button style = "height: 40px; width: 100px" {{action "cancel"}} class="btn btn-danger" >Cancel</button>
+       </div>
+
 	</div>
 </div>
+    <div id="errorAlert" class="alert alert-danger hide fade in" style = "width: 250px">
+        Please recheck your values.
+    </div>
+    <div id="submitAlert" class="alert alert-success hide fade in" style = "width: 250px">
+        Success! Feedback submitted.
+    </div>
 
 
 </form>

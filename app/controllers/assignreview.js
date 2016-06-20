@@ -26,6 +26,11 @@ export default Ember.Controller.extend({
     hidedata()  {
       this.set('isshowingInvite', false);
     },
+    
+       gotodashboard(){
+
+         this.transitionToRoute('peerdashboard');
+       },
 
     storereviewerInfo(id){
       this.set('isshowingBio',true);

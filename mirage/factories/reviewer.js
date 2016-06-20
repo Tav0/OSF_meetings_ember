@@ -16,3 +16,5 @@ export default Factory.extend({
   avatar(i) { return faker.internet.avatar(); }
 
 });
+
+

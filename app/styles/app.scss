@@ -174,3 +174,169 @@ background-color: rgba(12, 12, 12, 0.1);
 
 
 
+.testClass
+{
+  background-color: purple;
+}
+a{
+  color: white;
+}
+a:hover
+{
+  text-decoration: none;
+  color: white;
+}
+
+html, body .fullscreen
+{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.masonry-grid
+{
+  margin: 0 auto;
+}
+.big
+{
+  height: 100vh;
+}
+.titleRow
+{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+}
+
+.titleRow h1
+{
+  font-size: 14vw;
+  min-height:  14vw;
+  line-height: 13vw;
+}
+
+.titleRow h3
+{
+  margin-top: 1.2vw;
+  padding-left: .5vw;
+  font-size: 2vw;
+  min-height:  2vw;
+}
+.titleRow h4
+{
+  padding-left: .2vw;
+  font-size: 3.5vw;
+  min-height:  3.5vw;
+}
+
+.titleRow button
+{
+  margin-left: .4vw;
+  font-size: 2vw;
+}
+
+/*.alert{
+	display: none;
+}*/
+
+.registration-title {
+  text-align: center;
+}
+
+textarea {
+  resize: none;
+  height: 30%;
+  width: 95%;
+}
+h1 {
+  font-size: 3.5em;
+  margin: 0 0 10px 0;
+}
+
+h4 {
+  font-size: 1em;
+}
+
+p {
+  font-size: 0.8em;
+}
+
+.osfbar {
+  height: 35px;
+
+  font-size: 18px;
+  margin: 0 -15px 0 -15px;
+}
+
+.conferencePhoto {
+  height: 350px;
+}
+
+.conferencePhoto img {
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+}
+
+.conferenceInfo h1 {
+
+  color: black;
+}
+
+.conferenceInfo h4 {
+  color: black;
+  margin: 0 0 1px 30px;
+}
+
+.conferenceDescription {
+  padding: 15px;
+  font-size: 22px;
+}
+
+.logos {
+  width: 100%;
+  height: 15%;
+}
+
+.keynote {
+  font-size: 2.4em;
+  color: black;
+}
+
+.smallKey {
+  color: black;
+  font-size: 1em;
+}
+
+.inputFields {
+  width: 100%;
+  height: 100px;
+}
+
+.fileView {
+  border: solid green 1px;
+  margin: 15px;
+
+  resize: none;
+  height: 100%;
+  width: 95%;
+}
+
+.splash-page
+{
+  height: 100%;
+  width: 100%;
+}
+
+
+
+
