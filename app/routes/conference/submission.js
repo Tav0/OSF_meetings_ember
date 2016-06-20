@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend(AuthenticatedRouteMixin, {
+export default Ember.Route.extend({
 
     model() {
         return this.store.createRecord('node', {
@@ -12,8 +11,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     actions: {
         saveNodeSubmission(newNode, title, contributors, description, tags){
             if ((document.getElementById('title').value.length >= 3) &&
-             (document.getElementById('contributors').value.length >= 3) &&
-             (document.getElementById('description').value.length >= 6))  {
+                    (document.getElementById('contributors').value.length >= 3) &&
+                    (document.getElementById('description').value.length >= 6))  {
+
                 let models = this.modelFor('conference.index');
                 console.log(tags);
                 newNode.setProperties({
@@ -23,6 +23,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
                     meeting: models.meeting,
                     tags: tags.toString(),
                 });
+
                 document.getElementById("fileSubmission").reset();
                 newNode.save();
                 this.transitionTo('conference.index', models.meeting.id);
@@ -34,13 +35,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
             }
         },
 
-        filesUpload(dropzone) {
-            console.log(dropzone);
-        },
         cancel()
         {
-          let models = this.modelFor('conference.index');
-          this.transitionTo('conference.index', models.meeting.id);
+            let models = this.modelFor('conference.index');
+            this.transitionTo('conference.index', models.meeting.id);
         },
     }
 });

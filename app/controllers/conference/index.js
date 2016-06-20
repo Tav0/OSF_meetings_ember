@@ -1,9 +1,10 @@
 import Ember from 'ember';
-import ConfirmationMixin from 'ember-onbeforeunload/mixins/confirmation';
 
 export default Ember.Controller.extend({
 
+
 	editing: false,
+	navModal: false,
 
 	isInvalidTitle: false,
   	isInvalidCity: false,
@@ -13,12 +14,14 @@ export default Ember.Controller.extend({
  	isInvalidSubmissionDates: false,
  	isInvalidDescription: false,
  	isValid: true,
+ 	conferenceDates: '',
 
- 	countries: ["", "United States of America (USA)", "Afghanistan", "Albania", "Algeria", "Andorra",
+
+ 	countries: ["-Select a country-", "United States of America (USA)", "Afghanistan", "Albania", "Algeria", "Andorra",
               "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria",
               "Azerbaijan", "Bahamas, The", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
               "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil",
-              "Brunei", "Bulgaria", "Burkina Faso", "Burma", "Burundi", "Cambodia", "Cameroon", "Canada",
+              "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada",
               "Cape Verde", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros",
               "Congo", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Curacao", "Cyprus", 
               "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt",
@@ -30,7 +33,7 @@ export default Ember.Controller.extend({
               "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", 
               "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", 
               "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", 
-              "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", 
+              "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar",
               "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Zealand", 
               "Nicaragua", "Niger", "Nigeria", "North Korea", "Norway", "Oman", "Pakistan", "Palau",
               "Palestinian Territories", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines",
@@ -59,54 +62,36 @@ export default Ember.Controller.extend({
 				meeting.rollbackAttributes();
 			});
 		},
-		unload() {
-	  		console.log('nice unload');
-			this.store.findRecord('meeting',document.getElementById('meetingId').value).then(function(meeting) {
-				meeting.rollbackAttributes();
-				meeting.set('editing',false); 
-			});
-		},
 		save() {
-			this.set('isValid',true);
-	      	this.set('isInvalidTitle', false);
-	     	this.set('isInvalidCity',false);
-	     	this.set('isInvalidState',false);
-	      	this.set('isInvalidCountry',false);
-	      	this.set('isInvalidDescription',false);
-	      	this.set('isInvalidDates',false);
-	      	this.set('isInvalidSubmissionDates',false);
+			console.log("Yes we got here");
+	      	this.setProperties({isValid: true, isInvalidTitle: false, isInvalidCountry: false, isInvalidState: false, isInvalidCity: false,
+	      		isInvalidDescription: false, isInvalidDates: false, isINvalidSubmissionDates: false});
 	      	if (this.get('model.meeting.title') === "") {
-	        	this.set('isInvalidTitle',true);
-	        	this.set('isValid',false);
+	        	this.setProperties({isInvalidTitle: true, isValid: false});
 	      	}
-	      	if (this.get('model.meeting.city') === "") {  
-	        	this.set('isInvalidCity',true);
-	        	this.set('isValid',false);
+	      	if (this.get('model.meeting.city') === "") {
+	        	this.setProperties({isInvalidCity: true, isValid: false});
 	      	}
 	      	if (this.get('model.meeting.state') === "" && this.get('model.meeting.country') === "United States of America (USA)") {
-	        	this.set('isInvalidState',true);
-	        	this.set('isValid',false);
+	        	this.setProperties({isInvalidState: true, isValid: false});
 	      	}
-	      	if ((this.get('model.meeting.country') === "") || (this.get('model.meeting.country') === undefined)) {
-	        	this.set('isInvalidCountry',true);
-	        	this.set('isValid',false);
+	      	if ((this.get('model.meeting.country') === "-Select a country-") || (this.get('model.meeting.country') === undefined)) {
+	        	this.setProperties({isInvalidCountry: true, isValid: false});
 	      	}
 	      	if (this.get('model.meeting.startDate') > this.get('model.meeting.endDate')) {
-	        	this.set('isInvalidDates',true);
-	        	this.set('isValid',false);
+	        	this.setProperties({isInvalidDates: true, isValid: false});
 	      	}
 	      	if (this.get('model.meeting.submissionDate') > this.get('model.meeting.closeDate')) {
-	        	this.set('isInvalidSubmissionDates',true);
-	        	this.set('isValid',false);
+	        	this.setProperties({isInvalidSubmissionDates: true, isValid: false});
 	      	}
 	      	if (this.get('model.meeting.description') === "") {
-	        	this.set('isInvalidDescription',true);
-	        	this.set('isValid',false);
+	        	this.setProperties({isInvalidDescription: true, isValid: false});
 	      	}
 	      	if (this.get('isValid')) {
 				this.set('editing',false);
+				console.log("We also got here");
 				this.store.findRecord('meeting',this.get('model.meeting.id')).then(function(meeting) {
-					meeting.save ();
+					meeting.save();
 				});
 			}
 		}

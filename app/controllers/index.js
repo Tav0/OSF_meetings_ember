@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+
   tileview: true,
 
   columns: [
@@ -38,7 +39,7 @@ export default Ember.Controller.extend({
     }],
 
   visited: false,
-  
+
   actions: {
       create()
       {
@@ -65,5 +66,6 @@ export default Ember.Controller.extend({
         let shift = this;
         shift.set('tileview', false );
       }
-    }
+    },
+
 });

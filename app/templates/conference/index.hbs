@@ -1,14 +1,37 @@
+<style>
+img
+{
+    max-width: 100%;
+    height: auto;
+}
+
+</style>
+<nav id= "create" class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid" id="browse">
+
+    <form class="navbar-form navbar-left" role="search">
+      <button class="btn btn-success navbar-btn" {{action "back"}}>
+          ← View More Meetings
+      </button>
+        {{#if this.editing}}
+        {{else}}
+            <button class="btn btn-danger navbar-btn" {{action "edit"}}>
+                Edit This Meeting
+            </button>
+        {{/if}}
+    </form>
+    {{#if this.editing}}
+      <form class="navbar-form navbar-right">
+        <button class="btn btn-success navbar-btn"{{action "save"}}>Save</button>
+        <button class="btn btn-danger navbar-btn"{{action "cancel"}}>Cancel</button>
+      </form>
+    {{/if}}
+  </div>
+</nav>
 
 <link rel="stylesheet" href="../../../dist/assets/conference.css">
-<div class="container-fluid" style="margin: 70px">
-    <div class = "row">
-        <div class = "col-md-3 col-md-offset-1">
-            <button type="button" class="form-control" {{action 'back'}}>
-               ← View More Meetings
-            </button>
-        </div>
-    </div>
-    <div class="row" style="padding: 20px">
+<div class="container-fluid" style="margin: 100px 0 0 0; padding: 0px">
+    <div class="row" style="padding: 0px">
         <div class="col-md-12">
             <div class="row" style=>
                 <div class="conferenceTopContainer col-md-12">
@@ -22,15 +45,15 @@
                                 </div>
 
                                 <form id="editConference">
-                                    <div class="form-group row"> 
-                                        <div class="col-md-6">   
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
                                             <label>Title: </label>
                                             {{input value=model.meeting.title class="form-control"}}
-                                            <div 
-                                            style="color: #ff0000">{{if this.isInvalidTitle "Please enter a valid title"}} 
+                                            <div
+                                            style="color: #ff0000">{{if this.isInvalidTitle "Please enter a valid title"}}
                                             </div>
                                         </div>
-                                        <div class="col-md-6"> 
+                                        <div class="col-md-6">
                                         <label> Conference Website: </label>
                                         {{input value=model.meeting.website class="form-control"}}
                                         </div>
@@ -40,7 +63,7 @@
                                         <div class="col-md-6">
                                             <label>Start date: </label>
                                             {{date-picker date=model.meeting.startDate class="form-control" valueFormat='date'}}
-                                            <div style="color: #ff0000">{{if this.isInvalidDates "Start date must be before end date"}} 
+                                            <div style="color: #ff0000">{{if this.isInvalidDates "Start date must be before end date"}}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -48,7 +71,7 @@
                                             {{date-picker date=model.meeting.endDate class="form-control" valueFormat='date'}}
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label>Submission start date: </label>
@@ -68,10 +91,10 @@
                                             {{input value=model.meeting.city class="form-control"}}
                                             <font style="color: #ff0000">{{if this.isInvalidCity "Please enter a valid city"}} </font>
                                         </div>
-                                        <div class="col-md-6"> 
+                                        <div class="col-md-6">
                                             <label>State: </label>
                                             {{input value=model.meeting.state class="form-control"}}
-                                            <font style="color: #ff0000">{{if this.isInvalidState "Please enter a valid state"}} </font> 
+                                            <font style="color: #ff0000">{{if this.isInvalidState "Please enter a valid state"}} </font>
                                         </div>
                                     </div>
 
@@ -83,7 +106,7 @@
                                                     <option value={{countryChoice}} selected={{eq model.meeting.country countryChoice}}><{{countryChoice}}</option>
                                                 {{/each}}
                                              </select>
-                                            <font style="color: #ff0000">{{if this.isInvalidCountry "Please select a country"}} </font> 
+                                            <font style="color: #ff0000">{{if this.isInvalidCountry "Please select a country"}} </font>
                                         </div>
                                     </div>
 
@@ -113,85 +136,60 @@
                                     <button class="btn-danger"{{action "cancel"}}>Cancel</button>
                                 </div>
 
-
                             {{else}}
-                                <h1> {{model.meeting.title}}</h1>
-                                <h4> {{model.meeting.startDate}} - {{model.meeting.endDate}} </h4>
-                                <h4>{{model.meeting.city}}, {{model.meeting.state}}, {{model.meeting.country}} </h4>
-                                <div class="logos"></div>
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <h1 style="margin: 15px" style="font-size:40px"> {{model.meeting.title}}</h1>
+                                        <h4 style="margin:15px 0 0 0">  {{this.conferenceDates}} {{date-display model.meeting.startDate}} - {{date-display model.meeting.endDate}}</h4>
+                                        <h4 style="margin:15px 0 0 0"> {{model.meeting.city}}, {{model.meeting.state}}, {{model.meeting.country}}</h4>
+                                        <div class="logos" align="center"></div>
+                                        <p class="conferenceDescription" style="font-size: 16px">{{model.meeting.description}}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src={{model.meeting.logo}}>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="btn-group" role="group" aria-label="...">
+                                            {{#link-to "conference.submission" model.meeting.id}}
+                                                <button type="button" class="btn btn-default" style="margin: 0 0 5px 0; width: 200px;">  Submit to This Conference</button>
+                                            {{/link-to}}
+                                            <input type="text" class="form-control" style="width: 200px;" placeholder="Search" title="search" >
+                                        </div>
+                                    </div>
+                                </div>
+                              {{#if this.editing}}
+                              {{else}}
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                          <div class="col-lg-8 fileView">
+                                            {{#masonry-grid gutter=10 items=model.meeting.linkedNodes as |item|}}
+                                                <a target="_blank" style="color: black;" href= {{link-to-osf item.id}}>
+                                                  {{node-component title=item.title contributors=item.contributors description=item.description}}
+                                                </a>
+                                            {{/masonry-grid}}
+                                          </div>
+                                          <div class="col-lg-1">
+                                          </div>
+                                      </div>
+                                  </div>
+                              {{/if}}
+
+                              {{#if this.navModal}}
+                                {{#modal-dialog close="hideform" targetAttachment="center" translucentOverlay=true}}
+                                    You are currently in edit mode. Changes to your meeting will not be saved.
+                                    <br> Are you sure you want to leave?
+                                    <br> <button class="btn btn-success"{{action "leave"}}>Yes</button>
+                                    <button class="btn btn-danger" {{action "stay"}}>No</button>
+                                {{/modal-dialog}}
+                              {{/if}}
                             {{/if}}
+
                         </div>
                     </div>
-                    {{#if this.editing}}
-
-
-                    {{else}}
-                    <div class="col-md-8 col-offset-2 conferencePhoto">
-                        <img src={{model.meeting.logo}}>
-                    </div>
-                    <div class="col-lg-1">
-                        <button {{action "edit"}}>Edit</button>
-                    </div>
-                    {{/if}}
                 </div>
             </div>
-            <div class="row ">
-                <div class="conferenceDescriptionContainer col-lg-12">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        {{#if this.editing}}
-                        {{else}}
-                            <p class = "conferenceDescription">{{model.meeting.description}}</p>
-                        {{/if}}
-                    </div>
-                </div>
-            </div>
-            {{#if this.editing}}
-            {{else}}
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="col-lg-8 col-lg-offset-2" style="padding: 30px">
-                        <div class="btn-group" role="group" aria-label="..." >
-                          {{#link-to "conference.submission" model.meeting.id}}
-                              <button type="button" class="btn btn-default" style="margin-bottom: 5px; width: 200px;">  Submit to This Conference</button>
-                          {{/link-to}}
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="search" title="search" >
-
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </div><!-- /btn-group -->
-
-                        </div><!-- /input-group -->
-                    </div><!-- /.col-lg-6 -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class= "col-lg-1 col-lg-offset-1">
-
-                    </div>
-                    <div class="col-lg-8 fileView">
-
-                      {{#masonry-grid gutter=10 items=model.meeting.linkedNodes as |item|}}
-                          <a target="_blank" style="color: black;" href= {{link-to-osf item.id}}>
-                          {{node-component title=item.title contributors=item.contributors description=item.description}}
-                          </a>
-                      {{/masonry-grid}}
-                    </div>
-                    <div class="col-lg-1">
-
-                    </div>
-                </div>
-            </div>
-            {{/if}}
 
         </div>
     </div>
