@@ -16,8 +16,8 @@
 
 
         <div class="btn-group">
-            <a href="#" id="list" class="btn btn-default btn-sm" {{action 'showlist'}}><span class="glyphicon glyphicon-th-list">
-            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"{{action 'showgrid'}} ><span
+            <a id="list" class="btn btn-default btn-sm" {{action 'showlist'}}><span class="glyphicon glyphicon-th-list">
+            </span>List</a> <a id="grid" class="btn btn-default btn-sm"{{action 'showgrid'}} ><span
                 class="glyphicon glyphicon-th"></span>Grid</a>
         </div>
        {{#if islistview}}
@@ -91,7 +91,7 @@
                                 <p class="group inner list-group-item-text">
                                   {{d.conference}}</p>
                                 <div class="row">
-                                    <div class="col-xs-12 col-md-6">
+                                    <div class="col-xs-12 col-md-10">
                                         <p class="lead">
                                           {{d.reviewdeadline}}</p>
                                     </div>
