@@ -63,59 +63,59 @@ a:hover
                             {{#if this.editing}}
 
                                 <div class="page-header">
-                                    <h2>Edit Meeting: {{model.meeting.title}}</h2>
+                                    <h2>Edit Meeting: {{model.conference.title}}</h2>
                                 </div>
 
                                 <form id="editConference">
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label>Title: </label>
-                                            {{input value=model.meeting.title class="form-control"}}
+                                            {{input value=model.conference.title class="form-control"}}
                                             <div
                                             style="color: #ff0000">{{if this.isInvalidTitle "Please enter a valid title"}}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                         <label> Conference Website: </label>
-                                        {{input value=model.meeting.website class="form-control"}}
+                                        {{input value=model.conference.website class="form-control"}}
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label>Start date: </label>
-                                            {{date-picker date=model.meeting.startDate class="form-control" valueFormat='date'}}
+                                            {{date-picker date=model.conference.startDate class="form-control" valueFormat='date'}}
                                             <div style="color: #ff0000">{{if this.isInvalidDates "Start date must be before end date"}}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <label>End Date: </label>
-                                            {{date-picker date=model.meeting.endDate class="form-control" valueFormat='date'}}
+                                            {{date-picker date=model.conference.endDate class="form-control" valueFormat='date'}}
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label>Submission start date: </label>
-                                            {{date-picker date=model.meeting.submissionDate class="form-control" valueFormat='date'}}
+                                            {{date-picker date=model.conference.submissionDate class="form-control" valueFormat='date'}}
                                             <div style="color: #ff0000">{{if this.isInvalidSubmissionDates "Submission start date must be before end date"}} </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <label>Submission end date: </label>
-                                            {{date-picker date=model.meeting.closeDate class="form-control" valueFormat='date'}}
+                                            {{date-picker date=model.conference.closeDate class="form-control" valueFormat='date'}}
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label>City: </label>
-                                            {{input value=model.meeting.city class="form-control"}}
+                                            {{input value=model.conference.city class="form-control"}}
                                             <font style="color: #ff0000">{{if this.isInvalidCity "Please enter a valid city"}} </font>
                                         </div>
                                         <div class="col-md-6">
                                             <label>State: </label>
-                                            {{input value=model.meeting.state class="form-control"}}
+                                            {{input value=model.conference.state class="form-control"}}
                                             <font style="color: #ff0000">{{if this.isInvalidState "Please enter a valid state"}} </font>
                                         </div>
                                     </div>
@@ -123,9 +123,9 @@ a:hover
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <label>Country:</label>
-                                            <select class=form-control selected="model.meeting.country" onchange={{action (mut model.meeting.country) value="target.value"}}>
+                                            <select class=form-control selected="model.conference.country" onchange={{action (mut model.conference.country) value="target.value"}}>
                                                 {{#each countries as |countryChoice|}}
-                                                    <option value={{countryChoice}} selected={{eq model.meeting.country countryChoice}}><{{countryChoice}}</option>
+                                                    <option value={{countryChoice}} selected={{eq model.conference.country countryChoice}}><{{countryChoice}}</option>
                                                 {{/each}}
                                              </select>
                                             <font style="color: #ff0000">{{if this.isInvalidCountry "Please select a country"}} </font>
@@ -135,7 +135,7 @@ a:hover
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <label>Description: </label>
-                                            {{textarea value=model.meeting.description class="form-control" id="description"style="height: 100%"}}
+                                            {{textarea value=model.conference.description class="form-control" id="description"style="height: 100%"}}
                                             <font style="color: #ff0000">{{if this.isInvalidDescription "Please enter a description"}}</font>
                                         </div>
                                     </div>
@@ -149,20 +149,20 @@ a:hover
                                         <div class="col-md-12">
                                             <label>Current logo: </label>
                                         </div>
-                                        <img class="col-md-6" src={{model.meeting.logo}}>
+                                        <img class="col-md-6" src={{model.conference.logo}}>
                                     </div>
                                 </form>
                             {{else}}
                                 <div class="form-group row">
                                     <div class="col-md-6">
-                                        <h1 style="margin: 15px" style="font-size:40px"> {{model.meeting.title}}</h1>
-                                        <h4 style="margin:15px 0 0 0">  {{this.conferenceDates}} {{date-display model.meeting.startDate}} - {{date-display model.meeting.endDate}}</h4>
-                                        <h4 style="margin:15px 0 0 0"> {{model.meeting.city}}, {{model.meeting.state}}, {{model.meeting.country}}</h4>
+                                        <h1 style="margin: 15px" style="font-size:40px"> {{model.conference.title}}</h1>
+                                        <h4 style="margin:15px 0 0 0">  {{this.conferenceDates}} {{date-display model.conference.startDate}} - {{date-display model.conference.endDate}}</h4>
+                                        <h4 style="margin:15px 0 0 0"> {{model.conference.city}}, {{model.conference.state}}, {{model.conference.country}}</h4>
                                         <div class="logos" align="center"></div>
-                                        <p class="conferenceDescription" style="font-size: 16px">{{model.meeting.description}}</p>
+                                        <p class="conferenceDescription" style="font-size: 16px">{{model.conference.description}}</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <img src={{model.meeting.logo}}>
+                                        <img src={{model.conference.logo}}>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -179,7 +179,7 @@ a:hover
 <!--                                   <div class="row">
                                       <div class="col-md-12">
                                           <div class="col-lg-8 fileView">
-                                            {{#masonry-grid gutter=10 items=model.meeting.linkedNodes as |item|}}
+                                            {{#masonry-grid gutter=10 items=model.conference.linkedNodes as |item|}}
                                                 <a target="_blank" style="color: black;" href= {{link-to-osf item.id}}>
                                                   {{node-component title=item.title contributors=item.contributors description=item.description}}
                                                 </a>

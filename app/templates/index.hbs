@@ -53,16 +53,16 @@
                     {{!-- models-table data=model columns=columns useFilteringByColumns=false rowTemplate="row" --}}
                       <table class="table">
                           <tbody>
-                          {{#each model as |meeting|}}
-                            {{#link-to "conference.index" meeting.id tagName="tr" classNames="redirectToConference"}}
+                          {{#each model as |conference|}}
+                            {{#link-to "conference.index" conference.id tagName="tr" classNames="redirectToConference"}}
                                 <td class="hidden-xs">
-                                    <img src={{meeting.logo}}>
+                                    <img src={{conference.logo}}>
                                 </td>
                                 <td>
-                                    <h1>{{meeting.title}}</h1>
-                                    <h5>{{meeting.website}}</h5>
-                                    <h2>{{meeting.city}}, {{meeting.state}}</h2>
-                                  {{meeting.description}}
+                                    <h1>{{conference.title}}</h1>
+                                    <h5>{{conference.website}}</h5>
+                                    <h2>{{conference.city}}, {{conference.state}}</h2>
+                                  {{conference.description}}
                                 </td>
                             {{/link-to}}
                           {{/each}}

@@ -17,13 +17,13 @@ export default Ember.Route.extend({
                     title: title,
                     description: description,
                     category: 'project',
-                    meeting: models.meeting,
+                    conference: models.conference,
                     tags: tags.toString(),
                 });
 
                 document.getElementById("fileSubmission").reset();
                 newNode.save();
-                this.transitionTo('conference.index', models.meeting.id);
+                this.transitionTo('conference.index', models.conference.id);
             }
 
             else {
@@ -35,7 +35,7 @@ export default Ember.Route.extend({
         cancel()
         {
             let models = this.modelFor('conference.index');
-            this.transitionTo('conference.index', models.meeting.id);
+            this.transitionTo('conference.index', models.conference.id);
         }
     }
 });

@@ -1,5 +1,5 @@
 export default function() {
-  //this.namespace = 'https://staging-api.osf.io/v2';
+  // this.namespace = 'https://staging-api.osf.io/v2';
   this.namespace = 'http://localhost:8000/v2';
   // if using localhost rather than staging, uncomment the following line
   // this.namespace = 'https://localhost:8000/v2';
@@ -12,10 +12,10 @@ export default function() {
   });
 
 
-  this.post('/meetings');
-  this.get('/meetings');
-  this.get('/meetings/:id');
-  this.patch('/meetings/:id');
+  this.post('/conferences');
+  this.get('/conferences');
+  this.get('/conferences/:id');
+  this.patch('/conferences/:id');
 
 
 

@@ -50,7 +50,7 @@ export default Ember.Controller.extend({
 
 	actions: {
 		selectCountry(country) {
-      		this.set('model.meeting.country', country);
+      		this.set('model.conference.country', country);
     	},
 
 		edit() {
@@ -58,39 +58,37 @@ export default Ember.Controller.extend({
 		},	
 		cancel() {
 			this.set('editing',false);
-			this.store.findRecord('meeting',this.get('model.meeting.id')).then(function(meeting) {
-				meeting.rollbackAttributes();
+			this.store.findRecord('conference',this.get('model.conference.id')).then(function(conference) {
+				conference.rollbackAttributes();
 			});
 		},
 		save() {
-			console.log("Yes we got here");
 	      	this.setProperties({isValid: true, isInvalidTitle: false, isInvalidCountry: false, isInvalidState: false, isInvalidCity: false,
 	      		isInvalidDescription: false, isInvalidDates: false, isINvalidSubmissionDates: false});
-	      	if (this.get('model.meeting.title') === "") {
+	      	if (this.get('model.conference.title') === "") {
 	        	this.setProperties({isInvalidTitle: true, isValid: false});
 	      	}
-	      	if (this.get('model.meeting.city') === "") {
+	      	if (this.get('model.conference.city') === "") {
 	        	this.setProperties({isInvalidCity: true, isValid: false});
 	      	}
-	      	if (this.get('model.meeting.state') === "" && this.get('model.meeting.country') === "United States of America (USA)") {
+	      	if (this.get('model.conference.state') === "" && this.get('model.conference.country') === "United States of America (USA)") {
 	        	this.setProperties({isInvalidState: true, isValid: false});
 	      	}
-	      	if ((this.get('model.meeting.country') === "-Select a country-") || (this.get('model.meeting.country') === undefined)) {
+	      	if ((this.get('model.conference.country') === "-Select a country-") || (this.get('model.conference.country') === undefined)) {
 	        	this.setProperties({isInvalidCountry: true, isValid: false});
 	      	}
-	      	if (this.get('model.meeting.startDate') > this.get('model.meeting.endDate')) {
+	      	if (this.get('model.conference.startDate') > this.get('model.conference.endDate')) {
 	        	this.setProperties({isInvalidDates: true, isValid: false});
 	      	}
-	      	if (this.get('model.meeting.submissionDate') > this.get('model.meeting.closeDate')) {
+	      	if (this.get('model.conference.submissionDate') > this.get('model.conference.closeDate')) {
 	        	this.setProperties({isInvalidSubmissionDates: true, isValid: false});
 	      	}
-	      	if (this.get('model.meeting.description') === "") {
+	      	if (this.get('model.conference.description') === "") {
 	        	this.setProperties({isInvalidDescription: true, isValid: false});
 	      	}
 	      	if (this.get('isValid')) {
 				this.set('editing',false);
-				console.log("We also got here");
-				this.store.findRecord('meeting',this.get('model.meeting.id')).then(function() {
+				this.store.findRecord('conference',this.get('model.conference.id')).then(function() {
 					this.save();
 				});
 			}
