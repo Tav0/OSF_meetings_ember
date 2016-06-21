@@ -6,29 +6,29 @@ img
 }
 
 </style>
-<nav id= "create" class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid" id="browse">
-    <form class="navbar-form navbar-left" role="search">
-      <button class="btn btn-success navbar-btn" {{action "back"}}>
-          ← View More Meetings
-      </button>
-        {{#if this.editing}}
-        {{else}}
-            <button class="btn btn-danger navbar-btn" {{action "edit"}}>
-                Edit This Meeting
-            </button>
-        {{/if}}
-    </form>
-    {{#if this.editing}}
-      <form class="navbar-form navbar-right">
-        <button class="btn btn-success navbar-btn"{{action "save"}}>Save</button>
-        <button class="btn btn-danger navbar-btn"{{action "cancel"}}>Cancel</button>
-      </form>
-    {{/if}}
-  </div>
-</nav>
 
 <div class="container-fluid osfSuperLightBackground">
+    <nav id= "create" class="navbar navbar-fixed-top">
+        <div class="container-fluid" id="browse">
+            <form class="navbar-form navbar-left" role="search">
+                <button class="btn btn-success navbar-btn" {{action "back"}}>
+                    ← View More Meetings
+                </button>
+              {{#if this.editing}}
+              {{else}}
+                  <button class="btn btn-danger navbar-btn" {{action "edit"}}>
+                      Edit This Meeting
+                  </button>
+              {{/if}}
+            </form>
+          {{#if this.editing}}
+              <form class="navbar-form navbar-right">
+                  <button class="btn btn-success navbar-btn"{{action "save"}}>Save</button>
+                  <button class="btn btn-danger navbar-btn"{{action "cancel"}}>Cancel</button>
+              </form>
+          {{/if}}
+        </div>
+    </nav>
     <div class="row" style="padding: 0px">
         <div class="col-md-12">
             <div class="row" style=>

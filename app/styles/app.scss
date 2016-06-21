@@ -39,14 +39,21 @@ td img
   overflow-y: scroll;
   padding-right: 17px;
 }
+.tableScroller::-webkit-scrollbar *
+{
+  background: transparent;
+}
+.tableScroller::-webkit-scrollbar-thumb{
+  background:rgba(255,0,0,0.1);
+}
 
-
-html, body .fullscreen
+html, body
 {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
+  overflow: hidden;
 }
 .navbar
 {
@@ -78,9 +85,16 @@ html, body .fullscreen
   background-size: contain;
   color: white;
 }
+.holder
+{
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
 .big
 {
   height: 100vh;
+  overflow-y: hidden;
 }
 .big .background
 {
