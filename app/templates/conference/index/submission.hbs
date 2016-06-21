@@ -40,7 +40,7 @@
                 <div class="form-group row {{if isValidTitle "has-success" "has-error"}}">
                     <div class="col-md-6">
                         <label><font style='color: #ff0000'>*</font> Title:</label>
-                      {{input id="title" value=title class="form-control"}}
+                      {{input id="title" value=this.title class="form-control"}}
                         <div style="color:#FF0000">
                             {{if this.titleError "Please enter a valid title" ""}}
                         </div>
@@ -50,7 +50,7 @@
                 <div class="form-group row {{if isValidContributors "has-success" "has-error"}}">
                     <div class="col-md-6">
                         <label><font style='color: #ff0000'>*</font> Contributors:</label>
-                      {{input id="contributors" value=contributors class="form-control"}}
+                      {{input id="contributors" value=this.contributors class="form-control"}}
                         <div style="color:#FF0000">
                             {{if this.contributorsError "Please enter valid contributors" ""}}
                         </div>
@@ -68,7 +68,7 @@
                 <div class="form-group row {{if isValidDescription "has-success" "has-error"}}">
                     <div class="col-md-6">
                         <label><font style='color: #ff0000'>*</font> Description:</label>
-                      {{textarea id="description" value=description class="form-control"}}
+                      {{textarea id="description" value=this.description class="form-control"}}
                         <div style="color:#FF0000">
                             {{if this.descriptionError "Please enter a valid description" ""}}
                         </div>
