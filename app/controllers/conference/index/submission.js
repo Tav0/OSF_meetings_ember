@@ -14,10 +14,19 @@ export default Ember.Controller.extend(TaggableMixin, {
 
  	init: function() {
  		if (this.get('access') === false)
- 			this.transitionToRoute('conference.index');
+ 			this.transitionToRoute('conference.index.index');
  	},
 
  	actions: {
+ 		addATag(tag){
+ 			console.log(tag);
+ 			var resource = this.get('model.node');
+            var currentTags = resource.get('tags').slice(0);
+            Ember.A(currentTags);
+            currentTags.pushObject(tag);
+            resource.set('tags', currentTags);
+            console.log(currentTags);
+ 		},
  		displayErrors(){
  			this.set("titleError", false);
  			this.set("contributorsError", false);

@@ -38,6 +38,7 @@ td img
   max-height: 100vh;
   overflow-y: scroll;
   padding-right: 17px;
+  margin-left: 20px;
 }
 .tableScroller::-webkit-scrollbar *
 {
@@ -53,7 +54,6 @@ html, body
     height: 100%;
     margin: 0;
     padding: 0;
-  overflow: hidden;
 }
 .navbar
 {
@@ -72,6 +72,7 @@ html, body
   background-image: linear-gradient(to bottom left, #4A8DB0, rgba(74, 141, 176, 0.26));
   background-size: contain;
   color: white;
+  min-height: 100%;
 }
 .osfLightBackground
 {
@@ -114,6 +115,7 @@ html, body
 .titleRow
 {
   position: absolute;
+  margin: 0 15px;
   top: 50%;
   max-width: 100%;
   transform: translateY(-50%);

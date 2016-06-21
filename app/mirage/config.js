@@ -11,10 +11,10 @@ export default function() {
   });
 
 
-  this.post('/meetings');
-  this.get('/meetings');
-  this.get('/meetings/:id');
-  this.patch('/meetings/:id');
+  this.post('/conferences');
+  this.get('/conferences');
+  this.get('/conferences/:id');
+  this.patch('/conferences/:id');
 
 
 

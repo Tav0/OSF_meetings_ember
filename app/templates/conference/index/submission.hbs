@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="page-header">
-                <h2>Submit to:</h2><h1 style="font-size: 64px"> {{model.meeting.title}}</h1>
+                <h2>Submit to:</h2><h1 style="font-size: 64px"> {{model.conference.title}}</h1>
             </div>
         </div>
     </div>
@@ -40,7 +40,7 @@
             <div class="form-group row {{if isValidTitle "has-success" "has-error"}}">
                 <div class="col-md-6">
                     <label><font style='color: #ff0000'>*</font> Title:</label>
-                  {{input id="title" value=title class="form-control"}}
+                  {{input id="title" value=model.node.title class="form-control"}}
                     <div style="color:#FF0000">
                         {{if this.titleError "Please enter a valid title" ""}}
                     </div>
@@ -50,7 +50,7 @@
             <div class="form-group row {{if isValidContributors "has-success" "has-error"}}">
                 <div class="col-md-6">
                     <label><font style='color: #ff0000'>*</font> Contributors:</label>
-                  {{input id="contributors" value=contributors class="form-control"}}
+                  {{input id="contributors" value='' class="form-control"}}
                     <div style="color:#FF0000">
                         {{if this.contributorsError "Please enter valid contributors" ""}}
                     </div>
@@ -60,7 +60,7 @@
             <div class="form-group row has-success">
                 <div class="col-md-6">
                     <label>Tags:</label>
-                  {{tags-widget tags=model.tags addATag=(action 'addATag') 
+                  {{tags-widget tags=model.node.tags addATag=(action 'addATag' model.node) 
                   removeATag=(action 'removeATag')}}
                 </div>
             </div>
@@ -68,7 +68,7 @@
             <div class="form-group row {{if isValidDescription "has-success" "has-error"}}">
                 <div class="col-md-6">
                     <label><font style='color: #ff0000'>*</font> Description:</label>
-                  {{textarea id="description" value=description class="form-control"}}
+                  {{textarea id="description" value=model.node.description class="form-control"}}
                     <div style="color:#FF0000">
                         {{if this.descriptionError "Please enter a valid description" ""}}
                     </div>
@@ -83,8 +83,9 @@
             <div class="form-group row">
                 <div class="col-md-3">
                     <button
-                        class="form-control btn btn-success" {{action "saveNodeSubmission" model title
-                        contributors description model.tags}}>Submit</button>
+                    class="form-control btn btn-success" {{action "saveNodeSubmission" model.node}}>
+                        Submit
+                    </button>
                 </div>
                 <div class="col-md-3">
                     <button

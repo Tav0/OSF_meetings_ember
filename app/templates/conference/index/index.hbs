@@ -1,8 +1,32 @@
+
 <style>
 img
 {
     max-width: 100%;
     height: auto;
+}
+.tableDescription
+{
+    display: -webkit-box;
+    border: 0px solid #000000;
+    max-height: 88px;
+    max-width: 200%;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tableTitle
+{
+    font-weight: normal;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+.heading 
+{
+    font-size:16px;
 }
 
 </style>
@@ -23,7 +47,7 @@ img
             </form>
           {{#if this.editing}}
               <form class="navbar-form navbar-right">
-                  <button class="btn btn-success navbar-btn"{{action "save" model.conference.id}}>Save</button>
+                  <button class="btn btn-success navbar-btn"{{action "save" model.id}}>Save</button>
                   <button class="btn btn-danger navbar-btn"{{action "cancel"}}>Cancel</button>
               </form>
           {{/if}}
@@ -39,59 +63,59 @@ img
                             {{#if this.editing}}
 
                                 <div class="page-header">
-                                    <h2>Edit Meeting: {{model.meeting.title}}</h2>
+                                    <h2>Edit Meeting: {{model.title}}</h2>
                                 </div>
 
                                 <form id="editConference">
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label>Title: </label>
-                                            {{input value=model.meeting.title class="form-control"}}
+                                            {{input value=model.title class="form-control"}}
                                             <div
                                             style="color: #ff0000">{{if this.isInvalidTitle "Please enter a valid title"}}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                         <label> Conference Website: </label>
-                                        {{input value=model.meeting.website class="form-control"}}
+                                        {{input value=model.website class="form-control"}}
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label>Start date: </label>
-                                            {{date-picker date=model.meeting.startDate class="form-control" valueFormat='date'}}
+                                            {{date-picker date=model.startDate class="form-control" valueFormat='date'}}
                                             <div style="color: #ff0000">{{if this.isInvalidDates "Start date must be before end date"}}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <label>End Date: </label>
-                                            {{date-picker date=model.meeting.endDate class="form-control" valueFormat='date'}}
+                                            {{date-picker date=model.endDate class="form-control" valueFormat='date'}}
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label>Submission start date: </label>
-                                            {{date-picker date=model.meeting.submissionDate class="form-control" valueFormat='date'}}
+                                            {{date-picker date=model.submissionDate class="form-control" valueFormat='date'}}
                                             <div style="color: #ff0000">{{if this.isInvalidSubmissionDates "Submission start date must be before end date"}} </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <label>Submission end date: </label>
-                                            {{date-picker date=model.meeting.closeDate class="form-control" valueFormat='date'}}
+                                            {{date-picker date=model.closeDate class="form-control" valueFormat='date'}}
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label>City: </label>
-                                            {{input value=model.meeting.city class="form-control"}}
+                                            {{input value=model.city class="form-control"}}
                                             <font style="color: #ff0000">{{if this.isInvalidCity "Please enter a valid city"}} </font>
                                         </div>
                                         <div class="col-md-6">
                                             <label>State: </label>
-                                            {{input value=model.meeting.state class="form-control"}}
+                                            {{input value=model.state class="form-control"}}
                                             <font style="color: #ff0000">{{if this.isInvalidState "Please enter a valid state"}} </font>
                                         </div>
                                     </div>
@@ -99,9 +123,9 @@ img
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <label>Country:</label>
-                                            <select class=form-control selected="model.meeting.country" onchange={{action (mut model.meeting.country) value="target.value"}}>
+                                            <select class=form-control selected="model.country" onchange={{action (mut model.country) value="target.value"}}>
                                                 {{#each countries as |countryChoice|}}
-                                                    <option value={{countryChoice}} selected={{eq model.meeting.country countryChoice}}><{{countryChoice}}</option>
+                                                    <option value={{countryChoice}} selected={{eq model.country countryChoice}}><{{countryChoice}}</option>
                                                 {{/each}}
                                              </select>
                                             <font style="color: #ff0000">{{if this.isInvalidCountry "Please select a country"}} </font>
@@ -111,7 +135,7 @@ img
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <label>Description: </label>
-                                            {{textarea value=model.meeting.description class="form-control" id="description"style="height: 100%"}}
+                                            {{textarea value=model.description class="form-control" id="description"style="height: 100%"}}
                                             <font style="color: #ff0000">{{if this.isInvalidDescription "Please enter a description"}}</font>
                                         </div>
                                     </div>
@@ -125,25 +149,26 @@ img
                                         <div class="col-md-12">
                                             <label>Current logo: </label>
                                         </div>
-                                        <img class="col-md-6" src={{model.meeting.logo}}>
+                                        <img class="col-md-6" src={{model.logo}}>
                                     </div>
                                 </form>
                             {{else}}
                                 <div class="form-group row">
                                     <div class="col-md-6">
-                                        <h1 style="margin: 15px" style="font-size:40px"> {{model.meeting.title}}</h1>
-                                        <h4 style="margin:15px 0 0 0">  {{this.conferenceDates}} {{date-display model.meeting.startDate}} - {{date-display model.meeting.endDate}}</h4>
-                                        <h4 style="margin:15px 0 0 0"> {{model.meeting.city}}, {{model.meeting.state}}, {{model.meeting.country}}</h4>
+                                        <h1 style="margin: 15px" style="font-size:40px"> {{model.title}}</h1>
+                                        <h4 style="margin:15px 0 0 0">  {{this.conferenceDates}} {{date-display model.startDate}} - {{date-display model.endDate}}</h4>
+                                        <h4 style="margin:15px 0 0 0"> {{model.city}}, {{model.state}}, {{model.country}}</h4>
                                         <div class="logos" align="center"></div>
-                                        <p class="conferenceDescription" style="font-size: 16px">{{model.meeting.description}}</p>
+                                        <p class="conferenceDescription" style="font-size: 16px">{{model.description}}</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <img src={{model.meeting.logo}}>
+                                        <img src={{model.logo}}>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="btn-group" role="group" aria-label="...">
+
                                             <button type="button" class="btn btn-default" style="margin: 0 0 5px 0; width: 200px;" {{action "submitTo"}}>  Submit to This Conference</button>
                                             <input type="text" class="form-control" style="width: 200px;" placeholder="Search" title="search" >
                                         </div>
@@ -151,10 +176,10 @@ img
                                 </div>
                               {{#if this.editing}}
                               {{else}}
-                                  <div class="row">
+<!--                                   <div class="row">
                                       <div class="col-md-12">
                                           <div class="col-lg-8 fileView">
-                                            {{#masonry-grid gutter=10 items=model.meeting.linkedNodes as |item|}}
+                                            {{#masonry-grid gutter=10 items=model.linkedNodes as |item|}}
                                                 <a target="_blank" style="color: black;" href= {{link-to-osf item.id}}>
                                                   {{node-component title=item.title contributors=item.contributors description=item.description}}
                                                 </a>
@@ -163,7 +188,52 @@ img
                                           <div class="col-lg-1">
                                           </div>
                                       </div>
+                                  </div> -->
+                                  <br>
+
+
+                                  <!-- This is the basic code for a list with images -->
+<!--                                   <div id="table" class="row">
+                                      <div class="col-md-12">
+                                        {{!-- models-table data=model columns=columns useFilteringByColumns=false rowTemplate="row" --}}
+                                          <table class="table  table-hover table-condensed table-bordered">
+                                              <tbody>
+                                              {{#each model.meeting.linkedNodes as |item|}}
+                                                <a target="_blank" style="color: black;" href= {{link-to-osf item.id}}>
+                                                  {{node-component title=item.title contributors=item.contributors description=item.description}}
+                                                </a>
+                                              {{/each}}
+                                              </tbody>
+                                          </table>
+                                      </div>
                                   </div>
+ -->
+
+                                  <!-- This is the basic code for a table of submissions without images -->
+                                  <table class="table table-hover">
+                                    <thead class="thead">
+                                        <tr>
+                                            <th class="heading" bgcolor="#E0E0E0">Title</th>
+                                            <th class="heading" bgcolor="#E0E0E0">Author</th>
+                                            <th class="heading" bgcolor="#E0E0E0">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each model.linkedNodes as |item|}}
+                                        <tr>
+                                            <th class="tableTitle" scope="row" width="30%">
+                                            <a target="_blank" style="color: #80BFFF;" href={{link-to-osf item.id}}>
+                                            {{item.title}}
+                                            </a></th>
+                                            <td width="20%">{{#each model.contributors as |contributor|}}
+                                                    {{contributor.users.fullName}}
+                                                {{/each}}
+                                            </td>
+                                            <td class="tableDescription" width="100%">{{item.description}}</td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
                               {{/if}}
 
                               {{#if this.navModal}}
@@ -184,4 +254,5 @@ img
         </div>
     </div>
 </div>
+
 {{outlet}}
