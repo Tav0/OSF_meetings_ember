@@ -1,8 +1,32 @@
+
 <style>
 img
 {
     max-width: 100%;
     height: auto;
+}
+.tableDescription
+{
+    display: -webkit-box;
+    border: 0px solid #000000;
+    max-height: 88px;
+    max-width: 200%;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tableTitle
+{
+    font-weight: normal;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+.heading 
+{
+    font-size:16px;
 }
 
 </style>
@@ -144,6 +168,7 @@ img
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="btn-group" role="group" aria-label="...">
+
                                             <button type="button" class="btn btn-default" style="margin: 0 0 5px 0; width: 200px;" {{action "submitTo"}}>  Submit to This Conference</button>
                                             <input type="text" class="form-control" style="width: 200px;" placeholder="Search" title="search" >
                                         </div>
@@ -151,7 +176,7 @@ img
                                 </div>
                               {{#if this.editing}}
                               {{else}}
-                                  <div class="row">
+<!--                                   <div class="row">
                                       <div class="col-md-12">
                                           <div class="col-lg-8 fileView">
                                             {{#masonry-grid gutter=10 items=model.conference.linkedNodes as |item|}}
@@ -163,7 +188,52 @@ img
                                           <div class="col-lg-1">
                                           </div>
                                       </div>
+                                  </div> -->
+                                  <br>
+
+
+                                  <!-- This is the basic code for a list with images -->
+<!--                                   <div id="table" class="row">
+                                      <div class="col-md-12">
+                                        {{!-- models-table data=model columns=columns useFilteringByColumns=false rowTemplate="row" --}}
+                                          <table class="table  table-hover table-condensed table-bordered">
+                                              <tbody>
+                                              {{#each model.meeting.linkedNodes as |item|}}
+                                                <a target="_blank" style="color: black;" href= {{link-to-osf item.id}}>
+                                                  {{node-component title=item.title contributors=item.contributors description=item.description}}
+                                                </a>
+                                              {{/each}}
+                                              </tbody>
+                                          </table>
+                                      </div>
                                   </div>
+ -->
+
+                                  <!-- This is the basic code for a table of submissions without images -->
+                                  <table class="table table-hover">
+                                    <thead class="thead">
+                                        <tr>
+                                            <th class="heading" bgcolor="#E0E0E0">Title</th>
+                                            <th class="heading" bgcolor="#E0E0E0">Author</th>
+                                            <th class="heading" bgcolor="#E0E0E0">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each model.meeting.linkedNodes as |item|}}
+                                        <tr>
+                                            <th class="tableTitle" scope="row" width="30%">
+                                            <a target="_blank" style="color: #80BFFF;" href={{link-to-osf item.id}}>
+                                            {{item.title}}
+                                            </a></th>
+                                            <td width="20%">{{#each contributors as |contributor|}}
+                                                    {{contributor.users.fullName}}
+                                                {{/each}}
+                                            </td>
+                                            <td class="tableDescription" width="100%">{{item.description}}</td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
                               {{/if}}
 
                               {{#if this.navModal}}
@@ -184,4 +254,5 @@ img
         </div>
     </div>
 </div>
+
 {{outlet}}

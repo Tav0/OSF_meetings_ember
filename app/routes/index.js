@@ -9,8 +9,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   },
   activate: function() {
     Ember.$('body').addClass('hideScroll');
+    Ember.$('html').css({overflow: 'hidden'});
   },
   deactivate: function(){
     Ember.$('body').removeClass('hideScroll');
+    Ember.$('html').css({overflow: 'scroll'});
+
   }
 });
