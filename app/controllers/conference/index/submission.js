@@ -12,11 +12,6 @@ export default Ember.Controller.extend(TaggableMixin, {
  	contributorsError: false,
  	descriptionError: false,
 
- 	init: function() {
- 		if (this.get('access') === false)
- 			this.transitionToRoute('conference.index');
- 	},
-
  	actions: {
  		displayErrors(){
  			this.set("titleError", false);
