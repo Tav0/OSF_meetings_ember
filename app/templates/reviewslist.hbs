@@ -1,16 +1,21 @@
-<div class="container-fluid">
+
+
+<div class="container-fluid big">
+    <a href="https://osf.io"><img class="logo" src="https://osf.io/static/img/cos-white2.png"> </a>
+
+
 <div class="row">
     <div class="col-md-12">
 
         <h3 class="text-center text-primary">
         </h3>
-        <h2>
-            Assigned Reviews
-        </h2>
+        <h1>
+            My Reviews
+        </h1>
 
         <div class="input-group"> <span class="input-group-addon">Filter</span>
 
-            <input id="filter" type="text" class="form-control" placeholder="Type here..." {{action 'filterdata'}}>
+            <input id="filter" type="text" class="filter-control" placeholder="Type here..." {{action 'filterdata'}}>
 
         </div>
 
@@ -21,7 +26,7 @@
                 class="glyphicon glyphicon-th"></span>Grid</a>
         </div>
        {{#if islistview}}
-        <table class="table table-hover table-striped">
+        <table class="table table-hover ">
             <thead>
 
             <tr>

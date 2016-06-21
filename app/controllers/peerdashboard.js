@@ -1,4 +1,8 @@
+
+
 import Ember from 'ember';
+
+
 
 export default Ember.Controller.extend({
   isshowingcontact: false,
@@ -6,6 +10,7 @@ export default Ember.Controller.extend({
   isshowingform: false,
   islistview : true,
   isgridview: false,
+  istreeview: true,
   selectvalue: 0,
   rid: 0,
   msgtemplate: '' +
@@ -17,6 +22,7 @@ export default Ember.Controller.extend({
     confirmHandler: function () {
 
     },
+
     contactauthor(){
 
 
@@ -94,13 +100,22 @@ export default Ember.Controller.extend({
 
       this.set('islistview',true);
       this.set('isgridview',false);
+      this.set('istreeview',false);
 
     },
 
     showgrid(){
       this.set('islistview',false);
       this.set('isgridview',true);
+      this.set('istreeview',false);
 
+    },
+    
+    showtree(){
+      this.set('istreeview',true);
+      this.set('isgridview',false);
+      this.set('islistview',false);
+      
     }
   }
 

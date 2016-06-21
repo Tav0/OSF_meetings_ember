@@ -1,28 +1,41 @@
 
 
-<div class="container-fluid">
+<div class="container-fluid big" >
+
+
+    <a href="https://osf.io"><img class="logo" src="https://osf.io/static/img/cos-white2.png"> </a>
     <div class="row">
         <div class="col-md-12">
 
+
+
             <h3 class="text-center text-primary">
             </h3>
-            <h2>
+            <div>
+
+            <h1 >
                 Peer Review Dashboard
-            </h2>
+            </h1>
+
+
+            </div>
+
+
 
             <div class="input-group"> <span class="input-group-addon">Filter</span>
 
-                <input id="filter" type="text" class="form-control" placeholder="Type here..." {{action 'filterdata'}}>
+                <input id="filter" type="text" class="filter-control" placeholder="Type here..." {{action 'filterdata'}}>
             </div>
 
             <div class="btn-group">
                 <a id="list" class="btn btn-default btn-sm" {{action 'showlist'}}><span class="glyphicon glyphicon-th-list">
             </span>List</a> <a id="grid" class="btn btn-default btn-sm"{{action 'showgrid'}} ><span
-                    class="glyphicon glyphicon-th"></span>Grid</a>
+                    class="glyphicon glyphicon-th"></span>Grid</a><a id="tree" class="btn btn-default btn-sm"{{action 'showtree'}} ><span
+                    class="glyphicon glyphicon-leaf"></span>Tree</a>
             </div>
 
             {{#if islistview}}
-            <table class="table table-hover table-striped">
+            <table class="table table-hover">
                 <thead>
 
                 <tr>
@@ -49,7 +62,7 @@
                 <tbody class="searchable">
                 {{#each model.reviewsdate as |d|}}
 
-                    <tr >
+                    <tr>
                         <td>
                           {{d.id}}
                         </td>
@@ -123,11 +136,81 @@
               </div>
           {{/if}}
 
+
+
+
+          {{#if istreeview}}
+             <div id="reviews" class="row list-group">
+
+              <div class="tree" {{action 'treeEvent'}}>
+                  <ul>
+                      <li>
+                          <span><i class="icon-folder-open"></i>Conferences</span>
+                          <ul>
+                              <li>
+                                  <span><i class="icon-minus-sign"></i> ICCS 2016</span>
+                                  <ul>
+                                      <li>
+                                          <span><i class="icon-leaf"></i> Social Network Analysis using Genetic Algorithms</span>
+                                          <a class="btn btn-primary" {{action 'showform'}} >View</a>
+                                          <a class="btn btn-primary" {{action 'showapprove' d.id}} >Approve</a>
+                                          <a class="btn btn-primary" {{action 'showassign' d.id}} >Assign</a>
+                                          <a class="btn btn-primary" {{action 'showdata'}} >Contact Author</a>
+                                      </li>
+                                      <li>
+                                          <span><i class="icon-leaf"></i> Using technology in classrooms</span>
+                                          <a class="btn btn-primary" {{action 'showform'}} >View</a>
+                                          <a class="btn btn-primary" {{action 'showapprove' d.id}} >Approve</a>
+                                          <a class="btn btn-primary" {{action 'showassign' d.id}} >Assign</a>
+                                          <a class="btn btn-primary" {{action 'showdata'}} >Contact Author</a>
+                                      </li>
+                                  </ul>
+                              </li>
+                              <li>
+                                  <span><i class="icon-minus-sign"></i> ASONAM 2016</span>
+                                  <ul>
+                                      <li>
+                                          <span><i class="icon-leaf"></i> Analyzing patients records</span>
+                                          <a class="btn btn-primary" {{action 'showform'}} >View</a>
+                                          <a class="btn btn-primary" {{action 'showapprove' d.id}} >Approve</a>
+                                          <a class="btn btn-primary" {{action 'showassign' d.id}} >Assign</a>
+                                          <a class="btn btn-primary" {{action 'showdata'}} >Contact Author</a>
+                                      </li>
+                                  </ul>
+                              </li>
+                              <li>
+                                  <span><i class="icon-minus-sign"></i> ASEE 2015</span>
+                                  <ul>
+                                      <li>
+                                          <span><i class="icon-leaf"></i> Repeatability and Benefaction in Computer Systems Research</span>
+                                          <a class="btn btn-primary" {{action 'showform'}} >View</a>
+                                          <a class="btn btn-primary" {{action 'showapprove' d.id}} >Approve</a>
+                                          <a class="btn btn-primary" {{action 'showassign' d.id}} >Assign</a>
+                                          <a class="btn btn-primary" {{action 'showdata'}} >Contact Author</a>
+                                      </li>
+
+                                  </ul>
+                              </li>
+
+                          </ul>
+                      </li>
+                      </ul>
+              </div>
+
+
+             </div>
+          {{/if}}
+
         </div>
     </div>
 
 
 </div>
+
+
+
+
+
 
 
 {{#if isshowingform}}

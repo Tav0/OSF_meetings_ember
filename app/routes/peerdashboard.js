@@ -14,10 +14,20 @@ export default Ember.Route.extend({
   },
   actions: {
 
-
-
-
-
+    treeEvent(){
+      Ember.$('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+      Ember.$('.tree li.parent_li > span').on('click', function (e) {
+        var children = Ember.$(this).parent('li.parent_li').find(' > ul > li');
+        if (children.is(":visible")) {
+          children.hide('fast');
+          Ember.$(this).attr('title', 'Expand this branch').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
+        } else {
+          children.show('fast');
+          Ember.$(this).attr('title', 'Collapse this branch').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
+        }
+        e.stopPropagation();
+      });
+    },
     filterdata(){
 
       Ember.$('#filter').keyup(function () {
