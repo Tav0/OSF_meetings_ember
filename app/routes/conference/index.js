@@ -10,7 +10,7 @@ export default Ember.Route.extend({
 		// let mod = this.modelFor('conference.index');
 		console.log(params);
         return Ember.RSVP.hash({
-            meeting: this.store.findRecord('meeting', params.meeting_id)
+            conference: this.store.findRecord('conference', params.conference_id)
         });
 	},
 	actions: {
