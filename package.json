@@ -61,7 +61,7 @@
     "ember-truth-helpers": "1.2.0",
     "ember-validations": "2.0.0-alpha.4",
     "loader.js": "^4.0.1",
-    "wormhole": "3.0.0"
+    "wormhole": "3.0.0",
     "svg4everybody": "2.0.3"
   },
   "dependencies": {}

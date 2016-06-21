@@ -5,12 +5,13 @@ import Ember from 'ember';
 
 
 export default Ember.Controller.extend({
+
   isshowingcontact: false,
   isshowingassign: false,
   isshowingform: false,
   islistview : true,
   isgridview: false,
-  istreeview: true,
+  istreeview: false,
   selectvalue: 0,
   rid: 0,
   msgtemplate: '' +
@@ -110,12 +111,19 @@ export default Ember.Controller.extend({
       this.set('istreeview',false);
 
     },
-    
+
+    isInArray(value, array) {
+        return array.indexOf(value) > -1;
+
+    },
+
     showtree(){
+
+
       this.set('istreeview',true);
       this.set('isgridview',false);
       this.set('islistview',false);
-      
+
     }
   }
 

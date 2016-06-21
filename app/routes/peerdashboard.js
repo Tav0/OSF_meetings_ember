@@ -1,11 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+
+  
+  
   statusc : 0,
   model(){
 
     return Ember.RSVP.hash({
       reviewsall: this.store.findAll('reviewslist'),
+  
       reviewsdate: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
         return reviewslist.sortBy('reviewdeadline').reverse();
       })
@@ -14,7 +18,10 @@ export default Ember.Route.extend({
   },
   actions: {
 
+
     treeEvent(){
+      console.log(this.get('conferences'));
+
       Ember.$('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
       Ember.$('.tree li.parent_li > span').on('click', function (e) {
         var children = Ember.$(this).parent('li.parent_li').find(' > ul > li');

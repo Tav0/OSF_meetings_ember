@@ -212,7 +212,7 @@ background-color: rgba(12, 12, 12, 0.1);
 
 .tree {
   min-height:20px;
-  padding:19px;
+  padding:10px;
   margin-bottom:20px;
  -webkit-border-radius:4px;
   -moz-border-radius:4px;
@@ -268,4 +268,8 @@ background-color: rgba(12, 12, 12, 0.1);
   background:#eee;
   border:1px solid #94a0b4;
   color:#000
+}
+
+.navbar {
+  margin-bottom: 0;
 }
