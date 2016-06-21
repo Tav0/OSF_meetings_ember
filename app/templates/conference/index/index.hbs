@@ -23,7 +23,7 @@ img
             </form>
           {{#if this.editing}}
               <form class="navbar-form navbar-right">
-                  <button class="btn btn-success navbar-btn"{{action "save"}}>Save</button>
+                  <button class="btn btn-success navbar-btn"{{action "save" model.conference.id}}>Save</button>
                   <button class="btn btn-danger navbar-btn"{{action "cancel"}}>Cancel</button>
               </form>
           {{/if}}

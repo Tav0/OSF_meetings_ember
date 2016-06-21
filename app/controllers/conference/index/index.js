@@ -62,7 +62,7 @@ export default Ember.Controller.extend({
 				meeting.rollbackAttributes();
 			});
 		},
-		save() {
+		save(conferenceID) {
 	      	this.setProperties({isValid: true, isInvalidTitle: false, isInvalidCountry: false, isInvalidState: false, isInvalidCity: false,
 	      		isInvalidDescription: false, isInvalidDates: false, isINvalidSubmissionDates: false});
 	      	if (this.get('model.meeting.title') === "") {
@@ -87,9 +87,8 @@ export default Ember.Controller.extend({
 	        	this.setProperties({isInvalidDescription: true, isValid: false});
 	      	}
 	      	if (this.get('isValid')) {
-				this.store.findRecord('meeting', this.get('model.meeting.id')).then(function(){
-					this.save();
-				});
+				var conference = this.store.peekRecord('meeting', conferenceID);
+				conference.save();
 				this.set('editing',false);
 			}
 		}
