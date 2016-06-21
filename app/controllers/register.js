@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  access: false,
   previewOn: false,
 
   isValidTitle: (Ember.computed.match('model.title', /.+/)),
