@@ -9,6 +9,7 @@ export default Ember.Route.extend({
     },
     actions: {
         saveNodeSubmission(newNode, title, contributors, description, tags){
+            this.get('controller').send('reset');
             if ((document.getElementById('title').value.length >= 3) &&
                     (document.getElementById('contributors').value.length >= 3) &&
                     (document.getElementById('description').value.length >= 6))  {
