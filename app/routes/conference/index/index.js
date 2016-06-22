@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	previousTransition: null,
+	
 	deactivate: function() {
 			var controller = this.get('controller');
 			controller.send('cancel');
