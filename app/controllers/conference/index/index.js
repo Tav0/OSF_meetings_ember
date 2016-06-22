@@ -53,16 +53,16 @@ export default Ember.Controller.extend({
       		this.set('model.country', country);
     	},
 
-		edit() {
+		editConference() {
 			this.set('editing',true);
 		},	
-		cancel() {
+		cancelEdits() {
 			this.set('editing',false);
 			this.store.findRecord('conference',this.get('model.id')).then(function(conference) {
 				conference.rollbackAttributes();
 			});
 		},
-		save(conferenceID) {
+		saveEdits(conferenceID) {
 	      	this.setProperties({isValid: true, isInvalidTitle: false, isInvalidCountry: false, isInvalidState: false, isInvalidCity: false,
 	      		isInvalidDescription: false, isInvalidDates: false, isINvalidSubmissionDates: false});
 	      	if (this.get('model.title') === "") {

@@ -38,7 +38,7 @@ export default Ember.Controller.extend(TaggableMixin, {
  			}
  		},
 
- 		reset() {
+ 		resetErrorMessages() {
  			this.set("titleError", false);
  			this.set("contributorsError", false);
  			this.set("descriptionError", false);
