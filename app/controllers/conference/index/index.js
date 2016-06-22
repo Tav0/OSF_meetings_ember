@@ -15,6 +15,8 @@ export default Ember.Controller.extend({
  	isInvalidDescription: false,
  	isValid: true,
  	conferenceDates: '',
+ 	hasState: Ember.computed.match('model.state', /.+/),
+
 
 
  	countries: ["United States of America (USA)", "Afghanistan", "Albania", "Algeria", "Andorra",
