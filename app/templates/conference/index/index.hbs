@@ -47,7 +47,7 @@ a:hover
             </form>
           {{#if this.editing}}
               <form class="navbar-form navbar-right">
-                  <button class="btn btn-success navbar-btn"{{action "save"}}>Save</button>
+                  <button class="btn btn-success navbar-btn"{{action "save" model.id}}>Save</button>
                   <button class="btn btn-danger navbar-btn"{{action "cancel"}}>Cancel</button>
               </form>
           {{/if}}
@@ -63,59 +63,59 @@ a:hover
                             {{#if this.editing}}
 
                                 <div class="page-header">
-                                    <h2>Edit Meeting: {{model.conference.title}}</h2>
+                                    <h2>Edit Meeting: {{model.title}}</h2>
                                 </div>
 
                                 <form id="editConference">
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label>Title: </label>
-                                            {{input value=model.conference.title class="form-control"}}
+                                            {{input value=model.title class="form-control"}}
                                             <div
                                             style="color: #ff0000">{{if this.isInvalidTitle "Please enter a valid title"}}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                         <label> Conference Website: </label>
-                                        {{input value=model.conference.website class="form-control"}}
+                                        {{input value=model.website class="form-control"}}
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label>Start date: </label>
-                                            {{date-picker date=model.conference.startDate class="form-control" valueFormat='date'}}
+                                            {{date-picker date=model.startDate class="form-control" valueFormat='date'}}
                                             <div style="color: #ff0000">{{if this.isInvalidDates "Start date must be before end date"}}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <label>End Date: </label>
-                                            {{date-picker date=model.conference.endDate class="form-control" valueFormat='date'}}
+                                            {{date-picker date=model.endDate class="form-control" valueFormat='date'}}
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label>Submission start date: </label>
-                                            {{date-picker date=model.conference.submissionDate class="form-control" valueFormat='date'}}
+                                            {{date-picker date=model.submissionDate class="form-control" valueFormat='date'}}
                                             <div style="color: #ff0000">{{if this.isInvalidSubmissionDates "Submission start date must be before end date"}} </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <label>Submission end date: </label>
-                                            {{date-picker date=model.conference.closeDate class="form-control" valueFormat='date'}}
+                                            {{date-picker date=model.closeDate class="form-control" valueFormat='date'}}
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label>City: </label>
-                                            {{input value=model.conference.city class="form-control"}}
+                                            {{input value=model.city class="form-control"}}
                                             <font style="color: #ff0000">{{if this.isInvalidCity "Please enter a valid city"}} </font>
                                         </div>
                                         <div class="col-md-6">
-                                            <label>State: </label>
-                                            {{input value=model.conference.state class="form-control"}}
+                                            <label>State/Province: </label>
+                                            {{input value=model.state class="form-control"}}
                                             <font style="color: #ff0000">{{if this.isInvalidState "Please enter a valid state"}} </font>
                                         </div>
                                     </div>
@@ -123,9 +123,9 @@ a:hover
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <label>Country:</label>
-                                            <select class=form-control selected="model.conference.country" onchange={{action (mut model.conference.country) value="target.value"}}>
+                                            <select class=form-control selected="model.country" onchange={{action (mut model.country) value="target.value"}}>
                                                 {{#each countries as |countryChoice|}}
-                                                    <option value={{countryChoice}} selected={{eq model.conference.country countryChoice}}><{{countryChoice}}</option>
+                                                    <option value={{countryChoice}} selected={{eq model.country countryChoice}}><{{countryChoice}}</option>
                                                 {{/each}}
                                              </select>
                                             <font style="color: #ff0000">{{if this.isInvalidCountry "Please select a country"}} </font>
@@ -135,7 +135,7 @@ a:hover
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <label>Description: </label>
-                                            {{textarea value=model.conference.description class="form-control" id="description"style="height: 100%"}}
+                                            {{textarea value=model.description class="form-control" id="description"style="height: 100%"}}
                                             <font style="color: #ff0000">{{if this.isInvalidDescription "Please enter a description"}}</font>
                                         </div>
                                     </div>
@@ -149,20 +149,20 @@ a:hover
                                         <div class="col-md-12">
                                             <label>Current logo: </label>
                                         </div>
-                                        <img class="col-md-6" src={{model.conference.logo}}>
+                                        <img class="col-md-6" src={{model.logo}}>
                                     </div>
                                 </form>
                             {{else}}
                                 <div class="form-group row">
                                     <div class="col-md-6">
-                                        <h1 style="margin: 15px" style="font-size:40px"> {{model.conference.title}}</h1>
-                                        <h4 style="margin:15px 0 0 0">  {{this.conferenceDates}} {{date-display model.conference.startDate}} - {{date-display model.conference.endDate}}</h4>
-                                        <h4 style="margin:15px 0 0 0"> {{model.conference.city}}, {{model.conference.state}}, {{model.conference.country}}</h4>
+                                        <h1 style="margin: 15px" style="font-size:40px"> {{model.title}}</h1>
+                                        <h4 style="margin:15px 0 0 0">  {{this.conferenceDates}} {{date-display model.startDate}} - {{date-display model.endDate}}</h4>
+                                        <h4 style="margin:15px 0 0 0"> {{model.city}}, {{model.state}}, {{model.country}}</h4>
                                         <div class="logos" align="center"></div>
-                                        <p class="conferenceDescription" style="font-size: 16px">{{model.conference.description}}</p>
+                                        <p class="conferenceDescription" style="font-size: 16px">{{model.description}}</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <img src={{model.conference.logo}}>
+                                        <img src={{model.logo}}>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -174,24 +174,11 @@ a:hover
                                         </div>
                                     </div>
                                 </div>
-                              {{#if this.editing}}
-                              {{else}}
-<!--                                   <div class="row">
-                                      <div class="col-md-12">
-                                          <div class="col-lg-8 fileView">
-                                            {{#masonry-grid gutter=10 items=model.conference.linkedNodes as |item|}}
-                                                <a target="_blank" style="color: black;" href= {{link-to-osf item.id}}>
-                                                  {{node-component title=item.title contributors=item.contributors description=item.description}}
-                                                </a>
-                                            {{/masonry-grid}}
-                                          </div>
-                                          <div class="col-lg-1">
-                                          </div>
-                                      </div>
-                                  </div> -->
-                                  <br>
 
-
+                            {{/if}}
+                            {{#if this.editing}}
+                            {{else}}
+                                <br>
                                   <!-- This is the basic code for a list with images -->
 <!--                                   <div id="table" class="row">
                                       <div class="col-md-12">
@@ -219,13 +206,13 @@ a:hover
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{#each model.meeting.linkedNodes as |item|}}
+                                        {{#each model.linkedNodes as |item|}}
                                         <tr>
                                             <th class="tableTitle" scope="row" width="30%">
                                             <a target="_blank" style="color: #80BFFF;" href={{link-to-osf item.id}}>
                                             {{item.title}}
                                             </a></th>
-                                            <td width="20%">{{#each contributors as |contributor|}}
+                                            <td width="20%">{{#each model.contributors as |contributor|}}
                                                     {{contributor.users.fullName}}
                                                 {{/each}}
                                             </td>
@@ -244,7 +231,6 @@ a:hover
                                     <button class="btn btn-danger" {{action "stay"}}>No</button>
                                 {{/modal-dialog}}
                               {{/if}}
-                            {{/if}}
 
                         </div>
                     </div>

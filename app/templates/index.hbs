@@ -56,8 +56,8 @@
                     {{!-- models-table data=model columns=columns useFilteringByColumns=false rowTemplate="row" --}}
                       <table class="table">
                           <tbody>
-                          {{#each model as |conference index|}}
-                            {{#link-to "conference.index" conference.id tagName="tr"}}
+                          {{#each model as |conference|}}
+                            {{#link-to "conference.index.index" conference.id tagName="tr"}}
                                 <td class="hidden-xs">
                                     <img src={{conference.logo}}>
                                 </td>
