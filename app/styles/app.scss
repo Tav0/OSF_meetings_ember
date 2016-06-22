@@ -255,17 +255,12 @@ p {
 .tile h3
 {
   margin-top: 40px;
-}
-#description
-{
   opacity: 0;
   transition: 0.3s ease;
 }
-
-.tile:hover #description
+.tile:hover h3
 {
   transition: 0.3s ease ;
-  bottom: 5%;
   opacity: 1;
 }
 .tile:hover h1
