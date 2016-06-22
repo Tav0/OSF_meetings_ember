@@ -170,26 +170,21 @@ h1 {
     font-size: 3.5em;
     margin: 0 0 10px 0;
 }
-
 h4 {
     font-size: 1em;
 }
-
 p {
     font-size: 0.8em;
 }
-
 .osfbar {
     height: 35px;
 
     font-size: 18px;
     margin: 0 -15px 0 -15px;
 }
-
 .conferencePhoto {
     height: 350px;
 }
-
 .conferencePhoto img {
     max-height: 100%;
     max-width: 100%;
@@ -200,42 +195,34 @@ p {
     -webkit-transform: translateX(-50%) translateY(-50%);
     -moz-transform: translateX(-50%) translateY(-50%);
 }
-
 .conferenceInfo h1 {
 
     color: black;
 }
-
 .conferenceInfo h4 {
     color: black;
     margin: 0 0 1px 30px;
 }
-
 .conferenceDescription {
     padding: 15px 15px 15px 0;
     font-size: 22px;
 }
-
 .logos {
     width: 100%;
     height: 15%;
 }
-
 .keynote {
     font-size: 2.4em;
     color: black;
 }
-
 .smallKey {
     color: black;
     font-size: 1em;
 }
-
 .inputFields {
     width: 100%;
     height: 100px;
 }
-
 .fileView {
     padding-top: 15px;
     background-color: rgba(12, 12, 12, 0.1);
@@ -244,7 +231,6 @@ p {
     min-height: 350px;
     width: 100%;
 }
-
 .splash-page
 {
     height: 100%;
@@ -254,3 +240,41 @@ p {
     color: white;
 }
 
+.tile
+{
+  width: 450px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  transition: 1s ease;
+  overflow: hidden;
+}
+.tile h1
+{
+  position: relative;
+}
+.tile h3
+{
+  margin-top: 40px;
+}
+#description
+{
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.tile:hover #description
+{
+  transition: 0.3s ease ;
+  bottom: 5%;
+  opacity: 1;
+}
+.tile:hover h1
+{
+  transition: 0.2s ease;
+  opacity: 0.7;
+}
+.tile:hover h4
+{
+  transition: 0.2s ease;
+  opacity: 0.7;
+}
