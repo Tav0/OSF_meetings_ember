@@ -5,7 +5,7 @@ import Ember from 'ember';
 
 
 export default Ember.Controller.extend({
-
+  
   isshowingcontact: false,
   isshowingassign: false,
   isshowingform: false,
@@ -21,6 +21,36 @@ export default Ember.Controller.extend({
 
   actions: {
     confirmHandler: function () {
+
+    },
+    tablecolor(){
+
+
+     /* Ember.$("tr").each(function() {
+        Ember.$this = Ember.$(this);
+        var imps = Ember.$this.find(".st").text().trim();
+
+        console.log(imps);
+        console.log('hii');
+
+        if (mode=='Completed' && imps=='Completed'){
+
+
+          Ember.$this.css('background-color', 'green');
+
+        }else if(mode=='Passed Due' && imps=='Passed Due'){
+
+          Ember.$this.css('background-color', 'red');
+
+        }else if (imps == ''){
+
+        }else{
+          Ember.$this.css('background-color', 'yellow');
+
+        }
+
+        // compare id to what you want
+      });*/
 
     },
 

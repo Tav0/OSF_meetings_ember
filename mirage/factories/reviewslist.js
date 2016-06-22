@@ -6,6 +6,6 @@ export default Factory.extend({
   conference: faker.list.cycle('ASONAM 2016','ASEE 2015','ICCS 2016','ICCS 2016'),
   reviewdeadline:faker.list.cycle('5/5/2016','2/27/2015','6/30/2016','6/30/2016'),
   reviewer: faker.list.cycle('Tom Adams','Chris David','Rana Jumail','Dan Lewis'),
-  status:   faker.list.cycle('Saved Draft','Completed','Not Started','Not Started')
+  status:   faker.list.cycle('Approved','Completed','Not started','Not started')
 
 });

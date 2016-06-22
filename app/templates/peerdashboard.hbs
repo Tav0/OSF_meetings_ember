@@ -11,7 +11,7 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse navbar-right">
         <ul class="nav navbar-nav">
-            <li><a href="/dashboard/">My Dashboard</a></li>
+            <li><a href="/peerdashboard/">My Dashboard</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Explore <span class="caret hidden-xs"></span></a>
                 <ul class="dropdown-menu" role="menu">
@@ -73,7 +73,7 @@
             </h3>
             <div>
 
-            <h1 >
+            <h1 class="ptitle">
                 Peer Review Dashboard
             </h1>
 
@@ -94,8 +94,27 @@
                     class="glyphicon glyphicon-leaf"></span>Tree</a>
             </div>
 
+            <div class="container">
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" style="width:{{model.ncomplete}}%" >
+                        Completed
+
+                    </div>
+                    <div class="progress-bar progress-bar-warning" role="progressbar" style="width:{{model.napprove}}%" >
+                        Approved
+                    </div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width:{{model.nstart}}%" >
+                        Not started
+                    </div>
+
+                </div>
+
+
+
+            </div>
             {{#if islistview}}
-            <table class="table table-hover">
+            <table id="submissions" class="table table-hover" >
                 <thead>
 
                 <tr>
@@ -135,7 +154,7 @@
                         <td>
                           {{d.reviewdeadline}}
                         </td>
-                        <td>
+                        <td class="st">
                           {{d.status}}
                         </td>
 

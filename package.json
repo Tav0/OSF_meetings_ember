@@ -55,14 +55,15 @@
     "ember-onbeforeunload": "1.0.0",
     "ember-one-way-controls": "0.8.3",
     "ember-osf": "file:../ember-osf",
+    "ember-progress-bar": "0.0.4",
     "ember-prop-types": "2.0.0",
     "ember-resolver": "^2.0.3",
     "ember-scroll-to": "0.5.1",
     "ember-truth-helpers": "1.2.0",
     "ember-validations": "2.0.0-alpha.4",
     "loader.js": "^4.0.1",
-    "wormhole": "3.0.0",
-    "svg4everybody": "2.0.3"
+    "svg4everybody": "2.0.3",
+    "wormhole": "3.0.0"
   },
   "dependencies": {}
 }
