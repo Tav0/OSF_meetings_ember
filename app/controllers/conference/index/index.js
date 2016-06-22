@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
  	conferenceDates: '',
 
 
- 	countries: ["-Select a country-", "United States of America (USA)", "Afghanistan", "Albania", "Algeria", "Andorra",
+ 	countries: ["United States of America (USA)", "Afghanistan", "Albania", "Algeria", "Andorra",
               "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria",
               "Azerbaijan", "Bahamas, The", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
               "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil",
@@ -50,7 +50,7 @@ export default Ember.Controller.extend({
 
 	actions: {
 		selectCountry(country) {
-      		this.set('model.conference.country', country);
+      		this.set('model.country', country);
     	},
 
 		edit() {
@@ -58,38 +58,37 @@ export default Ember.Controller.extend({
 		},	
 		cancel() {
 			this.set('editing',false);
-			this.store.findRecord('conference',this.get('model.conference.id')).then(function(conference) {
+			this.store.findRecord('conference',this.get('model.id')).then(function(conference) {
 				conference.rollbackAttributes();
 			});
 		},
-		save() {
+		save(conferenceID) {
 	      	this.setProperties({isValid: true, isInvalidTitle: false, isInvalidCountry: false, isInvalidState: false, isInvalidCity: false,
 	      		isInvalidDescription: false, isInvalidDates: false, isINvalidSubmissionDates: false});
-	      	if (this.get('model.conference.title') === "") {
+	      	if (this.get('model.title') === "") {
 	        	this.setProperties({isInvalidTitle: true, isValid: false});
 	      	}
-	      	if (this.get('model.conference.city') === "") {
+	      	if (this.get('model.city') === "") {
 	        	this.setProperties({isInvalidCity: true, isValid: false});
 	      	}
-	      	if (this.get('model.conference.state') === "" && this.get('model.conference.country') === "United States of America (USA)") {
+	      	if (this.get('model.state') === "" && this.get('model.country') === "United States of America (USA)") {
 	        	this.setProperties({isInvalidState: true, isValid: false});
 	      	}
-	      	if ((this.get('model.conference.country') === "-Select a country-") || (this.get('model.conference.country') === undefined)) {
+	      	if (this.get('model.country') === undefined) {
 	        	this.setProperties({isInvalidCountry: true, isValid: false});
 	      	}
-	      	if (this.get('model.conference.startDate') > this.get('model.conference.endDate')) {
+	      	if (this.get('model.startDate') > this.get('model.endDate')) {
 	        	this.setProperties({isInvalidDates: true, isValid: false});
 	      	}
-	      	if (this.get('model.conference.submissionDate') > this.get('model.conference.closeDate')) {
+	      	if (this.get('model.submissionDate') > this.get('model.closeDate')) {
 	        	this.setProperties({isInvalidSubmissionDates: true, isValid: false});
 	      	}
-	      	if (this.get('model.conference.description') === "") {
+	      	if (this.get('model.description') === "") {
 	        	this.setProperties({isInvalidDescription: true, isValid: false});
 	      	}
 	      	if (this.get('isValid')) {
-				this.store.findRecord('conference', this.get('model.conference.id')).then(function(){
-					this.save();
-				});
+				var conference = this.store.peekRecord('conference', conferenceID);
+				conference.save();
 				this.set('editing',false);
 			}
 		}

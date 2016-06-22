@@ -12,18 +12,18 @@ export default Ember.Route.extend({
                     (document.getElementById('contributors').value.length >= 3) &&
                     (document.getElementById('description').value.length >= 6))  {
 
-                let models = this.modelFor('conference.index');
+                let conferenceModel = this.modelFor('conference.index');
                     newNode.setProperties({
                     title: title,
                     description: description,
                     category: 'project',
-                    conference: models.conference,
+                    conference: conferenceModel,
                     tags: tags.toString(),
                 });
-
+                console.log(conferenceModel);
                 document.getElementById("fileSubmission").reset();
                 newNode.save();
-                this.transitionTo('conference.index', models.conference.id);
+                this.transitionTo('conference.index.index', conferenceModel.id);
             }
 
             else {
@@ -34,8 +34,8 @@ export default Ember.Route.extend({
 
         cancel()
         {
-            let models = this.modelFor('conference.index');
-            this.transitionTo('conference.index', models.conference.id);
+            let conferenceModel = this.modelFor('conference.index.index');
+            this.transitionTo('conference.index.index', conferenceModel.id);
         }
     }
 });

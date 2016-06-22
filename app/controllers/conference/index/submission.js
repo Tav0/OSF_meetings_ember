@@ -2,6 +2,7 @@ import Ember from 'ember';
 import TaggableMixin from 'ember-osf/mixins/taggable-mixin';
 
 export default Ember.Controller.extend(TaggableMixin, {
+
 	isValidTitle: Ember.computed.match('title', /...+/),
  	isValidContributors: Ember.computed.match('contributors', /...+/),
  	isValidDescription: Ember.computed.match('description', /......+/),
@@ -10,11 +11,15 @@ export default Ember.Controller.extend(TaggableMixin, {
  	contributorsError: false,
  	descriptionError: false,
 
- 	title: '',
- 	contributors: '',
- 	description: '',
+    title: '',
+    contributors: '',
+    description: '',
 
  	actions: {
+ 		addATag(tag){
+            if (tag != '' && tag != undefined)
+ 			    this._super(tag);
+ 		},
  		displayErrors(){
  			this.set("titleError", false);
  			this.set("contributorsError", false);
