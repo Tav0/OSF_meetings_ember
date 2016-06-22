@@ -2,27 +2,26 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
     model() {
-        return Ember.RSVP.hash({
-            conference: this.modelFor('conference.index'),
-            node: this.store.createRecord('node', {
-                title: '',
-                description: '',
-                tags: [],
-                category: 'project',
-            }),
+        return this.store.createRecord('node', {
+            tags: [],
         });
     },
     actions: {
-        saveNodeSubmission(newNode){
-            var newNodeTitle = newNode.get('title');
-            var newNodeDescription = newNode.get('description');
-            if ((newNodeTitle.length >= 3) &&
-                (newNodeDescription.length >= 6))  
-            {
-                let conferenceModel = this.get('model.conference');
-                newNode.setProperties({
+        saveNodeSubmission(newNode, title, contributors, description, tags){
+            if ((document.getElementById('title').value.length >= 3) &&
+                    (document.getElementById('contributors').value.length >= 3) &&
+                    (document.getElementById('description').value.length >= 6))  {
+
+                let conferenceModel = this.modelFor('conference.index');
+                    newNode.setProperties({
+                    title: title,
+                    description: description,
+                    category: 'project',
                     conference: conferenceModel,
+                    tags: tags.toString(),
                 });
+                console.log(conferenceModel);
+                document.getElementById("fileSubmission").reset();
                 newNode.save();
                 this.transitionTo('conference.index.index', conferenceModel.id);
             }
@@ -35,8 +34,8 @@ export default Ember.Route.extend({
 
         cancel()
         {
-            let models = this.modelFor('conference.index.index');
-            this.transitionTo('conference.index.index', models.id);
+            let conferenceModel = this.modelFor('conference.index.index');
+            this.transitionTo('conference.index.index', conferenceModel.id);
         }
     }
 });

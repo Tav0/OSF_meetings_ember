@@ -40,7 +40,7 @@
             <div class="form-group row {{if isValidTitle "has-success" "has-error"}}">
                 <div class="col-md-6">
                     <label><font style='color: #ff0000'>*</font> Title:</label>
-                  {{input id="title" value=model.node.title class="form-control"}}
+                  {{input id="title" value=this.title class="form-control"}}
                     <div style="color:#FF0000">
                         {{if this.titleError "Please enter a valid title" ""}}
                     </div>
@@ -50,7 +50,7 @@
             <div class="form-group row {{if isValidContributors "has-success" "has-error"}}">
                 <div class="col-md-6">
                     <label><font style='color: #ff0000'>*</font> Contributors:</label>
-                  {{input id="contributors" value='' class="form-control"}}
+                  {{input id="contributors" value=this.contributors class="form-control"}}
                     <div style="color:#FF0000">
                         {{if this.contributorsError "Please enter valid contributors" ""}}
                     </div>
@@ -60,7 +60,7 @@
             <div class="form-group row has-success">
                 <div class="col-md-6">
                     <label>Tags:</label>
-                  {{tags-widget tags=model.node.tags addATag=(action 'addATag') 
+                  {{tags-widget tags=model.tags addATag=(action 'addATag') 
                   removeATag=(action 'removeATag')}}
                 </div>
             </div>
@@ -68,7 +68,7 @@
             <div class="form-group row {{if isValidDescription "has-success" "has-error"}}">
                 <div class="col-md-6">
                     <label><font style='color: #ff0000'>*</font> Description:</label>
-                  {{textarea id="description" value=model.node.description class="form-control"}}
+                  {{textarea id="description" value=this.description class="form-control"}}
                     <div style="color:#FF0000">
                         {{if this.descriptionError "Please enter a valid description" ""}}
                     </div>
@@ -83,7 +83,7 @@
             <div class="form-group row">
                 <div class="col-md-3">
                     <button
-                    class="form-control btn btn-success" {{action "saveNodeSubmission" model.node}}>
+                    class="form-control btn btn-success" {{action "saveNodeSubmission" model title contributors description model.tags}}>
                         Submit
                     </button>
                 </div>

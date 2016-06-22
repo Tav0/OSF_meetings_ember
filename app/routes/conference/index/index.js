@@ -32,7 +32,7 @@ export default Ember.Route.extend({
 		},
 		submitTo() {
 			this.transitionTo('conference.index.submission').then(function(newRoute) {
-				newRoute.controller.set('access',true);
+				newRoute.setProperties({title: '', contributors: '', description: ''});
 			});
 		}
 	}

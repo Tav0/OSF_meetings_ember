@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
  	conferenceDates: '',
 
 
- 	countries: ["-Select a country-", "United States of America (USA)", "Afghanistan", "Albania", "Algeria", "Andorra",
+ 	countries: ["United States of America (USA)", "Afghanistan", "Albania", "Algeria", "Andorra",
               "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria",
               "Azerbaijan", "Bahamas, The", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
               "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil",
@@ -74,7 +74,7 @@ export default Ember.Controller.extend({
 	      	if (this.get('model.state') === "" && this.get('model.country') === "United States of America (USA)") {
 	        	this.setProperties({isInvalidState: true, isValid: false});
 	      	}
-	      	if ((this.get('model.country') === "-Select a country-") || (this.get('model.country') === undefined)) {
+	      	if (this.get('model.country') === undefined) {
 	        	this.setProperties({isInvalidCountry: true, isValid: false});
 	      	}
 	      	if (this.get('model.startDate') > this.get('model.endDate')) {
