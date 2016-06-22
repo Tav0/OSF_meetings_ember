@@ -87,7 +87,6 @@ export default Ember.Controller.extend({
 	        	this.setProperties({isInvalidDescription: true, isValid: false});
 	      	}
 	      	if (this.get('isValid')) {
-	      		console.log('hello');
 				var conference = this.store.peekRecord('conference', conferenceID);
 				conference.save();
 				this.set('editing',false);

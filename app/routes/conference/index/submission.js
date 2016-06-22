@@ -3,27 +3,28 @@ import Ember from 'ember';
 export default Ember.Route.extend({
     model() {
         return Ember.RSVP.hash({
+            conference: this.modelFor('conference.index'),
             node: this.store.createRecord('node', {
                 title: '',
                 description: '',
-                tags: '',
+                tags: [],
                 category: 'project',
             }),
-            conference: this.modelFor('conference.index'),
         });
     },
     actions: {
         saveNodeSubmission(newNode){
             var newNodeTitle = newNode.get('title');
             var newNodeDescription = newNode.get('description');
-            var newNodeTags = newNode.get('tags');
-
             if ((newNodeTitle.length >= 3) &&
                 (newNodeDescription.length >= 6))  
             {
+                let conferenceModel = this.get('model.conference');
+                newNode.setProperties({
+                    conference: conferenceModel,
+                });
                 newNode.save();
-                let conference = this.modelFor('conference.index');
-                this.transitionTo('conference.index.index', conference.id);
+                this.transitionTo('conference.index.index', conferenceModel.id);
             }
 
             else {

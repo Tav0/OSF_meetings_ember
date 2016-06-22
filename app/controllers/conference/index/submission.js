@@ -19,14 +19,18 @@ export default Ember.Controller.extend(TaggableMixin, {
 
  	actions: {
  		addATag(tag){
- 			console.log(tag);
  			var resource = this.get('model.node');
             var currentTags = resource.get('tags').slice(0);
             Ember.A(currentTags);
             currentTags.pushObject(tag);
             resource.set('tags', currentTags);
-            console.log(currentTags);
  		},
+ 		removeATag(tag) {
+            var resource = this.get('model.node');
+            var currentTags = resource.get('tags').slice(0);
+            currentTags.splice(currentTags.indexOf(tag), 1);
+            resource.set('tags', currentTags);
+        },
  		displayErrors(){
  			this.set("titleError", false);
  			this.set("contributorsError", false);
