@@ -9,7 +9,7 @@ export default Ember.Route.extend({
     },
     actions: {
         saveNodeSubmission(newNode, title, contributors, description, tags){
-            this.get('controller').send('reset');
+            this.get('controller').send('resetErrorMessages');
             if ((document.getElementById('title').value.length >= 3) &&
                     (document.getElementById('contributors').value.length >= 3) &&
                     (document.getElementById('description').value.length >= 6))  {
@@ -34,7 +34,7 @@ export default Ember.Route.extend({
             }
         },
 
-        cancel()
+        cancelSubmission()
         {
             let conferenceModel = this.modelFor('conference.index.index');
             this.transitionTo('conference.index.index', conferenceModel.id);

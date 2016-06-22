@@ -4,10 +4,10 @@ export default Ember.Route.extend({
 	previousTransition: null,
 	deactivate: function() {
 			var controller = this.get('controller');
-			controller.send('cancel');
+			controller.send('cancelEdits');
 	},
 	actions: {
-		back(){
+		backToMeetings(){
 			this.transitionTo('index').then(function(newRoute) {
         		newRoute.controller.set('visited', true);
 			});			
@@ -20,13 +20,13 @@ export default Ember.Route.extend({
 				this.set('previousTransition',transition);
 			}
 		},
-		leave() {
+		confirmLeave() {
 			var controller = this.get('controller');
 			controller.send('cancel');
 			controller.set('navModal',false);
 			this.get('previousTransition').retry();
 		},
-		stay() {
+		declineLeave() {
 			var controller = this.get('controller');
 			controller.set('navModal',false);
 		},
@@ -34,6 +34,7 @@ export default Ember.Route.extend({
 			this.transitionTo('conference.index.submission').then(function(newRoute) {
 				newRoute.controller.setProperties({title: '', contributors: '', description: ''});
 			});
+			console.log('wtf');
 		}
 	}
 });
