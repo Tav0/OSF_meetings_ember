@@ -5,7 +5,7 @@ img
     max-width: 100%;
     height: auto;
 }
-.tableDescription
+.tableDescription, .tableTitle
 {
     display: -webkit-box;
     border: 0px solid #000000;
@@ -27,6 +27,7 @@ a:hover
 .heading 
 {
     font-size:16px;
+    color:black;
 }
 
 </style>
@@ -200,23 +201,23 @@ a:hover
                                   <table class="table table-hover">
                                     <thead class="thead">
                                         <tr>
-                                            <th class="heading" bgcolor="#E0E0E0">Title</th>
-                                            <th class="heading" bgcolor="#E0E0E0">Author</th>
-                                            <th class="heading" bgcolor="#E0E0E0">Description</th>
+                                            <th class="heading" bgcolor="#E0E0E0" width="30%" data-sortable="true">Title</th>
+                                            <th class="heading" bgcolor="#E0E0E0" width="20%">Author</th>
+                                            <th class="heading" bgcolor="#E0E0E0" width="50%">Description</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {{#each model.linkedNodes as |item|}}
-                                        <tr>
-                                            <th class="tableTitle" scope="row" width="30%">
-                                            <a target="_blank" style="color: #80BFFF;" href={{link-to-osf item.id}}>
+                                        <tr bgcolor="FFFFFF">
+                                            <th class="tableTitle" scope="row">
+                                            <a target="_blank" style="color: #0080ff;" href={{link-to-osf item.id}}>
                                             {{item.title}}
                                             </a></th>
-                                            <td width="20%">{{#each model.contributors as |contributor|}}
+                                            <td style="color: black;">{{#each item.contributors as |contributor|}}
                                                     {{contributor.users.fullName}}
                                                 {{/each}}
                                             </td>
-                                            <td class="tableDescription" width="100%">{{item.description}}</td>
+                                            <td class="tableDescription" style="color: #000000">{{item.description}}</td>
                                         </tr>
                                         {{/each}}
                                     </tbody>
