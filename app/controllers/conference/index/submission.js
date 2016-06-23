@@ -17,9 +17,10 @@ export default Ember.Controller.extend(TaggableMixin, {
 
  	actions: {
  		addATag(tag){
-            if (tag !== '' && tag !== undefined) {
+            if (tag !== '' && tag !== undefined && tag !== null) {
  			    this._super(tag);
             }
+            
  		},
  		displayErrors(){
  			this.set("titleError", false);
