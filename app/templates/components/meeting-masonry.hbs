@@ -1,11 +1,18 @@
+<style>
+h1, h3, h4 {
+	padding: 0 10px 0 10px;
+}
+</style>
+
 <div style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url({{logo}}); height: inherit; padding: 5px">
-	<textbox readOnly="true" style="text-align: center; float:right; border: 0px solid #000000; width: 40px; background-color: rgba(0,50,50,0.5);">
+<!-- 	<textbox readOnly="true" style="text-align: center; float:right; border: 0px solid #000000; width: 40px; background-color: rgba(0,50,50,0.5);">
 		 {{submissions}}
-	</textbox>
+	</textbox> -->
     <h1>{{title}}</h1>
     <h4> {{author}}</h4>
     <h4> {{location}} </h4>
     <h4> {{date}} </h4>
+    <h4> Submissions: {{submissions}} </h4>
     <h3>{{truncate description limit=240}}</h3>
 </div>
 
