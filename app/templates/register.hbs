@@ -127,14 +127,6 @@
                             </div>
                         </div>
 
-                        <select class=form-control onchange={{action (mut model.country) value="target.value"}}>
-                          {{#each countries as |countryChoice|}}
-                            <option value={{countryChoice}} selected={{eq model.country countryChoice}}><{{countryChoice}}</option>
-                          {{/each}}
-                        </select>
-                      {{#if this.isInvalidCountry}}
-                          <br> <font style="color: #ff0000">Please select a country</font>
-                      {{/if}}
                     </div>
                     <div class="form-group row fadeBackground">
                         <div class="sectionHeader">CONFERENCE WINDOW</div>
@@ -179,34 +171,6 @@
                             {{input value=model.tags class="form-control" id="tags" placeholder="tag 1, tag 2, tag 3, ..."}}
                         </div>
                     </div>
-                    <div class="col-md-6">
-                    <label for="city" class="form-control-label">End Date:</label>
-                      {{date-picker date=model.endDate class="form-control" valueFormat='date' id='endDate'}}
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-6">
-                    <label for="city" class="form-control-label">Submission Start Date:</label>
-                      {{date-picker date=model.submissionDate class="form-control" valueFormat='date' id='submissionDate'}}
-                      {{#if this.isInvalidSubmissionDates}}
-                        <br> <font style="color: #ff0000">Submission start date must be before end date</font>
-                      {{/if}}
-                    </div>
-                    <div class="col-md-6">
-                    <label for="city" class="form-control-label">Submission End Date:</label>
-                      {{date-picker date=model.closeDate class="form-control" valueFormat='date' id='closeDate'}}
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-6">
-                    <label for="city" class="form-control-label">Sponsors:</label>
-                  {{input value=model.sponsors class="form-control" id="sponsors" placeholder="sponsor 1, sponsor 2, sponsor 3, ..."}}
-                </div>
-                    <div class="col-md-6">
-                        <label for="tags" class="form-control-label">Tags:</label>
-                      {{input value=model.tags class="form-control" id="tags" placeholder="tag 1, tag 2, tag 3, ..."}}
-                    </div>
-                </div>
 
                     <div class="form-group row">
                         <div class="col-md-2 ">
@@ -245,28 +209,16 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-8 col-offset-2 conferencePhoto">
-                                          {{!--TODO: THIS WILL PROBABLY REQUIRE EDITING ONCE FILE UPLOAD IS WORKING CORREFTLY--}}
-                                            <img src={{model.logo}}>
-                                        </div>
+                                        <button class="form-control btn btn-danger" {{action "previewOff"}}>Close
+                                        </button>
+                                        <button class="form-control btn btn-success" {{action "create" model}}>Submit
+                                        </button>
                                     </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="conferenceDescriptionContainer col-lg-12">
-                                        <div class="col-lg-8 col-lg-offset-2">
-                                            <p class = "conferenceDescription">{{model.conference.description}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                              <button class="form-control btn btn-danger" {{action "previewOff"}}>Close</button>
-                              <button class="form-control btn btn-success" {{action "create" model}}>Submit</button>
-                            </div>
-                         {{/modal-dialog}}
-                        {{/if}}
+                                {{/modal-dialog}}
+                            {{/if}}
+                        </div>
                     </div>
-                  </div>
-              </form>
+                </form>
             </div>
         </div>
     </div>
