@@ -10,9 +10,9 @@ export default Ember.Route.extend({
     actions: {
         saveNodeSubmission(newNode, title, contributors, description, tags){
             this.get('controller').send('resetErrorMessages');
-            if ((document.getElementById('title').value.length >= 3) &&
-                    (document.getElementById('contributors').value.length >= 3) &&
-                    (document.getElementById('description').value.length >= 6))  {
+            if ((title.length >= 3) &&
+                    (title.length >= 3) &&
+                    (title.length >= 6))  {
 
                 let conferenceModel = this.modelFor('conference.index');
                     newNode.setProperties({
