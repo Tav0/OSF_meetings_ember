@@ -11,8 +11,8 @@ export default Ember.Route.extend({
         saveNodeSubmission(newNode, title, contributors, description, tags){
             this.get('controller').send('resetErrorMessages');
             if ((title.length >= 3) &&
-                    (title.length >= 3) &&
-                    (title.length >= 6))  {
+                    (contributors.length >= 3) &&
+                    (description.length >= 6))  {
 
                 let conferenceModel = this.modelFor('conference.index');
                     newNode.setProperties({
