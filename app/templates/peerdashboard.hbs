@@ -1,3 +1,5 @@
+
+
 <nav class="navbar navbar-inverse" id="navbarScope" role="navigation">
 <div class="container">
     <div class="navbar-header">
@@ -98,14 +100,14 @@
 
                 <div class="progress">
                     <div class="progress-bar progress-bar-success" role="progressbar" style="width:{{model.ncomplete}}%" >
-                        Completed
+                      {{model.ncomplete}}% Completed
 
                     </div>
                     <div class="progress-bar progress-bar-warning" role="progressbar" style="width:{{model.napprove}}%" >
-                        Approved
+                      {{model.napprove}}% Approved
                     </div>
                     <div class="progress-bar progress-bar-danger" role="progressbar" style="width:{{model.nstart}}%" >
-                        Not started
+                      {{model.nstart}}% Not started
                     </div>
 
                 </div>
@@ -237,7 +239,7 @@
                                           <a class="btn btn-primary" {{action 'showdata'}} >Contact Author</a>
                                       </li>
                                       <li>
-                                          <span><i class="icon-leaf"></i> Using technology in classrooms</span>
+                                          <span><i class="icon-leaf"></i> Reproducible Research for Scientific Computing</span>
                                           <a class="btn btn-primary" {{action 'showform'}} >View</a>
                                           <a class="btn btn-primary" {{action 'showapprove' d.id}} >Approve</a>
                                           <a class="btn btn-primary" {{action 'showassign' d.id}} >Assign</a>
@@ -304,7 +306,7 @@
 
 
               <div class = "col-md-8 col-md-offset-3" style="width: 1300px">
-                  <iframe id="fred" style="border:1px solid #666CCC" title="Submission" src="http://reproducibility.cs.arizona.edu/v2/RepeatabilityTR.pdf" frameborder="1" scrolling="auto" height="850" width="850" ></iframe>
+                  <iframe id="fred" style="border:1px solid #666CCC" title="Submission" src="http://www.bitss.org/wp-content/uploads/2014/06/reproducible-research-for-scientific-computing-tools-and-strategies-for-changing-the-culture3.pdf" frameborder="1" scrolling="auto" height="850" width="850" ></iframe>
               </div>
 
 
