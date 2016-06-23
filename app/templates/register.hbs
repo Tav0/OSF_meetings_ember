@@ -1,6 +1,6 @@
 <style>
     label {
-        font-size: 24px;
+        font-size: 28px;
         font-weight: 500;
         display: inline-block;
         padding: 0;
@@ -17,6 +17,11 @@
         border-radius: 0;
         border: none;
     }
+    .btn
+    {
+        border: none;
+        border-radius: 0;
+    }
     .form-control
     {
         background-color: rgba(255, 255, 255, 0.7);
@@ -32,7 +37,7 @@
         font-weight: 300;
     }
     hr{
-        margin: 0;
+        margin: 0 0 15px 15px;
     }
     .fadeBackground
     {
@@ -40,27 +45,24 @@
         margin-top: 15px;
         padding: 15px;
     }
-    .row{
-
-    }
-    .resize
+    h1
     {
-        min-height: 80px;
+        padding: 0;
+        font-weight: 300;
     }
 </style>
 
-<div class="container-fluid osfSuperLightBackground">
+<div class="container-fluid osfSuperLightBackground" style="padding-bottom: 50px;">
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3" style="padding-top: 50px">
-
+            <h1>Create a New Conference </h1>
+            <div class="col-md-6 col-md-offset-3" style="padding-top: 25px">
                 <form>
-
-
                     <div class="form-group row fadeBackground">
                         <div class="sectionHeader">IDENTIFY</div>
-                        <div class="col-md-6 {{if isValidTitle "has-success" "has-error"}}">
-                            <label for="title" class="form-control-label">title</label>
+                        <hr>
+                        <div class="col-lg-6 {{if isValidTitle "has-success" "has-error"}}">
+                            <label for="title" class="form-control-label">Title</label>
 
                             {{input value=model.title class="form-control" placeholder="Conference Title" id="title"}}
                             {{#if this.isInvalidTitle}}
@@ -69,14 +71,14 @@
                                 Please enter a valid title
                                 </div>
                             {{/if}}
-                            <label for="website" class="form-control-label">website</label>
+                            <label for="website" class="form-control-label">Website</label>
                             {{input value=model.website class="form-control" placeholder="Conference Website" id="website"}}
 
-                            <label for="city" class="form-control-label">logo</label>
+                            <label for="city" class="form-control-label">Logo</label>
                             {{input type="file" accept="image/*" id="image"}}
 
                             <label for="description" class="form-control-label">
-                                description:</label>
+                                Description:</label>
                             {{textarea value=model.description class="form-control resize" id="description"style="height: 100%"}}
                             {{#if this.isInvalidDescription}}
                                 <br>
@@ -88,10 +90,11 @@
 
                     <div class="form-group row fadeBackground">
                         <div class="sectionHeader">LOCATE</div>
-                        <div class="col-md-6">
+                        <hr>
+                        <div class="col-lg-6">
                             <div class ="{{if isValidCountry "has-success" "has-error"}}">
                                 <label for="country" class="form-control-label">
-                                    country
+                                    Country
                                 </label>
                                 <select class="form-control" onchange={{action (mut model.country) value="target.value"}}>
                                     {{#each countries as |countryChoice|}}
@@ -100,14 +103,24 @@
                                         </option>
                                     {{/each}}
                                 </select>
+                                {{#if this.isInvalidCountry}}
+                                    <br>
+                                    <div style="color: #ff0000">Please select a country</div>
+                                {{/if}}
                             </div>
 
-                            {{#if this.isInvalidCountry}}
-                                <br>
-                                <div style="color: #ff0000">Please select a country</div>
-                            {{/if}}
+                            <div class="{{if isAmerica (if isValidState "has-success" "has-error")}}">
+                                <label for="city" class="form-control-label">
+                                    {{#if this.isAmerica}}
+                                    {{/if}} State</label>
+                                {{input value=model.state class="form-control" id="state" placeholder="State"}}
+                                {{#if this.isInvalidState}}
+                                    <br>
+                                    <div style="color: #ff0000">Please enter a valid state</div>
+                                {{/if}}
+                            </div>
                             <div class="{{if isValidCity "has-success" "has-error"}}">
-                                <label for="city" class=" form-control-label">city</label>
+                                <label for="city" class=" form-control-label">City</label>
                                 {{input value=model.city class="form-control" id="city" placeholder="City"}}
                                 {{#if this.isInvalidCity}}
                                     <br>
@@ -115,25 +128,15 @@
                                 {{/if}}
                             </div>
 
-                            <div class="{{if isAmerica (if isValidState "has-success" "has-error")}}">
-                                <label for="city" class="form-control-label">
-                                    {{#if this.isAmerica}}
-                                {{/if}} state</label>
-                                {{input value=model.state class="form-control" id="state" placeholder="State"}}
-                                {{#if this.isInvalidState}}
-                                    <br>
-                                    <div style="color: #ff0000">Please enter a valid state</div>
-                                {{/if}}
 
-                            </div>
                         </div>
 
                     </div>
                     <div class="form-group row fadeBackground">
                         <div class="sectionHeader">CONFERENCE WINDOW</div>
-
-                        <div class="col-md-6">
-                            <label for="city" class="form-control-label">start</label>
+                        <hr>
+                        <div class="col-lg-6">
+                            <label for="city" class="form-control-label">Start</label>
                             {{date-picker date=model.startDate class="form-control" valueFormat='date' id='startDate'}}
                             {{#if this.isInvalidDates}}
                                 <br>
@@ -141,47 +144,47 @@
                             {{/if}}
                         </div>
                         <div class="col-md-6">
-                            <label for="city" class="form-control-label">end</label>
+                            <label for="city" class="form-control-label">End</label>
                             {{date-picker date=model.endDate class="form-control" valueFormat='date' id='endDate'}}
                         </div>
                     </div>
 
                     <div class="form-group row fadeBackground">
                         <div class="sectionHeader">SUBMISSION WINDOW</div>
+                        <hr>
                         <div class="col-md-6">
-                            <label for="city" class="form-control-label">start</label>
+                            <label for="city" class="form-control-label">Start</label>
                             {{date-picker date=model.submissionDate class="form-control" valueFormat='date' id='submissionDate'}}
                             {{#if this.isInvalidSubmissionDates}}
                                 <br>
                                 <div style="color: #ff0000">Submission start date must be before end date</div>
                             {{/if}}
                         </div>
-                        <div class="col-md-6">
-                            <label for="city" class="form-control-label">end</label>
+                        <div class="col-lg-6">
+                            <label for="city" class="form-control-label">End</label>
                             {{date-picker date=model.closeDate class="form-control" valueFormat='date' id='closeDate'}}
                         </div>
                     </div>
                     <div class="form-group row fadeBackground">
                         <div class="sectionHeader">EXPAND</div>
-                        <div class="col-md-6">
-                            <label for="city" class="form-control-label">sponsors</label>
+                        <hr>
+                        <div class="col-lg-6">
+                            <label for="city" class="form-control-label">Sponsors</label>
                             {{input value=model.sponsors class="form-control" id="sponsors" placeholder="sponsor 1, sponsor 2, sponsor 3, ..."}}
                         </div>
-                        <div class="col-md-6">
-                            <label for="tags" class="form-control-label">tags</label>
+                        <div class="col-lg-6">
+                            <label for="tags" class="form-control-label">Tags</label>
                             {{input value=model.tags class="form-control" id="tags" placeholder="tag 1, tag 2, tag 3, ..."}}
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <div class="col-md-2 ">
-                            <button class="form-control btn btn-success" {{action "create" model}}>Submit</button>
+                    <div class="form-group row fadeBackground" >
+                        <div class="col-md-4">
+                            <button class="btn btn-danger" {{action "back" model}}>Cancel</button>
+                            <button class="btn btn-success" {{action "create" model}}>Create</button>
                         </div>
-                        <div class="col-md-2">
-                            <button class="form-control" {{action "preview"}}>Preview</button>
-                        </div>
-                        <div class="col-md-2 ">
-                            <button class="form-control btn btn-danger" {{action "back" model}}>Cancel</button>
+                        <div class="col-md-4">
+                            <button class="btn btn-primary" {{action "preview"}}>Preview</button>
                             {{#if this.previewOn}}
                                 {{#modal-dialog close="hideform" targetAttachment="center" translucentOverlay=true}}
                                     <div class="row" style="padding: 20px">

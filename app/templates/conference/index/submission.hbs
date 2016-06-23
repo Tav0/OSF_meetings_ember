@@ -5,9 +5,18 @@
         top: 50%;
         transform: translateY(-50%);
     }
+    .sectionHeader {
+        font-size: 24px;
+        font-weight: 300;
+    }
     .row:before
     {
         height: 100%;
+    }
+    .btn
+    {
+        border: none;
+        border-radius: 0;
     }
     label
     {
@@ -16,6 +25,30 @@
     .form-control
     {
         height: 100%;
+    }
+    label {
+        font-size: 28px;
+        font-weight: 500;
+        display: inline-block;
+        padding: 0;
+    }
+    input[type="text"],  textarea {
+        margin-bottom: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 0;
+        border: none;
+    }
+    input[type="file"]
+    {
+        margin-bottom: 15px;
+        border-radius: 0;
+        border: none;
+    }
+    .form-control
+    {
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 0;
+        border: none;
     }
     .glyphicon-remove {
         color : black;
@@ -26,12 +59,6 @@
     }
     input {
         color : black;
-    }
-    .has-error .form-control {
-        border-width : 2px;
-    }
-    .has-success .form-control:focus {
-        border-width: 2px;
     }
     div>p>input {
         width: 50%;
@@ -47,29 +74,36 @@
     div>span>button {
         padding: 2px 6px !important;
     }
+    .fadeBackground
+    {
+        background-color: rgba(0,0,0,0.1);
+        margin-top: 15px;
+        padding: 15px;
+    }
 </style>
 
-<div class="container-fluid osfSuperLightBackground">
+<div class="container-fluid osfSuperLightBackground" style="padding-bottom: 40px;padding-top: 40px">
 
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="page-header">
+        <div class="col-md-6 col-md-offset-3" style="padding:0;">
+            <div>
                 <h2>Submit to:</h2><h1 style="font-size: 64px"> {{model.conference.title}}</h1>
             </div>
         </div>
     </div>
 <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-6 col-md-offset-3 fadeBackground">
         <form id = "fileSubmission" method="post">
             <div class="form-group row">
-                <div class="col-md-6" style="height: 100%;">
-                    <label>Upload File(s):</label>
+                <div class="col-md-6"  style="height: 100%;">
+                    <div class="sectionHeader"> Upload File(s):</div>
+
                 </div>
             </div>
-
+<hr>
             <div class="form-group row {{if isValidTitle "has-success" "has-error"}}">
                 <div class="col-md-6">
-                    <label><font style='color: #ff0000'>*</font> Title:</label>
+                    <label> Title:</label>
                   {{input id="title" value=this.title class="form-control"}}
                     <div style="color:#FF0000">
                         {{if this.titleError "Please enter a valid title" ""}}
@@ -79,7 +113,7 @@
             </div>
             <div class="form-group row {{if isValidContributors "has-success" "has-error"}}">
                 <div class="col-md-6">
-                    <label><font style='color: #ff0000'>*</font> Contributors:</label>
+                    <label>Contributors:</label>
                   {{input id="contributors" value=this.contributors class="form-control"}}
                     <div style="color:#FF0000">
                         {{if this.contributorsError "Please enter valid contributors" ""}}
@@ -97,7 +131,7 @@
 
             <div class="form-group row {{if isValidDescription "has-success" "has-error"}}">
                 <div class="col-md-6">
-                    <label><font style='color: #ff0000'>*</font> Description:</label>
+                    <label>Description:</label>
                   {{textarea id="description" value=this.description class="form-control"}}
                     <div style="color:#FF0000">
                         {{if this.descriptionError "Please enter a valid description" ""}}
@@ -106,20 +140,15 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4">
-                    <h2><font style="color: #ff0000">*</font> denotes required field</h2>
-                </div>
-            </div>
-            <div class="form-group row">
                 <div class="col-md-3">
                     <button
-                    class="form-control btn btn-success" {{action "saveNodeSubmission" model title contributors description model.tags}}>
+                    class="btn btn-success" {{action "saveNodeSubmission" model title contributors description model.tags}}>
                         Submit
                     </button>
                 </div>
                 <div class="col-md-3">
                     <button
-                            class="form-control btn btn-danger" {{action
+                            class=" btn btn-danger" {{action
                             "cancelSubmission" model}}>Cancel</button>
                 </div>
             </div>
