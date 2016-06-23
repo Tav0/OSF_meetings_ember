@@ -42,7 +42,7 @@
                        style=" max-height: 100vh; overflow-y: scroll; margin-left: 34px; padding-right: 34px; padding-bottom: 80px">
                       {{#masonry-grid  isFitWidth=true gutter=20 items= model as |conf|}}
                           {{#link-to "conference.index" conf.id class="title"}}
-                              {{meeting-masonry title=conf.title description=conf.description logo=conf.logo author=conf.author location=(location-display conf.city conf.state conf.country) date=(date-display conf.startDate)}}
+                              {{meeting-masonry title=conf.title description=conf.description logo=conf.logo author=conf.author location=(location-display conf.city conf.state conf.country) date=(date-display conf.startDate) submissions=(submission-count conf.linkedNodes)}}
                           {{/link-to}}
                       {{/masonry-grid}}
                   </div>
