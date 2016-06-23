@@ -65,8 +65,9 @@
                             {{input value=model.title class="form-control" placeholder="Conference Title" id="title"}}
                             {{#if this.isInvalidTitle}}
                                 <br>
-                                <div style="color: #ff0000">*</div>
+                                <div style="color: #ff0000">
                                 Please enter a valid title
+                                </div>
                             {{/if}}
                             <label for="website" class="form-control-label">website</label>
                             {{input value=model.website class="form-control" placeholder="Conference Website" id="website"}}
