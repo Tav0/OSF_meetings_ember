@@ -35,7 +35,6 @@ export default Ember.Route.extend({
             this.transitionTo('conference.index.submission').then(function(newRoute) {
                 newRoute.controller.setProperties({title: '', contributors: '', description: ''});
             });
-            console.log('wtf');
         }
     }
 });

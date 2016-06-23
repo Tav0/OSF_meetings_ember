@@ -22,7 +22,6 @@ export default Ember.Route.extend({
                     conference: conferenceModel,
                     tags: tags.toString(),
                 });
-                console.log(conferenceModel);
                 document.getElementById("fileSubmission").reset();
                 newNode.save();
                 this.transitionTo('conference.index.index', conferenceModel.id);
@@ -34,9 +33,13 @@ export default Ember.Route.extend({
             }
         },
 
-        cancelSubmission()
+        cancelSubmission(node)
         {
-            let conferenceModel = this.modelFor('conference.index.index');
+            let conferenceModel = this.modelFor('conference.index');
+            node.setProperties({
+                id: 0
+            });
+            node.destroyRecord();
             this.transitionTo('conference.index.index', conferenceModel.id);
         }
     }
