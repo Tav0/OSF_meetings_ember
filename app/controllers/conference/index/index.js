@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
 
 
 	editing: false,
@@ -24,10 +25,7 @@ export default Ember.Controller.extend({
 		  exclusion: {in: ['-Select a country'], message: 'Please choose a country'}
 		},
 		'model.state': {
-		  length: {minimum: 2, maximum: 100, messages: {
-		    tooShort: 'Please enter a valid state',
-		    tooLong: 'Please enter a valid state'
-		  }}
+		  statecheck: {}
 		},
 		'model.city': {
 		  length: {maximum: 100, messages: {
@@ -35,14 +33,10 @@ export default Ember.Controller.extend({
 		  }}
 		},
 		'model.startDate': {
-		  datecheck: {messages: {
-		    tooEarly: 'Start date must be before end date.'
-		  }}
+		  datecheck: {}
 		},
 		'model.submissionDate': {
-		  datecheck: {messages: {
-		    tooEarly: 'Start date must be before end date.'
-		  }}
+		  datecheck: {}
 		}
 	},
  	hasState: Ember.computed.match('model.state', /.+/),

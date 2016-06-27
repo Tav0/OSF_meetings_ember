@@ -1,49 +1,54 @@
 import Ember from 'ember';
 import TaggableMixin from 'ember-osf/mixins/taggable-mixin';
+import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend(TaggableMixin, {
+export default Ember.Controller.extend(TaggableMixin, EmberValidations, {
 
-	isValidTitle: Ember.computed.match('title', /...+/),
- 	isValidContributors: Ember.computed.match('contributors', /...+/),
- 	isValidDescription: Ember.computed.match('description', /......+/),
- 	isValid: Ember.computed.and('isValidTitle', 'isValidContributors', 'isValidDescription'),
-    titleError: false,
- 	contributorsError: false,
- 	descriptionError: false,
+	displayErrors: false,
+    tagError: false,
 
-    title: '',
-    contributors: '',
-    description: '',
+    validations: {
+    	'model.title': {
+    		length: {minimum: 3, maximum: 200, messages: {
+    			tooShort: 'Please enter a valid title',
+    			tooLong: 'Title exceeds limit of 200 characters'
+    		}}
+    	},
+    	//TODO: Validation for contributors?
+    	'model.description': {
+    		length: {minimum: 6, maximum: 2000, messages: {
+    			tooShort: 'Please enter a valid description',
+    			tooLong: 'Description exceeds limit of 2000 characters.'
+    		}}
+    	}
+    },
 
  	actions: {
  		addATag(tag) {
             if (tag) {
- 			    this._super(tag);
+                if (tag.length > 70)
+                    this.set('tagError',true)
+                else {
+                    this.set('tagError',false);
+ 			        this._super(tag);
+                }
+            }    
+ 		}, 
+ 		saveNodeSubmission(newNode, tags, id) {
+            if (this.get('isValid')) {
+                newNode.setProperties({
+                    category: 'project',
+                    tags: tags.toString(),
+                });
+                document.getElementById("fileSubmission").reset();
+                var self = this;
+                newNode.save().then(function() {
+                    self.transitionToRoute('conference.index.index', id);
+                });
             }
-            
- 		},
- 		displayErrors() {
- 			this.set("titleError", false);
- 			this.set("contributorsError", false);
- 			this.set("descriptionError", false);
-
- 			if (!this.get("isValidTitle")) {
- 				this.set("titleError", true);
- 			}
-
- 			if (!this.get("isValidContributors")) {
- 				this.set("contributorsError", true);
- 			}
-
- 			if (!this.get("isValidDescription")) {
- 				this.set("descriptionError", true);
- 			}
- 		},
-
- 		resetErrorMessages() {
- 			this.set("titleError", false);
- 			this.set("contributorsError", false);
- 			this.set("descriptionError", false);
- 		}
+            else {
+               this.set('displayErrors',true);
+            }
+        }
  	}
 });
