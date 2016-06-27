@@ -44,8 +44,8 @@ export default Ember.Controller.extend({
           this.transitionToRoute('register');
       },
       scrollit() {
-        Ember.$('#top').hide(2000, function() {
-          Ember.$('#bottom').css({"margin-top": "80px"});
+        Ember.$('#indexTop').hide(2000, function() {
+          Ember.$('#indexBottom').css({"margin-top": "80px"});
           Ember.$('#tableContainer').css({"margin-top": "80px"});
           Ember.$('#create').addClass("navbar-fixed-top");
         });

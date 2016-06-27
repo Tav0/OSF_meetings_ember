@@ -2,7 +2,7 @@
   {{auto-scroll}}
 {{/if}}
 <div class="holder">
-    <div id="top" class="container-fluid big osfBackground">
+    <div id="indexTop" class="container-fluid big osfBackground">
         <a href="https://osf.io"><img class="logo" src="https://osf.io/static/img/cos-white2.png"> </a>
         <div class="row titleRow">
             <h1>OSF for Meetings</h1>
@@ -17,7 +17,7 @@
             <div class="container-fluid" id="browse">
                 <form class="navbar-form navbar-left" role="search">
                     <img class="navbar-brand" src="https://osf.io/static/img/cos-white2.png">
-                    <a class="navbar-brand" style="color: white">Meetings</a>
+                    <div class="navbar-brand">Meetings</div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
@@ -36,10 +36,9 @@
             </div>
         </nav>
       {{#if tileview}}
-          <div class="row" id="bottom" style="overflow: hidden; margin-top: 80px">
-              <div class="col-md-10 col-md-offset-1" style="overflow: hidden">
-                  <div id="meetings" class="col-md-12"
-                       style=" max-height: 100vh; overflow-y: scroll; margin-left: 34px; padding-right: 34px; padding-bottom: 80px">
+          <div class="row conference-view-outer-container" id="indexBottom">
+              <div class="col-md-10 col-md-offset-1 conference-view-inner-container">
+                  <div class="col-md-12 tile-view">
                       {{#masonry-grid  isFitWidth=true gutter=20 items= model as |conf|}}
                           {{#link-to "conference.index" conf.id class="title"}}
                               {{meeting-masonry title=conf.title description=conf.description logo=conf.logo author=conf.author location=(location-display conf.city conf.state conf.country) date=(date-display conf.startDate) submissions=(submission-count conf.linkedNodes)}}
@@ -49,10 +48,9 @@
               </div>
           </div>
       {{else}}
-          <div id="tableContainer" class="row" style="overflow: hidden; margin-top: 80px">
+          <div class="row conference-view-outer-container">
               <div class="col-md-12 tableScroller">
-                  <div class="col-md-10 col-md-offset-1" style="padding-bottom: 80px">
-                    {{!-- models-table data=model columns=columns useFilteringByColumns=false rowTemplate="row" --}}
+                  <div class="col-md-10 col-md-offset-1 conference-view-inner-container">
                       <table class="table">
                           <tbody>
                           {{#each model as |conference|}}
