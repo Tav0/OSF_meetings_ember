@@ -1,59 +1,4 @@
-
-<style>
-img
-{
-    max-width: 100%;
-    height: auto;
-}
-.tableDescription, .tableTitle
-{
-    border: 0px solid #000000;
-    max-height: 88px;
-    max-width: 200%;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.tableTitle
-{
-    font-weight: normal;
-}
-a:hover
-{
-    text-decoration: underline;
-}
-.heading
-{
-    font-size:16px;
-    color:black;
-}
-input[type="text"],  textarea {
-    margin-bottom: 15px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 0;
-    border: none;
-}
-input[type="file"]
-{
-    margin-bottom: 15px;
-    border-radius: 0;
-    border: none;
-}
-textarea
-{
-    min-height: 100px;
-}
-.form-control
-{
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 0;
-    border: none;
-}
-
-</style>
-
-<div class="container-fluid osfSuperLightBackground">
+<div class="container-fluid osf-light-background">
     <nav id= "create" class="navbar navbar-fixed-top">
         <div class="container-fluid" id="browse">
             <form class="navbar-form navbar-left" role="search">
@@ -75,12 +20,12 @@ textarea
           {{/if}}
         </div>
     </nav>
-    <div class="row" style="padding: 0px">
+    <div class="row conference-view-outer-container">
         <div class="col-md-12">
-            <div class="row" style=>
-                <div class="conferenceTopContainer col-md-12">
-                    <div class="col-md-8 col-md-offset-2" style="height: 100%; padding-top: 100px">
-                        <div class="conferenceInfo">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="conference-info">
 
                             {{#if this.editing}}
 
@@ -171,7 +116,7 @@ textarea
                                         <div class="col-md-12">
                                             <label>Current logo: </label>
                                         </div>
-                                        <img class="col-md-6" src={{model.logo}}>
+                                        <img class="col-md-6 conference-photo" src={{model.logo}}>
                                     </div>
                                 </form>
                             {{else}}
@@ -184,10 +129,10 @@ textarea
                                         {{else}}
                                         <h4 style="margin:15px 0 0 0"> {{model.city}}, {{model.country}}</h4>
                                         {{/if}}
-                                        <div class="logos" align="center"></div>
+                                        <div class="logo-view" align="center"></div>
                                         <p class="conferenceDescription" style="font-size: 16px">{{model.description}}</p>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 conference-photo">
                                         <img src={{model.logo}}>
                                     </div>
                                 </div>
@@ -196,7 +141,6 @@ textarea
                                         <div class="btn-group" role="group" aria-label="...">
 
                                             <button type="button" class="btn btn-default" style="margin: 0 0 5px 0; width: 200px;" {{action "submitTo"}}>  Submit to This Conference</button>
-                                            <input type="text" class="form-control" style="width: 200px;" placeholder="Search" title="search" >
                                         </div>
                                     </div>
                                 </div>

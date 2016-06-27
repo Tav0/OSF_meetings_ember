@@ -1,10 +1,9 @@
 {{#if this.visited}}
   {{auto-scroll}}
 {{/if}}
-<div class="holder">
-    <div id="indexTop" class="container-fluid big osfBackground">
+    <div id="indexTop" class="container-fluid big osf-standard-background">
         <a href="https://osf.io"><img class="logo" src="https://osf.io/static/img/cos-white2.png"> </a>
-        <div class="row titleRow">
+        <div class="row title-row">
             <h1>OSF for Meetings</h1>
             <h3>A free sharing service for academic meetings and conferences</h3>
             <h4>Broaden your impact, create an open scholar environment</h4>
@@ -12,12 +11,12 @@
         </div>
         <img class="background" src="https://osf.io/static/img/front-page/bg-web.png">
     </div>
-    <div class="container-fluid osfSuperLightBackground">
+    <div class="container-fluid osf-light-background">
         <nav id="create" class="navbar navbar-default">
             <div class="container-fluid" id="browse">
                 <form class="navbar-form navbar-left" role="search">
                     <img class="navbar-brand" src="https://osf.io/static/img/cos-white2.png">
-                    <div class="navbar-brand">Meetings</div>
+                    <p class="navbar-brand">Meetings</p>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
@@ -49,7 +48,7 @@
           </div>
       {{else}}
           <div class="row conference-view-outer-container">
-              <div class="col-md-12 tableScroller">
+              <div class="col-md-12 table-view">
                   <div class="col-md-10 col-md-offset-1 conference-view-inner-container">
                       <table class="table">
                           <tbody>
@@ -74,7 +73,6 @@
       {{/if}}
       {{outlet}}
     </div>
-</div>
 
 {{yield}}
 

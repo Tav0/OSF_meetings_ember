@@ -1,3 +1,45 @@
+.title-row
+{
+  position: absolute;
+  margin: 0 15px;
+  top: 50%;
+  max-width: 100%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  z-index: 1000;
+}
+.title-row h1
+{
+  font-size: 14vw;
+  min-height:  14vw;
+  line-height: 13vw;
+  margin: 0;
+  padding: 0;
+  z-index: 1000;
+}
+.title-row h3
+{
+  margin-top: 1.2vw;
+  padding-left: .5vw;
+  font-size: 2vw;
+  min-height:  2vw;
+  z-index: 1000;
+}
+.title-row h4
+{
+  padding-left: .2vw;
+  font-size: 3.5vw;
+  min-height:  3.5vw;
+  z-index: 1000;
+}
+.title-row button
+{
+  margin-left: .4vw;
+  font-size: 2vw;
+  z-index: 1000;
+}
 .conference-view-outer-container
 {
   overflow: hidden;
@@ -8,6 +50,11 @@
   overflow: hidden;
   padding-bottom: 80px;
 }
+.navbar-text
+{
+  color: white;
+  vertical-align: middle;
+}
 .tile-view
 {
   max-height: 100vh;
@@ -15,4 +62,81 @@
   margin-left: 34px;
   padding-right: 34px;
   padding-bottom: 80px
+}
+.tile
+{
+  width: 450px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  transition: 1s ease;
+  padding: 15px;
+}
+.tile h1
+{
+  position: relative;
+  font-size: 3em;
+  margin-top: 0;
+}
+.tile h3
+{
+  margin-top: 40px;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+.tile:hover h3
+{
+  transition: 0.3s ease ;
+  opacity: 1;
+}
+.tile:hover h1
+{
+  transition: 0.2s ease;
+  opacity: 0.7;
+}
+.tile:hover h4
+{
+  transition: 0.2s ease;
+  opacity: 0.7;
+}
+.masonry-grid
+{
+  margin: 0 auto;
+}
+.table-view
+{
+  width: 100%;
+  max-height: 100vh;
+  overflow-y: scroll;
+  padding-right: 17px;
+  margin-left: 20px;
+}
+.table-view tr:hover
+{
+  cursor: pointer;
+}
+.table-view td
+{
+  max-width: 475px;
+  border: none;
+}
+.table-view td img
+{
+  max-height: 80%;
+  max-width: 100%;
+}
+.hide-scroll
+{
+  overflow-y: hidden;
+}
+.table-view .table tr:first-child td
+{
+  border-top: none;
+}
+.table-view .table tr>td
+{
+  padding: 15px;
+}
+.form-control
+{
+  margin: 0;
 }

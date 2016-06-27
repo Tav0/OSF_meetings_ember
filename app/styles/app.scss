@@ -1,6 +1,8 @@
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 @import "index";
+@import "register";
+@import "conference";
 
 a, a:link, a:visited , a:hover, a:active
 {
@@ -8,53 +10,9 @@ a, a:link, a:visited , a:hover, a:active
     text-decoration: none;
 }
 
-tr:hover
+.no-pad
 {
-    cursor: pointer;
-}
-td
-{
-  max-width: 475px;
-  border: none;
-}
-td img
-{
-    max-height: 80%;
-    max-width: 100%;
-}
-.hideScroll{
-  overflow-y: hidden;
-}
-.table tr:first-child td
-{
-  border-top: none;
-}
-.table tr>td
-{
-  padding: 15px;
-}
-.tableScroller
-{
-  width: 100%;
-  max-height: 100vh;
-  overflow-y: scroll;
-  padding-right: 17px;
-  margin-left: 20px;
-}
-.tableScroller::-webkit-scrollbar *
-{
-  background: transparent;
-}
-.tableScroller::-webkit-scrollbar-thumb{
-  background:rgba(255,0,0,0.1);
-}
-
-html, body
-{
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  padding: 0;
 }
 .navbar
 {
@@ -64,34 +22,18 @@ html, body
   position: absolute;
   left: 0;
 }
-.masonry-grid
-{
-    margin: 0 auto;
-}
-.osfSuperLightBackground
+.osf-light-background
 {
   background-image: linear-gradient(to right, #4A8DB0, rgba(74, 141, 176, 0.26));
   background-size: contain;
   color: white;
   min-height: 100%;
 }
-.osfLightBackground
-{
-  background-image: linear-gradient(to bottom left, #0E4364,#4A8DB0);
-  background-size: contain;
-  color: white;
-}
-.osfBackground
+.osf-standard-background
 {
   background-image: linear-gradient(to bottom left, #000305, #0E4364, #4A8DB0);
   background-size: contain;
   color: white;
-}
-.holder
-{
-  height: 100vh;
-  margin: 0;
-  overflow: hidden;
 }
 .big
 {
@@ -113,164 +55,9 @@ html, body
     top: 10px;
     right: 10px;
 }
-.titleRow
+textarea
 {
-  position: absolute;
-  margin: 0 15px;
-  top: 50%;
-  max-width: 100%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  z-index: 1000;
-}
-
-.titleRow h1
-{
-    font-size: 14vw;
-    min-height:  14vw;
-    line-height: 13vw;
-    z-index: 1000;
-}
-
-.titleRow h3
-{
-    margin-top: 1.2vw;
-    padding-left: .5vw;
-    font-size: 2vw;
-    min-height:  2vw;
-    z-index: 1000;
-
-}
-.titleRow h4
-{
-    padding-left: .2vw;
-    font-size: 3.5vw;
-    min-height:  3.5vw;
-    z-index: 1000;
-
-}
-.titleRow button
-{
-    margin-left: .4vw;
-    font-size: 2vw;
-    z-index: 1000;
-}
-
-.registration-title {
-    text-align: center;
-}
-
-textarea {
-    resize: none;
-    height: 30%;
-    width: 95%;
-}
-h1 {
-    font-size: 3.5em;
-    margin: 0 0 10px 0;
-}
-h4 {
-    font-size: 1em;
-}
-p {
-    font-size: 0.8em;
-}
-.osfbar {
-    height: 35px;
-
-    font-size: 18px;
-    margin: 0 -15px 0 -15px;
-}
-.conferencePhoto {
-    height: 350px;
-}
-.conferencePhoto img {
-    max-height: 100%;
     max-width: 100%;
-    position: absolute;
-    top: 50%;
-    left:50%;
-    transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-}
-.conferenceInfo h1 {
-
-    color: black;
-}
-.conferenceInfo h4 {
-    color: black;
-    margin: 0 0 1px 30px;
-}
-.conferenceDescription {
-    padding: 15px 15px 15px 0;
-    font-size: 22px;
-}
-.logos {
-    width: 100%;
-    height: 15%;
-}
-.keynote {
-    font-size: 2.4em;
-    color: black;
-}
-.smallKey {
-    color: black;
-    font-size: 1em;
-}
-.inputFields {
-    width: 100%;
-    height: 100px;
-}
-.fileView {
-    padding-top: 15px;
-    background-color: rgba(12, 12, 12, 0.1);
-    margin: 15px 0 15px 0;
-    resize: none;
-    min-height: 350px;
-    width: 100%;
-}
-.splash-page
-{
-    height: 100%;
-    width: 100%;
-}
-.glyphicon {
-    color: white;
 }
 
-.tile
-{
-  width: 450px;
-  margin-bottom: 20px;
-  text-decoration: none;
-  transition: 1s ease;
-  overflow: hidden;
-}
-.tile h1
-{
-  position: relative;
-}
-.tile h3
-{
-  margin-top: 40px;
-  opacity: 0;
-  transition: 0.3s ease;
-}
-.tile:hover h3
-{
-  transition: 0.3s ease ;
-  opacity: 1;
-}
-.tile:hover h1
-{
-  transition: 0.2s ease;
-  opacity: 0.7;
-}
-.tile:hover h4
-{
-  transition: 0.2s ease;
-  opacity: 0.7;
-}
+
