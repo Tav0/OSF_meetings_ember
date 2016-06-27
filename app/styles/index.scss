@@ -1,45 +1,51 @@
+/*
+Splash page typography settings
+*/
+html, body
+{
+}
+
 .title-row
 {
   position: absolute;
-  margin: 0 15px;
   top: 50%;
   max-width: 100%;
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
-  z-index: 1000;
+  z-index: 10;
 }
 .title-row h1
 {
-  font-size: 14vw;
-  min-height:  14vw;
-  line-height: 13vw;
-  margin: 0;
+  font-size: 11vw;
+  line-height: 0.85;
   padding: 0;
-  z-index: 1000;
+  font-weight: 500;
+  margin: 0;
 }
 .title-row h3
 {
-  margin-top: 1.2vw;
-  padding-left: .5vw;
-  font-size: 2vw;
-  min-height:  2vw;
-  z-index: 1000;
+  font-size: 2.4em;
+  margin: 0;
+  padding: 0;
 }
 .title-row h4
 {
-  padding-left: .2vw;
-  font-size: 3.5vw;
-  min-height:  3.5vw;
-  z-index: 1000;
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
 }
 .title-row button
 {
-  margin-left: .4vw;
-  font-size: 2vw;
-  z-index: 1000;
+  position: absolute;
+  top: 50%;
+  left: 90%;
+  height: 50px;
+
 }
+
+
 .conference-view-outer-container
 {
   overflow: hidden;
@@ -139,4 +145,104 @@
 .form-control
 {
   margin: 0;
+}
+
+
+h1 {
+  font-size: 2em;
+  /* 2x body copy size = 32px */
+  line-height: 1.25;
+  /* 45px / 36px */
+}
+
+@media (min-width: 43.75em) {
+  h1 {
+    font-size: 2.5em;
+    /* 2.5x body copy size = 40px */
+    line-height: 1.125;
+  }
+}
+
+@media (min-width: 56.25em) {
+  h1 {
+    font-size: 3em;
+    /* 3x body copy size = 48px */
+    line-height: 1.05;
+    /* keep to a multiple of the 20px line height and something more appropriate for display headings */
+  }
+}
+
+h2 {
+  font-size: 1.625em;
+  /* 1.625x body copy size = 26px */
+  line-height: 1.15384615;
+  /* 30px / 26px */
+}
+
+@media (min-width: 43.75em) {
+  h2 {
+    font-size: 2em;
+    /* 2x body copy size = 32px */
+    line-height: 1.25;
+  }
+}
+
+@media (min-width: 56.25em) {
+  h2 {
+    font-size: 2.25em;
+    /* 2.25x body copy size = 36px */
+    line-height: 1.25;
+  }
+}
+
+h3 {
+  font-size: 1.375em;
+  /* 1.375x body copy size = 22px */
+  line-height: 1.13636364;
+  /* 25px / 22px */
+}
+
+@media (min-width: 43.75em) {
+  h3 {
+    font-size: 1.5em;
+    /* 1.5x body copy size = 24px */
+    line-height: 1.25;
+  }
+}
+
+@media (min-width: 56.25em) {
+  h3 {
+    font-size: 1.75em;
+    /* 1.75x body copy size = 28px */
+    line-height: 1.25;
+  }
+}
+
+h4 {
+  font-size: 1.125em;
+  /* 1.125x body copy size = 18px */
+  line-height: 1.11111111;
+}
+
+@media (min-width: 43.75em) {
+  h4 {
+    line-height: 1.22222222;
+    /* (22px / 18px */
+  }
+}
+
+blockquote {
+  font-size: 1.25em;
+  /* 20px / 16px */
+  line-height: 1.25;
+  /* 25px / 20px */
+}
+
+@media (min-width: 43.75em) {
+  blockquote {
+    font-size: 1.5em;
+    /* 24px / 16px = */
+    line-height: 1.45833333;
+    /* 35px / 24px */
+  }
 }

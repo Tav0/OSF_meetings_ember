@@ -121,8 +121,8 @@
                                 </form>
                             {{else}}
                                 <div class="form-group row">
-                                    <div class="col-md-6">
-                                        <h1 style="margin: 15px" style="font-size:40px"> {{model.title}}</h1>
+                                    <div class="col-md-6 ">
+                                        <h1 class="break-word" style="margin: 15px" style="font-size:40px"> {{model.title}}</h1>
                                         <h4 style="margin:15px 0 0 0">  {{this.conferenceDates}} {{date-display model.startDate}} - {{date-display model.endDate}}</h4>
                                         {{#if hasState}}
                                         <h4 style="margin:15px 0 0 0"> {{model.city}}, {{model.state}}, {{model.country}}</h4>
@@ -130,7 +130,7 @@
                                         <h4 style="margin:15px 0 0 0"> {{model.city}}, {{model.country}}</h4>
                                         {{/if}}
                                         <div class="logo-view" align="center"></div>
-                                        <p class="conferenceDescription" style="font-size: 16px">{{model.description}}</p>
+                                        <p class="conference-description" style="font-size: 16px">{{model.description}}</p>
                                     </div>
                                     <div class="col-md-6 conference-photo">
                                         <img src={{model.logo}}>
