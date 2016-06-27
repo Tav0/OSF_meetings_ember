@@ -23,8 +23,10 @@ export default Ember.Route.extend({
                     tags: tags.toString(),
                 });
                 document.getElementById("fileSubmission").reset();
-                newNode.save();
-                this.transitionTo('conference.index.index', conferenceModel.id);
+                var self = this;
+                newNode.save().then(function() {
+                    self.transitionTo('conference.index.index', conferenceModel.id);
+                });
             }
 
             else {
