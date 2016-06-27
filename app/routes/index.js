@@ -8,12 +8,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
      return this.store.findAll('conference');
   },
   activate: function() {
-    Ember.$('body').addClass('hideScroll');
+    Ember.$('body').addClass('hide-scroll');
     Ember.$('html').css({overflow: 'hidden'});
   },
   deactivate: function(){
-    Ember.$('body').removeClass('hideScroll');
-    Ember.$('html').css({overflow: 'scroll'});
-
+    Ember.$('body').removeClass('hide-scroll');
+    Ember.$('html').css({"overflow-y": 'scroll'});
   }
 });

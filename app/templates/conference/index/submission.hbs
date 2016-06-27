@@ -1,161 +1,71 @@
-<style>
-    .verticalCenter
-    {
-        position:absolute;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    .sectionHeader {
-        font-size: 24px;
-        font-weight: 300;
-    }
-    .row:before
-    {
-        height: 100%;
-    }
-    .btn
-    {
-        border: none;
-        border-radius: 0;
-    }
-    label
-    {
-        font-size: 48px;
-    }
-    .form-control
-    {
-        height: 100%;
-    }
-    label {
-        font-size: 28px;
-        font-weight: 500;
-        display: inline-block;
-        padding: 0;
-    }
-    input[type="text"],  textarea {
-        margin-bottom: 15px;
-        background-color: rgba(255, 255, 255, 0.7);
-        border-radius: 0;
-        border: none;
-    }
-    input[type="file"]
-    {
-        margin-bottom: 15px;
-        border-radius: 0;
-        border: none;
-    }
-    .form-control
-    {
-        background-color: rgba(255, 255, 255, 0.7);
-        border-radius: 0;
-        border: none;
-    }
-    .glyphicon-remove {
-        color : black;
-    }
-    .btn-primary {
-        background-color : #5cb85c;
-        border-color : #5cb85c;
-    }
-    input {
-        color : black;
-    }
-    div>p>input {
-        width: 50%;
-        border-radius: 4px;
-        height: 34px;
-        padding: 6px 12px;
-        font-size: 14px;
-    }
-    div>span {
-        font-size: 14px;
-        color: black;
-    }
-    div>span>button {
-        padding: 2px 6px !important;
-    }
-    .fadeBackground
-    {
-        background-color: rgba(0,0,0,0.1);
-        margin-top: 15px;
-        padding: 15px;
-    }
-</style>
-
-<div class="container-fluid osfSuperLightBackground" style="padding-bottom: 40px;padding-top: 40px">
-
+<div class="container-fluid osf-light-background">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3" style="padding:0;">
-            <div>
-                <h2>Submit to:</h2><h1 style="font-size: 64px"> {{model.conference.title}}</h1>
-            </div>
+        <div class="col-md-6 col-md-offset-3 no-pad">
+            <h2>Submit to:</h2>
+            <h1 class="conference-title">{{model.conference.title}}</h1>
         </div>
     </div>
-<div class="row">
-    <div class="col-md-6 col-md-offset-3 fadeBackground">
-        <form id = "fileSubmission" method="post">
-            <div class="form-group row">
-                <div class="col-md-6"  style="height: 100%;">
-                    <div class="sectionHeader"> Upload File(s):</div>
-
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 fade-background">
+            <form id="fileSubmission" method="post">
+                <div class="form-group row">
+                    <div class="col-md-6" style="height: 100%;">
+                        <div class="submission-header"> Upload File(s):
+                        </div>
+                    </div>
                 </div>
-            </div>
-<hr>
-            <div class="form-group row has-success">
-                <div class="col-md-6">
-                    <label> Title:</label>
-                    {{input id="title" value=model.title class="form-control"}}
-                    {{#if this.displayErrors}}
-                        {{#each errors.model.title as |error|}}
-                            <br><div class="alert alert-danger" role="alert">{{error}}</div>
-                        {{/each}}
-                    {{/if}}
-                </div>
-
-            </div>
-            <div class="form-group row has-success">
-                <div class="col-md-6">
-                    <label>Contributors:</label>
-                    {{!-- TODO: Make contributors an actual thing --}}
-                    {{input id="contributors" class="form-control"}}
-                </div>
-            </div>
-
-            <div class="form-group row has-success">
-                <div class="col-md-6">
-                    <label>Tags:</label>
-                        {{tags-widget tags=model.tags addATag=(action 'addATag') 
-                        removeATag=(action 'removeATag')}}
-                        {{#if tagError}}
-                            <br><div class="alert alert-danger" role="alert">Tag is too long</div>
+                <hr>
+                <div class="form-group row has-success">
+                    <div class="col-md-6">
+                        <label> Title:</label>
+                        {{input id="title" value=model.title class="form-control"}}
+                        {{#if this.displayErrors}}
+                            {{#each errors.model.title as |error|}}
+                                <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                            {{/each}}
                         {{/if}}
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group row has-success">
-                <div class="col-md-6">
-                    <label>Description:</label>
-                    {{textarea id="description" value=model.description class="form-control"}}
-                    {{#if this.displayErrors}}
-                        {{#each errors.model.description as |error|}}
-                            <br><div class="alert alert-danger" role="alert">{{error}}</div>
-                        {{/each}}
-                    {{/if}}
+                <div class="form-group row has-success">
+                    <div class="col-md-6">
+                        <label>Contributors:</label>
+                        {{!-- TODO: Make contributors an actual thing --}}
+                        {{input id="contributors" class="form-control"}}
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="col-md-4">
-                    <button
-                    class="btn btn-success" {{action "saveNodeSubmission" model model.tags model.conference.id}}>
-                        Submit
-                    </button>
-                    <button
-                            class=" btn btn-danger" {{action
-                            "cancelSubmission" model}}>Cancel</button>
+                <div class="form-group row has-success">
+                    <div class="col-md-6">
+                        <label>Tags:</label>
+                            {{tags-widget tags=model.tags addATag=(action 'addATag') 
+                            removeATag=(action 'removeATag')}}
+                            {{#if tagError}}
+                                <br><div class="alert alert-danger" role="alert">Tag is too long</div>
+                            {{/if}}
+                    </div>
                 </div>
-            </div>
-        </form>
+                <div class="form-group row has-success">
+                    <div class="col-md-6">
+                        <label>Description:</label>
+                        {{textarea id="description" value=model.description class="form-control"}}
+                        {{#if this.displayErrors}}
+                            {{#each errors.model.description as |error|}}
+                                <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <button
+                        class="btn btn-success" {{action "saveNodeSubmission" model model.tags model.conference.id}}>
+                            Submit
+                        </button>
+                        <button
+                                class=" btn btn-danger" {{action
+                                "cancelSubmission" model}}>Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
 </div>

@@ -1,69 +1,14 @@
-<style>
-    label {
-        font-size: 28px;
-        font-weight: 500;
-        display: inline-block;
-        padding: 0;
-    }
-    input[type="text"],  textarea {
-        margin-bottom: 15px;
-        background-color: rgba(255, 255, 255, 0.7);
-        border-radius: 0;
-        border: none;
-    }
-    input[type="file"]
-    {
-        margin-bottom: 15px;
-        border-radius: 0;
-        border: none;
-    }
-    .btn
-    {
-        border: none;
-        border-radius: 0;
-    }
-    .form-control
-    {
-        background-color: rgba(255, 255, 255, 0.7);
-        border-radius: 0;
-        border: none;
-    }
-    .col-md-6 {
-        height: 100%;
-    }
-    .sectionHeader {
-        font-size: 36px;
-        margin-left: 15px;
-        font-weight: 300;
-    }
-    hr{
-        margin: 0 0 15px 15px;
-    }
-    .fadeBackground
-    {
-        background-color: rgba(0,0,0,0.1);
-        margin-top: 15px;
-        padding: 15px;
-    }
-    h1
-    {
-        padding: 0;
-        font-weight: 300;
-    }
-</style>
-
-<div class="container-fluid osfSuperLightBackground" style="padding-bottom: 50px;">
+<div class="container-fluid osf-light-background">
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3" style="padding-top: 25px">
+            <div class="col-md-6 col-md-offset-3">
                 <form>
                     <h1>Create a New Conference </h1>
-                    <div class="form-group row fadeBackground">
-                        <div class="sectionHeader">IDENTIFY</div>
+                    <div class="form-group row fade-background">
+                        <div class="section-header">IDENTIFY</div>
                         <hr>
                         <div class="col-lg-6 {{"has-success"}}">
                             <label for="title" class="form-control-label">Title</label>
-
                             {{input value=model.title class="form-control" placeholder="Conference Title" id="title"}}
                             <br>
                             {{#if this.displayErrors}}
@@ -72,14 +17,14 @@
                                 {{/each}}
                             {{/if}}
                             <label for="website" class="form-control-label">Website</label>
-                            {{input value=model.website class="form-control" placeholder="Conference Website" id="website"}}
+                            {{input value=model.website class="form-control form-spacing" placeholder="Conference Website" id="website"}}
 
                             <label for="city" class="form-control-label">Logo</label>
                             {{input type="file" accept="image/*" id="image"}}
 
                             <label for="description" class="form-control-label">
                                 Description:</label>
-                            {{textarea value=model.description class="form-control resize" id="description"style="height: 100%"}}
+                            {{textarea value=model.description class="form-control resize" id="description"}}
                             {{#if this.displayErrors}}
                                 {{#each errors.model.description as |error|}}
                                     <br><div class="alert alert-danger" role="alert">{{error}}</div>
@@ -89,15 +34,15 @@
                     </div>
 
 
-                    <div class="form-group row fadeBackground">
-                        <div class="sectionHeader">LOCATE</div>
+                    <div class="form-group row fade-background">
+                        <div class="section-header">LOCATE</div>
                         <hr>
                         <div class="col-lg-6">
                             <div class ="{{"has-success"}}">
                                 <label for="country" class="form-control-label">
                                     Country
                                 </label>
-                                <select class="form-control" onchange={{action (mut model.country) value="target.value"}}>
+                                <select class="form-control form-spacing" onchange={{action (mut model.country) value="target.value"}}>
                                     {{#each countries as |countryChoice|}}
                                         <option value={{countryChoice}} selected={{eq model.country countryChoice}}>
                                             {{countryChoice}}
@@ -105,9 +50,9 @@
                                     {{/each}}
                                 </select>
                                 {{#if this.displayErrors}}
-                                {{#each errors.model.country as |error|}}
-                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
-                                {{/each}}
+                                    {{#each errors.model.country as |error|}}
+                                        <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                    {{/each}}
                                 {{/if}}
                             </div>
 
@@ -118,7 +63,7 @@
                                 {{input value=model.state class="form-control" id="state" placeholder="State"}}
                                 {{#if this.displayErrors}}
                                     {{#each errors.model.state as |error|}}
-                                        <div class="alert alert-danger" role="alert">{{error}}</div>
+                                        <br><div class="alert alert-danger" role="alert">{{error}}</div>
                                     {{/each}}
                                 {{/if}}
                             </div>
@@ -136,8 +81,8 @@
                         </div>
 
                     </div>
-                    <div class="form-group row fadeBackground">
-                        <div class="sectionHeader">CONFERENCE WINDOW</div>
+                    <div class="form-group row fade-background">
+                        <div class="section-header">CONFERENCE WINDOW</div>
                         <hr>
                         <div class="col-lg-6">
                             <label for="city" class="form-control-label">Start</label>
@@ -151,11 +96,12 @@
                                     <br><div class="alert alert-danger" role="alert">{{error}}</div>
                                 {{/each}}
                             {{/if}}
+
                         </div>
                     </div>
 
-                    <div class="form-group row fadeBackground">
-                        <div class="sectionHeader">SUBMISSION WINDOW</div>
+                    <div class="form-group row fade-background">
+                        <div class="section-header">SUBMISSION WINDOW</div>
                         <hr>
                         <div class="col-lg-6">
                             <label for="city" class="form-control-label">Start</label>
@@ -171,20 +117,20 @@
                             {{/if}}
                         </div>
                     </div>
-                    <div class="form-group row fadeBackground">
-                        <div class="sectionHeader">EXPAND</div>
+                    <div class="form-group row fade-background">
+                        <div class="section-header">EXPAND</div>
                         <hr>
                         <div class="col-lg-6 {{"has-success"}}">
                             <label for="city" class="form-control-label">Sponsors</label>
-                            {{input value=model.sponsors class="form-control" id="sponsors" placeholder="sponsor 1, sponsor 2, sponsor 3, ..."}}
+                            {{input value=model.sponsors class="form-control form-spacing" id="sponsors" placeholder="sponsor 1, sponsor 2, sponsor 3, ..."}}
                         </div>
                         <div class="col-lg-6 {{"has-success"}}">
                             <label for="tags" class="form-control-label">Tags</label>
-                            {{input value=model.tags class="form-control" id="tags" placeholder="tag 1, tag 2, tag 3, ..."}}
+                            {{input value=model.tags class="form-control form-spacing" id="tags" placeholder="tag 1, tag 2, tag 3, ..."}}
                         </div>
                     </div>
 
-                    <div class="form-group row fadeBackground" >
+                    <div class="form-group row fade-background" >
                         <div class="col-md-4">
                             <button class="btn btn-danger" {{action "back" model}}>Cancel</button>
                             <button class="btn btn-success" {{action "create" model}}>Create</button>
@@ -193,11 +139,11 @@
                             <button class="btn btn-primary" {{action "preview"}}>Preview</button>
                             {{#if this.previewOn}}
                                 {{#modal-dialog close="hideform" targetAttachment="center" translucentOverlay=true}}
-                                    <div class="row" style="padding: 20px">
+                                    <div class="row">
                                         <div class="col-md-12">
-                                            <div class="row" style=>
+                                            <div class="row">
                                                 <div class="conferenceTopContainer col-md-12">
-                                                    <div class="col-md-8 col-md-offset-2" style="height: 100%;">
+                                                    <div class="col-md-8 col-md-offset-2">
                                                         <div class="conferenceInfo">
                                                             <h1> {{model.title}}</h1>
                                                             <h4> {{model.startDate}} - {{model.endDate}} </h4>
@@ -212,17 +158,17 @@
                                                 </div>
                                             </div>
                                             <div class="row ">
-                                                <div class="conferenceDescriptionContainer col-lg-12">
+                                                <div class="col-lg-12">
                                                     <div class="col-lg-8 col-lg-offset-2">
-                                                        <p class="conferenceDescription">{{model.conference.description}}</p>
+                                                        <p class="conference-description">{{model.conference.description}}</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         <button class="btn btn-danger" {{action "previewOff"}}>Close
                                         </button>
                                         <button class="btn btn-success" {{action "create" model}}>Submit
                                         </button>
+                                        </div>
                                     </div>
                                 {{/modal-dialog}}
                             {{/if}}
