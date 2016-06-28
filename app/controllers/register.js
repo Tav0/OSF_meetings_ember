@@ -90,7 +90,32 @@ export default Ember.Controller.extend(EmberValidations, {
           });
         });
       } else {
-          this.set('displayErrors', true);
+        this.set('displayErrors', true);
+        if (this.get('errors.model.title').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#titleScroll").offset().top
+          }, 1000);
+        } else if (this.get('errors.model.description').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#descriptionScroll").offset().top
+          }, 1000);
+        } else if (this.get('errors.model.country').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#countryScroll").offset().top
+          }, 700);
+        } else if (this.get('errors.model.state').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#stateScroll").offset().top
+          }, 700);
+        } else if (this.get('errors.model.city').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#cityScroll").offset().top
+          }, 700);
+        } else if (this.get('errors.model.startDate').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#dateScroll").offset().top
+          }, 300);
+        }
       }
     },
     preview() {
