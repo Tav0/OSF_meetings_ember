@@ -10,6 +10,7 @@ export default Ember.Route.extend({
         var controller = this.get('controller');
         controller.send('killSubmission');
         controller.set('kill',true);
+        controller.set('displayErrors',false);
     },
     actions: {
         cancelSubmission() {
