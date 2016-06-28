@@ -7,13 +7,14 @@ export default Ember.Route.extend({
             tags: [],
         });
     },
+    deactivate: function() {
+        var controller = this.get('controller');
+        controller.send('killSubmission');
+        controller.set('kill',true);
+    },
     actions: {
-        cancelSubmission(node) {
+        cancelSubmission() {
             let conferenceModel = this.modelFor('conference.index');
-            node.setProperties({
-                id: 0
-            });
-            node.destroyRecord();
             this.transitionTo('conference.index.index', conferenceModel.id);
         }
     }

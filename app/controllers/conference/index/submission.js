@@ -6,6 +6,7 @@ export default Ember.Controller.extend(TaggableMixin, EmberValidations, {
 
 	displayErrors: false,
     tagError: false,
+    kill: true,
 
     validations: {
     	'model.title': {
@@ -33,9 +34,14 @@ export default Ember.Controller.extend(TaggableMixin, EmberValidations, {
  			        this._super(tag);
                 }
             }    
- 		}, 
+ 		},
+        killSubmission() {
+            if (this.get('kill'))
+                this.get('model').destroyRecord();
+        },
  		saveNodeSubmission(newNode, tags, id) {
             if (this.get('isValid')) {
+                this.set('kill',false);
                 newNode.setProperties({
                     category: 'project',
                     tags: tags.toString(),

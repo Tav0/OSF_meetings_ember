@@ -39,7 +39,7 @@ export default Ember.Controller.extend(EmberValidations, {
 
   displayErrors: false,
 
-  visited: false,
+  kill: true,
 
   countries: ["-Select a country-", "United States of America (USA)", "Afghanistan", "Albania", "Algeria", "Andorra",
               "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria",
@@ -73,11 +73,16 @@ export default Ember.Controller.extend(EmberValidations, {
               ],
 
   actions: {
+    killConference() {
+      if (this.get('kill'))
+        this.get('model').destroyRecord();
+    },
     selectCountry(country) {
       this.set('model.country', country);
     },
     create(newMeeting){
       if (this.get('isValid')) {
+        this.set('kill',false);
         var router = this;
           newMeeting.save().then(function(params){
             router.transitionToRoute('conference.index', params.id).then(function(newRoute) {
@@ -85,18 +90,7 @@ export default Ember.Controller.extend(EmberValidations, {
           });
         });
       } else {
-        // console.log(this.get('errors').length);
-        // if (this.errors.length == 1 && this.errors[0] == 'Please enter a valid state' 
-        //   && this.get('model.country') !== 'United States of America (USA)') {
-        //     var router = this;
-        //     newMeeting.save().then(function(params){
-        //     router.transitionToRoute('conference.index', params.id).then(function(newRoute) {
-        //       newRoute.controller.set('visited', true);
-        //     });
-        //   });
-        // } else {
           this.set('displayErrors', true);
-        // }
       }
     },
     preview() {
