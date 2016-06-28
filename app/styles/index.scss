@@ -12,32 +12,25 @@
 }
 .title-row h1
 {
-  font-size: 14vw;
-  min-height:  14vw;
-  line-height: 13vw;
-  margin: 0;
+  font-size: 17.942em;
   padding: 0;
+  margin: 0;
   z-index: 1000;
 }
 .title-row h3
 {
-  margin-top: 1.2vw;
-  padding-left: .5vw;
-  font-size: 2vw;
-  min-height:  2vw;
+  padding: 0;
+  margin: 0;
   z-index: 1000;
 }
 .title-row h4
 {
-  padding-left: .2vw;
-  font-size: 3.5vw;
-  min-height:  3.5vw;
+  padding: 0;
+  margin: 0;
   z-index: 1000;
 }
 .title-row button
 {
-  margin-left: .4vw;
-  font-size: 2vw;
   z-index: 1000;
 }
 .conference-view-outer-container
@@ -69,34 +62,32 @@
   margin-bottom: 20px;
   text-decoration: none;
   transition: 1s ease;
-  padding: 15px;
 }
-.tile h1
+.tile-title
 {
-  position: relative;
-  font-size: 3em;
   margin-top: 0;
+  margin-bottom: 10px;
 }
-.tile h3
+.tile .tile-description
 {
   margin-top: 40px;
   opacity: 0;
   transition: 0.3s ease;
 }
-.tile:hover h3
+.tile:hover .tile-description
 {
   transition: 0.3s ease ;
   opacity: 1;
 }
-.tile:hover h1
+.tile:hover .tile-title
 {
   transition: 0.2s ease;
   opacity: 0.7;
 }
-.tile:hover h4
+.tile:hover .tile-submission-count
 {
   transition: 0.2s ease;
-  opacity: 0.7;
+  opacity: 0.1;
 }
 .masonry-grid
 {

@@ -1,8 +1,42 @@
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
+@import "breakpoints";
 @import "index";
 @import "register";
 @import "conference";
+
+h1,h2,h3,h4,h5,h6
+{
+  font-weight: 400;
+}
+h1
+{
+  font-size: 11.089em;
+}
+h2
+{
+  font-size: 6.854em;
+}
+h3
+{
+  font-size: 4.246em;
+}
+h4
+{
+  font-size: 2.618em;
+}
+h5
+{
+  font-size: 1.618em;
+}
+h6
+{
+  font-size: 1em;
+}
+p
+{
+  font-size: 0.618em;
+}
 
 a, a:link, a:visited , a:hover, a:active
 {
