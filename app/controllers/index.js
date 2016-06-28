@@ -41,7 +41,9 @@ export default Ember.Controller.extend({
   visited: false,
   actions: {
       create() {
-          this.transitionToRoute('register');
+          this.transitionToRoute('register').then(function(newRoute) {
+            newRoute.controller.set('displayErrors',false);
+          });
       },
       scrollit() {
         Ember.$('#indexTop').hide(2000, function() {

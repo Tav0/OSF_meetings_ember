@@ -5,12 +5,6 @@ export default Ember.Route.extend({
     return this.store.createRecord('conference');
   },
   actions: {
-    create(newMeeting){
-      var router = this;
-      newMeeting.save().then(function(){
-        router.transitionTo('conference', newMeeting.id);
-      });
-    },
     back(newMeeting) {
       var router = this;
       newMeeting.destroyRecord().then(function(){

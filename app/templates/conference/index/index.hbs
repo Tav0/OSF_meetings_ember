@@ -38,9 +38,11 @@
                                         <div class="col-md-6">
                                             <label>Title: </label>
                                             {{input value=model.title class="form-control"}}
-                                            <div
-                                            style="color: #ff0000">{{if this.isInvalidTitle "Please enter a valid title"}}
-                                            </div>
+                                            {{#if this.displayErrors}}
+                                                {{#each errors.model.title as |error|}}
+                                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                                {{/each}}
+                                            {{/if}}
                                         </div>
                                         <div class="col-md-6">
                                         <label> Conference Website: </label>
@@ -52,8 +54,11 @@
                                         <div class="col-md-6">
                                             <label>Start date: </label>
                                             {{date-picker date=model.startDate class="form-control" valueFormat='date'}}
-                                            <div style="color: #ff0000">{{if this.isInvalidDates "Start date must be before end date"}}
-                                            </div>
+                                            {{#if this.displayErrors}}
+                                                {{#each errors.model.startDate as |error|}}
+                                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                                {{/each}}
+                                            {{/if}}
                                         </div>
                                         <div class="col-md-6">
                                             <label>End Date: </label>
@@ -65,9 +70,12 @@
                                         <div class="col-md-6">
                                             <label>Submission start date: </label>
                                             {{date-picker date=model.submissionDate class="form-control" valueFormat='date'}}
-                                            <div style="color: #ff0000">{{if this.isInvalidSubmissionDates "Submission start date must be before end date"}} </div>
+                                            {{#if this.displayErrors}}
+                                                {{#each errors.model.submissionDate as |error|}}
+                                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                                {{/each}}
+                                            {{/if}}
                                         </div>
-
                                         <div class="col-md-6">
                                             <label>Submission end date: </label>
                                             {{date-picker date=model.closeDate class="form-control" valueFormat='date'}}
@@ -78,12 +86,20 @@
                                         <div class="col-md-6">
                                             <label>City: </label>
                                             {{input value=model.city class="form-control"}}
-                                            <font style="color: #ff0000">{{if this.isInvalidCity "Please enter a valid city"}} </font>
+                                            {{#if this.displayErrors}}
+                                                {{#each errors.model.city as |error|}}
+                                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                                {{/each}}
+                                            {{/if}}
                                         </div>
                                         <div class="col-md-6">
                                             <label>State/Province: </label>
                                             {{input value=model.state class="form-control"}}
-                                            <font style="color: #ff0000">{{if this.isInvalidState "Please enter a valid state"}} </font>
+                                            {{#if this.displayErrors}}
+                                                {{#each errors.model.state as |error|}}
+                                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                                {{/each}}
+                                            {{/if}}
                                         </div>
                                     </div>
 
@@ -95,7 +111,11 @@
                                                     <option value={{countryChoice}} selected={{eq model.country countryChoice}}><{{countryChoice}}</option>
                                                 {{/each}}
                                              </select>
-                                            <font style="color: #ff0000">{{if this.isInvalidCountry "Please select a country"}} </font>
+                                            {{#if this.displayErrors}}
+                                                {{#each errors.model.country as |error|}}
+                                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                                {{/each}}
+                                            {{/if}}
                                         </div>
                                     </div>
 
@@ -103,7 +123,11 @@
                                         <div class="col-md-12">
                                             <label>Description: </label>
                                             {{textarea value=model.description class="form-control" id="description"style="height: 100%"}}
-                                            <font style="color: #ff0000">{{if this.isInvalidDescription "Please enter a description"}}</font>
+                                            {{#if this.displayErrors}}
+                                                {{#each errors.model.description as |error|}}
+                                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                                {{/each}}
+                                            {{/if}}
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -123,7 +147,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-6">
                                         <h1 style="margin: 15px" style="font-size:40px"> {{model.title}}</h1>
-                                        <h4 style="margin:15px 0 0 0">  {{this.conferenceDates}} {{date-display model.startDate}} - {{date-display model.endDate}}</h4>
+                                        <h4 style="margin:15px 0 0 0"> {{date-display model.startDate}} - {{date-display model.endDate}}</h4>
                                         {{#if hasState}}
                                         <h4 style="margin:15px 0 0 0"> {{model.city}}, {{model.state}}, {{model.country}}</h4>
                                         {{else}}
