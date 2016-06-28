@@ -4,7 +4,6 @@ export default Ember.Route.extend({
     model() {
         return this.store.createRecord('node', {
             conference: this.modelFor('conference.index'),
-            //tags: [],
         });
     },
     deactivate: function() {
