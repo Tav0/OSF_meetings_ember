@@ -25,26 +25,26 @@ export default Ember.Controller.extend(TaggableMixin, EmberValidations, {
     },
 
  	actions: {
- 		addATag(tag) {
-            if (tag) {
-                if (tag.length > 70)
-                    this.set('tagError',true)
-                else {
-                    this.set('tagError',false);
- 			        this._super(tag);
-                }
-            }    
- 		},
+ 		// addATag(tag) {
+   //          if (tag) {
+   //              if (tag.length > 70)
+   //                  this.set('tagError',true)
+   //              else {
+   //                  this.set('tagError',false);
+ 		// 	        this._super(tag);
+   //              }
+   //          }    
+ 		// },
         killSubmission() {
             if (this.get('kill'))
                 this.get('model').destroyRecord();
         },
- 		saveNodeSubmission(newNode, tags, id) {
+ 		saveNodeSubmission(newNode, id) { //tags was previous passed as a parameter
             if (this.get('isValid')) {
                 this.set('kill',false);
                 newNode.setProperties({
                     category: 'project',
-                    tags: tags.toString(),
+                    //tags: tags.toString(),
                 });
                 document.getElementById("fileSubmission").reset();
                 var self = this;
