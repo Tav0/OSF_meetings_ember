@@ -8,6 +8,7 @@ export default Ember.Route.extend({
     var controller = this.get('controller');
     controller.send('killConference');
     controller.set('kill',true);
+    controller.set('displayErrors',false);
   },
   actions: {
     back() {
