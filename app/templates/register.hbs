@@ -7,15 +7,14 @@
                     <div class="form-group row fade-background">
                         <div class="section-header">IDENTIFY</div>
                         <hr>
-                        <div class="col-lg-6 {{if isValidTitle "has-success" "has-error"}}">
+                        <div class="col-lg-6 {{"has-success"}}" id="titleScroll">
                             <label for="title" class="form-control-label">Title</label>
-
-                            {{input value=model.title class="form-control form-spacing" placeholder="Conference Title" id="title"}}
-                            {{#if this.isInvalidTitle}}
-                                <br>
-                                <div class="warning">
-                                Please enter a valid title
-                                </div>
+                            {{input value=model.title class="form-control" placeholder="Conference Title" id="title"}}
+                            <br>
+                            {{#if this.displayErrors}}
+                                {{#each errors.model.title as |error|}}
+                                    <div class="alert alert-danger" role="alert">{{error}}</div>
+                                {{/each}}
                             {{/if}}
                             <label for="website" class="form-control-label">Website</label>
                             {{input value=model.website class="form-control form-spacing" placeholder="Conference Website" id="website"}}
@@ -23,16 +22,15 @@
                             <label for="city" class="form-control-label">Logo</label>
                             {{input type="file" accept="image/*" id="image"}}
 
-                            <label for="description" class="form-control-label">
+                            <label for="description" class="form-control-label" id="descriptionScroll">
                                 Description:</label>
+                            {{textarea value=model.description class="form-control resize" id="description"}}
+                            {{#if this.displayErrors}}
+                                {{#each errors.model.description as |error|}}
+                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                {{/each}}
+                            {{/if}}
                         </div>
-                      <div class="col-md-12">
-                        {{textarea value=model.description class="form-control resize" id="description"}}
-                        {{#if this.isInvalidDescription}}
-                            <br>
-                            <div class="warning">Please enter a valid description</div>
-                        {{/if}}
-                      </div>
                     </div>
 
 
@@ -40,8 +38,8 @@
                         <div class="section-header">LOCATE</div>
                         <hr>
                         <div class="col-lg-6">
-                            <div class ="{{if isValidCountry "has-success" "has-error"}}">
-                                <label for="country" class="form-control-label">
+                            <div class ="{{"has-success"}}">
+                                <label for="country" class="form-control-label" id="countryScroll">
                                     Country
                                 </label>
                                 <select class="form-control form-spacing" onchange={{action (mut model.country) value="target.value"}}>
@@ -51,28 +49,31 @@
                                         </option>
                                     {{/each}}
                                 </select>
-                                {{#if this.isInvalidCountry}}
-                                    <br>
-                                    <div class="warning">Please select a country</div>
+                                {{#if this.displayErrors}}
+                                    {{#each errors.model.country as |error|}}
+                                        <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                    {{/each}}
                                 {{/if}}
                             </div>
 
-                            <div class="{{if isAmerica (if isValidState "has-success" "has-error")}}">
-                                <label for="city" class="form-control-label">
-                                    {{#if this.isAmerica}}
-                                    {{/if}} State</label>
-                                {{input value=model.state class="form-control form-spacing" id="state" placeholder="State"}}
-                                {{#if this.isInvalidState}}
-                                    <br>
-                                    <div class="warning">Please enter a valid state</div>
+                            <div class="{{"has-success"}}">
+                                <label for="state" class="form-control-label" id="stateScroll">
+                                    State
+                                </label>
+                                {{input value=model.state class="form-control" id="state" placeholder="State"}}
+                                {{#if this.displayErrors}}
+                                    {{#each errors.model.state as |error|}}
+                                        <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                    {{/each}}
                                 {{/if}}
                             </div>
-                            <div class="{{if isValidCity "has-success" "has-error"}}">
-                                <label for="city" class=" form-control-label">City</label>
-                                {{input value=model.city class="form-control form-spacing" id="city" placeholder="City"}}
-                                {{#if this.isInvalidCity}}
-                                    <br>
-                                    <div class="warning">Please enter a valid city</div>
+                            <div class="{{"has-success"}}">
+                                <label for="city" class=" form-control-label" id="cityScroll">City</label>
+                                {{input value=model.city class="form-control" id="city" placeholder="City"}}
+                                {{#if this.displayErrors}}
+                                    {{#each errors.model.city as |error|}}
+                                        <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                    {{/each}}
                                 {{/if}}
                             </div>
 
@@ -81,46 +82,49 @@
 
                     </div>
                     <div class="form-group row fade-background">
-                        <div class="section-header">CONFERENCE WINDOW</div>
+                        <div class="section-header" id="dateScroll">CONFERENCE WINDOW</div>
                         <hr>
                         <div class="col-lg-6">
                             <label for="city" class="form-control-label">Start</label>
-                            {{date-picker date=model.startDate class="form-control form-spacing" valueFormat='date' id='startDate'}}
-                            {{#if this.isInvalidDates}}
-                                <br>
-                                <div class="warning">Start date must be before end date</div>
-                            {{/if}}
+                            {{date-picker date=model.startDate class="form-control" valueFormat='date' id='startDate'}}
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <label for="city" class="form-control-label">End</label>
-                            {{date-picker date=model.endDate class="form-control form-spacing" valueFormat='date' id='endDate'}}
+                            {{date-picker date=model.endDate class="form-control" valueFormat='date' id='endDate'}}
+                            {{#if this.displayErrors}}
+                                {{#each errors.model.startDate as |error|}}
+                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                {{/each}}
+                            {{/if}}
+
                         </div>
                     </div>
 
                     <div class="form-group row fade-background">
                         <div class="section-header">SUBMISSION WINDOW</div>
                         <hr>
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <label for="city" class="form-control-label">Start</label>
-                            {{date-picker date=model.submissionDate class="form-control form-spacing" valueFormat='date' id='submissionDate'}}
-                            {{#if this.isInvalidSubmissionDates}}
-                                <br>
-                                <div class="warning">Submission start date must be before end date</div>
-                            {{/if}}
+                            {{date-picker date=model.submissionDate class="form-control" valueFormat='date' id='submissionDate'}}
                         </div>
                         <div class="col-lg-6">
                             <label for="city" class="form-control-label">End</label>
-                            {{date-picker date=model.closeDate class="form-control form-spacing" valueFormat='date' id='closeDate'}}
+                            {{date-picker date=model.closeDate class="form-control" valueFormat='date' id='closeDate'}}
+                            {{#if this.displayErrors}}
+                                {{#each errors.model.submissionDate as |error|}}
+                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                {{/each}}
+                            {{/if}}
                         </div>
                     </div>
                     <div class="form-group row fade-background">
                         <div class="section-header">EXPAND</div>
                         <hr>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 {{"has-success"}}">
                             <label for="city" class="form-control-label">Sponsors</label>
                             {{input value=model.sponsors class="form-control form-spacing" id="sponsors" placeholder="sponsor 1, sponsor 2, sponsor 3, ..."}}
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 {{"has-success"}}">
                             <label for="tags" class="form-control-label">Tags</label>
                             {{input value=model.tags class="form-control form-spacing" id="tags" placeholder="tag 1, tag 2, tag 3, ..."}}
                         </div>
@@ -128,7 +132,7 @@
 
                     <div class="form-group row fade-background" >
                         <div class="col-md-4">
-                            <button class="btn btn-danger" {{action "back" model}}>Cancel</button>
+                            <button class="btn btn-danger" {{action "back"}}>Cancel</button>
                             <button class="btn btn-success" {{action "create" model}}>Create</button>
                         </div>
                         <div class="col-md-4">

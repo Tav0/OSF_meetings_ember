@@ -1,27 +1,47 @@
 import Ember from 'ember';
+import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
+
+  validations: {
+    'model.title': {
+      length: {minimum: 3, maximum: 300, messages: {
+        tooShort: 'Please enter a longer title',
+        tooLong: 'Title exceeds limit of 300 characters'
+      }}
+    },
+    'model.description': {
+      length: {minimum: 6, maximum: 2000, messages: {
+        tooShort: 'Please enter a longer description',
+        tooLong: 'Description exceeds limit of 2000 characters'
+      }}
+    },
+    'model.country': {
+      exclusion: {in: ['-Select a country'], message: 'Please choose a country'}
+    },
+    'model.state': {
+      statecheck: {}
+    },
+    'model.city': {
+      length: {maximum: 100, messages: {
+        tooLong: 'City name is too long'
+      }}
+    },
+    'model.startDate': {
+      datecheck: {}
+    },
+    'model.submissionDate': {
+      datecheck: {}
+    }
+  },
+
   previewOn: false,
 
-  isValidTitle: (Ember.computed.match('model.title', /.+/)),
-  isValidCity: Ember.computed.match('model.city', /.+/),
-  isValidState: Ember.computed.match('model.state', /.+/),
-  isValidCountry: Ember.computed.match('model.country', /...+/),
-  isValidDescription: Ember.computed.match('model.description', /.+/),
-  isAmerica: Ember.computed.match('model.country', /(USA)/),
+  displayErrors: false,
 
-  isInvalidTitle: false,
-  isInvalidCity: false,
-  isInvalidState: false,
-  isInvalidCountry: false,
-  isInvalidDates: false,
-  isInvalidSubmissionDates: false,
-  isInvalidDescription: false,
-  isValid: true,
+  kill: true,
 
-  visited: false,
-
-  countries: ["", "United States of America (USA)", "Afghanistan", "Albania", "Algeria", "Andorra",
+  countries: ["-Select a country-", "United States of America (USA)", "Afghanistan", "Albania", "Algeria", "Andorra",
               "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria",
               "Azerbaijan", "Bahamas, The", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
               "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil",
@@ -53,67 +73,52 @@ export default Ember.Controller.extend({
               ],
 
   actions: {
+    killConference() {
+      if (this.get('kill'))
+        this.get('model').destroyRecord();
+    },
     selectCountry(country) {
       this.set('model.country', country);
     },
-
     create(newMeeting){
-      this.setProperties({isValid: true, isInvalidTitle: false, isInvalidCountry: false, isInvalidState: false, isInvalidCity: false,
-        isInvalidDescription: false, isInvalidDates: false, isINvalidSubmissionDates: false});
-      if (document.getElementById('title').value.length === 0) {
-        this.setProperties({isInvalidTitle: true, isValid: false});
-      }
-      if (document.getElementById('city').value.length === 0) {
-        this.setProperties({isInvalidCity: true, isValid: false});
-      }
-      if (document.getElementById('state').value.length === 0 && this.get('model.country') === "United States of America (USA)") {
-        this.setProperties({isInvalidState: true, isValid: false});
-      }
-      if ((this.get('model.country') === "") || (this.get('model.country') === undefined)) {
-        this.setProperties({isInvalidCountry: true, isValid: false});
-      }
-      if (document.getElementById('startDate').value > document.getElementById('endDate').value) {
-        this.setProperties({isInvalidDates: true, isValid: false});
-      }
-      if (document.getElementById('submissionDate').value > document.getElementById('closeDate').value) {
-        this.setProperties({isInvalidSubmissionDates: true, isValid: false});
-      }
-      if (document.getElementById('description').value.length === 0) {
-        this.setProperties({isInvalidDescription: true, isValid: false});
-      }
       if (this.get('isValid')) {
+        this.set('kill',false);
         var router = this;
           newMeeting.save().then(function(params){
             router.transitionToRoute('conference.index', params.id).then(function(newRoute) {
               newRoute.controller.set('visited', true);
           });
         });
+      } else {
+        this.set('displayErrors', true);
+        if (this.get('errors.model.title').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#titleScroll").offset().top
+          }, 1000);
+        } else if (this.get('errors.model.description').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#descriptionScroll").offset().top
+          }, 1000);
+        } else if (this.get('errors.model.country').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#countryScroll").offset().top
+          }, 700);
+        } else if (this.get('errors.model.state').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#stateScroll").offset().top
+          }, 700);
+        } else if (this.get('errors.model.city').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#cityScroll").offset().top
+          }, 700);
+        } else if (this.get('errors.model.startDate').length > 0) {
+          $('html, body').animate({
+            scrollTop: $("#dateScroll").offset().top
+          }, 300);
+        }
       }
     },
     preview() {
-      this.setProperties({isValid: true, isInvalidTitle: false, isInvalidCountry: false, isInvalidState: false, isInvalidCity: false,
-        isInvalidDescription: false, isInvalidDates: false, isINvalidSubmissionDates: false});
-      if (document.getElementById('title').value.length === 0) {
-        this.setProperties({isInvalidTitle: true, isValid: false});
-      }
-      if (document.getElementById('city').value.length === 0) {
-        this.setProperties({isInvalidCity: true, isValid: false});
-      }
-      if (document.getElementById('state').value.length === 0 && this.get('model.country') === "United States of America (USA)") {
-        this.setProperties({isInvalidState: true, isValid: false});
-      }
-      if ((this.get('model.country') === "") || (this.get('model.country') === undefined)) {
-        this.setProperties({isInvalidCountry: true, isValid: false});
-      }
-      if (document.getElementById('startDate').value > document.getElementById('endDate').value) {
-        this.setProperties({isInvalidDates: true, isValid: false});
-      }
-      if (document.getElementById('submissionDate').value > document.getElementById('closeDate').value) {
-        this.setProperties({isInvalidSubmissionDates: true, isValid: false});
-      }
-      if (document.getElementById('description').value.length === 0) {
-        this.setProperties({isInvalidDescription: true, isValid: false});
-      }
       if (this.get('isValid')) {
         this.set('previewOn',true);
       }
