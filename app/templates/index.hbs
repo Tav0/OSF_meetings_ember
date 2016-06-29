@@ -5,12 +5,12 @@
         <a href="https://osf.io"><img class="logo" src="https://osf.io/static/img/cos-white2.png"> </a>
         <div class="row title-row">
             <h1>OSF for Meetings</h1>
-            <h3>A free sharing service for academic meetings and conferences</h3>
-            <h4>Broaden your impact, create an open scholar environment</h4>
+            <h4>A free sharing service for academic meetings and conferences</h4>
+            <h5>Broaden your impact, create an open scholar environment</h5>
             <button {{action 'scrollit'}} type="button" value="continue" class="btn btn-success">Begin Sharing</button>
         </div>
         <img class="background" src="https://osf.io/static/img/front-page/bg-web.png">
-    </div>
+    </div> <!-- end container & splash page -->
     <div class="container-fluid osf-light-background">
         <nav id="create" class="navbar navbar-default">
             <div class="container-fluid" id="browse">
@@ -43,9 +43,9 @@
                               {{meeting-masonry title=conf.title description=conf.description logo=conf.logo author=conf.author location=(location-display conf.city conf.state conf.country) date=(date-display conf.startDate) submissions=(submission-count conf.linkedNodes)}}
                           {{/link-to}}
                       {{/masonry-grid}}
-                  </div>
-              </div>
-          </div>
+                  </div> <!-- end tile view -->
+              </div> <!-- end conference-view-inner-container-->
+          </div><!-- end conference-view-outer-container-->
       {{else}}
           <div class="row conference-view-outer-container">
               <div class="col-md-12 table-view">
@@ -67,12 +67,12 @@
                           {{/each}}
                           </tbody>
                       </table>
-                  </div>
-              </div>
-          </div>
+                  </div> <!-- end conference-view-inner-container -->
+              </div> <!-- end table-view -->
+          </div> <!-- conference-view-outer-container -->
       {{/if}}
       {{outlet}}
-    </div>
+    </div> <!-- end container fluid -->
 
 {{yield}}
 
