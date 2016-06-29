@@ -1,179 +1,182 @@
-
-
-{{#if this.access}}
-<style>
-    label
-    {
-        font-size: 48px;
-    }
-    .col-md-6
-    {
-        height: 100%;
-    }
-</style>
-
-<div class="container-fluid">
+<div class="container-fluid osf-light-background">
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1" style="padding-top: 50px">
+            <div class="col-md-6 col-md-offset-3">
+                <form>
+                    <h1>Create a New Conference </h1>
+                    <div class="form-group row fade-background">
+                        <div class="section-header">IDENTIFY</div>
+                        <hr>
+                        <div class="col-lg-6 {{"has-success"}}" id="titleScroll">
+                            <label for="title" class="form-control-label">Title</label>
+                            {{input value=model.title class="form-control" placeholder="Conference Title" id="title"}}
+                            <br>
+                            {{#if this.displayErrors}}
+                                {{#each errors.model.title as |error|}}
+                                    <div class="alert alert-danger" role="alert">{{error}}</div>
+                                {{/each}}
+                            {{/if}}
+                            <label for="website" class="form-control-label">Website</label>
+                            {{input value=model.website class="form-control form-spacing" placeholder="Conference Website" id="website"}}
 
-            <form>
-                <div class="row" style="margin-bottom: 25px">
-                    <div class="col-sm-8">
-                        <h2>Register New Meeting</h2>
-                    </div>
-                </div>
-                 <div class="form-group row ">
-                     <div class="col-md-6 {{if isValidTitle "has-success" "has-error"}}">
-                    <label for="city" class="form-control-label"><font style="color: #ff0000">*</font> Conference Title:</label>
-                      {{input value=model.title class="form-control" placeholder="Title" id="title"}}
-                      {{#if this.isInvalidTitle}}
-                        <br> <font style="color: #ff0000">Please enter a valid title</font>
-                      {{/if}}
-                    </div>
-                     <div class="col-md-6">
-                         <label for="website" class="form-control-label">Conference Website:</label>
-                       {{input value=model.website class="form-control" placeholder="Conference Website" id="website"}}
-                     </div>
-                </div>
-                <div class="form-group row ">
-                    <div class="col-md-6">
-                        <label for="city" class="form-control-label">Conference Logo:</label>
-                      {{input class="form-control" type="file" accept="image/*" id="image" }}
-                    </div>               
-                    <div class="col-md-6 {{if isValidCountry "has-success" "has-error"}}">
-                        <label for="country" class="col-sm-7 form-control-label"><font style="color: #ff0000">*</font> Country:</label>
+                            <label for="city" class="form-control-label">Logo</label>
+                            {{input type="file" accept="image/*" id="image"}}
 
-                        <select class=form-control onchange={{action (mut model.country) value="target.value"}}>
-                          {{#each countries as |countryChoice|}}
-                            <option value={{countryChoice}} selected={{eq model.country countryChoice}}><{{countryChoice}}</option>
-                          {{/each}}
-                        </select>
-                      {{#if this.isInvalidCountry}}
-                          <br> <font style="color: #ff0000">Please select a country</font>
-                      {{/if}}
+                            <label for="description" class="form-control-label" id="descriptionScroll">
+                                Description:</label>
+                            {{textarea value=model.description class="form-control resize" id="description"}}
+                            {{#if this.displayErrors}}
+                                {{#each errors.model.description as |error|}}
+                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                {{/each}}
+                            {{/if}}
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-6 {{if isValidCity "has-success" "has-error"}}">
-                        <label for="city" class="col-sm-7 form-control-label"><font style="color: #ff0000">*</font> City:</label>
-                      {{input value=model.city class="form-control" id="city" placeholder="City"}}
-                      {{#if this.isInvalidCity}}
-                          <br> <font style="color: #ff0000">Please enter a valid city</font>
-                      {{/if}}
-                    </div>
-                    <div class="col-md-6 {{if isAmerica (if isValidState "has-success" "has-error")}}">
-                        <label for="city" class="col-sm-7 form-control-label">
-                        {{#if this.isAmerica}}<font style="color: #ff0000">*</font>{{/if}} State/Province:</label>
-                      {{input value=model.state class="form-control" id="state" placeholder="State"}}
-                      {{#if this.isInvalidState}}
-                          <br> <font style="color: #ff0000">Please enter a valid state</font>
-                      {{/if}}
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-6">
-                    <label for="city" class="form-control-label">Start Date:</label>
-                      {{date-picker date=model.startDate class="form-control" valueFormat='date' id='startDate'}}
-                      {{#if this.isInvalidDates}}
-                        <br> <font style="color: #ff0000">Start date must be before end date</font>
-                      {{/if}}
-                    </div>
-                    <div class="col-md-6">
-                    <label for="city" class="form-control-label">End Date:</label>
-                      {{date-picker date=model.endDate class="form-control" valueFormat='date' id='endDate'}}
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-6">
-                    <label for="city" class="form-control-label">Submission Start Date:</label>
-                      {{date-picker date=model.submissionDate class="form-control" valueFormat='date' id='submissionDate'}}
-                      {{#if this.isInvalidSubmissionDates}}
-                        <br> <font style="color: #ff0000">Submission start date must be before end date</font>
-                      {{/if}}
-                    </div>
-                    <div class="col-md-6">
-                    <label for="city" class="form-control-label">Submission End Date:</label>
-                      {{date-picker date=model.closeDate class="form-control" valueFormat='date' id='closeDate'}}
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-6">
-                    <label for="city" class="form-control-label">Sponsors:</label>
-                  {{input value=model.sponsors class="form-control" id="sponsors" placeholder="sponsor 1, sponsor 2, sponsor 3, ..."}}
-                </div>
-                    <div class="col-md-6">
-                        <label for="tags" class="form-control-label">Tags:</label>
-                      {{input value=model.tags class="form-control" id="tags" placeholder="tag 1, tag 2, tag 3, ..."}}
-                    </div>
-                </div>
 
-                <div class="form-group row {{if isValidDescription "has-success" "has-error"}}">
-                    <div class="col-sm-8" style="height: 100%">
-                    <label for="description" class="form-control-label"><font style="color: #ff0000">*</font> Conference Description:</label>
-                      </div>
-                  <div class="col-sm-8">
-                      {{textarea value=model.description class="form-control" id="description"style="height: 100%"}}
-                      {{#if this.isInvalidDescription}}
-                        <br> <font style="color: #ff0000">Please enter a valid description</font>
-                      {{/if}}
-                    </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-4">
-                    <h2><font style="color: #ff0000">*</font> denotes required field</h2>
-                  </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-2 ">
-                        <button class="form-control btn btn-success" {{action "create" model}}>Submit</button>
-                    </div>
-                    <div class="col-md-2">
-                        <button class="form-control" {{action "preview"}}>Preview</button>
-                    </div>
-                    <div class="col-md-2 ">
-                        <button class="form-control btn btn-danger" {{action "back" model}}>Cancel</button>
-                        {{#if this.previewOn}}
-                          {{#modal-dialog close="hideform" targetAttachment="center" translucentOverlay=true}}
-                            <div class="row" style="padding: 20px">
-                                <div class="col-md-12">
-                                    <div class="row" style=>
-                                        <div class="conferenceTopContainer col-md-12">
-                                            <div class="col-md-8 col-md-offset-2" style="height: 100%;">
-                                                <div class="conferenceInfo">
-                                                    <h1> {{model.title}}</h1>
-                                                    <h4> {{model.startDate}} - {{model.endDate}} </h4>
-                                                    <h4>{{model.city}}, {{model.state}}, {{model.country}} </h4>
-                                                <div class="logos"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 col-offset-2 conferencePhoto">
-                                          {{!--TODO: THIS WILL PROBABLY REQUIRE EDITING ONCE FILE UPLOAD IS WORKING CORREFTLY--}}
-                                            <img src={{model.logo}}>  
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="conferenceDescriptionContainer col-lg-12">
-                                        <div class="col-lg-8 col-lg-offset-2">
-                                            <p class = "conferenceDescription">{{model.meeting.description}}</p>
-                                        </div>
-                                    </div>
-                                </div>
+
+                    <div class="form-group row fade-background">
+                        <div class="section-header">LOCATE</div>
+                        <hr>
+                        <div class="col-lg-6">
+                            <div class ="{{"has-success"}}">
+                                <label for="country" class="form-control-label" id="countryScroll">
+                                    Country
+                                </label>
+                                <select class="form-control form-spacing" onchange={{action (mut model.country) value="target.value"}}>
+                                    {{#each countries as |countryChoice|}}
+                                        <option value={{countryChoice}} selected={{eq model.country countryChoice}}>
+                                            {{countryChoice}}
+                                        </option>
+                                    {{/each}}
+                                </select>
+                                {{#if this.displayErrors}}
+                                    {{#each errors.model.country as |error|}}
+                                        <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                    {{/each}}
+                                {{/if}}
                             </div>
-                              <button class="form-control btn btn-danger" {{action "previewOff"}}>Close</button>
-                              <button class="form-control btn btn-success" {{action "create" model}}>Submit</button>
-                            </div> 
-                         {{/modal-dialog}}
-                        {{/if}}
+
+                            <div class="{{"has-success"}}">
+                                <label for="state" class="form-control-label" id="stateScroll">
+                                    State
+                                </label>
+                                {{input value=model.state class="form-control" id="state" placeholder="State"}}
+                                {{#if this.displayErrors}}
+                                    {{#each errors.model.state as |error|}}
+                                        <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                    {{/each}}
+                                {{/if}}
+                            </div>
+                            <div class="{{"has-success"}}">
+                                <label for="city" class=" form-control-label" id="cityScroll">City</label>
+                                {{input value=model.city class="form-control" id="city" placeholder="City"}}
+                                {{#if this.displayErrors}}
+                                    {{#each errors.model.city as |error|}}
+                                        <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                    {{/each}}
+                                {{/if}}
+                            </div>
+
+
+                        </div>
+
                     </div>
-                  </div>
-              </form>
+                    <div class="form-group row fade-background">
+                        <div class="section-header" id="dateScroll">CONFERENCE WINDOW</div>
+                        <hr>
+                        <div class="col-lg-6">
+                            <label for="city" class="form-control-label">Start</label>
+                            {{date-picker date=model.startDate class="form-control" valueFormat='date' id='startDate'}}
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="city" class="form-control-label">End</label>
+                            {{date-picker date=model.endDate class="form-control" valueFormat='date' id='endDate'}}
+                            {{#if this.displayErrors}}
+                                {{#each errors.model.startDate as |error|}}
+                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                {{/each}}
+                            {{/if}}
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row fade-background">
+                        <div class="section-header">SUBMISSION WINDOW</div>
+                        <hr>
+                        <div class="col-lg-6">
+                            <label for="city" class="form-control-label">Start</label>
+                            {{date-picker date=model.submissionDate class="form-control" valueFormat='date' id='submissionDate'}}
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="city" class="form-control-label">End</label>
+                            {{date-picker date=model.closeDate class="form-control" valueFormat='date' id='closeDate'}}
+                            {{#if this.displayErrors}}
+                                {{#each errors.model.submissionDate as |error|}}
+                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                {{/each}}
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="form-group row fade-background">
+                        <div class="section-header">EXPAND</div>
+                        <hr>
+                        <div class="col-lg-6 {{"has-success"}}">
+                            <label for="city" class="form-control-label">Sponsors</label>
+                            {{input value=model.sponsors class="form-control form-spacing" id="sponsors" placeholder="sponsor 1, sponsor 2, sponsor 3, ..."}}
+                        </div>
+                        <div class="col-lg-6 {{"has-success"}}">
+                            <label for="tags" class="form-control-label">Tags</label>
+                            {{input value=model.tags class="form-control form-spacing" id="tags" placeholder="tag 1, tag 2, tag 3, ..."}}
+                        </div>
+                    </div>
+
+                    <div class="form-group row fade-background" >
+                        <div class="col-md-4">
+                            <button class="btn btn-danger" {{action "back"}}>Cancel</button>
+                            <button class="btn btn-success" {{action "create" model}}>Create</button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-primary" {{action "preview"}}>Preview</button>
+                            {{#if this.previewOn}}
+                                {{#modal-dialog close="hideform" targetAttachment="center" translucentOverlay=true}}
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="conferenceTopContainer col-md-12">
+                                                    <div class="col-md-8 col-md-offset-2">
+                                                        <div class="conferenceInfo">
+                                                            <h1> {{model.title}}</h1>
+                                                            <h4> {{model.startDate}} - {{model.endDate}} </h4>
+                                                            <h4>{{model.city}}, {{model.state}}, {{model.country}} </h4>
+                                                            <div class="logos"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8 col-offset-2 conferencePhoto">
+                                                        {{!--TODO: THIS WILL PROBABLY REQUIRE EDITING ONCE FILE UPLOAD IS WORKING CORREFTLY--}}
+                                                        <img src={{model.logo}}>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row ">
+                                                <div class="col-lg-12">
+                                                    <div class="col-lg-8 col-lg-offset-2">
+                                                        <p class="conference-description">{{model.conference.description}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <button class="btn btn-danger" {{action "previewOff"}}>Close
+                                        </button>
+                                        <button class="btn btn-success" {{action "create" model}}>Submit
+                                        </button>
+                                        </div>
+                                    </div>
+                                {{/modal-dialog}}
+                            {{/if}}
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
-{{else}}
-  <meta http-equiv="refresh" content="0; URL='./'" />
-{{/if}}
 

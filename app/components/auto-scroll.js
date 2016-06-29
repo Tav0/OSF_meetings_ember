@@ -1,9 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
-	didInsertElement: function() {
-		//$(document).( $("#bottom").offset().top );
-		Ember.$("#top").hide();	
+	didRender: function() {
+        Ember.$('#indexTop').hide(0, function() {
+          Ember.$('#indexBottom').css({"margin-top": "80px"});
+          Ember.$('#tableContainer').css({"margin-top": "80px"});
+          Ember.$('#create').addClass("navbar-fixed-top");
+        });
 	}
 });

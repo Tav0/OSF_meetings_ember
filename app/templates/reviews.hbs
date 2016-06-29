@@ -61,13 +61,13 @@
 
             <div id="wrapper">
             	<div id="columns">
-                {{#each model as |meeting|}}
-                  <!-- {{meeting.description}} -->
+                {{#each model as |conference|}}
+                  <!-- {{conference.description}} -->
                   <div class="pin">
-                    <a href={{meeting.website}}><img src={{meeting.logo}} width="125">
+                    <a href={{conference.website}}><img src={{conference.logo}} width="125">
                       <p>
-                        {{meeting.title}}
-                      <p class="text-left">{{meeting.closeDate}}</p>
+                        {{conference.title}}
+                      <p class="text-left">{{conference.closeDate}}</p>
                     </p></a>
                     </div>
                 {{/each}}

@@ -5,6 +5,5 @@ import attr from 'ember-data/attr';
 
 
 export default OsfModel.extend({
-	meeting: DS.belongsTo('meeting'),
-	tags: attr('array'),
+	conference: DS.belongsTo('conference'),
 });

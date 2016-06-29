@@ -7,8 +7,10 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('conference', { path: '/conference' }, function() {
-  	this.route('index', { path: '/:id' });
-    this.route('submission', { path: '/:id/submission' });
+    this.route('index', { path:'/:conference_id'}, function() {
+        this.route('index', { path:'/' });
+        this.route('submission', { path: '/submission' });
+    });
   });
   this.route('register');
   this.route('login');
