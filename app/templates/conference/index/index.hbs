@@ -1,0 +1,245 @@
+<div class="container-fluid osf-light-background">
+    <nav id= "create" class="navbar navbar-fixed-top">
+        <div class="container-fluid" id="browse">
+            <form class="navbar-form navbar-left" role="search">
+                <button class="btn btn-success navbar-btn" {{action "backToMeetings"}}>
+                    ← View More Meetings
+                </button>
+              {{#if this.editing}}
+              {{else}}
+                  <button class="btn btn-danger navbar-btn" {{action "editConference"}}>
+                      Edit This Meeting
+                  </button>
+              {{/if}}
+            </form>
+          {{#if this.editing}}
+              <form class="navbar-form navbar-right">
+                  <button class="btn btn-success navbar-btn"{{action "saveEdits" model.id}}>Save</button>
+                  <button class="btn btn-danger navbar-btn"{{action "cancelEdits"}}>Cancel</button>
+              </form>
+          {{/if}}
+        </div>
+    </nav>
+    <div class="row conference-view-outer-container">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="conference-info">
+
+                            {{#if this.editing}}
+
+                                <div class="page-header">
+                                    <h2>Edit Meeting: {{model.title}}</h2>
+                                </div>
+
+                                <form id="editConference">
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label>Title: </label>
+                                            {{input value=model.title class="form-control"}}
+                                            {{#if this.displayErrors}}
+                                                {{#each errors.model.title as |error|}}
+                                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                                {{/each}}
+                                            {{/if}}
+                                        </div>
+                                        <div class="col-md-6">
+                                        <label> Conference Website: </label>
+                                        {{input value=model.website class="form-control"}}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label>Start date: </label>
+                                            {{date-picker date=model.startDate class="form-control" valueFormat='date'}}
+                                            {{#if this.displayErrors}}
+                                                {{#each errors.model.startDate as |error|}}
+                                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                                {{/each}}
+                                            {{/if}}
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>End Date: </label>
+                                            {{date-picker date=model.endDate class="form-control" valueFormat='date'}}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label>Submission start date: </label>
+                                            {{date-picker date=model.submissionDate class="form-control" valueFormat='date'}}
+                                            {{#if this.displayErrors}}
+                                                {{#each errors.model.submissionDate as |error|}}
+                                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                                {{/each}}
+                                            {{/if}}
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Submission end date: </label>
+                                            {{date-picker date=model.closeDate class="form-control" valueFormat='date'}}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label>City: </label>
+                                            {{input value=model.city class="form-control"}}
+                                            {{#if this.displayErrors}}
+                                                {{#each errors.model.city as |error|}}
+                                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                                {{/each}}
+                                            {{/if}}
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>State/Province: </label>
+                                            {{input value=model.state class="form-control"}}
+                                            {{#if this.displayErrors}}
+                                                {{#each errors.model.state as |error|}}
+                                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                                {{/each}}
+                                            {{/if}}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label>Country:</label>
+                                            <select class=form-control selected="model.country" onchange={{action (mut model.country) value="target.value"}}>
+                                                {{#each countries as |countryChoice|}}
+                                                    <option value={{countryChoice}} selected={{eq model.country countryChoice}}><{{countryChoice}}</option>
+                                                {{/each}}
+                                             </select>
+                                            {{#if this.displayErrors}}
+                                                {{#each errors.model.country as |error|}}
+                                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                                {{/each}}
+                                            {{/if}}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label>Description: </label>
+                                            {{textarea value=model.description class="form-control" id="description"style="height: 100%"}}
+                                            {{#if this.displayErrors}}
+                                                {{#each errors.model.description as |error|}}
+                                                    <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                                                {{/each}}
+                                            {{/if}}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label>Change conference logo: </label>
+                                            {{input class="form-control" type="file" accept="image/*" id="image"}}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label>Current logo: </label>
+                                        </div>
+                                        <img class="col-md-6 conference-photo" src={{model.logo}}>
+                                    </div>
+                                </form>
+                            {{else}}
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <h1 style="margin: 15px" style="font-size:40px"> {{model.title}}</h1>
+                                        <h4 style="margin:15px 0 0 0"> {{date-display model.startDate}} - {{date-display model.endDate}}</h4>
+                                        {{#if hasState}}
+                                        <h4 style="margin:15px 0 0 0"> {{model.city}}, {{model.state}}, {{model.country}}</h4>
+                                        {{else}}
+                                        <h4 style="margin:15px 0 0 0"> {{model.city}}, {{model.country}}</h4>
+                                        {{/if}}
+                                        <div class="logo-view" align="center"></div>
+                                        <p class="conferenceDescription" style="font-size: 16px">{{model.description}}</p>
+                                    </div>
+                                    <div class="col-md-6 conference-photo">
+                                        <img src={{model.logo}}>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="btn-group" role="group" aria-label="...">
+
+                                            <button type="button" class="btn btn-default" style="margin: 0 0 5px 0; width: 200px;" {{action "submitTo"}}>  Submit to This Conference</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {{/if}}
+                            {{#if this.editing}}
+                            {{else}}
+                                <br>
+                                  <!-- This is the basic code for a list with images -->
+<!--                                   <div id="table" class="row">
+                                      <div class="col-md-12">
+                                        {{!-- models-table data=model columns=columns useFilteringByColumns=false rowTemplate="row" --}}
+                                          <table class="table  table-hover table-condensed table-bordered">
+                                              <tbody>
+                                              {{#each model.meeting.linkedNodes as |item|}}
+                                                <a target="_blank" style="color: black;" href= {{link-to-osf item.id}}>
+                                                  {{node-component title=item.title contributors=item.contributors description=item.description}}
+                                                </a>
+                                              {{/each}}
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                  </div>
+ -->
+
+                                  <!-- This is the basic code for a table of submissions without images -->
+                                  {{#if (has-submissions model.linkedNodes)}}
+                                  <table class="table table-hover">
+                                    <thead class="thead">
+                                        <tr>
+                                            <th class="heading" bgcolor="#E0E0E0" width="30%" data-sortable="true">Title</th>
+                                            <th class="heading" bgcolor="#E0E0E0" width="20%">Author</th>
+                                            <th class="heading" bgcolor="#E0E0E0" width="50%">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each model.linkedNodes as |item|}}
+                                        <tr bgcolor="FFFFFF">
+                                            <th class="tableTitle" scope="row">
+                                            <a target="_blank" style="color: #0080ff;" href={{link-to-osf item.id}}>
+                                            {{item.title}}
+                                            </a></th>
+                                            <td style="color: black;">{{#each item.contributors as |contributor|}}
+                                                    {{contributor.users.fullName}}
+                                                {{/each}}
+                                            </td>
+                                            <td class="tableDescription" style="color: #000000">{{item.description}}</td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                                {{else}}
+                                <!-- This needs styling and probably rephrasing -->
+                                <div style="color:black; font-size:16px;">
+                                    No submissions have been made for this conference
+                                </div>
+                                {{/if}}
+                              {{/if}}
+
+                              {{#if this.navModal}}
+                                {{#modal-dialog close="hideform" targetAttachment="center" translucentOverlay=true}}
+                                    You are currently in edit mode. Changes to your meeting will not be saved.
+                                    <br> Are you sure you want to leave?
+                                    <br> <button class="btn btn-success"{{action "confirmLeave"}}>Yes</button>
+                                    <button class="btn btn-danger" {{action "declineLeave"}}>No</button>
+                                {{/modal-dialog}}
+                              {{/if}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{{outlet}}

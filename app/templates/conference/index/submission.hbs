@@ -1,0 +1,61 @@
+<div class="container-fluid osf-light-background">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 no-pad">
+            <h2>Submit to:</h2>
+            <h1 class="conference-title">{{model.conference.title}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 fade-background">
+            <form id="fileSubmission" method="post">
+                <div class="form-group row">
+                    <div class="col-md-6" style="height: 100%;">
+                        <div class="submission-header"> Upload File(s):
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row has-success">
+                    <div class="col-md-6">
+                        <label> Title:</label>
+                        {{input id="title" value=model.title class="form-control"}}
+                        {{#if this.displayErrors}}
+                            {{#each errors.model.title as |error|}}
+                                <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="form-group row has-success">
+                    <div class="col-md-6">
+                        <label>Contributors:</label>
+                        {{!-- TODO: Make contributors an actual thing --}}
+                        {{input id="contributors" class="form-control"}}
+                    </div>
+                </div>
+                <div class="form-group row has-success">
+                    <div class="col-md-6">
+                        <label>Description:</label>
+                        {{textarea id="description" value=model.description class="form-control"}}
+                        {{#if this.displayErrors}}
+                            {{#each errors.model.description as |error|}}
+                                <br><div class="alert alert-danger" role="alert">{{error}}</div>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <button
+                        class="btn btn-success" {{action "saveNodeSubmission" model model.conference.id}}>
+                            Submit
+                        </button>
+                        <button
+                                class=" btn btn-danger" {{action
+                                "cancelSubmission"}}>Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
