@@ -40,7 +40,12 @@
                   <div class="col-md-12 tile-view">
                       {{#masonry-grid  isFitWidth=true gutter=20 items= model as |conf|}}
                           {{#link-to "conference.index" conf.id class="title"}}
-                              {{meeting-masonry title=conf.title description=conf.description logo=conf.logo author=conf.author location=(location-display conf.city conf.state conf.country) date=(date-display conf.startDate) submissions=(submission-count conf.linkedNodes)}}
+                              {{meeting-masonry title=conf.title
+                              description=conf.description logo=conf.logo
+                              location=(location-display
+                              conf.city conf.state conf.country)
+                              date=(date-display conf.start)
+                              submissions=(submission-count 5)}}
                           {{/link-to}}
                       {{/masonry-grid}}
                   </div> <!-- end tile view -->

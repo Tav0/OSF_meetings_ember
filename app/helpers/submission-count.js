@@ -1,8 +1,10 @@
 import Ember from 'ember';
 
 export function submissionCount(params/*, hash*/) {
-  var linkedNodes = params[0];
-  return linkedNodes.get('length');
+    //needs to get fixed
+
+    //var linkedNodes = params[0];
+    return params[0];
 }
 
 export default Ember.Helper.helper(submissionCount);

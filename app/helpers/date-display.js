@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export function dateDisplay(params/*, hash*/) {
-	var date = params[0].toDateString();
-	return date;
+	var date = new Date(params[0]);
+	return date.toString();
 }
 
 export default Ember.Helper.helper(dateDisplay);
