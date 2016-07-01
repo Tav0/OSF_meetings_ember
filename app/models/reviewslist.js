@@ -6,5 +6,8 @@ export default Model.extend({
   conference: attr('string'),
   reviewdeadline: attr('string'),
   reviewer: attr('string'),
-  status: attr('string')
+  status: attr('string'),
+  link: attr('string'),
+  attachment: attr('string')
+
   });
