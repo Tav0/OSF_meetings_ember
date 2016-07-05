@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+
   statusc : 0,
   model(){
 
@@ -8,16 +9,79 @@ export default Ember.Route.extend({
       reviewsall: this.store.findAll('reviewslist'),
       reviewsdate: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
         return reviewslist.sortBy('reviewdeadline').reverse();
+      }),
+      ncomplete: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
+        return reviewslist.filterBy('status','Completed').get('length')/reviewslist.get('length')*100;
+      }),
+      napprove: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
+        return reviewslist.filterBy('status','Approved').get('length')/reviewslist.get('length')*100;
+      }),
+      nprogress: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
+        return reviewslist.filterBy('status','In-progress').get('length')/reviewslist.get('length')*100;
+      }),
+      nrejected: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
+        return reviewslist.filterBy('status','Rejected').get('length')/reviewslist.get('length')*100;
+      }),
+      npast: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
+        return reviewslist.filterBy('status','Past due').get('length')/reviewslist.get('length')*100;
+      }),
+      nstart: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
+        return reviewslist.filterBy('status','Not started').get('length')/reviewslist.get('length')*100;
       })
+
     });
 
   },
+
+
+
   actions: {
 
 
+    tablecolor(mode){
+
+      Ember.$("tr").each(function() {
+        Ember.$this = Ember.$(this);
+        var imps = Ember.$this.find(".st").text().trim();
+
+        console.log(imps);
+        console.log('hii');
+
+        if (mode=='Completed'){
 
 
+          Ember.$this.css('background-color', 'green');
 
+        }else if(mode=='Passed Due'){
+
+          Ember.$this.css('background-color', 'red');
+
+        }else{
+          Ember.$this.css('background-color', 'yellow');
+
+        }
+
+        // compare id to what you want
+      });
+
+    },
+
+    treeEvent(){
+      console.log(this.get('conferences'));
+
+      Ember.$('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+      Ember.$('.tree li.parent_li > span').on('click', function (e) {
+        var children = Ember.$(this).parent('li.parent_li').find(' > ul > li');
+        if (children.is(":visible")) {
+          children.hide('fast');
+          Ember.$(this).attr('title', 'Expand this branch').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
+        } else {
+          children.show('fast');
+          Ember.$(this).attr('title', 'Collapse this branch').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
+        }
+        e.stopPropagation();
+      });
+    },
     filterdata(){
 
       Ember.$('#filter').keyup(function () {

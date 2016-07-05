@@ -1,28 +1,122 @@
 
 
-<div class="container-fluid">
+<nav class="navbar navbar-inverse" id="navbarScope" role="navigation">
+<div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><div class="osf-navbar-logo"></div>OSF</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse navbar-right">
+        <ul class="nav navbar-nav">
+            <li><a href="/peerdashboard/">My Dashboard</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Explore <span class="caret hidden-xs"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="/search/?q=*&filter=registration">Registry</a></li>
+                    <li><a href="/meetings/">Meetings</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Help <span class="caret hidden-xs"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="/4znZP/wiki/home">About</a></li>
+                    <li><a href="/faq/">FAQ</a></li>
+                    <li><a href="/getting-started">Getting Started</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="${web_url_for('user_profile')}">
+                    <span rel="tooltip" data-placement="bottom" title="Settings" class="fa fa-cog hidden-xs fa-lg"></span>
+                    <span class="visible-xs">Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="${web_url_for('auth_logout')}">
+                    <span rel="tooltip" data-placement="bottom" title="Log out" class="fa fa-sign-out hidden-xs fa-lg"></span>
+                    <span class="visible-xs">Log out</span>
+                </a>
+            </li>
+            <li class="dropdown sign-in" data-bind="with: $root.signIn">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info btn-top-login dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        Sign in <span class="caret hidden-xs"></span>
+                    </button>
+                    <ul class="dropdown-menu" id="menuLogin" role="menu">
+                        <form class="form" id="signInForm" data-bind="submit: submit" action="${login_url}" method="POST">
+                            <div class="form-group"><input id="email" class="form-control" type="email" data-bind="value: username" name="username" placeholder="Email" aria-label="Username"></div>
+                            <div class="form-group"><input name="password" id="password" class="form-control" type="password" placeholder="Password" data-bind="value: password" aria-label="Password"></div>
+                            <div class="form-group"><button type="submit" id="btnLogin" class="btn btn-block btn-primary">Login</button></div>
+                            <div class="text-center m-b-sm"> <a href="/forgotpassword/">Forgot Password?</a></div>
+                        </form>
+                    </ul>
+                </div>
+            </li>
+            </ul>
+    </div><!--/.navbar-collapse -->
+</div>
+</nav>
+
+
+
+<div class="container-fluid big" >
+
+
     <div class="row">
         <div class="col-md-12">
 
+
+
             <h3 class="text-center text-primary">
             </h3>
-            <h2>
+            <div>
+
+            <h1 class="ptitle">
                 Peer Review Dashboard
-            </h2>
+            </h1>
+
+
+            </div>
+
+
 
             <div class="input-group"> <span class="input-group-addon">Filter</span>
 
-                <input id="filter" type="text" class="form-control" placeholder="Type here..." {{action 'filterdata'}}>
+                <input id="filter" type="text" class="filter-control" placeholder="Type here..." {{action 'filterdata'}}>
             </div>
 
             <div class="btn-group">
                 <a id="list" class="btn btn-default btn-sm" {{action 'showlist'}}><span class="glyphicon glyphicon-th-list">
             </span>List</a> <a id="grid" class="btn btn-default btn-sm"{{action 'showgrid'}} ><span
-                    class="glyphicon glyphicon-th"></span>Grid</a>
+                    class="glyphicon glyphicon-th"></span>Grid</a><a id="tree" class="btn btn-default btn-sm"{{action 'showtree'}} ><span
+                    class="glyphicon glyphicon-leaf"></span>Tree</a>
             </div>
 
+            <div class="container">
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" style="width:{{model.ncomplete}}%" >
+                      {{model.ncomplete}}% Completed
+
+                    </div>
+                    <div class="progress-bar progress-bar-warning" role="progressbar" style="width:{{model.napprove}}%" >
+                      {{model.napprove}}% Approved
+                    </div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width:{{model.nstart}}%" >
+                      {{model.nstart}}% Not started
+                    </div>
+
+                </div>
+
+
+
+            </div>
             {{#if islistview}}
-            <table class="table table-hover table-striped">
+            <table id="submissions" class="table table-hover" >
                 <thead>
 
                 <tr>
@@ -49,7 +143,7 @@
                 <tbody class="searchable">
                 {{#each model.reviewsdate as |d|}}
 
-                    <tr >
+                    <tr>
                         <td>
                           {{d.id}}
                         </td>
@@ -62,7 +156,7 @@
                         <td>
                           {{d.reviewdeadline}}
                         </td>
-                        <td>
+                        <td class="st">
                           {{d.status}}
                         </td>
 
@@ -123,11 +217,81 @@
               </div>
           {{/if}}
 
+
+
+
+          {{#if istreeview}}
+             <div id="reviews" class="row list-group">
+
+              <div class="tree" {{action 'treeEvent'}}>
+                  <ul>
+                      <li>
+                          <span><i class="icon-folder-open"></i>Conferences</span>
+                          <ul>
+                              <li>
+                                  <span><i class="icon-minus-sign"></i>ICCS 2016</span>
+                                  <ul>
+                                      <li>
+                                          <span><i class="icon-leaf"></i> Social Network Analysis using Genetic Algorithms</span>
+                                          <a class="btn btn-primary" {{action 'showform'}} >View</a>
+                                          <a class="btn btn-primary" {{action 'showapprove' d.id}} >Approve</a>
+                                          <a class="btn btn-primary" {{action 'showassign' d.id}} >Assign</a>
+                                          <a class="btn btn-primary" {{action 'showdata'}} >Contact Author</a>
+                                      </li>
+                                      <li>
+                                          <span><i class="icon-leaf"></i> Reproducible Research for Scientific Computing</span>
+                                          <a class="btn btn-primary" {{action 'showform'}} >View</a>
+                                          <a class="btn btn-primary" {{action 'showapprove' d.id}} >Approve</a>
+                                          <a class="btn btn-primary" {{action 'showassign' d.id}} >Assign</a>
+                                          <a class="btn btn-primary" {{action 'showdata'}} >Contact Author</a>
+                                      </li>
+                                  </ul>
+                              </li>
+                              <li>
+                                  <span><i class="icon-minus-sign"></i> ASONAM 2016</span>
+                                  <ul>
+                                      <li>
+                                          <span><i class="icon-leaf"></i> Analyzing patients records</span>
+                                          <a class="btn btn-primary" {{action 'showform'}} >View</a>
+                                          <a class="btn btn-primary" {{action 'showapprove' d.id}} >Approve</a>
+                                          <a class="btn btn-primary" {{action 'showassign' d.id}} >Assign</a>
+                                          <a class="btn btn-primary" {{action 'showdata'}} >Contact Author</a>
+                                      </li>
+                                  </ul>
+                              </li>
+                              <li>
+                                  <span><i class="icon-minus-sign"></i> ASEE 2015</span>
+                                  <ul>
+                                      <li>
+                                          <span><i class="icon-leaf"></i> Repeatability and Benefaction in Computer Systems Research</span>
+                                          <a class="btn btn-primary" {{action 'showform'}} >View</a>
+                                          <a class="btn btn-primary" {{action 'showapprove' d.id}} >Approve</a>
+                                          <a class="btn btn-primary" {{action 'showassign' d.id}} >Assign</a>
+                                          <a class="btn btn-primary" {{action 'showdata'}} >Contact Author</a>
+                                      </li>
+
+                                  </ul>
+                              </li>
+
+                          </ul>
+                      </li>
+                      </ul>
+              </div>
+
+
+             </div>
+          {{/if}}
+
         </div>
     </div>
 
 
 </div>
+
+
+
+
+
 
 
 {{#if isshowingform}}
@@ -142,7 +306,7 @@
 
 
               <div class = "col-md-8 col-md-offset-3" style="width: 1300px">
-                  <iframe id="fred" style="border:1px solid #666CCC" title="Submission" src="http://reproducibility.cs.arizona.edu/v2/RepeatabilityTR.pdf" frameborder="1" scrolling="auto" height="850" width="850" ></iframe>
+                  <iframe id="fred" style="border:1px solid #666CCC" title="Submission" src="http://www.bitss.org/wp-content/uploads/2014/06/reproducible-research-for-scientific-computing-tools-and-strategies-for-changing-the-culture3.pdf" frameborder="1" scrolling="auto" height="850" width="850" ></iframe>
               </div>
 
 

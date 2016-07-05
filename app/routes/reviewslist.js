@@ -8,7 +8,11 @@ export default Ember.Route.extend({
       reviewsall: this.store.findAll('reviewslist'),
       reviewsdate: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
         return reviewslist.sortBy('reviewdeadline').reverse();
+      }),
+      reviewsfilter: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
+        return reviewslist.filterBy('status','Completed').get('length');
       })
+      
     });
 
   },

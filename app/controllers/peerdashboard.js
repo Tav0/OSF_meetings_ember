@@ -1,11 +1,17 @@
+
+
 import Ember from 'ember';
 
+
+
 export default Ember.Controller.extend({
+  
   isshowingcontact: false,
   isshowingassign: false,
   isshowingform: false,
   islistview : true,
   isgridview: false,
+  istreeview: false,
   selectvalue: 0,
   rid: 0,
   msgtemplate: '' +
@@ -17,6 +23,37 @@ export default Ember.Controller.extend({
     confirmHandler: function () {
 
     },
+    tablecolor(){
+
+
+     /* Ember.$("tr").each(function() {
+        Ember.$this = Ember.$(this);
+        var imps = Ember.$this.find(".st").text().trim();
+
+        console.log(imps);
+        console.log('hii');
+
+        if (mode=='Completed' && imps=='Completed'){
+
+
+          Ember.$this.css('background-color', 'green');
+
+        }else if(mode=='Passed Due' && imps=='Passed Due'){
+
+          Ember.$this.css('background-color', 'red');
+
+        }else if (imps == ''){
+
+        }else{
+          Ember.$this.css('background-color', 'yellow');
+
+        }
+
+        // compare id to what you want
+      });*/
+
+    },
+
     contactauthor(){
 
 
@@ -94,12 +131,28 @@ export default Ember.Controller.extend({
 
       this.set('islistview',true);
       this.set('isgridview',false);
+      this.set('istreeview',false);
 
     },
 
     showgrid(){
       this.set('islistview',false);
       this.set('isgridview',true);
+      this.set('istreeview',false);
+
+    },
+
+    isInArray(value, array) {
+        return array.indexOf(value) > -1;
+
+    },
+
+    showtree(){
+
+
+      this.set('istreeview',true);
+      this.set('isgridview',false);
+      this.set('islistview',false);
 
     }
   }
