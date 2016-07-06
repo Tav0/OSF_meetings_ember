@@ -10,8 +10,8 @@ export default Ember.Route.extend({
 		  url = url.replace(front, "");
 		  num = url.search("&");
 
-		 if(num>=0){ return url.substr(0,num);}
-		 if(num<0){  return url;}
+		 if(num >= 0){ return url.substr(0,num);}
+		 if(num < 0){  return url;}
 	},
 
 	activate: function() {
@@ -19,10 +19,10 @@ export default Ember.Route.extend({
 		//backend to check if the user is logged in, or if they need to go to login page
 		var code = this.$_GET('code');
 		var self = this;
+		console.log(code);
 		if (code === '') {
-			window.location="https://test-accounts.osf.io/oauth2/authorize?scope=osf.full_read+osf.full_write&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Flogin&response_type=code&client_id=f720c20605e84d52ad24cc97e03ed3a8";
+			window.location="https://staging-accounts.osf.io/oauth2/authorize?scope=osf.full_read+osf.full_write&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Flogin&response_type=code&client_id=87ccc107d57b44b988abe7fe269bf6ba";
 		} else {
-            console.log('Succesful');
 			Ember.$.ajax({
 				url: "http://localhost:8000/login?code=" + code,
 				type: "GET",
