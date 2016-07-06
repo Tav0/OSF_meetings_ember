@@ -1,6 +1,6 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('submission-eval', 'Unit | Model | submission eval', {
+moduleForModel('submissioneval', 'Unit | Model | submissioneval', {
   // Specify the other units that are required for this test.
   needs: []
 });
