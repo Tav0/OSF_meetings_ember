@@ -6,15 +6,15 @@ import datetime
 
 
 class Reviewer(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User,default=None)
     name = models.CharField(max_length=200)
     affiliation = models.TextField(null=True)
     email = models.EmailField(default=None)
     bio = models.TextField(null=True)
     research = models.TextField(null=True)
     website = models.URLField(null=True)
-    osfReviews = models.IntegerField(default=0)
-    avatar = models.ImageField(blank=True, null=True, upload_to='avatars')
+    osfreviews = models.IntegerField(default=0)
+    avatar = models.ImageField(blank=True, null=True, upload_to='media/avatars')
 
 class Author(models.Model):
 
@@ -25,12 +25,15 @@ class Author(models.Model):
 class Reviewslist(models.Model):
 
     conference = models.TextField(null=True)
+    title = models.TextField(null=True)
     reviewdeadline = models.DateField(default=None)
     reviewer = models.ForeignKey(Reviewer)
     author = models.ManyToManyField(Author)
     status = models.CharField(max_length=100)
     link = models.URLField(blank=True, null=True)
-    attachment = models.FileField(blank=True, null=True, upload_to='files')
+    attachment = models.FileField(blank=True, null=True, upload_to='media/files')
+
+
 
 class Feedback(models.Model):
 
