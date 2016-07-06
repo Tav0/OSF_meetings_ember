@@ -1,14 +1,13 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from models import Reviewer, Reviewslist
-from serializers import ReviewerSerializer, ReviewslistSerializer, AuthenticationSerializer
-from django.http import Http404
+from models import Reviewer, Reviewslist, submissionevals
+from serializers import ReviewerSerializer, ReviewslistSerializer, AuthenticationSerializer, evalSerializer
 
-import requests
-from requests_oauth2 import OAuth2
+
 from rest_framework.views import APIView
-from rest_framework.generics import ListCreateAPIView
 from rest_framework.response import Response
+
+from rest_framework.generics import ListCreateAPIView
 from django.contrib.auth import authenticate, login
 from rest_framework import status
 
@@ -44,12 +43,14 @@ class AuthenticateUser(APIView):
         else:
             return Response("Incorrect format for POST", status=status.HTTP_404_NOT_FOUND)
 
+
 class ReviewerViewSet(viewsets.ModelViewSet):
     """
     API endpoint that returns all reviewers.
     """
     queryset = Reviewer.objects.all()
     serializer_class = ReviewerSerializer
+
 
 class ReviewerDetailsViewSet(viewsets.ModelViewSet):
     """
@@ -66,6 +67,8 @@ class ReviewslistViewSet(viewsets.ModelViewSet):
       API endpoint that returns all submissions
       """
 
+
+
     queryset = Reviewslist.objects.all()
     serializer_class = ReviewslistSerializer
 
@@ -76,6 +79,8 @@ class ReviewslistViewSet(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+
 class ReviewslistFilteredViewSet(ListCreateAPIView):
     serializer_class = ReviewslistSerializer
 
@@ -85,3 +90,20 @@ class ReviewslistFilteredViewSet(ListCreateAPIView):
         rl = Reviewslist.objects.filter(reviewer_id=rid)
         ss = ReviewslistSerializer(rl, context={'request': request}, many=True)
         return Response(ss.data)
+
+
+
+class SubmissionEvallistViewSet(viewsets.ModelViewSet):
+
+
+    queryset = submissionevals.objects.all()
+    serializer_class = evalSerializer
+
+
+    def post(self, request, format=None):
+        print request.DATA
+        serializer = evalSerializer(data=request.DATA)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

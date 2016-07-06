@@ -1,11 +1,15 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User, Group
-from models import Reviewer, Reviewslist, Feedback
+from models import Reviewer, Reviewslist, submissionevals
 
 class ReviewerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reviewer
-        fields = ('name', 'affiliation', 'email', 'bio', 'research', 'website', 'osfReviews')
+
+        fields = ('name', 'affiliation', 'email', 'bio', 'research', 'website', 'osfreviews', 'avatar')
+
+
+
 
 class ReviewslistSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,7 +23,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('username', 'email', 'groups')
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
-	class Meta:
+   class Meta:
 		model = Group
 		fields = ('url', 'name')
 
@@ -30,7 +34,7 @@ class AuthenticationSerializer(serializers.Serializer):
     def validate(self, data):
         return data
 
-class FeedbackSerializer(serializers.ModelSerializer):
+class evalSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Feedback
-        fields = ('reviewer', 'submission', 'ratingPremise', 'ratingResearch', 'ratingStyle', 'comments')
+        model = submissionevals
+        fields = ('premise', 'research', 'style', 'comment', 'total')

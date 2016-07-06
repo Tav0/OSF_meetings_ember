@@ -35,11 +35,17 @@ class Reviewslist(models.Model):
 
 
 
-class Feedback(models.Model):
+class submissionevals(models.Model):
 
-    reviewer = models.OneToOneField(Reviewer)
-    submission = models.OneToOneField(Reviewslist)
-    ratingPremise = models.IntegerField(default=0)
-    ratingResearch = models.IntegerField(default=0)
-    ratingStyle = models.IntegerField(default=0)
-    comments = models.TextField(null=True)
+    #reviewer = models.OneToOneField(Reviewer)
+    #submission = models.OneToOneField(Reviewslist)
+    premise = models.IntegerField(default=0)
+    research = models.IntegerField(default=0)
+    style = models.IntegerField(default=0)
+    comment = models.TextField(null=True)
+
+
+    @property
+    def total(self):
+        return self.premise + self.research + self.style
+
