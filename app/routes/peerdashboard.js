@@ -25,8 +25,8 @@ export default Ember.Route.extend({
       npast: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
         return reviewslist.filterBy('status','Past due').get('length')/reviewslist.get('length')*100;
       }),
-      nstart: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
-        return reviewslist.filterBy('status','Not started').get('length')/reviewslist.get('length')*100;
+      nsubmit: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
+        return reviewslist.filterBy('status','Submitted').get('length')/reviewslist.get('length')*100;
       })
 
     });

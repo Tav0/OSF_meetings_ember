@@ -14,7 +14,7 @@ class ReviewerSerializer(serializers.ModelSerializer):
 class ReviewslistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reviewslist
-        fields = ('conference', 'reviewdeadline', 'reviewer',  'author', 'status', 'link', 'attachment')
+        fields = ('conference', 'title','reviewdeadline', 'reviewer',  'author', 'status', 'link', 'attachment')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
