@@ -5,10 +5,11 @@ import Ember from 'ember';
 
 
 export default Ember.Controller.extend({
-  
+
   isshowingcontact: false,
   isshowingassign: false,
   isshowingform: false,
+  filelink: '',
   islistview : true,
   isgridview: false,
   istreeview: false,
@@ -71,8 +72,10 @@ export default Ember.Controller.extend({
     showdata() {
       this.set('isshowingcontact', true);
     },
-    showform() {
+    showform(d) {
       this.set('isshowingform', true);
+       this.set('filelink',d);
+       console.log(d);
     },
     hideform() {
       this.set('isshowingform', false);

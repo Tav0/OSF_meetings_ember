@@ -44,8 +44,6 @@ export default Ember.Route.extend({
         Ember.$this = Ember.$(this);
         var imps = Ember.$this.find(".st").text().trim();
 
-        console.log(imps);
-        console.log('hii');
 
         if (mode=='Completed'){
 

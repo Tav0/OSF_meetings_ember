@@ -161,7 +161,7 @@
                         </td>
 
                         <td>
-                            <a class="btn btn-primary" {{action 'showform'}} >View</a>
+                            <a class="btn btn-primary" {{action 'showform' d.attachment}} >View</a>
 
                         </td>
                         <td>
@@ -305,8 +305,8 @@
               <legend>Submission Preview</legend>
 
 
-              <div class = "col-md-8 col-md-offset-3" style="width: 1300px">
-                  <iframe id="fred" style="border:1px solid #666CCC" title="Submission" src="http://reproducibility.cs.arizona.edu/v2/RepeatabilityTR.pdf"  scrolling="auto" height="650" width="650" ></iframe>
+              <div class = "col-md-4" style="width: 680px">
+                  <iframe id="fred" style="border:1px solid #666CCC" title="Submission" src={{filelink}}  scrolling="auto" height="650" width="650" ></iframe>
               </div>
 
 

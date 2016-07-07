@@ -1,16 +1,170 @@
 {{#if this.visited}}
   {{auto-scroll}}
 {{/if}}
-<div id="indexTop" class="container-fluid big osf-standard-background">
-    <a href="https://osf.io"><img class="logo" src="https://osf.io/static/img/cos-white2.png"> </a>
-    <div class="row title-row">
-        <h1>OSF Peer Reviews</h1>
-        <h3>A free sharing service for academic meetings and conferences</h3>
-        <h4>Broaden your impact, create an open scholar environment</h4>
-        <button {{action 'scrollit'}} type="button" value="continue" class="btn btn-success">Begin Sharing</button>
-    </div>
-    <img class="background" src="https://osf.io/static/img/front-page/bg-web.png">
-</div>
+    <div id="indexTop" class="container-fluid big osf-standard-background">
+        <a href="https://osf.io"><img class="logo" src="https://osf.io/static/img/cos-white2.png"> </a>
+        <div class="cos-about">
+            <h1>OSF for Peer Review</h1>
+            <h2></h2>
+            <h4>We began with one infrastructure project, the Open Science Framework,</h4>
+            <h4>one research project, Reproducibility Project: Psychology,</h4>
+            <h4>and a mission: to increase openness, integrity, and reproducibility of scientific research.</h4>
+            <!-- <h5>Broaden your impact, create an open scholar environment</h5> -->
+            <!-- <button {{action 'scrollit'}} type="button" value="continue" class="btn btn-success">Begin Sharing</button> -->
+        </div>
+<br><br>
+        <div id="hero-signup" class="container">
+                  <div class="row">
 
+                    <div class="col-sm-6">
+                      <h2>Free and open source. Start now.</h2>
+
+                     <div id="signUp" class="anchor"></div>
+                        <div id="signUpScope">
+                            <form data-bind="submit: submit">
+                                <div class="form-group" data-bind="css: {'has-error': fullName() &amp;&amp; !fullName.isValid(), 'has-success': fullName() &amp;&amp; fullName.isValid()}">
+                                      <label class="placeholder-replace" style="display:none">Full name</label>
+                                      <input class="form-control" placeholder="Full Name" data-bind=" value: fullName, disable: submitted(), event: { blur: trim.bind($data, fullName)}">
+                                      <p class="help-block osf-box-lt" data-bind="validationMessage: fullName" style="display: none;"></p>
+                                  </div>
+                                  <div class="form-group" data-bind="css: {'has-error': email1() &amp;&amp; !email1.isValid(), 'has-success': email1() &amp;&amp; email1.isValid()}">
+                                      <label class="placeholder-replace" style="display:none">Contact email</label>
+                                      <input class="form-control" placeholder="Contact Email" data-bind=" value: email1, disable: submitted(), event: { blur: trim.bind($data, email1)}">
+                                      <p class="help-block osf-box-lt" data-bind="validationMessage: email1" style="display: none;"></p>
+                                  </div>
+                                  <div class="form-group" data-bind="css: {'has-error': email2() &amp;&amp; !email2.isValid(),'has-success': email2() &amp;&amp; email2.isValid()}">
+                                      <label class="placeholder-replace" style="display:none">Confirm email</label>
+                                      <input class="form-control" placeholder="Confirm Email" data-bind="value: email2, disable: submitted(), event: { blur: trim.bind($data, email2)}">
+                                      <p class="help-block osf-box-lt" data-bind="validationMessage: email2" style="display: none;"></p>
+                                  </div>
+                                  <div class="form-group" data-bind="css: {'has-error': password() &amp;&amp; !password.isValid(), 'has-success': password() &amp;&amp; password.isValid()}">
+                                      <label class="placeholder-replace" style="display:none">Password</label>
+                                      <input type="password" class="form-control" placeholder="Password (Must be 6 to 256 characters)" data-bind=" value: password, disable: submitted(), event: {blur: trim.bind($data, password)}">
+                                        <p class="help-block osf-box-lt" data-bind="validationMessage: password" style="display: none;"></p>
+                                  </div>
+
+                                  <!-- Flashed Messages -->
+                                  <div class="help-block osf-box-lt">
+                                      <p data-bind="html: flashMessage, attr: {class: flashMessageClass}" class=""></p>
+                                  </div>
+                                  <!-- ko ifnot: submitted -->
+                                  <div>
+                                      <small> By clicking "Sign up free", you agree to our <a style="color:#5BC0DE" href="https://github.com/CenterForOpenScience/centerforopenscience.org/blob/master/TERMS_OF_USE.md">Terms</a> and that you have read our <a style="color:#5BC0DE" href="https://github.com/CenterForOpenScience/centerforopenscience.org/blob/master/PRIVACY_POLICY.md">Privacy Policy</a>, including our information on <a style="color:#5BC0DE" href="https://github.com/CenterForOpenScience/centerforopenscience.org/blob/master/PRIVACY_POLICY.md#f-cookies">Cookie Use</a>.</small>
+                                  </div>
+                                  <!-- /ko -->
+                                  <div>
+                                      <button type="submit" class="btn btn-warning" data-bind="visible: !submitted()" id="signupSubmit">Sign up free</button>
+                                  </div>
+
+                          </form>
+
+                        </div><!-- end #signUpScope -->
+
+
+                    </div>
+<div class="col-sm-6">
+  <h2>Already have an account? Sign in.</h2>
+  <div id="signUp" class="anchor"></div>
+     <div id="signUpScope">
+         <form data-bind="submit: submit">
+             <div class="form-group" data-bind="css: {'has-error': fullName() &amp;&amp; !fullName.isValid(), 'has-success': fullName() &amp;&amp; fullName.isValid()}">
+                   <label class="placeholder-replace" style="display:none">Email</label>
+                   <input class="form-control" placeholder="Email" data-bind=" value: fullName, disable: submitted(), event: { blur: trim.bind($data, fullName)}">
+                   <p class="help-block osf-box-lt" data-bind="validationMessage: fullName" style="display: none;"></p>
+               </div>
+               <div class="form-group" data-bind="css: {'has-error': email1() &amp;&amp; !email1.isValid(), 'has-success': email1() &amp;&amp; email1.isValid()}">
+                   <label class="placeholder-replace" style="display:none">Password</label>
+                   <input class="form-control" placeholder="Password" data-bind=" value: email1, disable: submitted(), event: { blur: trim.bind($data, email1)}">
+                   <p class="help-block osf-box-lt" data-bind="validationMessage: email1" style="display: none;"></p>
+               </div>
+
+
+               <!-- Flashed Messages -->
+               <div class="help-block osf-box-lt">
+                   <p data-bind="html: flashMessage, attr: {class: flashMessageClass}" class=""></p>
+               </div>
+
+               <div>
+                   <button type="submit" class="btn btn-warning" data-bind="visible: !submitted()" id="signupSubmit">Sign In</button>
+               </div>
+
+       </form>
+
+     </div><!-- end #signUpScope -->
+   </div>
+                  </div>
+
+                </div>
+
+        <!-- <img class="background" src="https://osf.io/static/img/front-page/bg-web.png"> -->
+    </div> <!-- end container & splash page -->
+    <div class="container-fluid osf-light-background">
+        <nav id="create" class="navbar navbar-default">
+            <div class="container-fluid" id="browse">
+                <form class="navbar-form navbar-left" role="search">
+                    <img class="navbar-brand" src="https://osf.io/static/img/cos-white2.png">
+                    <p class="navbar-brand">Meetings</p>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" disabled class="btn btn-default">Submit</button>
+                    <button class="btn btn-success navbar-btn" {{action "create"}}>
+                        <span class="glyphicon glyphicon-plus"></span>
+                        Create a Meeting
+                    </button>
+                    <button id="tileButton" class="btn navbar-btn" {{action "tileView"}}>
+                        <span class="glyphicon glyphicon-th-large"></span>
+                    </button>
+                    <button id="listButton" class="btn navbar-btn" {{action "listView"}}>
+                        <span class="glyphicon glyphicon-th-list"></span>
+                    </button>
+                </form>
+            </div>
+        </nav>
+      {{#if tileview}}
+          <div class="row conference-view-outer-container" id="indexBottom">
+              <div class="col-md-10 col-md-offset-1 conference-view-inner-container">
+                  <div class="col-md-12 tile-view">
+                      {{#masonry-grid  isFitWidth=true gutter=20 items= model as |conf|}}
+                          {{#link-to "conference.index" conf.id class="title"}}
+                              {{meeting-masonry title=conf.title
+                              description=conf.description logo=conf.logo
+                              location=(location-display
+                              conf.city conf.state conf.country)
+                              date=(date-display conf.start)
+                              submissions=(submission-count 5)}}
+                          {{/link-to}}
+                      {{/masonry-grid}}
+                  </div> <!-- end tile view -->
+              </div> <!-- end conference-view-inner-container-->
+          </div><!-- end conference-view-outer-container-->
+      {{else}}
+          <div class="row conference-view-outer-container">
+              <div class="col-md-12 table-view">
+                  <div class="col-md-10 col-md-offset-1 conference-view-inner-container">
+                      <table class="table">
+                          <tbody>
+                          {{#each model as |conference|}}
+                            {{#link-to "conference.index.index" conference.id tagName="tr"}}
+                                <td class="hidden-xs">
+                                    <img src={{conference.logo}}>
+                                </td>
+                                <td>
+                                    <h1>{{conference.title}}</h1>
+                                    <h5>{{conference.website}}</h5>
+                                    <h2>{{conference.city}}, {{conference.state}}</h2>
+                                  {{conference.description}}
+                                </td>
+                            {{/link-to}}
+                          {{/each}}
+                          </tbody>
+                      </table>
+                  </div> <!-- end conference-view-inner-container -->
+              </div> <!-- end table-view -->
+          </div> <!-- conference-view-outer-container -->
+      {{/if}}
+      {{outlet}}
+      
+    </div> <!-- end container fluid -->
 
 {{yield}}
