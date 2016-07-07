@@ -106,8 +106,8 @@
                     <div class="progress-bar progress-bar-warning" role="progressbar" style="width:{{model.napprove}}%" >
                       {{model.napprove}}% Approved
                     </div>
-                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width:{{model.nstart}}%" >
-                      {{model.nstart}}% Not started
+                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width:{{model.nsubmit}}%" >
+                      {{model.nsubmit}}% Not started
                     </div>
 
                 </div>
@@ -161,7 +161,7 @@
                         </td>
 
                         <td>
-                            <a class="btn btn-primary" {{action 'showform'}} >View</a>
+                            <a class="btn btn-primary" {{action 'showform' d.attachment}} >View</a>
 
                         </td>
                         <td>
@@ -305,8 +305,8 @@
               <legend>Submission Preview</legend>
 
 
-              <div class = "col-md-8 col-md-offset-3" style="width: 1300px">
-                  <iframe id="fred" style="border:1px solid #666CCC" title="Submission" src="http://www.bitss.org/wp-content/uploads/2014/06/reproducible-research-for-scientific-computing-tools-and-strategies-for-changing-the-culture3.pdf" frameborder="1" scrolling="auto" height="850" width="850" ></iframe>
+              <div class = "col-md-4" style="width: 680px">
+                  <iframe id="fred" style="border:1px solid #666CCC" title="Submission" src={{filelink}}  scrolling="auto" height="650" width="650" ></iframe>
               </div>
 
 
