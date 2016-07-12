@@ -21,15 +21,28 @@ export default Ember.Controller.extend({
     'If you decline to review this paper, please click the following link Decline to Review\n'+
      'If you have any questions or concerns, please contact us at reviews@osf.io\n\n'+
      'Academic Editor',
+   emailbody: '',
+
      actions: {
 
        sendemail(){
          let emailrecord =  this.store.createRecord('email');
          emailrecord.from_email = 'sherif_hany@hotmail.com';
          emailrecord.to_email = 'sherief@vbi.vt.edu';
-         emailrecord.message = this.get('msgtemplate');
+         emailrecord.message = this.get('emailbody');
          emailrecord.subject  = 'Review Invitation';
-         emailrecord.save();
+         //emailrecord.save();
+         var self = this;
+         emailrecord.save().then(function() {
+
+           self.set('isshowingInvite', false);
+           document.getElementById('submitAlert').className = "alert-success alert fade in";
+
+           setTimeout(function() {
+
+             self.transitionToRoute('peerdashboard');
+           }, 2000);
+         });
 
        },
 
@@ -41,7 +54,8 @@ export default Ember.Controller.extend({
         self.set('cname',tyrion.get('conference'));
         console.log(self.get('cname'));
         self.set('isshowingInvite', true);
-        self.set('msgtemplate',self.get('msgtemplate').replace("{cname}",self.get('cname')).replace('{rname}',self.get('reviewerInfo').name).replace('{ptitle}',self.get('ptitle')));
+        self.set('emailbody',self.get('msgtemplate'));
+        self.set('emailbody',self.get('msgtemplate').replace("{cname}",self.get('cname')).replace('{ptitle}',self.get('ptitle')).replace('{rname}',name));
       });
 
 
