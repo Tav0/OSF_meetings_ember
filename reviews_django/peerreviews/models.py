@@ -34,6 +34,15 @@ class Reviewslist(models.Model):
     attachment = models.FileField(blank=True, null=True, upload_to='media/files')
 
 
+class emails(models.Model):
+
+    from_email = models.EmailField(null=True)
+    to_email = models.EmailField(null=True)
+    message = models.TextField(default=None)
+    subject = models.TextField(default=None)
+
+
+
 
 class submissionevals(models.Model):
 

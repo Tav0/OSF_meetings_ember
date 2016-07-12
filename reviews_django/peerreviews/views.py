@@ -1,15 +1,15 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from models import Reviewer, Reviewslist, submissionevals
-from serializers import ReviewerSerializer, ReviewslistSerializer, AuthenticationSerializer, evalSerializer
-
-
+from models import Reviewer, Reviewslist, submissionevals, emails
+from serializers import ReviewerSerializer, ReviewslistSerializer, AuthenticationSerializer, evalSerializer, EmailSerializer
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
 from rest_framework.generics import ListCreateAPIView
 from django.contrib.auth import authenticate, login
 from rest_framework import status
+import json
 
 
 USER_STORAGE = {}
@@ -101,9 +101,49 @@ class SubmissionEvallistViewSet(viewsets.ModelViewSet):
 
 
     def post(self, request, format=None):
-        print request.DATA
         serializer = evalSerializer(data=request.DATA)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class EmailViewSet(ListCreateAPIView):
+    queryset = emails.objects.all()
+    serializer_class = EmailSerializer
+
+
+    def post(self, request, format=None):
+        serializer = EmailSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            send_mail(serializer.data['subject'], serializer.data['message'], serializer.data['from_email'], [serializer.data['to_email']], fail_silently=False)
+
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+# def send_email(request):
+#     subject = request.POST.get('subject', '')
+#     message = request.POST.get('message', '')
+#     from_email = request.POST.get('from_email', '')
+#     to_email = request.POST.get('to_email', '')
+#
+#
+#     send_mail("sheri", "ss", "sherief@vt.edu", ["sherif_hany@hotmail.com"], fail_silently=False)
+#
+#     return render(request, 'peerreviews/test.html', {})
+
+    # if subject and message and from_email and to_email:
+    #     try:
+    #         send_mail(subject, message, from_email,[to_email], fail_silently=False)
+    #     except BadHeaderError:
+    #         return HttpResponse('Invalid header found.')
+    #     return HttpResponseRedirect('/contact/thanks/')
+    # else:
+    #
+    #     return HttpResponse('Make sure all fields are entered and valid.')

@@ -111,7 +111,7 @@ DATABASES = {
     }
 }
 
-
+CSRF_COOKIE_SECURE = False
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
@@ -170,3 +170,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT =  os.path.join(BASE_DIR,"media")
 MEDIA_URL = '/media/'
+
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_HOST_USER = 'postmaster@teachfy.com'
+EMAIL_HOST_PASSWORD = 'a9291c60afa2e7be27b64f9e26a97f98'
+EMAIL_PORT = 587

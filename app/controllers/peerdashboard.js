@@ -5,7 +5,7 @@ import Ember from 'ember';
 
 
 export default Ember.Controller.extend({
-
+  docid:0,
   isshowingcontact: false,
   isshowingassign: false,
   isshowingform: false,
@@ -87,7 +87,7 @@ export default Ember.Controller.extend({
 
 
       this.store.findRecord('reviewslist', d).then(function(tyrion) {
-        // ...after the record has loaded
+        
         tyrion.set('status', "Approved for Review");
 
       });
@@ -98,6 +98,7 @@ export default Ember.Controller.extend({
     },
     showassign(d) {
       this.set('isshowingassign', true);
+      this.set('docid',d);
 
     },
 
@@ -111,7 +112,7 @@ export default Ember.Controller.extend({
 
         this.set('isshowingassign', false);
 
-        this.transitionToRoute('assignreview');
+        this.transitionToRoute('assignreview',{queryParams: {submission_id: this.get('docid')}});
 
       }else{
 
