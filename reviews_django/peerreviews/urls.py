@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 
-from peerreviews.views import ReviewerViewSet, ReviewslistFilteredViewSet, ReviewslistViewSet, AuthenticateUser, SubmissionEvallistViewSet, EmailViewSet
+from peerreviews.views import ReviewerViewSet, ReviewslistFilteredViewSet, ReviewslistViewSet, AuthenticateUser, SubmissionEvallistViewSet, EmailViewSet, ReviewslistIdViewSet
 from django.conf.urls import include, url
 from rest_framework import routers
 
@@ -15,7 +15,10 @@ router.register(r'submissionevals',SubmissionEvallistViewSet)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
-    url(r'^api/reviewers/(?P<rid>[0-9]+)/reviews/', ReviewslistFilteredViewSet.as_view(), name='list'),
+    #url(r'^api/reviewslists/(?P<pk>[0-9]+)/', ReviewslistViewSet.as_view(), name='reviewslist'),
+    url(r'^api/reviewslists/(?P<pk>[0-9]+)/', ReviewslistIdViewSet.as_view(), name='reviewslistid'),
+
+    url(r'^api/reviewers/(?P<rid>[0-9]+)/reviews/', ReviewslistFilteredViewSet.as_view(), name='reviewerslist'),
     url(r'^api/emails/', EmailViewSet.as_view(), name='email'),
     url(r'^login/', include('auth.urls', namespace='login')),
     url(r'^admin/', admin.site.urls, name='admin'),

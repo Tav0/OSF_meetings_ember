@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User, Group
-from models import Reviewer, Reviewslist, submissionevals, emails
+from models import Reviewer, reviewslists, submissionevals, emails
 
 class ReviewerSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,7 +17,7 @@ class EmailSerializer(serializers.ModelSerializer):
 
 class ReviewslistSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Reviewslist
+        model = reviewslists
         fields = ('conference', 'title','reviewdeadline', 'reviewer',  'author', 'status', 'link', 'attachment')
 
 

@@ -31,7 +31,6 @@ export default Ember.Controller.extend({
          emailrecord.to_email = 'sherief@vbi.vt.edu';
          emailrecord.message = this.get('emailbody');
          emailrecord.subject  = 'Review Invitation';
-         //emailrecord.save();
          var self = this;
          emailrecord.save().then(function() {
 

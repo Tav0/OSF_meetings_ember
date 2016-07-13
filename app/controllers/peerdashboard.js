@@ -5,6 +5,7 @@ import Ember from 'ember';
 
 
 export default Ember.Controller.extend({
+  session: Ember.inject.service('session'),
   docid:0,
   isshowingcontact: false,
   isshowingassign: false,
@@ -86,19 +87,31 @@ export default Ember.Controller.extend({
     showapprove(d) {
 
 
-      this.store.findRecord('reviewslist', d).then(function(tyrion) {
-        
-        tyrion.set('status', "Approved for Review");
+     this.store.findRecord('reviewslist', d).then(function(record) {
+
+         let title = record.get('title');
+         let conference = record.get('conference');
+         let reviewer = record.get('reviewer');
+         let link = record.get('link');
+          let attachment = record.get('attachment');
+
+        record.set('status', "Approved");
+        record.set('attachment',attachment);
+        record.set('conference',conference);
+        record.set('reviewer',reviewer);
+        record.set('link',link);
+        record.set('title',title);
+
+        record.save();
+
 
       });
-
-
-
 
     },
     showassign(d) {
       this.set('isshowingassign', true);
       this.set('docid',d);
+      console.log(this.get('session'));
 
     },
 

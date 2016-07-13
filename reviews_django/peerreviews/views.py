@@ -1,16 +1,16 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from models import Reviewer, Reviewslist, submissionevals, emails
+from models import Reviewer, reviewslists, submissionevals, emails
 from serializers import ReviewerSerializer, ReviewslistSerializer, AuthenticationSerializer, evalSerializer, EmailSerializer
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView, UpdateAPIView
 from django.contrib.auth import authenticate, login
 from rest_framework import status
 import json
-
+import sys
 
 USER_STORAGE = {}
 CLIENT_ID  = 'f720c20605e84d52ad24cc97e03ed3a8'
@@ -62,15 +62,41 @@ class ReviewerDetailsViewSet(viewsets.ModelViewSet):
         rs = ReviewerSerializer(r, context={'request': request}, many=False)
         return Response(rs.data)
 
-class ReviewslistViewSet(viewsets.ModelViewSet):
+
+class ReviewslistIdViewSet(UpdateAPIView):
     """
       API endpoint that returns all submissions
       """
 
-
-
-    queryset = Reviewslist.objects.all()
+    queryset = reviewslists.objects.all()
     serializer_class = ReviewslistSerializer
+
+    def update(self, request, *args, **kwargs):
+            instance = self.get_object()
+            instance.status = request.data.get("status")
+            print instance.status
+            instance.save()
+
+            serializer = self.get_serializer(instance)
+            serializer.is_valid(raise_exception=True)
+            self.perform_update(serializer)
+
+            return Response(serializer.data)
+
+
+
+class ReviewslistViewSet(viewsets.ModelViewSet):
+    """
+      API endpoint that returns all submissions
+      """
+    queryset = reviewslists.objects.all()
+    serializer_class = ReviewslistSerializer
+
+    def get(self, request, pk=None, format=None):
+        rl = reviewslists.objects.all()
+        ss = ReviewslistSerializer(rl, context={'request': request}, many=True)
+        return Response(ss.data)
+
 
     def post(self, request, format=None):
         serializer = ReviewslistSerializer(data=request.DATA)
@@ -81,13 +107,15 @@ class ReviewslistViewSet(viewsets.ModelViewSet):
 
 
 
+
+
 class ReviewslistFilteredViewSet(ListCreateAPIView):
     serializer_class = ReviewslistSerializer
 
-    queryset= Reviewslist.objects.all()
+    queryset= reviewslists.objects.all()
 
     def get(self, request, rid=None, format=None):
-        rl = Reviewslist.objects.filter(reviewer_id=rid)
+        rl = reviewslists.objects.filter(reviewer_id=rid)
         ss = ReviewslistSerializer(rl, context={'request': request}, many=True)
         return Response(ss.data)
 
@@ -127,23 +155,4 @@ class EmailViewSet(ListCreateAPIView):
 
 
 
-# def send_email(request):
-#     subject = request.POST.get('subject', '')
-#     message = request.POST.get('message', '')
-#     from_email = request.POST.get('from_email', '')
-#     to_email = request.POST.get('to_email', '')
-#
-#
-#     send_mail("sheri", "ss", "sherief@vt.edu", ["sherif_hany@hotmail.com"], fail_silently=False)
-#
-#     return render(request, 'peerreviews/test.html', {})
 
-    # if subject and message and from_email and to_email:
-    #     try:
-    #         send_mail(subject, message, from_email,[to_email], fail_silently=False)
-    #     except BadHeaderError:
-    #         return HttpResponse('Invalid header found.')
-    #     return HttpResponseRedirect('/contact/thanks/')
-    # else:
-    #
-    #     return HttpResponse('Make sure all fields are entered and valid.')

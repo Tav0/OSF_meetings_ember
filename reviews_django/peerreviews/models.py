@@ -22,16 +22,16 @@ class Author(models.Model):
     email = models.EmailField(default=None)
 
 
-class Reviewslist(models.Model):
+class reviewslists(models.Model):
 
     conference = models.TextField(null=True)
     title = models.TextField(null=True)
     reviewdeadline = models.DateField(default=None)
-    reviewer = models.ForeignKey(Reviewer)
+    reviewer = models.ForeignKey(Reviewer,null=True)
     author = models.ManyToManyField(Author)
     status = models.CharField(max_length=100)
     link = models.URLField(blank=True, null=True)
-    attachment = models.FileField(blank=True, null=True, upload_to='media/files')
+    attachment = models.FileField(null=True, upload_to='media/files')
 
 
 class emails(models.Model):
