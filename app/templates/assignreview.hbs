@@ -138,7 +138,7 @@
                 <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src={{reviewerInfo.avatar}} class="media-object" /></a>
                 <div class="media-body">
                     <h4 class="media-heading">
-                        <span>{{reviewerInfo.name}}</span>
+                        <b style="font-size: small; color: yellow">{{reviewerInfo.name}}</b>
                     </h4>
                     <h4 class="media-heading">
                     </h4>
@@ -146,12 +146,12 @@
                         <div class="media-body">
 
                             <p>
-                                <b>Bio:</b>
+                                <b style="font-size: small">Bio:</b>
                                 {{reviewerInfo.bio}}
                             </p>
                             <div>
                                 <p>
-                                    <b>Research Areas:</b>
+                                    <b style="font-size: small">Research Areas:</b>
                                     {{reviewerInfo.research}}
                                 </p>
 
@@ -159,7 +159,7 @@
 
                             <div>
                                 <p>
-                                    <b>Total OSF Reviews: {{reviewerInfo.osfreviews}}</b>
+                                    <b style="font-size: small">Total OSF Reviews: {{reviewerInfo.osfreviews}}</b>
                                 <p></p>
                                 </p>
                             </div>
@@ -168,7 +168,7 @@
                 </div>
             </div>
 
-               <button id="button3id" name="button3id" class="btn btn-primary" {{action 'showdata'}}>Invite</button>
+               <button id="button3id" name="button3id" class="btn btn-primary" {{action 'showdata' reviewerInfo.name}} >Invite</button>
 
 
            {{/if}}
@@ -179,7 +179,9 @@
         </div>
     </div>
 
-
+    <div id="submitAlert" class="alert alert-success hide fade in" style = "width: 250px">
+        Email sent successfully..
+    </div>
 
 </div>
 
@@ -198,7 +200,7 @@
               <div class="form-group" >
                   <label class="col-md-4 control-label" for="textarea">Email Message</label>
                   <div class="col-md-4">
-                        <textarea class="form-control" id="textarea" name="textarea" rows="18" style="width: 600px">{{msgtemplate}} </textarea>
+                        <textarea class="form-control" id="textarea" name="textarea" rows="18" style="width: 600px">{{emailbody}} </textarea>
                   </div>
               </div>
 
@@ -214,12 +216,12 @@
               <div class="form-group">
                   <label class="col-md-4 control-label" for="button1id"></label>
                   <div class="col-md-8">
-                      <button id="button1id" name="button1id" class="btn btn-success" {{action 'hidedata'}}>Send</button>
+                      <button id="button1id" name="button1id" class="btn btn-success" {{action 'sendemail'}}>Send</button>
                       <button id="button2id" name="button2id" class="btn btn-danger" {{action 'hidedata'}}>Cancel</button>
+
                   </div>
-                {{#bs-progress}}
-                  {{bs-progress-bar value=progressValue minValue=0 maxValue=10 showLabel=true type="danger"}}
-                {{/bs-progress}}
+
+
               </div>
 
           </fieldset>

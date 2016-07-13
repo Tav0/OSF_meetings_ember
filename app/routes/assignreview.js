@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model(){
+queryParams: {submission_id: null},
+model(){
+
 
 
     return Ember.RSVP.hash({
@@ -10,6 +12,8 @@ export default Ember.Route.extend({
         return reviewer.sortBy('name');
       }),
       revieweremail: this.store.findAll('reviewer', {reload: true}).then(function (reviewer) {
+
+
         return reviewer.sortBy('email');
       })
     });
@@ -31,7 +35,7 @@ export default Ember.Route.extend({
       });
     }
 
-    
+
   }
 
 });

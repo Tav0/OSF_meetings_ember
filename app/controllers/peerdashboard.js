@@ -3,9 +3,27 @@
 import Ember from 'ember';
 
 
-
 export default Ember.Controller.extend({
+  session: Ember.inject.service('session'),
 
+  loadCurrentUser() {
+    return new Ember.RSVP.Promise((resolve, reject) => {
+      const token =
+        this.get('session.data.authenticated.token');
+      if (!Ember.isEmpty(token)) {
+        return this.get('store').findRecord('user',
+          'me').then((user) => {
+          this.set('account', user);
+          resolve();
+        }, reject);
+      } else {
+        resolve();
+      }
+    });
+  },
+
+
+  docid:0,
   isshowingcontact: false,
   isshowingassign: false,
   isshowingform: false,
@@ -86,18 +104,31 @@ export default Ember.Controller.extend({
     showapprove(d) {
 
 
-      this.store.findRecord('reviewslist', d).then(function(tyrion) {
-        // ...after the record has loaded
-        tyrion.set('status', "Approved for Review");
+     this.store.findRecord('reviewslist', d).then(function(record) {
+
+         let title = record.get('title');
+         let conference = record.get('conference');
+         let reviewer = record.get('reviewer');
+         let link = record.get('link');
+          let attachment = record.get('attachment');
+
+        record.set('status', "Approved");
+        record.set('attachment',attachment);
+        record.set('conference',conference);
+        record.set('reviewer',reviewer);
+        record.set('link',link);
+        record.set('title',title);
+
+        record.save();
+
 
       });
-
-
-
 
     },
     showassign(d) {
       this.set('isshowingassign', true);
+      this.set('docid',d);
+      console.log(this.get('loadCurrentUser()'));
 
     },
 
@@ -111,7 +142,7 @@ export default Ember.Controller.extend({
 
         this.set('isshowingassign', false);
 
-        this.transitionToRoute('assignreview');
+        this.transitionToRoute('assignreview',{queryParams: {submission_id: this.get('docid')}});
 
       }else{
 

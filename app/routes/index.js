@@ -8,6 +8,7 @@ export default Ember.Route.extend({
     //  return this.store.findAll('conference');
   },
   activate: function() {
+    console.log(this.get('session'));
     Ember.$('body').addClass('hide-scroll');
     Ember.$('html').css({overflow: 'hidden'});
   },
