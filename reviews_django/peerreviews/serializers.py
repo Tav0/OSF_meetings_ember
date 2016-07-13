@@ -1,6 +1,19 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User, Group
 from models import Reviewer, reviewslists, submissionevals, emails
+from rest_framework import serializers as ser
+
+class UserSerializer(ser.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'groups')
+
+
+class GroupSerializer(ser.HyperlinkedModelSerializer):
+    class Meta:
+        model = Group
+        fields = ('id', 'name')
+
 
 class ReviewerSerializer(serializers.ModelSerializer):
     class Meta:

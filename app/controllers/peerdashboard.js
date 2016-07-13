@@ -3,9 +3,26 @@
 import Ember from 'ember';
 
 
-
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
+
+  loadCurrentUser() {
+    return new Ember.RSVP.Promise((resolve, reject) => {
+      const token =
+        this.get('session.data.authenticated.token');
+      if (!Ember.isEmpty(token)) {
+        return this.get('store').findRecord('user',
+          'me').then((user) => {
+          this.set('account', user);
+          resolve();
+        }, reject);
+      } else {
+        resolve();
+      }
+    });
+  },
+
+
   docid:0,
   isshowingcontact: false,
   isshowingassign: false,
@@ -111,7 +128,7 @@ export default Ember.Controller.extend({
     showassign(d) {
       this.set('isshowingassign', true);
       this.set('docid',d);
-      console.log(this.get('session'));
+      console.log(this.get('loadCurrentUser()'));
 
     },
 

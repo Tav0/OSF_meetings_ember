@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from models import Reviewer, reviewslists, submissionevals, emails
-from serializers import ReviewerSerializer, ReviewslistSerializer, AuthenticationSerializer, evalSerializer, EmailSerializer
+from serializers import ReviewerSerializer, ReviewslistSerializer, AuthenticationSerializer, evalSerializer, EmailSerializer, UserSerializer
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView, UpdateAPIView
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User, Group
+
 from rest_framework import status
 import json
 import sys
@@ -18,6 +20,25 @@ CLIENT_SECRET = 'F4qpuFC364JtovxTMEN9R4i9kEAq6umSrcUi1XjR'
 REDIRECT_URI = "http://localhost:4200/login"
 OSF_API_URL = "https://test-api.osf.io/"
 OSF_ACCOUNTS_URL = "https://test-accounts.osf.io/"
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+
+class UserDetail(APIView):
+    resource_name = 'User'
+    serializer_class = UserSerializer
+
+    def get(self, request, user_id=None, format=None):
+        user = User.objects.get(pk=user_id)
+        userSerializer = UserSerializer(user, context={'request': request}, many=False)
+        return Response(userSerializer.data)
+
+
 
 # Create your views here.
 def post_list(request):
