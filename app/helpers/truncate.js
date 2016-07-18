@@ -1,22 +1,9 @@
 import Ember from 'ember';
 
-export function truncate(params, hash) {
-  var value = params[0];
-  var len = hash.limit;
-  var out = '';
+export function truncate(params) {
 
-  if (value !== undefined) {
-    out = value.substr(0, len);
-
-    if (value.length > len) {
-      out += '...';
-    }
-
-  } else {
-    out = '';
-  }
-
-  return out;
+  var x = params[0]*params[1]/100;
+  return Math.round(x);
 }
 
 export default Ember.Helper.helper(truncate);

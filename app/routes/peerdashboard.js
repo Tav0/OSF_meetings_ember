@@ -10,6 +10,9 @@ export default Ember.Route.extend({
       reviewsdate: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
         return reviewslist.sortBy('reviewdeadline').reverse();
       }),
+      nlength: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
+        return reviewslist.get('length');
+      }),
       ncomplete: this.store.findAll('reviewslist', {reload: true}).then(function (reviewslist) {
         return reviewslist.filterBy('status','Completed').get('length')/reviewslist.get('length')*100;
       }),

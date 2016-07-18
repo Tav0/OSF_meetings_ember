@@ -99,15 +99,25 @@
             <div class="container">
 
                 <div class="progress">
-                    <div class="progress-bar progress-bar-success" role="progressbar" style="width:{{model.ncomplete}}%" >
-                      {{model.ncomplete}}% Completed
+                    <div class="progress-bar progress-bar-success" role="progressbar" style={{safeEmberstyle green model.ncomplete}} >
+                      {{truncate model.ncomplete model.nlength}} Completed
 
                     </div>
-                    <div class="progress-bar progress-bar-warning" role="progressbar" style="width:{{model.napprove}}%" >
-                      {{model.napprove}}% Approved
+                    <div class="progress-bar progress-bar-warning" role="progressbar" style={{safeEmberstyle blue model.napprove}} >
+                      {{truncate model.napprove model.nlength}} Approved
                     </div>
-                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width:{{model.nsubmit}}%" >
-                      {{model.nsubmit}}% Not started
+                    <div class="progress-bar progress-bar-danger" role="progressbar" style={{safeEmberstyle dimgrey model.nsubmit}}  >
+                      {{truncate model.nsubmit model.nlength}} Submitted
+                    </div>
+                    <div class="progress-bar progress-bar-success" role="progressbar" style={{safeEmberstyle orange model.nprogress}}>
+                      {{truncate model.nprogress model.nlength}} In progress
+
+                    </div>
+                    <div class="progress-bar progress-bar-warning" role="progressbar" style={{safeEmberstyle indianred model.npast}}>
+                      {{truncate model.npast model.nlength}} Past duew
+                    </div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" style={{safeEmberstyle  darkred model.nreject}}>
+                      {{truncate model.nreject model.nlength}} Rejected
                     </div>
 
                 </div>
