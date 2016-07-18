@@ -33,7 +33,7 @@ export default Ember.Route.extend({
 					withCredentials: false,
 				}
 			}).then(function() {
-				self.transitionTo('index');
+				self.transitionTo('peerdashboard');
 			});
 		}
 	}
