@@ -166,6 +166,7 @@ CORS_ALLOW_HEADERS = (
     'x-csrftoken'
 )
 
+
 ANONYMOUS_USER_ID = -1
 
 # Internationalization

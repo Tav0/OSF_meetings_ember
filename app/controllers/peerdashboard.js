@@ -5,7 +5,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
-
+  
   loadCurrentUser() {
     return new Ember.RSVP.Promise((resolve, reject) => {
       const token =
@@ -21,6 +21,7 @@ export default Ember.Controller.extend({
       }
     });
   },
+
 
 
   docid:0,
@@ -104,25 +105,29 @@ export default Ember.Controller.extend({
     showapprove(d) {
 
 
-     this.store.findRecord('reviewslist', d).then(function(record) {
+     this.store.findRecord('reviewslist', d.id).then(function(record) {
 
          let title = record.get('title');
          let conference = record.get('conference');
-         let reviewer = record.get('reviewer');
          let link = record.get('link');
-          let attachment = record.get('attachment');
+       let reviewdeadline = record.get('reviewdeadline');
 
-        record.set('status', "Approved");
-        record.set('attachment',attachment);
-        record.set('conference',conference);
-        record.set('reviewer',reviewer);
-        record.set('link',link);
-        record.set('title',title);
+
+
+       record.set('conference',conference);
+       record.set('title',title);
+       record.set('reviewdeadline',reviewdeadline);
+       record.set('status', "Approved");
+       record.set('link',link);
+
 
         record.save();
 
 
       });
+
+
+
 
     },
     showassign(d) {

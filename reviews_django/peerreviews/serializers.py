@@ -31,7 +31,13 @@ class EmailSerializer(serializers.ModelSerializer):
 class ReviewslistSerializer(serializers.ModelSerializer):
     class Meta:
         model = reviewslists
-        fields = ('conference', 'title','reviewdeadline', 'reviewer',  'author', 'status', 'link', 'attachment')
+        fields = ('conference', 'title','reviewdeadline', 'reviewer',  'author_name','author_email', 'status', 'link', 'attachment')
+
+class ReviewslistSerializerUpdate(serializers.ModelSerializer):
+
+    class Meta:
+        model = reviewslists
+        fields = ('conference', 'title','reviewdeadline', 'status', 'link')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

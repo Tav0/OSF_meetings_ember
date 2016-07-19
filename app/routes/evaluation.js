@@ -4,6 +4,23 @@ export default Ember.Route.extend({
     model() {
         return this.store.createRecord('submissioneval');
     },
+  activate: function() {
+
+    var self = this;
+    Ember.$.ajax({
+      url: "http://localhost:8000/api/checklogin",
+      dataType: 'json',
+      contentType: 'text/plain',
+      xhrFields: {
+        withCredentials: true
+      }
+    }).then(function(loggedIn) {
+      if (loggedIn.data === 'false') {
+        console.log('not logged in');
+        self.transitionTo('login');
+      }
+    });
+  },
     // submission: null,
     // total: Ember.computed.sum('submission.sda', submission.asd',)
 

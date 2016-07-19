@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-
+  queryParams: {isauthenticated: false},
+  isauthenticated:false,
   statusc : 0,
   model(){
 
@@ -36,8 +37,23 @@ export default Ember.Route.extend({
 
   },
 
+  activate: function() {
 
-
+      var self = this;
+      Ember.$.ajax({
+        url: "http://localhost:8000/api/checklogin",
+        dataType: 'json',
+        contentType: 'text/plain',
+        xhrFields: {
+          withCredentials: true
+        }
+      }).then(function(loggedIn) {
+        if (loggedIn.data === 'false') {
+          console.log('not logged in');
+          self.transitionTo('login');
+        }
+      });
+    },
   actions: {
 
 
@@ -129,7 +145,7 @@ export default Ember.Route.extend({
 
 
       }
-      
+
 
     }
 
